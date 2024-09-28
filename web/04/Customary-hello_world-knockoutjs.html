@@ -1,0 +1,14 @@
+<script type="importmap">{"imports": {
+    "customary/": "../../node_modules/customary/web/_script/",
+    "knockout": "../../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+
+<template id="hello-world"><span data-bind="text: hello"></span> <span data-bind="text: world"></span>!</template>
+
+<h1><hello-world /></h1>
+~ with Knockout.js ~
+
+<script type="module">
+    import {defineCustomElements} from './Customary-hello_world-knockoutjs.js';
+    await defineCustomElements();
+</script>

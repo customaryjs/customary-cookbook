@@ -1,0 +1,10 @@
+<script type="importmap">{"imports": {"customary/": "../../node_modules/customary/web/_script/"}}</script>
+
+<template id="hello-world">Hello Customary!</template>
+
+<h1><hello-world /></h1>
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define();
+</script>

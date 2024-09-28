@@ -1,0 +1,54 @@
+{
+  "name": "customary-proactive",
+  "version": "1.0.0",
+  "scripts": {
+    "// ---- public ---- //": "",
+    "start": "npm run dist && npm run start-dist-web",
+    "dist": "copyfiles --error --all \"web/**/*\" .dist && copyfiles --error --all \"src/**/*\" .dist/web",
+    "help:dist": "echo we copy src because it lets browsers step debug .ts files",
+    "start-dist-web": "http-server .dist/web -i=false -c-1",
+    "clean": "rimraf web/_script .dist",
+    "clean-src": "rimraf --glob src/**/*.d.ts src/**/*.js.map src/**/*.js",
+    "dev": "run-p dev-dependencies compile-watch start-dev",
+    "start-dev": "http-server -i=true -c-1",
+    "// ---- pre & post ---- //": "",
+    "predist": "npm run clean && npm run dist-dependencies && npm run compile",
+    "postdist": "replace-in-file --configFile=package-json-scripts-postdist-replace-in-file-config.json --isRegex --verbose",
+    "// ---- private ---- //": "",
+    "compile-watch": "tsc --build --verbose --watch",
+    "compile": "tsc --build --verbose",
+    "// ---- dependencies ---- //": "",
+    "dev-dependencies": "run-p dev-dependency:*",
+    "dev-dependency:customary": "npm run --prefix node_modules/customary dev",
+    "dist-dependencies": "run-p dist-dependency:*",
+    "predist-dependency:customary": "npm run --prefix node_modules/customary dist",
+    "dist-dependency:customary": "copyfiles --error --all --up 3 \"node_modules/customary/.dist/**/*\" .dist/web/_lib/customary/",
+    "dist-dependency:chai": "copyfiles --error --all --up 2 \"node_modules/chai/**/*\" .dist/web/_lib/chai/",
+    "dist-dependency:mocha": "copyfiles --error --all --up 2 \"node_modules/mocha/**/*\" .dist/web/_lib/mocha/",
+    "clean-dependencies": "run-p clean-dependency:*",
+    "clean-dependency:customary": "npm run --prefix node_modules/customary clean"
+  },
+  "dependencies": {
+    "@types/chai": "^4.3.19",
+    "@types/mocha": "^10.0.8",
+    "chai": "^5.1.1",
+    "customary": "file:../customary",
+    "knockout": "^3.5.1",
+    "mocha": "^10.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.5",
+    "copyfiles": "^2.4.1",
+    "http-server": "^14.1.1",
+    "npm-run-all": "^4.1.5",
+    "replace-in-file": "^8.1.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": "20.17.0"
+  },
+  "license": "Apache-2.0",
+  "author": "Andre de Oliveira"
+}

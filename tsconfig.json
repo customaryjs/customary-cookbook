@@ -1,0 +1,24 @@
+{
+  "include": ["web/**/*"],
+  "exclude": ["web/_script/**/*"],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "web/_script",
+    "rootDir": "src",
+    "paths": {
+      "customary/*": ["./node_modules/customary/src/*"],
+      "chai/*": ["./node_modules/chai/*"],
+      "knockout/": ["./node_modules/knockout/build/types/knockout/"],
+      "mocha/*": ["./node_modules/mocha/*"]
+    },
+    // ---- CODING STANDARDS TYPICAL FOR ALL PROJECTS START HERE ----
+    "allowJs": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2022"
+  }
+}

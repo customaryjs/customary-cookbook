@@ -1,0 +1,13 @@
+<script type="importmap">{"imports": {"customary/": "../../node_modules/customary/web/_script/"}}</script>
+
+<template id="hello-part">Hello</template>
+<template id="world-part">Customary!</template>
+
+<h1><hello-part /></h1>
+<h1><world-part /></h1>
+~ with TypeScript ~
+
+<script type="module">
+    import {defineCustomElements} from './Customary-hello_world-typescript.js';
+    await defineCustomElements();
+</script>

@@ -4,11 +4,15 @@
 <template data-customary-name="hello-world-part-2">Customary</template>
 <template data-customary-name="hello-world-part-3">!</template>
 
-<h1 id="populate-here"></h1>
+<h1>
+    <hello-world-part-1></hello-world-part-1>
+    <hello-world-part-2></hello-world-part-2>
+    <hello-world-part-3></hello-world-part-3>
+</h1>
 
-~ with TypeScript ~
+~ with multiple elements ~
 
 <script type="module">
-    import {populate} from './Customary-hello_world-typescript.js';
-    await populate();
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define();
 </script>

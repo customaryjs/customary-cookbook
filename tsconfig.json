@@ -1,10 +1,7 @@
 {
   "include": ["web/**/*"],
-  "exclude": ["web/_script/**/*"],
   "compilerOptions": {
-    "declaration": true,
-    "outDir": "web/_script",
-    "rootDir": "src",
+    "rootDir": "web",
     "paths": {
       "customary/*": ["./node_modules/customary/src/*"],
       "chai/*": ["./node_modules/chai/*"],

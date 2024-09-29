@@ -1,0 +1,16 @@
+<script type="importmap">{"imports": {"customary/": "../../node_modules/customary/web/_script/"}}</script>
+
+<template data-customary-name="hello-world-part"><slot name="word" /></template>
+
+<h1>
+    <hello-world-part><span slot="word">Hello</span></hello-world-part>
+    <hello-world-part><span slot="word">Customary</span></hello-world-part>
+    <hello-world-part><span slot="word">!</span></hello-world-part>
+</h1>
+
+~ with a slot ~
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define();
+</script>

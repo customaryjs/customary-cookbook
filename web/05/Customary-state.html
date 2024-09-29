@@ -1,0 +1,34 @@
+<script type="importmap">{"imports": {
+    "customary/": "../../node_modules/customary/web/_script/",
+    "knockout": "../../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+
+<template data-customary-name="story-teller">
+    <h1>A Customary Journey</h1>
+    <div style="font-style: italic; font-size: x-large">
+        <p style="margin-left: 20px;">
+            <strong>{this.state.who}</strong>
+        </p>
+        <p style="margin-left: 40px;">
+            went to <strong>{this.state.where}</strong>
+        </p>
+        <p style="margin-left: 60px;">
+            to see <strong>{this.state.what}.</strong>
+        </p>
+    </div>
+</template>
+
+<story-teller></story-teller>
+
+<script type="application/json" data-customary-name="story-teller">
+    {
+        "who": "He" ,
+        "where": "space",
+        "what": "the stars"
+    }
+</script>
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define();
+</script>

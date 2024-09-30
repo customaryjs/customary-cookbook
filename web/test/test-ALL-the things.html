@@ -1,0 +1,36 @@
+<script type="importmap">
+    {
+        "imports": {
+            "customary-tutorials/": "../",
+            "customary/": "../../node_modules/customary/web/_script/",
+            "chai": "../../node_modules/chai/chai.js",
+            "mocha": "../../node_modules/mocha/mocha.js",
+            "mocha.css": "../../node_modules/mocha/mocha.css"
+        }
+    }
+</script>
+
+<html>
+<head>
+    <title>Web Tests</title>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+
+<script type="module">
+    import {CSSStyleSheetAdopter} from "customary/cssstylesheet/CSSStyleSheetAdopter.js";
+    import {CSSStyleSheetImporter} from "customary/cssstylesheet/CSSStyleSheetImporter.js";
+    await new CSSStyleSheetAdopter(new CSSStyleSheetImporter(), document)
+        .adoptCSSStylesheets(import.meta.resolve('mocha.css'));
+
+    import 'mocha';
+    mocha.setup('bdd');
+
+    import {Test01} from 'customary-tutorials/01/test-Customary-hello_world.js';
+    Test01.add_tests();
+
+    mocha.run();
+</script>
+
+</html>

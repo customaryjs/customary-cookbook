@@ -1,7 +1,5 @@
-import * as chai from 'chai';
 import 'mocha';
-
-const TEST = chai.assert;
+import {CustomaryTestingQueries} from "../test/CustomaryTestingQueries.js";
 
 const PAGE = '../01/Customary-hello_world.html';
 
@@ -18,18 +16,8 @@ export class Test01 { static add_tests() {
 
         describe('on page load', async function () {
             it('render expected custom element text content', async function () {
-                const element = window.document.body.getElementsByTagName('hello-world')[0];
-                const textContentArray: string[] = collectAllTextContent(element!);
-                TEST.strictEqual(textContentArray.join(' '), 'Hello Customary !');
+                CustomaryTestingQueries.findByTextContent(window.document, 'Hello Customary !', {selector: 'h1'});
             });
         });
     });
 }}
-
-function collectAllTextContent(node: Node): string[] {
-    if (node.textContent) return [node.textContent];
-    if ((node as Element).shadowRoot) return collectAllTextContent((node as Element).shadowRoot!);
-    if ((node as Element).tagName === 'SCRIPT') return [];
-    if (!node.hasChildNodes()) return [];
-    return Array.from(node.childNodes).flatMap(child => collectAllTextContent(child));
-}

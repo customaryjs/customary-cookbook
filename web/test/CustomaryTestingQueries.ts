@@ -4,7 +4,7 @@ export class CustomaryTestingQueries {
         const element = container.querySelector(selector);
         if (!element) throw new Error(selector);
         const textContentArray: string[] = collectAllTextContent(element);
-        const textContent = textContentArray.join(' ');
+        const textContent = textContentArray.join('').trim();
         if (textContent === expected) return element;
         throw new Error(textContent);
     }
@@ -12,9 +12,11 @@ export class CustomaryTestingQueries {
 }
 
 function collectAllTextContent(node: Node): string[] {
-    if (node.textContent) return [node.textContent];
-    if ((node as Element).shadowRoot) return collectAllTextContent((node as Element).shadowRoot!);
     if ((node as Element).tagName === 'SCRIPT') return [];
-    if (!node.hasChildNodes()) return [];
-    return Array.from(node.childNodes).flatMap(child => collectAllTextContent(child));
+    if ((node as Element).shadowRoot) return collectAllTextContent((node as Element).shadowRoot!);
+    const textContent = node.textContent?.replace(/\s+/g, ' ');
+    if (textContent?.trim?.().length) return [textContent];
+    if (node.hasChildNodes()) return Array.from(node.childNodes).flatMap(child => collectAllTextContent(child));
+    if (textContent === ' ') return [textContent];
+    return [];
 }

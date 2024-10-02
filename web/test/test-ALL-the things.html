@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Web Tests</title>
+    <title>Customary: test ALL the things!</title>
 </head>
 <body>
 <div id="mocha"></div>
@@ -29,6 +29,16 @@
 
     import {Test01} from 'customary-tutorials/01/test-Customary-hello_world.js';
     Test01.add_tests();
+    import {Test02} from 'customary-tutorials/02/test-Customary-hello_world-multiple.js';
+    Test02.add_tests();
+    import {Test02_05} from 'customary-tutorials/02-05/test-Customary-hello_world-slot.js';
+    Test02_05.add_tests();
+    import {Test03} from 'customary-tutorials/03/test-Customary-hello_world-typescript.js';
+    Test03.add_tests();
+    import {Test04} from 'customary-tutorials/04/test-Customary-hello_world-knockoutjs.js';
+    Test04.add_tests();
+    import {Test05} from 'customary-tutorials/05/test-Customary-state.js';
+    Test05.add_tests();
 
     mocha.run();
 </script>

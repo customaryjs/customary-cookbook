@@ -1,5 +1,5 @@
 import {Customary} from 'customary/Customary.js';
-import {KnockoutBridge} from "customary/knockoutjs/KnockoutBridge.js";
+import {KnockoutBridge} from 'customary/knockoutjs/KnockoutBridge.js';
 
 export async function bind() {
     await Customary.define();

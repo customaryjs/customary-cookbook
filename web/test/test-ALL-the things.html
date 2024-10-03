@@ -19,27 +19,23 @@
 </body>
 
 <script type="module">
-    import {CSSStyleSheetAdopter} from "customary/cssstylesheet/CSSStyleSheetAdopter.js";
-    import {CSSStyleSheetImporter} from "customary/cssstylesheet/CSSStyleSheetImporter.js";
-    await new CSSStyleSheetAdopter(new CSSStyleSheetImporter(), document)
-        .adoptCSSStylesheets(import.meta.resolve('mocha.css'));
-
+    // https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
     import 'mocha';
     mocha.setup('bdd');
-
-    import {Test01} from 'customary-tutorials/01/test-Customary-hello_world.js';
-    Test01.add_tests();
-    import {Test02} from 'customary-tutorials/02/test-Customary-hello_world-multiple.js';
-    Test02.add_tests();
-    import {Test02_05} from 'customary-tutorials/02-05/test-Customary-hello_world-slot.js';
-    Test02_05.add_tests();
-    import {Test03} from 'customary-tutorials/03/test-Customary-hello_world-typescript.js';
-    Test03.add_tests();
-    import {Test04} from 'customary-tutorials/04/test-Customary-hello_world-knockoutjs.js';
-    Test04.add_tests();
-    import {Test05} from 'customary-tutorials/05/test-Customary-state.js';
-    Test05.add_tests();
-
+</script>
+<script type="module">
+    import {CSSStyleSheetAdopter} from 'customary/cssstylesheet/CSSStyleSheetAdopter.js';
+    import {CSSStyleSheetImporter} from 'customary/cssstylesheet/CSSStyleSheetImporter.js';
+    await new CSSStyleSheetAdopter(new CSSStyleSheetImporter(), document)
+        .adoptCSSStylesheets(import.meta.resolve('mocha.css'));
+</script>
+<script type="module">
+    import '../01-helloworld/01/test-Customary-hello_world.js';
+    import '../01-helloworld/02/test-Customary-hello_world-multiple.js';
+    import '../01-helloworld/02-05/test-Customary-hello_world-slot.js';
+    import '../01-helloworld/03/test-Customary-hello_world-typescript.js';
+    import '../01-helloworld/04/test-Customary-hello_world-knockoutjs.js';
+    import '../02-state/05/test-Customary-state.js';
     mocha.run();
 </script>
 

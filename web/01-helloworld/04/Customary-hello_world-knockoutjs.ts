@@ -4,10 +4,15 @@ import {KnockoutBridge} from 'customary/knockoutjs/KnockoutBridge.js';
 export async function bind() {
     await Customary.define();
 
-    const model = {hello: 'Hello', world: 'Customary'};
+    const ko = new KnockoutBridge();
 
-    const element = document.querySelector('hello-world');
-    const documentFragment = element!.shadowRoot!.getRootNode() as DocumentFragment;
+    const model = {
+        parts: ko.observableArray([
+            {word: 'Hello'},
+            {word: 'Customary'},
+            {word: '!'},
+        ]),
+    };
 
-    new KnockoutBridge().applyBindingsToDocumentFragment(model, documentFragment);
+    ko.applyBindings(model, document.querySelector('hello-world')!);
 }

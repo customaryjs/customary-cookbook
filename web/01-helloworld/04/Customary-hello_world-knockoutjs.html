@@ -4,7 +4,9 @@
 }}</script>
 
 <template data-customary-name="hello-world">
-    <span data-bind="text: hello"></span> <span data-bind="text: world"></span> !
+    <span data-bind="foreach: parts">
+        <span data-bind="text: word"></span>
+    </span>
 </template>
 
 <h1><hello-world></hello-world></h1>

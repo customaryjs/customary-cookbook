@@ -19,7 +19,10 @@ describe(suite(PAGE), async function (){
         it('render expected custom element text content', async function () {
             CustomaryTestingQueries.findByTextContent(
                 window.document.querySelector('story-teller')!.shadowRoot!,
-                'He went to space to see the stars.',
+                'He went to space to see the stars. ' +
+                'She went to sea to see the stars. ' +
+                'We went to shows to see the stars, ' +
+                'I went to sleep to see the stars.',
                 {selector: 'div'}
             );
         });

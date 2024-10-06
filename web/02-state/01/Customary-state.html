@@ -1,0 +1,34 @@
+<h1>Customary State</h1>
+
+<unit-test-card></unit-test-card>
+
+<script type="application/json" data-customary-name="unit-test-card">
+  {
+    "page": "web/02-state/01/Customary-state.html",
+    "test":  "web/02-state/01/test-Customary-state.html"
+  }
+</script>
+
+<template data-customary-name="unit-test-card">
+  <div class="c">
+    <div class="h">Page</div><div>{this.state.page}</div>
+    <div class="h">Test</div><div>{this.state.test}</div>
+  </div>
+  <style>
+    .c {
+      display: grid; grid-template-columns: auto auto; gap: 10px;
+      width: 320px; border: solid turquoise; padding: 10px;
+    }
+    .h {font-weight: bold; text-align: right}
+  </style>
+</template>
+
+<script type="importmap">{"imports": {
+  "customary/": "../../../node_modules/customary/web/_script/",
+  "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+
+<script type="module">
+  import {Customary} from 'customary/Customary.js';
+  await Customary.define();
+</script>

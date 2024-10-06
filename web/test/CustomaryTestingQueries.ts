@@ -1,12 +1,14 @@
 export class CustomaryTestingQueries {
 
     static findByTextContent(container: ParentNode, expected: string, {selector}:{selector: string}) {
-        const element = container.querySelector(selector);
-        if (!element) throw new Error(selector);
-        const textContentArray: string[] = collectAllTextContent(element);
-        const textContent = textContentArray.join('').trim();
-        if (textContent === expected) return element;
-        throw new Error(textContent);
+        const elements = container.querySelectorAll(selector);
+        if (elements.length === 0) throw new Error(`No element matches selector '${selector}'`);
+        for (const element of elements) {
+            const textContentArray: string[] = collectAllTextContent(element);
+            const textContent = textContentArray.join('').trim();
+            if (textContent === expected) return element;
+        }
+        throw new Error(`No element matching ${selector} has textContent ${expected}`);
     }
 
 }

@@ -1,10 +1,8 @@
 import {Customary} from 'customary/Customary.js';
-import {KnockoutBridge} from 'customary/knockoutjs/KnockoutBridge.js';
+import {KnockoutBridge as ko} from 'customary/knockoutjs/KnockoutBridge.js';
 
 export async function bind() {
     await Customary.define();
-
-    const ko = new KnockoutBridge();
 
     const model = {
         parts: ko.observableArray([

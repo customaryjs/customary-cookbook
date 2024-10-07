@@ -1,0 +1,22 @@
+<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
+
+<template data-customary-name="hello-world">
+    <span>Hello Customary !</span>
+    <button>Click</button>
+</template>
+
+<h1><hello-world></hello-world></h1>
+
+~ with an event ~
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define(
+        'hello-world', {
+            events: [{
+                selector: 'button',
+                listener: (el) => el.style.fontSize = 40 + Math.random() * 40 + 'px'
+            }],
+        }
+    );
+</script>

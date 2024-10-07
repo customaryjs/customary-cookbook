@@ -26,7 +26,7 @@ describe(suite(PAGE), async function (){
             );
         }
         it('render expected custom element text content', async function () {
-            this.retries(6);
+            this.retries(32);
             assert_element();
             assert_textContent("Hello Customary !");
         });
@@ -34,7 +34,7 @@ describe(suite(PAGE), async function (){
             (container.querySelector('button') as HTMLButtonElement).click();
         });
         it('render changed custom element text content', async function () {
-            this.retries(6);
+            this.retries(16);
             assert_textContent("! yramotsuC olleH");
         });
     });

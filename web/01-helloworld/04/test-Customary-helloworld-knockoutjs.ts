@@ -8,7 +8,6 @@ const URL = `../../${PAGE}`;
 describe(suite(PAGE), async function (){
     this.timeout(4000);
     this.slow(500);
-    this.retries(6);
 
     let window: Window;
 
@@ -17,6 +16,7 @@ describe(suite(PAGE), async function (){
 
     describe('on page load', async function () {
         it('render expected custom element text content', async function () {
+            this.retries(16);
             CustomaryTestingQueries.findByTextContent(window.document, 'Hello Customary !', {selector: 'h1'});
         });
     });

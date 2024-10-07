@@ -2,7 +2,7 @@ import 'mocha';
 import {CustomaryTestingQueries} from "../../test/CustomaryTestingQueries.js";
 import {suite} from "../../test/suite.js";
 
-const PAGE = 'web/02-state/02/Customary-state-setState.html';
+const PAGE = 'web/02-state/03/Customary-state-setState-function.html';
 const URL = `../../${PAGE}`;
 
 describe(suite(PAGE), async function (){
@@ -28,12 +28,14 @@ describe(suite(PAGE), async function (){
         it('render expected custom element text content', async function () {
             this.retries(6);
             assert_element();
-            assert_textContent("web/02-state/01/test-Customary-state.html");
+            assert_textContent("Hello Customary !");
         });
         it('click to change text content', async function () {
-            this.retries(6);
             (container.querySelector('button') as HTMLButtonElement).click();
-            assert_textContent("Hello Customary !");
+        });
+        it('render changed custom element text content', async function () {
+            this.retries(6);
+            assert_textContent("! yramotsuC olleH");
         });
     });
 });

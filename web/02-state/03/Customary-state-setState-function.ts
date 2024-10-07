@@ -1,6 +1,6 @@
 import {Customary} from 'customary/Customary.js';
 import {CustomaryHTMLElement} from 'customary/CustomaryHTMLElement.js';
-import {set_button_onclick_customary} from "./set_button_onclick_customary.js";
+import {set_button_onclick_customary} from "../02/set_button_onclick_customary.js";
 
 export async function define() {
     await Customary.define();
@@ -12,5 +12,7 @@ export async function define() {
 }
 
 function setState(el: CustomaryHTMLElement): void {
-    el.setState({test: 'Hello Customary !'});
+    el.setState((state: any) => ({
+        test: state.test.split('').reverse().join('')
+    }));
 }

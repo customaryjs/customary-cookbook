@@ -2,7 +2,7 @@ import 'mocha';
 import {CustomaryTestingQueries} from "../../test/CustomaryTestingQueries.js";
 import {suite} from "../../test/suite.js";
 
-const PAGE = 'web/01-helloworld/02-05/Customary-hello_world-slot.html';
+const PAGE = 'web/01-helloworld/02-05/Customary-helloworld-slot.html';
 const URL = `../../${PAGE}`;
 
 describe(suite(PAGE), async function (){

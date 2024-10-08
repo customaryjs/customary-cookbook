@@ -1,0 +1,10 @@
+<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
+
+<h1><hello-world></hello-world></h1>
+
+~ with an external template ~
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define('hello-world', {externalLoaderOptions: {import_meta: import.meta}});
+</script>

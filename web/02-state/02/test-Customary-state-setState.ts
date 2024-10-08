@@ -26,13 +26,15 @@ describe(suite(PAGE), async function (){
             );
         }
         it('render expected custom element text content', async function () {
-            this.retries(32);
+            this.retries(64);
             assert_element();
             assert_textContent("web/02-state/01/test-Customary-state.html");
         });
         it('click to change text content', async function () {
-            this.retries(16);
             (container.querySelector('button') as HTMLButtonElement).click();
+        });
+        it('render changed custom element text content', async function () {
+            this.retries(16);
             assert_textContent("Hello Customary !");
         });
     });

@@ -1,8 +1,29 @@
+<!doctype html>
 
-<a href="./test/test-ALL-the-things.html">Unit Tests</a>
+<customary-tutorials></customary-tutorials>
 
+<template data-customary-name="customary-tutorials">
+    <div data-bind="foreach: $data">
+        <p><a target="_blank" data-bind="attr:{'href':file},text:file"></a></p>
+    </div>
+</template>
 
+<p><a href="./test/test-ALL-the-things.html" target="_blank">Run the Unit Tests</a></p>
 
-<li><a href="01/Customary-hello_world.html">Hello World</a>
-<li><a href="02/Customary-hello_world-multiple.html">Hello World Multiple</a>
-<li><a href="03/Customary-hello_world-typescript.html">Hello World TypeScript</a>
+<script type="importmap">
+    {
+        "imports": {
+            "customary-tutorials/": "./",
+            "customary/": "../node_modules/customary/web/_script/",
+            "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
+    import {Customary} from 'customary/Customary.js';
+    const data = await CustomaryTutorialsData.loadData('');
+    const state = data.pages.map(file => ({file}));
+    await Customary.define('customary-tutorials', {state});
+</script>

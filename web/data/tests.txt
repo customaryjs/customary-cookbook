@@ -1,0 +1,11 @@
+web/01-helloworld/01/test-Customary-helloworld.js
+web/01-helloworld/02/test-Customary-helloworld-multiple.js
+web/01-helloworld/02-05/test-Customary-helloworld-slot.js
+web/01-helloworld/03/test-Customary-helloworld-typescript.js
+web/01-helloworld/04/test-Customary-helloworld-knockoutjs.js
+web/01-helloworld/05/test-Customary-helloworld-event.js
+web/01-helloworld/06/test-Customary-helloworld-external.js
+web/02-state/01/test-Customary-state.js
+web/02-state/02/test-Customary-state-setState.js
+web/02-state/03/test-Customary-state-setState-function.js
+web/02-state/05/test-Customary-state-journey.js

@@ -1,3 +1,15 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>Customary: test ALL the things!</title>
+</head>
+<body>
+<h1>Customary: test ALL the things!</h1>
+<button autofocus onclick="mocha.run()">Run unit tests</button>
+<div id="mocha"></div>
+</body>
+
 <script type="importmap">
     {
         "imports": {
@@ -10,20 +22,11 @@
     }
 </script>
 
-<html>
-<head>
-    <title>Customary: test ALL the things!</title>
-</head>
-<body>
-<h1>Customary: test ALL the things!</h1>
-<button autofocus onclick="mocha.run()">Run unit tests</button>
-<div id="mocha"></div>
-</body>
-
 <script type="module">
     // https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
     import 'mocha';
-    mocha.setup('bdd');
+    mocha.setup({'ui': 'bdd'});
+    mocha.cleanReferencesAfterRun(false);
 </script>
 <script type="module">
     import {CSSStyleSheetAdopter} from 'customary/cssstylesheet/CSSStyleSheetAdopter.js';
@@ -32,17 +35,11 @@
         .adoptCSSStylesheets(import.meta.resolve('mocha.css'));
 </script>
 <script type="module">
-    import '../01-helloworld/01/test-Customary-helloworld.js';
-    import '../01-helloworld/02/test-Customary-helloworld-multiple.js';
-    import '../01-helloworld/02-05/test-Customary-helloworld-slot.js';
-    import '../01-helloworld/03/test-Customary-helloworld-typescript.js';
-    import '../01-helloworld/04/test-Customary-helloworld-knockoutjs.js';
-    import '../01-helloworld/05/test-Customary-helloworld-event.js';
-    import '../01-helloworld/06/test-Customary-helloworld-external.js';
-    import '../02-state/01/test-Customary-state.js';
-    import '../02-state/02/test-Customary-state-setState.js';
-    import '../02-state/03/test-Customary-state-setState-function.js';
-    import '../02-state/05/test-Customary-state-journey.js';
+    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
+    const data = await CustomaryTutorialsData.loadData('../');
+    for (const test of data.tests) {
+        await import(test);
+    }
 </script>
 
 </html>

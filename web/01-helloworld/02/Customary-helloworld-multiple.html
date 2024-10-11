@@ -1,5 +1,3 @@
-<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
-
 <template data-customary-name="hello-world-part-1">Hello</template>
 <template data-customary-name="hello-world-part-2">Customary</template>
 <template data-customary-name="hello-world-part-3">!</template>
@@ -12,7 +10,5 @@
 
 ~ with multiple elements ~
 
-<script type="module">
-    import {Customary} from 'customary/Customary.js';
-    await Customary.define();
-</script>
+<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
+<script type="module">import 'customary/go.js'</script>

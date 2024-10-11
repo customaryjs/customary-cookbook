@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Customary: test ALL the things!</h1>
-<button autofocus onclick="mocha.run()">Run unit tests</button>
+<button autofocus onclick="run_unit_tests()">Run unit tests</button>
 <div id="mocha"></div>
 </body>
 
@@ -41,5 +41,10 @@
         await import(test);
     }
 </script>
-
+<script type="application/javascript">
+    function run_unit_tests() {
+        document.getElementById('mocha').replaceChildren();
+        mocha.run();
+    }
+</script>
 </html>

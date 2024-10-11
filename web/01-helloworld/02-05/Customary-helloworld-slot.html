@@ -1,9 +1,11 @@
-<template data-customary-name="hello-world-part"><slot name="word" /></template>
+<template data-customary-name="hello-world-part">
+    <i><slot /></i>
+</template>
 
 <h1>
-    <hello-world-part><span slot="word">Hello</span></hello-world-part>
-    <hello-world-part><span slot="word">Customary</span></hello-world-part>
-    <hello-world-part><span slot="word">!</span></hello-world-part>
+    <hello-world-part>Hello</hello-world-part>
+    <hello-world-part>Customary</hello-world-part>
+    <hello-world-part>!</hello-world-part>
 </h1>
 
 ~ with a slot ~

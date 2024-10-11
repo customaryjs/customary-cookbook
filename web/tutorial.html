@@ -1,0 +1,130 @@
+<head><title>Customary Tutorials</title></head>
+
+<customary-tutorials-navigator></customary-tutorials-navigator>
+
+<script type="application/json" data-customary-name="customary-tutorials-navigator">
+    {
+        "html": "../web/02-state/05/Customary-state-journey.html",
+        "source_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/05/Customary-state-journey.html",
+        "source_everything": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/05",
+        "unit_test": "http://localhost:63342/customary-tutorials/web/test/test-ALL-the-things.html?grep=02\\x2dstate%2F05%2FCustomary\\x2dstate\\x2djourney\\.html"
+    }
+</script>
+
+<template data-customary-name="external-link-symbol">&#x2B77;</template>
+
+<template data-customary-name="customary-tutorials-navigator">
+
+<div class="page-flex-container">
+
+<div class="page-upper-item navigator-flex-container">
+
+    <div class="i1 navigator-flex-item i1">
+        <div class="logo">
+        Customary<br>
+        Tutorials
+        </div>
+        <p><i>Teach yourself Customary with examples</i></p>
+        <hr/>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':unit_test}">Unit Test <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':source_html}">Source: HTML <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':source_everything}">Source: Everything <external-link-symbol /></a>
+        </div>
+    </div>
+
+    <div class="i2 navigator-flex-item tutorial-view-container">
+        <div class="tutorial-chapter">
+            Hello World
+        </div>
+        <div class="tutorial-name">
+            ~ with multiple components ~
+        </div>
+        <iframe data-bind="attr:{'src':html}"></iframe>
+    </div>
+
+</div>
+
+<div class="navigator-flex-container">
+    <button class="i1">Hello World &lt;&lt;</button><button class="i2">&gt;&gt; Hello World ~ with a slot ~</button>
+</div>
+
+</div>
+
+<style>
+    .page-flex-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 98vh;
+    }
+    .page-upper-item {
+        flex-grow: 1;
+    }
+
+    .navigator-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .navigator-flex-item {
+        border-style: dotted; border-width: 1; border-color: lightgrey;
+    }
+    .i1 {
+        flex-grow: 1;
+    }
+    .i2 {
+        flex-grow: 1;
+    }
+
+    .logo {
+        display: inline-block;
+        font-family: monospace; font-size: xxx-large;
+        border-style: double; border-radius: 16px;
+        padding: 0px 14px 0px 14px;
+    }
+    .action {
+        text-align: center;
+        font-size: large;
+        margin: 40px;
+    }
+
+    .tutorial-view-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .tutorial-chapter {
+        font-size: xxx-large;
+        text-align: center;
+    }
+    .tutorial-name {
+        font-size: xx-large;
+        text-align: center;
+    }
+    iframe {
+        flex-grow: 1;
+    }
+
+    button {
+        font-size: x-large;
+    }
+</style>
+
+</template>
+
+<script type="importmap">{"imports": {
+    "customary/": "../node_modules/customary/web/_script/",
+    "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+
+<script type="module">
+    import 'customary/go.js';
+</script>

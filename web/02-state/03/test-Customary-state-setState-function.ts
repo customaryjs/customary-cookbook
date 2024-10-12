@@ -1,9 +1,8 @@
 import 'mocha';
 import {CustomaryTestingQueries} from "../../test/CustomaryTestingQueries.js";
-import {suite} from "../../test/suite.js";
+import {page_html_of_test_js, suite} from "../../test/suite.js";
 
-const PAGE = 'web/02-state/03/Customary-state-setState-function.html';
-const URL = `../../${PAGE}`;
+const PAGE = page_html_of_test_js(import.meta);
 
 describe(suite(PAGE), async function (){
     this.timeout(4000);
@@ -11,7 +10,7 @@ describe(suite(PAGE), async function (){
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(URL)!);
+    before(() => window = globalThis.window.open(PAGE)!);
     after(() => window.close());
 
     describe('on page load', async function () {

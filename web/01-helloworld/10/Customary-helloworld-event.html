@@ -14,7 +14,7 @@
         'hello-world', {
             events: [{
                 selector: 'button',
-                listener: (el) => el.style.fontSize = 40 + Math.random() * 40 + 'px'
+                listener: el => el.style.fontSize = 40 + Math.random() * 40 + 'px'
             }],
         }
     );

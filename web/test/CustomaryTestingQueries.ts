@@ -5,7 +5,10 @@ export class CustomaryTestingQueries {
         if (elements.length === 0) throw new Error(`No element matches selector '${selector}'`);
         for (const element of elements) {
             const textContentArray: string[] = collectAllTextContent(element);
-            const textContent = textContentArray.join('').trim();
+            const textContent = textContentArray
+                .map(s => {const t = s.trim(); return t.length ? t : s})
+                .join('')
+                .trim();
             if (textContent === expected) return element;
         }
         throw new Error(`No element matching ${selector} has textContent ${expected}`);

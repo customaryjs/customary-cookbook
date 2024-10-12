@@ -10,8 +10,8 @@ export class CustomaryTutorialsData {
             .replace('web/', basePath))
             .filter(s=>s.length>0);
 
-        const tests = lines;
-        const pages = lines.map(s=>s.replace('test-', '').replace('.js', '.html'));
+        const tests = lines.map(s => s.replace('.ts', '.js'));
+        const pages = lines.map(s=>s.replace('test-', '').replace('.ts', '.html'));
         return {tests, pages};
     }
 }

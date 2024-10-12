@@ -1,0 +1,21 @@
+<h1></h1>
+
+~ with components ~
+
+<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    import {HelloWorld} from "./HelloWorld.js";
+    import {HelloWorldPart1} from "./HelloWorldPart1.js";
+    import {HelloWorldPart2} from "./HelloWorldPart2.js";
+    import {HelloWorldPart3} from "./HelloWorldPart3.js";
+
+    await Customary.define(HelloWorldPart1);
+    await Customary.define(HelloWorldPart2);
+    await Customary.define(HelloWorldPart3);
+    await Customary.define(HelloWorld);
+
+    const htmlHeadingElement = document.querySelector('h1');
+    htmlHeadingElement.append(new HelloWorld());
+    console.log(htmlHeadingElement);
+</script>

@@ -1,0 +1,24 @@
+<template data-customary-name="hello-world">
+    <span>Hello Customary !</span>
+    <button autofocus>Click</button>
+</template>
+
+<h1><hello-world title="Hello Customary !"></hello-world></h1>
+
+~ with an attribute ~
+
+<script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define(
+        'hello-world', {
+            attributeOptions: {
+                attributes: {
+                    "title": {
+                        attributeChangedCallback: el => el.shadowRoot.textContent = el.title
+                    }
+                }
+            }
+        }
+    );
+</script>

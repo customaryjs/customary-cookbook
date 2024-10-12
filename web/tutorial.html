@@ -48,6 +48,7 @@
             ~ with multiple components ~
         </div>
         <iframe data-bind="attr:{'src':html}"></iframe>
+        <view-source></view-source>
     </div>
 
 </div>
@@ -112,6 +113,9 @@
     iframe {
         flex-grow: 1;
     }
+    view-source {
+        height: 10%;
+    }
 
     button {
         font-size: x-large;
@@ -120,8 +124,36 @@
 
 </template>
 
+<template data-customary-name="view-source">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/stackoverflow-light.min.css">
+    <pre><code class="language-html" id="source_html"></code></pre>
+</template>
+
 <script type="importmap">{"imports": {
     "customary/": "../node_modules/customary/web/_script/",
+    "highlight.js/": "../node_modules/highlight.js/es/",
     "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
-<script type="module">import 'customary/go.js'</script>
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    await Customary.define();
+
+    import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
+    const source_code = await FetchText_DOM_singleton.fetchText(
+        "../web/02-state/05/Customary-state-journey.html"
+    );
+
+    const navCustomElement = document.querySelector('customary-tutorials-navigator');
+    const customElement = navCustomElement.shadowRoot.querySelector('view-source');
+    const shadowRoot = customElement.shadowRoot;
+    const element = shadowRoot.getElementById("source_html");
+
+    element.textContent = source_code;
+
+    // does not work because should use "export default" but it's using "module.exports"
+    //    import highlight from 'highlight.js/core.js';
+    import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
+    import html from 'highlight.js/languages/xml.js';
+    highlight.registerLanguage('html', html);
+    highlight.highlightElement(element);
+</script>

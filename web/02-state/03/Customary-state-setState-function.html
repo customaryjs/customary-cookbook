@@ -30,8 +30,14 @@
   "customary/": "../../../node_modules/customary/web/_script/",
   "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
-
 <script type="module">
-  import {define} from './Customary-state-setState-function.js';
-  await define();
+  globalThis.customaryHooks = {
+    'unit-test-card': {
+      events: [{
+        selector: 'button',
+        listener: el => el.setState(state => ({test: state.test.split('').reverse().join('')}))
+      }],
+    }
+  };
 </script>
+<script type="module">import 'customary/go.js'</script>

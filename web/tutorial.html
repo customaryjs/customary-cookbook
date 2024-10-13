@@ -136,7 +136,7 @@
 }}</script>
 <script type="module">
     import {Customary} from 'customary/Customary.js';
-    await Customary.define();
+    await Customary.detect();
 
     import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
     const source_code = await FetchText_DOM_singleton.fetchText(

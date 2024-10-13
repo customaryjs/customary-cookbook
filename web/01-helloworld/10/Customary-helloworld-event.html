@@ -9,13 +9,13 @@
 
 <script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
 <script type="module">
-    import {Customary} from 'customary/Customary.js';
-    await Customary.define(
-        'hello-world', {
+    globalThis.customaryHooks = {
+        'hello-world': {
             events: [{
                 selector: 'button',
                 listener: el => el.style.fontSize = 40 + Math.random() * 40 + 'px'
             }],
         }
-    );
+    };
 </script>
+<script type="module">import 'customary/go.js'</script>

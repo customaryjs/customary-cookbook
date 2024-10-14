@@ -4,10 +4,14 @@
 
 <script type="application/json" data-customary-name="customary-tutorials-navigator">
     {
+        "chapter_name": "Hello World",
+        "tutorial_name": "~ with multiple components ~",
         "html": "../web/02-state/05/Customary-state-journey.html",
         "source_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/05/Customary-state-journey.html",
         "source_everything": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/05",
-        "unit_test": "http://localhost:63342/customary-tutorials/web/test/test-ALL-the-things.html?grep=02\\x2dstate%2F05%2FCustomary\\x2dstate\\x2djourney\\.html"
+        "unit_test": "http://localhost:63342/customary-tutorials/web/test/test-ALL-the-things.html?grep=02\\x2dstate%2F05%2FCustomary\\x2dstate\\x2djourney\\.html",
+        "previous_name": "Hello World",
+        "next_name": "Hello World ~ with a slot ~"
     }
 </script>
 
@@ -19,12 +23,12 @@
 
 <div class="page-upper-item navigator-flex-container">
 
-    <div class="i1 navigator-flex-item i1">
+    <div class="navigator-left-half navigator-flex-item i1">
         <div class="logo">
         Customary<br>
         Tutorials
         </div>
-        <p><i>Teach yourself Customary with examples</i></p>
+        <p>Teach yourself Customary with examples</p>
         <hr/>
         <div class="action">
             <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol /></a>
@@ -40,21 +44,25 @@
         </div>
     </div>
 
-    <div class="i2 navigator-flex-item tutorial-view-container">
-        <div class="tutorial-chapter">
-            Hello World
+    <div class="navigator-right-half navigator-flex-item tutorial-view-container">
+        <div class="tutorial-header">
+            <div class="tutorial-chapter">
+                {this.state.chapter_name}
+            </div>
+            <div class="tutorial-name">
+                {this.state.tutorial_name}
+            </div>
+            <div class="navigator-flex-container">
+                <button class="previous">{this.state.previous_name} &lt;&lt;</button>
+                <button class="next">&gt;&gt; {this.state.next_name}</button>
+            </div>
         </div>
-        <div class="tutorial-name">
-            ~ with multiple components ~
+        <div class="tutorial-vision-container">
+            <iframe data-bind="attr:{'src':html}"></iframe>
+            <view-source data-bind="attr:{'src':html}"></view-source>
         </div>
-        <iframe data-bind="attr:{'src':html}"></iframe>
-        <view-source></view-source>
     </div>
 
-</div>
-
-<div class="navigator-flex-container">
-    <button class="i1">Hello World &lt;&lt;</button><button class="i2">&gt;&gt; Hello World ~ with a slot ~</button>
 </div>
 
 </div>
@@ -78,16 +86,16 @@
     .navigator-flex-item {
         border-style: dotted; border-width: 1px; border-color: lightgrey;
     }
-    .i1 {
+    .navigator-left-half {
         flex-grow: 1;
     }
-    .i2 {
-        flex-grow: 1;
+    .navigator-right-half {
+        flex-grow: 2;
     }
 
     .logo {
         display: inline-block;
-        font-family: monospace; font-size: xxx-large;
+        font-family: serif; font-size: xxx-large; font-style: italic;
         border-style: double; border-radius: 16px;
         padding: 0px 14px 0px 14px;
     }
@@ -102,6 +110,13 @@
         flex-direction: column;
         align-items: stretch;
     }
+    .tutorial-header {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: grey;
+    }
     .tutorial-chapter {
         font-size: xxx-large;
         text-align: center;
@@ -110,15 +125,18 @@
         font-size: xx-large;
         text-align: center;
     }
+    .tutorial-vision-container {
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+    }
     iframe {
         flex-grow: 1;
-    }
-    view-source {
-        height: 10%;
+        border-style: none;
     }
 
     button {
-        font-size: x-large;
+        font-size: large;
     }
 </style>
 
@@ -135,25 +153,37 @@
     "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
 <script type="module">
-    import {Customary} from 'customary/Customary.js';
-    await Customary.detect();
-
-    import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
-    const source_code = await FetchText_DOM_singleton.fetchText(
-        "../web/02-state/05/Customary-state-journey.html"
-    );
-
-    const navCustomElement = document.querySelector('customary-tutorials-navigator');
-    const customElement = navCustomElement.shadowRoot.querySelector('view-source');
-    const shadowRoot = customElement.shadowRoot;
-    const element = shadowRoot.getElementById("source_html");
-
-    element.textContent = source_code;
-
+    (globalThis.customaryHooks ??= {})['customary-tutorials-navigator'] = {
+        events: [
+            {
+                selector: 'button.previous',
+                listener: el => el.setState(state => ({
+                    html: "../web/01-helloworld/01/Customary-helloworld.html",
+                }))
+            },
+            {
+                selector: 'button.next',
+                listener: el => el.setState(state => ({
+                    html: "../web/01-helloworld/04/Customary-helloworld-slot.html",
+                }))
+            }
+        ]
+    };
+</script>
+<script type="module">
+    import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     // does not work because should use "export default" but it's using "module.exports"
     //    import highlight from 'highlight.js/core.js';
-    import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     import html from 'highlight.js/languages/xml.js';
     highlight.registerLanguage('html', html);
-    highlight.highlightElement(element);
+
+    import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
+    async function viewSource(el, src) {
+        const codeElement = el.shadowRoot.getElementById("source_html");
+        codeElement.textContent = await FetchText_DOM_singleton.fetchText(src);
+        delete codeElement.dataset.highlighted;
+        highlight.highlightElement(codeElement);
+    }
+    (globalThis.customaryHooks ??= {})['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
 </script>
+<script type="module">import 'customary/go.js'</script>

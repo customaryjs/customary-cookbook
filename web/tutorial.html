@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head><title>Customary Tutorials</title></head>
 
 <customary-tutorials-navigator></customary-tutorials-navigator>
@@ -154,6 +155,7 @@
 }}</script>
 <script type="module">
     (globalThis.customaryHooks ??= {})['customary-tutorials-navigator'] = {
+        lifecycle: {connected: el => use_param_id(el)},
         events: [
             {
                 selector: 'button.previous',
@@ -169,8 +171,32 @@
             }
         ]
     };
+
+    import {CustomaryTutorialsData} from "./data/CustomaryTutorialsData.js";
+    async function use_param_id(el) {
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get("id");
+        if (idParam === undefined) {
+            return;
+        }
+        const data = await CustomaryTutorialsData.loadData();
+        const tutorial = data.findById(idParam);
+        const navigator = document.querySelector('customary-tutorials-navigator');
+        navigator.setState(state => ({
+            "chapter_name": "Hello World",
+            "tutorial_name": "~ with multiple components ~",
+            "html": tutorial.page_html,
+            "source_html": tutorial.github_page_html,
+            "source_everything": tutorial.github_dir,
+            "unit_test": "./test/test-ALL-the-things.html?grep=" + encodeURIComponent(tutorial.page_html),
+            "previous_name": "Hello World",
+            "next_name": "Hello World ~ with a slot ~"
+        }));
+    }
 </script>
 <script type="module">
+    (globalThis.customaryHooks ??= {})['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
+
     import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     // does not work because should use "export default" but it's using "module.exports"
     //    import highlight from 'highlight.js/core.js';
@@ -184,6 +210,5 @@
         delete codeElement.dataset.highlighted;
         highlight.highlightElement(codeElement);
     }
-    (globalThis.customaryHooks ??= {})['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
 </script>
 <script type="module">import 'customary/go.js'</script>

@@ -23,7 +23,7 @@
 <script type="module">
     import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
     import {Customary} from 'customary/Customary.js';
-    const data = await CustomaryTutorialsData.loadData('');
+    const data = await CustomaryTutorialsData.loadData();
     const state = data.pages.map(file => ({file}));
     await Customary.define('customary-tutorials', {state});
 </script>

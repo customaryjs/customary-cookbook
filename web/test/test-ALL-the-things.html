@@ -36,9 +36,9 @@
 </script>
 <script type="module">
     import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
-    const data = await CustomaryTutorialsData.loadData('../');
+    const data = await CustomaryTutorialsData.loadData();
     for (const test of data.tests) {
-        await import(test);
+        await import(`../${test}`);
     }
 </script>
 <script type="application/javascript">

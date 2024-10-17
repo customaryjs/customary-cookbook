@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>
+
+Customary Tutorials Data
+
+</title></head><body>
+
+<customary-tutorials-data></customary-tutorials-data>
+
+<template data-customary-name="customary-tutorials-data">
+    <div style="
+display: flex;
+flex-direction: column;
+min-height: 98vh;
+">
+<button autofocus>Generate data</button>
+<textarea style="flex-grow: 1"></textarea>
+    </div>
+</template>
+
+<script type="importmap">{"imports": {
+  "customary/": "../../node_modules/customary/web/_script/",
+  "knockout": "../../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+<script type="module">
+  (globalThis.customaryHooks ??= {})['customary-tutorials-data'] = {
+    events: [
+      {
+        selector: 'button',
+        listener: el => generateData(el)
+      }
+    ]
+  };
+  import {CustomaryTutorialsData} from "./CustomaryTutorialsData.js";
+  async function generateData(el) {
+    const data = await CustomaryTutorialsData.generateData();
+    el.shadowRoot.querySelector('textarea').value =
+        JSON.stringify(data, undefined, 4);
+  }
+</script>
+<script type="module">import 'customary/go.js'</script>
+
+</body></html>

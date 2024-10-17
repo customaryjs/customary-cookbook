@@ -1,0 +1,117 @@
+[
+  {
+    "id": "01-01",
+    "chapter_name": "Hello World",
+    "page_html": "01-helloworld/01/Customary-helloworld.html",
+    "test_js": "01-helloworld/01/test-Customary-helloworld.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/01/Customary-helloworld.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/01"
+  },
+  {
+    "id": "01-02",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with multiple elements",
+    "page_html": "01-helloworld/02/Customary-helloworld-multiple.html",
+    "test_js": "01-helloworld/02/test-Customary-helloworld-multiple.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/02/Customary-helloworld-multiple.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/02"
+  },
+  {
+    "id": "01-03",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with an attribute",
+    "page_html": "01-helloworld/03/Customary-helloworld-attribute.html",
+    "test_js": "01-helloworld/03/test-Customary-helloworld-attribute.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/03/Customary-helloworld-attribute.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/03"
+  },
+  {
+    "id": "01-04",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with a slot",
+    "page_html": "01-helloworld/04/Customary-helloworld-slot.html",
+    "test_js": "01-helloworld/04/test-Customary-helloworld-slot.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/04/Customary-helloworld-slot.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/04"
+  },
+  {
+    "id": "01-06",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with an external template",
+    "page_html": "01-helloworld/06/Customary-helloworld-external.html",
+    "test_js": "01-helloworld/06/test-Customary-helloworld-external.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/06/Customary-helloworld-external.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/06"
+  },
+  {
+    "id": "01-08",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with Knockout.js",
+    "page_html": "01-helloworld/08/Customary-helloworld-knockoutjs.html",
+    "test_js": "01-helloworld/08/test-Customary-helloworld-knockoutjs.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/08/Customary-helloworld-knockoutjs.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/08"
+  },
+  {
+    "id": "01-10",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with an event",
+    "page_html": "01-helloworld/10/Customary-helloworld-event.html",
+    "test_js": "01-helloworld/10/test-Customary-helloworld-event.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/10/Customary-helloworld-event.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/10"
+  },
+  {
+    "id": "01-12",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with createElement",
+    "page_html": "01-helloworld/12/Customary-helloworld-createElement.html",
+    "test_js": "01-helloworld/12/test-Customary-helloworld-createElement.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/12/Customary-helloworld-createElement.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/12"
+  },
+  {
+    "id": "01-16",
+    "chapter_name": "Hello World",
+    "tutorial_name": "with components",
+    "page_html": "01-helloworld/16/Customary-helloworld-components.html",
+    "test_js": "01-helloworld/16/test-Customary-helloworld-components.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/01-helloworld/16/Customary-helloworld-components.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/01-helloworld/16"
+  },
+  {
+    "id": "02-01",
+    "chapter_name": "State",
+    "page_html": "02-state/01/Customary-state.html",
+    "test_js": "02-state/01/test-Customary-state.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/01/Customary-state.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/01"
+  },
+  {
+    "id": "02-02",
+    "chapter_name": "State",
+    "tutorial_name": "with setState",
+    "page_html": "02-state/02/Customary-state-setState.html",
+    "test_js": "02-state/02/test-Customary-state-setState.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/02/Customary-state-setState.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/02"
+  },
+  {
+    "id": "02-03",
+    "chapter_name": "State",
+    "tutorial_name": "with setState and a function",
+    "page_html": "02-state/03/Customary-state-setState-function.html",
+    "test_js": "02-state/03/test-Customary-state-setState-function.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/03/Customary-state-setState-function.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/03"
+  },
+  {
+    "id": "02-05",
+    "chapter_name": "State",
+    "tutorial_name": "A Customary Journey",
+    "page_html": "02-state/05/Customary-state-journey.html",
+    "test_js": "02-state/05/test-Customary-state-journey.js",
+    "github_page_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/05/Customary-state-journey.html",
+    "github_dir": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/05"
+  }
+]

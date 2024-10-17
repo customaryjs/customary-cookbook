@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<head><title>Customary Tutorials</title></head>
+<head>
+    <title>Customary Tutorials</title>
+    <style>html{display:none}</style>
+</head>
+<body>
 
 <customary-tutorials-navigator></customary-tutorials-navigator>
 
 <script type="application/json" data-customary-name="customary-tutorials-navigator">
     {
-        "chapter_name": "Hello World",
-        "tutorial_name": "~ with multiple components ~",
-        "html": "../web/02-state/05/Customary-state-journey.html",
-        "source_html": "https://github.com/arboliveira/customary-tutorials/blob/main/web/02-state/05/Customary-state-journey.html",
-        "source_everything": "https://github.com/arboliveira/customary-tutorials/tree/main/web/02-state/05",
-        "unit_test": "http://localhost:63342/customary-tutorials/web/test/test-ALL-the-things.html?grep=02\\x2dstate%2F05%2FCustomary\\x2dstate\\x2djourney\\.html",
-        "previous_name": "Hello World",
-        "next_name": "Hello World ~ with a slot ~"
+        "chapter_name": "",
+        "tutorial_name": "",
+        "html": "",
+        "source_html": "",
+        "source_everything": "",
+        "unit_test": "",
+        "previous_name": "",
+        "next_name": ""
     }
 </script>
 
@@ -24,7 +28,7 @@
 
 <div class="page-upper-item navigator-flex-container">
 
-    <div class="navigator-left-half navigator-flex-item i1">
+    <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
         <div class="logo">
         Customary<br>
         Tutorials
@@ -45,22 +49,25 @@
         </div>
     </div>
 
-    <div class="navigator-right-half navigator-flex-item tutorial-view-container">
-        <div class="tutorial-header">
-            <div class="tutorial-chapter">
-                {this.state.chapter_name}
+    <div class="navigator-right-half navigator-flex-item tutorial-view-container" style="flex-basis: 85%">
+        <div class="tutorial-header" style="
+            flex-basis: 10%;
+            display: flex; justify-content: space-between; align-items: center;
+        ">
+            <button class="previous" style="flex-basis: 25%">{this.state.previous_name} &lt;&lt;</button>
+            <div style="flex-grow: 1">
+                <div class="tutorial-chapter">
+                    {this.state.chapter_name}
+                </div>
+                <div class="tutorial-name">
+                    {this.state.tutorial_name}
+                </div>
             </div>
-            <div class="tutorial-name">
-                {this.state.tutorial_name}
-            </div>
-            <div class="navigator-flex-container">
-                <button class="previous">{this.state.previous_name} &lt;&lt;</button>
-                <button class="next">&gt;&gt; {this.state.next_name}</button>
-            </div>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; {this.state.next_name}</button>
         </div>
         <div class="tutorial-vision-container">
-            <iframe data-bind="attr:{'src':html}"></iframe>
-            <view-source data-bind="attr:{'src':html}"></view-source>
+            <iframe data-bind="attr:{'src':html}" style="flex-basis: 40%"></iframe>
+            <view-source data-bind="attr:{'src':html}" style="flex-basis: 60%"></view-source>
         </div>
     </div>
 
@@ -133,7 +140,14 @@
     }
     iframe {
         flex-grow: 1;
-        border-style: none;
+        border-style: dashed;
+        border-radius: 64px;
+        border-color: darkkhaki;
+        padding: 40px;
+        margin: 20px;
+    }
+    view-source {
+        margin: 20px;
     }
 
     button {
@@ -159,39 +173,45 @@
         events: [
             {
                 selector: 'button.previous',
-                listener: el => el.setState(state => ({
-                    html: "../web/01-helloworld/01/Customary-helloworld.html",
-                }))
+                listener: el => navigate_previous(el)
             },
             {
                 selector: 'button.next',
-                listener: el => el.setState(state => ({
-                    html: "../web/01-helloworld/04/Customary-helloworld-slot.html",
-                }))
+                listener: el => navigate_next(el)
             }
         ]
     };
 
     import {CustomaryTutorialsData} from "./data/CustomaryTutorialsData.js";
+
     async function use_param_id(el) {
         const params = new URLSearchParams(window.location.search);
-        const idParam = params.get("id");
-        if (idParam === undefined) {
-            return;
-        }
+        const idParam = params.get("id") ?? '01-01';
         const data = await CustomaryTutorialsData.loadData();
-        const tutorial = data.findById(idParam);
+        const tutorial = data.getNavigationData(idParam);
         const navigator = document.querySelector('customary-tutorials-navigator');
         navigator.setState(state => ({
-            "chapter_name": "Hello World",
-            "tutorial_name": "~ with multiple components ~",
+            ...tutorial,
             "html": tutorial.page_html,
             "source_html": tutorial.github_page_html,
             "source_everything": tutorial.github_dir,
             "unit_test": "./test/test-ALL-the-things.html?grep=" + encodeURIComponent(tutorial.page_html),
-            "previous_name": "Hello World",
-            "next_name": "Hello World ~ with a slot ~"
         }));
+    }
+
+    function navigate_previous(el) {
+        const state = el.state;
+        navigate_to_id(state.previous_id);
+    }
+    function navigate_next(el) {
+        const state = el.state;
+        navigate_to_id(state.next_id);
+    }
+    function navigate_to_id(id) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('id', id);
+        const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+        window.location.href = newUrl;
     }
 </script>
 <script type="module">
@@ -205,6 +225,7 @@
 
     import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
     async function viewSource(el, src) {
+        if (!src) return;
         const codeElement = el.shadowRoot.getElementById("source_html");
         codeElement.textContent = await FetchText_DOM_singleton.fetchText(src);
         delete codeElement.dataset.highlighted;
@@ -212,3 +233,5 @@
     }
 </script>
 <script type="module">import 'customary/go.js'</script>
+<link rel="stylesheet" href="./z.css" />
+</body>

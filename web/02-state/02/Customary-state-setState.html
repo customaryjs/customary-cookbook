@@ -33,13 +33,9 @@
   "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
 <script type="module">
-  globalThis.customaryHooks = {
-    'unit-test-card': {
-      events: [{
-        selector: 'button',
-        listener: el => el.setState({test: 'Hello Customary !'})
-      }],
-    }
+  import {Customary} from 'customary/Customary.js';
+  Customary.hooks['unit-test-card'] = {
+    events: {'button': el => el.setState({test: 'Hello Customary !'})},
   };
 </script>
 <script type="module">import 'customary/go.js'</script>

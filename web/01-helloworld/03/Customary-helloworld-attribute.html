@@ -8,11 +8,10 @@
 
 <script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
 <script type="module">
-    globalThis.customaryHooks = {
-        'hello-world': {
-            attributes: {
-                title: el => el.shadowRoot.textContent = el.title
-            }
+    import {Customary} from 'customary/Customary.js';
+    Customary.hooks['hello-world'] = {
+        attributes: {
+            title: el => el.shadowRoot.textContent = el.title
         }
     };
 </script>

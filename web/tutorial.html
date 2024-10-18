@@ -168,18 +168,13 @@
     "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
 <script type="module">
-    (globalThis.customaryHooks ??= {})['customary-tutorials-navigator'] = {
-        lifecycle: {connected: el => use_param_id(el)},
-        events: [
-            {
-                selector: 'button.previous',
-                listener: el => navigate_previous(el)
-            },
-            {
-                selector: 'button.next',
-                listener: el => navigate_next(el)
-            }
-        ]
+    import {Customary} from 'customary/Customary.js';
+    Customary.hooks['customary-tutorials-navigator'] = {
+        lifecycle: {connected: use_param_id},
+        events: {
+            'button.previous': navigate_previous,
+            'button.next': navigate_next,
+        },
     };
 
     import {CustomaryTutorialsData} from "./data/CustomaryTutorialsData.js";
@@ -189,8 +184,7 @@
         const idParam = params.get("id") ?? '01-01';
         const data = await CustomaryTutorialsData.loadData();
         const tutorial = data.getNavigationData(idParam);
-        const navigator = document.querySelector('customary-tutorials-navigator');
-        navigator.setState(state => ({
+        el.setState(state => ({
             ...tutorial,
             "html": tutorial.page_html,
             "source_html": tutorial.github_page_html,
@@ -210,12 +204,12 @@
     function navigate_to_id(id) {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set('id', id);
-        const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
-        window.location.href = newUrl;
+        window.location.href = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
     }
 </script>
 <script type="module">
-    (globalThis.customaryHooks ??= {})['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
+    import {Customary} from 'customary/Customary.js';
+    Customary.hooks['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
 
     import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     // does not work because should use "export default" but it's using "module.exports"

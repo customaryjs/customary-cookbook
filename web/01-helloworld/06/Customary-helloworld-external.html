@@ -7,5 +7,6 @@
 <script type="importmap">{"imports": {"customary/": "../../../node_modules/customary/web/_script/"}}</script>
 <script type="module">
     import {Customary} from 'customary/Customary.js';
-    await Customary.define('hello-world', {externalLoaderOptions: {import_meta: import.meta}});
+    Customary.hooks['hello-world'] = {externalLoader: {import_meta: import.meta}};
 </script>
+<script type="module">import 'customary/go.js'</script>

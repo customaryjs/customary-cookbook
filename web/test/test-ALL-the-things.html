@@ -21,18 +21,15 @@
         }
     }
 </script>
-
+<script type="module">
+    import {adoptCSSStylesheets} from "customary/cssstylesheet/CSSStyleSheetAdopter.js";
+    await adoptCSSStylesheets(import.meta.resolve('mocha.css'));
+</script>
 <script type="module">
     // https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
     import 'mocha';
-    mocha.setup({'ui': 'bdd'});
+    mocha.setup({ui: 'bdd', checkLeaks: true});
     mocha.cleanReferencesAfterRun(false);
-</script>
-<script type="module">
-    import {CSSStyleSheetAdopter} from 'customary/cssstylesheet/CSSStyleSheetAdopter.js';
-    import {CSSStyleSheetImporter} from 'customary/cssstylesheet/CSSStyleSheetImporter.js';
-    await new CSSStyleSheetAdopter(new CSSStyleSheetImporter(), document)
-        .adoptCSSStylesheets(import.meta.resolve('mocha.css'));
 </script>
 <script type="module">
     import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';

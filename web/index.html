@@ -21,9 +21,13 @@
 </script>
 
 <script type="module">
-    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
     import {Customary} from 'customary/Customary.js';
-    const data = await CustomaryTutorialsData.loadData();
-    const state = data.pages.map(file => ({file}));
-    await Customary.define('customary-tutorials', {state});
+    Customary.hooks['customary-tutorials'] = {lifecycle: {connected: loadData}};
+    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
+    async function loadData(el) {
+        const data = await CustomaryTutorialsData.loadData();
+        const state = data.pages.map(file => ({file}));
+        el.setState(state);
+    }
 </script>
+<script type="module">import 'customary/go.js'</script>

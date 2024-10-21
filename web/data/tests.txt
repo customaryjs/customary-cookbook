@@ -10,4 +10,6 @@ web/01-helloworld/16/test-Customary-helloworld-components.ts
 web/02-state/01/test-Customary-state.ts
 web/02-state/02/test-Customary-state-setState.ts
 web/02-state/03/test-Customary-state-setState-function.ts
-web/02-state/05/test-Customary-state-journey.ts
+web/02-state/04/test-Customary-state-blank.ts
+web/02-state/05/test-Customary-state-connected.ts
+web/02-state/16/test-Customary-state-journey.ts

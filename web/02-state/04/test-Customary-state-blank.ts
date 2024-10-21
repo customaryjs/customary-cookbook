@@ -25,16 +25,16 @@ describe(suite(PAGE), async function (){
             );
         }
         it('render expected custom element text content', async function () {
-            this.retries(64);
+            this.retries(32);
             assert_element();
-            assert_textContent("02-state/02/test-Customary-state-setState.ts");
+            assert_textContent("");
         });
         it('click to change text content', async function () {
             (container.querySelector('button') as HTMLButtonElement).click();
         });
         it('render changed custom element text content', async function () {
             this.retries(16);
-            assert_textContent("Hello Customary !");
+            assert_textContent("02-state/04/test-Customary-state-blank.ts");
         });
     });
 });

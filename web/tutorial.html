@@ -7,19 +7,6 @@
 
 <customary-tutorials-navigator></customary-tutorials-navigator>
 
-<script type="application/json" data-customary-name="customary-tutorials-navigator">
-    {
-        "chapter_name": "",
-        "tutorial_name": "",
-        "html": "",
-        "source_html": "",
-        "source_everything": "",
-        "unit_test": "",
-        "previous_name": "",
-        "next_name": ""
-    }
-</script>
-
 <template data-customary-name="external-link-symbol">&#x2B77;</template>
 
 <template data-customary-name="customary-tutorials-navigator">
@@ -185,6 +172,9 @@
         const data = await CustomaryTutorialsData.loadData();
         const tutorial = data.getNavigationData(idParam);
         el.setState(state => ({
+            "tutorial_name": "",
+            "previous_name": "",
+            "next_name": "",
             ...tutorial,
             "html": tutorial.page_html,
             "source_html": tutorial.github_page_html,

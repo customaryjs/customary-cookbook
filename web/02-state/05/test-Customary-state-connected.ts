@@ -18,7 +18,7 @@ describe(suite(PAGE), async function (){
             this.retries(32);
             CustomaryTestingQueries.findByTextContent(
                 window.document.querySelector('tutorial-card')!.shadowRoot!,
-                "02-state/01/test-Customary-state.ts",
+                "02-state/05/test-Customary-state-connected.ts",
                 {selector: 'div.c > div'}
             );
         });

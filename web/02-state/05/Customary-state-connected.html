@@ -1,18 +1,10 @@
-<title>State ~ with setState and a function ~ Customary Tutorials</title>
+<title>State ~ when connected ~ Customary Tutorials</title>
 
 <h1>Customary State</h1>
 
-<p>~ with setState and a function ~</p><br/>
+<p>~ when connected ~</p><br/>
 
 <tutorial-card></tutorial-card>
-
-<script type="application/json" data-customary-name="tutorial-card">
-  {
-    "id": "02-03",
-    "page_html": "02-state/03/Customary-state-setState-function.html",
-    "test_ts": "02-state/03/test-Customary-state-setState-function.ts"
-  }
-</script>
 
 <template data-customary-name="tutorial-card">
   <div class="c">
@@ -20,7 +12,6 @@
     <div class="h">Page</div><div>{this.state.page_html}</div>
     <div class="h">Test</div><div>{this.state.test_ts}</div>
   </div>
-  <button data-customary>Set state</button>
   <style>
     .c {
       display: grid; grid-template-columns: 14% auto; gap: 10px;
@@ -37,7 +28,14 @@
 <script type="module">
   import {Customary} from 'customary/Customary.js';
   Customary.hooks['tutorial-card'] = {
-    events: {'button': el => el.setState(state => ({test_ts: state.test_ts.split('').reverse().join('')}))},
+    lifecycle: {connected: el => el.setState(loadState())}
   };
+  function loadState() {
+    return {
+      id: "02-05",
+      page_html: "02-state/05/Customary-state-connected.html",
+      test_ts: "02-state/05/test-Customary-state-connected.ts",
+    };
+  }
 </script>
 <script type="module">import 'customary/go.js'</script>

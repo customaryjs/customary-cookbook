@@ -16,7 +16,7 @@ describe(suite(PAGE), async function (){
     describe('on page load', async function () {
         let container: ShadowRoot;
         function assert_element() {
-            container = window.document.querySelector('unit-test-card')!.shadowRoot!;
+            container = window.document.querySelector('tutorial-card')!.shadowRoot!;
         }
         function assert_textContent(textContent: string) {
             CustomaryTestingQueries.findByTextContent(
@@ -27,14 +27,14 @@ describe(suite(PAGE), async function (){
         it('render expected custom element text content', async function () {
             this.retries(32);
             assert_element();
-            assert_textContent("Hello Customary !");
+            assert_textContent("02-state/03/test-Customary-state-setState-function.ts");
         });
         it('click to change text content', async function () {
             (container.querySelector('button') as HTMLButtonElement).click();
         });
         it('render changed custom element text content', async function () {
             this.retries(16);
-            assert_textContent("! yramotsuC olleH");
+            assert_textContent("st.noitcnuf-etatStes-etats-yramotsuC-tset/30/etats-20");
         });
     });
 });

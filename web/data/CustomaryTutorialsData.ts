@@ -24,24 +24,25 @@ export class CustomaryTutorialsData {
     }
 }
 
-async function to_tutorial(s: string): Promise<Tutorial> {
-    const github = 'https://github.com/arboliveira/customary-tutorials';
+async function to_tutorial(test_ts: string): Promise<Tutorial> {
+    const github = 'https://github.com/customaryjs/customary-tutorials';
     const github_blob_main = `${github}/blob/main/web`;
     const github_tree_main = `${github}/tree/main/web`;
 
-    const page_html = test_ts_to_page_html(s);
-    const dir = test_ts_to_dir(s);
+    const page_html = test_ts_to_page_html(test_ts);
+    const dir = test_ts_to_dir(test_ts);
 
     const page_content = await load_page_content(page_html);
     const fc = from_content(page_content);
     const {chapter_name, tutorial_name} = fc ?? {};
 
     return {
-        id: test_ts_to_id(s),
+        id: test_ts_to_id(test_ts),
         chapter_name: chapter_name ?? page_html,
         ...(tutorial_name ? {tutorial_name} : {}),
         page_html,
-        test_js: test_ts_to_test_js(s),
+        test_ts,
+        test_js: test_ts_to_test_js(test_ts),
         github_page_html: `${github_blob_main}/${page_html}`,
         github_dir: `${github_tree_main}/${dir}`,
     };
@@ -52,6 +53,7 @@ export type Tutorial = {
     chapter_name: string;
     tutorial_name?: string;
     page_html: string;
+    test_ts: string;
     test_js: string;
     github_page_html: string;
     github_dir: string;

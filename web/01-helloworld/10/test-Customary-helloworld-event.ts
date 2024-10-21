@@ -22,7 +22,7 @@ describe(suite(PAGE), async function (){
             container = element.shadowRoot!;
         }
         it('render custom element', async function () {
-            this.retries(16);
+            this.retries(64);
             assert_element();
             CustomaryTestingQueries.findByTextContent(container, 'Hello Customary !', {selector: 'span'});
         });

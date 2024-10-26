@@ -1,0 +1,58 @@
+<title>Forms ~ Customary Tutorials</title>
+
+<h1>Customary Forms</h1>
+
+<tutorial-form></tutorial-form>
+
+<script type="application/json" data-customary-name="tutorial-form">
+  {
+    "tutorial": "Customary Forms",
+    "id": "03-01"
+  }
+</script>
+
+<template data-customary-name="tutorial-form">
+  <form id="entry" class="framed">
+    <div class="tabled">
+      <label>Name</label><input data-bind="textInput: tutorial" /></label>
+      <label>Id</label><input data-bind="textInput: id" /></label>
+    </div>
+    <div class="button-row"><input type="submit" /></div>
+  </form>
+  <dialog>
+    <div class="framed tabled">
+      <label>Name</label><div>{this.state.tutorial}</div>
+      <label>Id</label><div>{this.state.id}</div>
+    </div>
+    <form method="dialog">
+      <div class="button-row"><button>return</button></div>
+    </form>
+  </dialog>
+  <style>
+    .framed {width: 420px; padding: 10px; border: solid turquoise}
+    .tabled {display: grid; grid-template-columns: 14% auto; gap: 10px}
+    .button-row {
+      display: flex; justify-content: center; gap: 10px;
+      padding-top: 10px; padding-bottom: 0px;
+    }
+    label {font-weight: bold; text-align: right}
+  </style>
+</template>
+
+<script type="importmap">{"imports": {
+  "customary/": "../../../node_modules/customary/web/_script/",
+  "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
+<script type="module">
+  import {Customary} from "customary/Customary.js";
+
+  Customary.hooks['tutorial-form'] = {
+    events: {
+      'form#entry': (el, event) => {
+        event.preventDefault();
+        el.shadowRoot.querySelector('dialog').showModal();
+      }
+    }
+  }
+</script>
+<script type="module">import 'customary/go.js'</script>

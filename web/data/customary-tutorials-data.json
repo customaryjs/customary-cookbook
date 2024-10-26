@@ -138,6 +138,16 @@
     "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/02-state/05"
   },
   {
+    "id": "02-06",
+    "chapter_name": "State",
+    "tutorial_name": "with a list",
+    "page_html": "02-state/06/Customary-state-list.html",
+    "test_ts": "02-state/06/test-Customary-state-list.ts",
+    "test_js": "02-state/06/test-Customary-state-list.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/02-state/06/Customary-state-list.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/02-state/06"
+  },
+  {
     "id": "02-16",
     "chapter_name": "State",
     "tutorial_name": "A Customary Journey",

@@ -12,4 +12,5 @@ web/02-state/02/test-Customary-state-setState.ts
 web/02-state/03/test-Customary-state-setState-function.ts
 web/02-state/04/test-Customary-state-blank.ts
 web/02-state/05/test-Customary-state-connected.ts
+web/02-state/06/test-Customary-state-list.ts
 web/02-state/16/test-Customary-state-journey.ts

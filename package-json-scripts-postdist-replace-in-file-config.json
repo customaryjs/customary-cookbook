@@ -1,0 +1,5 @@
+{
+  "from": "/ \"(.*)..\/node_modules(.*)\"/g",
+  "to": " \"$1./_lib$2\"",
+  "files": [".dist/web/*.html", ".dist/web/**/*.html"]
+}

@@ -1,33 +1,226 @@
-<!doctype html>
+<!DOCTYPE html>
+<head>
+    <title>Customary Tutorials</title>
+    <style>html{display:none}</style>
+</head>
+<body>
 
-<customary-tutorials></customary-tutorials>
+<customary-tutorials-navigator></customary-tutorials-navigator>
 
-<template data-customary-name="customary-tutorials">
-    <div data-bind="foreach: $data">
-        <p><a target="_blank" data-bind="attr:{'href':file},text:file"></a></p>
+<template data-customary-name="external-link-symbol">&#x2B77;</template>
+
+<template data-customary-name="customary-tutorials-navigator">
+
+<div class="page-flex-container">
+
+<div class="page-upper-item navigator-flex-container">
+
+    <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
+        <div class="logo">
+        Customary<br>
+        Tutorials
+        </div>
+        <p>Teach yourself Customary with examples</p>
+        <hr/>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':unit_test}">Unit Test <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':source_html}">Source: HTML <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a target="_blank" data-bind="attr:{'href':source_everything}">Source: Everything <external-link-symbol /></a>
+        </div>
+        <div class="action">
+            <a href="./test/test-ALL-the-things.html?run" target="_blank">Run all Unit Tests <external-link-symbol /></a>
+        </div>
+
     </div>
+
+    <div class="navigator-right-half navigator-flex-item tutorial-view-container" style="flex-basis: 85%">
+        <div class="tutorial-header" style="
+            flex-basis: 10%;
+            display: flex; justify-content: space-between; align-items: center;
+        ">
+            <button class="previous" style="flex-basis: 25%">{this.state.previous_name} &lt;&lt;</button>
+            <div style="flex-grow: 1">
+                <div class="tutorial-chapter">
+                    {this.state.chapter_name}
+                </div>
+                <div class="tutorial-name">
+                    {this.state.tutorial_name}
+                </div>
+            </div>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; {this.state.next_name}</button>
+        </div>
+        <div class="tutorial-vision-container">
+            <iframe data-bind="attr:{'src':html}" style="flex-basis: 40%"></iframe>
+            <view-source data-bind="attr:{'src':html}" style="flex-basis: 60%"></view-source>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<style>
+    .page-flex-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 98vh;
+    }
+    .page-upper-item {
+        flex-grow: 1;
+    }
+
+    .navigator-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .navigator-flex-item {
+        border-style: dotted; border-width: 1px; border-color: lightgrey;
+    }
+    .navigator-left-half {
+        flex-grow: 1;
+    }
+    .navigator-right-half {
+        flex-grow: 2;
+    }
+
+    .logo {
+        display: inline-block;
+        font-family: serif; font-size: xxx-large; font-style: italic;
+        border-style: double; border-radius: 16px;
+        padding: 0px 14px 0px 14px;
+    }
+    .action {
+        text-align: center;
+        font-size: large;
+        margin: 40px;
+    }
+
+    .tutorial-view-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .tutorial-header {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: grey;
+    }
+    .tutorial-chapter {
+        font-size: xxx-large;
+        text-align: center;
+    }
+    .tutorial-name {
+        font-size: xx-large;
+        text-align: center;
+    }
+    .tutorial-vision-container {
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+    }
+    iframe {
+        flex-grow: 1;
+        border-style: dashed;
+        border-radius: 64px;
+        border-color: darkkhaki;
+        padding: 40px;
+        margin: 20px;
+    }
+    view-source {
+        margin: 20px;
+    }
+
+    button {
+        font-size: large;
+    }
+</style>
+
 </template>
 
-<p><a href="./test/test-ALL-the-things.html" target="_blank">Run the Unit Tests</a></p>
+<template data-customary-name="view-source">
+    <style>code {font-size: 16px}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/idea.min.css">
+    <pre><code class="language-html" id="source_html"></code></pre>
+</template>
 
-<script type="importmap">
-    {
-        "imports": {
-            "customary-tutorials/": "./",
-            "customary/": "../node_modules/customary/web/_script/",
-            "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
-        }
-    }
-</script>
-
+<script type="importmap">{"imports": {
+    "customary/": "../node_modules/customary/web/_script/",
+    "highlight.js/": "../node_modules/highlight.js/es/",
+    "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
+}}</script>
 <script type="module">
     import {Customary} from 'customary/Customary.js';
-    Customary.hooks['customary-tutorials'] = {lifecycle: {connected: loadData}};
-    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
-    async function loadData(el) {
+    Customary.hooks['customary-tutorials-navigator'] = {
+        lifecycle: {connected: use_param_id},
+        events: {
+            'button.previous': navigate_previous,
+            'button.next': navigate_next,
+        },
+    };
+
+    import {CustomaryTutorialsData} from "./data/CustomaryTutorialsData.js";
+
+    async function use_param_id(el) {
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get("id") ?? '01-01';
         const data = await CustomaryTutorialsData.loadData();
-        const state = data.pages.map(file => ({file}));
-        el.setState(state);
+        const tutorial = data.getNavigationData(idParam);
+        el.setState(state => ({
+            "tutorial_name": "",
+            "previous_name": "",
+            "next_name": "",
+            ...tutorial,
+            "html": tutorial.page_html,
+            "source_html": tutorial.github_page_html,
+            "source_everything": tutorial.github_dir,
+            "unit_test": "./test/test-ALL-the-things.html?grep=" + encodeURIComponent(tutorial.page_html),
+        }));
+    }
+
+    function navigate_previous(el) {
+        const state = el.state;
+        navigate_to_id(state.previous_id);
+    }
+    function navigate_next(el) {
+        const state = el.state;
+        navigate_to_id(state.next_id);
+    }
+    function navigate_to_id(id) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('id', id);
+        window.location.href = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+    }
+</script>
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    Customary.hooks['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
+
+    import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
+    // does not work because should use "export default" but it's using "module.exports"
+    //    import highlight from 'highlight.js/core.js';
+    import html from 'highlight.js/languages/xml.js';
+    highlight.registerLanguage('html', html);
+
+    import {FetchText_DOM_singleton} from 'customary/fetch/FetchText.js';
+    async function viewSource(el, src) {
+        if (!src) return;
+        const codeElement = el.shadowRoot.getElementById("source_html");
+        codeElement.textContent = await FetchText_DOM_singleton.fetchText(src);
+        delete codeElement.dataset.highlighted;
+        highlight.highlightElement(codeElement);
     }
 </script>
 <script type="module">import 'customary/go.js'</script>
+<link rel="stylesheet" href="./z.css" />
+</body>

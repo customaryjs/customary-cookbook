@@ -1,0 +1,33 @@
+<!doctype html>
+
+<customary-tutorials></customary-tutorials>
+
+<template data-customary-name="customary-tutorials">
+    <div data-bind="foreach: $data">
+        <p><a target="_blank" data-bind="attr:{'href':file},text:file"></a></p>
+    </div>
+</template>
+
+<p><a href="./test/test-ALL-the-things.html" target="_blank">Run the Unit Tests</a></p>
+
+<script type="importmap">
+    {
+        "imports": {
+            "customary-tutorials/": "./",
+            "customary/": "../node_modules/customary/web/_script/",
+            "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import {Customary} from 'customary/Customary.js';
+    Customary.hooks['customary-tutorials'] = {lifecycle: {connected: loadData}};
+    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
+    async function loadData(el) {
+        const data = await CustomaryTutorialsData.loadData();
+        const state = data.pages.map(file => ({file}));
+        el.setState(state);
+    }
+</script>
+<script type="module">import 'customary/go.js'</script>

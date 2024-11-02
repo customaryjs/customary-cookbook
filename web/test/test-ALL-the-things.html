@@ -6,7 +6,10 @@
 </head>
 <body>
 <h1>Customary: test ALL the things!</h1>
+<template data-customary-name="test-runner">
 <button autofocus onclick="run_unit_tests()">Run unit tests</button>
+</template>
+<test-runner></test-runner>
 <div id="mocha"></div>
 </body>
 
@@ -32,16 +35,29 @@
     mocha.cleanReferencesAfterRun(false);
 </script>
 <script type="module">
+    import {Customary} from 'customary/Customary.js';
     import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
-    const data = await CustomaryTutorialsData.loadData();
-    for (const test of data.tests) {
-        await import(`../${test}`);
+
+    Customary.hooks['test-runner'] = {
+        lifecycle: {connected: connected},
+        events: {'button': run_unit_tests}
+    };
+
+    async function connected() {
+        const data = await CustomaryTutorialsData.loadData();
+        for (const test of data.tests) {
+            await import(`../${test}`);
+        }
+        const params = new URLSearchParams(window.location.search);
+        if (params.has("run")) {
+            run_unit_tests();
+        }
     }
-</script>
-<script type="application/javascript">
+
     function run_unit_tests() {
         document.getElementById('mocha').replaceChildren();
         mocha.run();
     }
 </script>
+<script type="module">import 'customary/go.js'</script>
 </html>

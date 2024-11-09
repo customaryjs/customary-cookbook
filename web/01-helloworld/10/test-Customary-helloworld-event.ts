@@ -1,17 +1,17 @@
+import {assert} from "chai";
 import 'mocha';
 import {CustomaryTestingQueries} from "customary/testing/CustomaryTestingQueries.js";
-import {page_html_of_test_js, suite} from "../../test/suite.js";
-import {assert} from "chai";
+import {test_suite} from "../../test/suite.js";
 
-const PAGE = page_html_of_test_js(import.meta);
+const suite = test_suite(import.meta);
 
-describe(suite(PAGE), async function (){
+describe(suite.title, async function (){
     this.timeout(4000);
     this.slow(500);
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(PAGE)!);
+    before(() => window = globalThis.window.open(suite.subject_html)!);
     after(() => window.close());
 
     describe('on page load', async function () {

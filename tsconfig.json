@@ -17,5 +17,10 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2022"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

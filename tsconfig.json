@@ -6,8 +6,12 @@
       "#customary/*": ["./node_modules/customary/src/*"],
       "chai/*": ["./node_modules/chai/*"],
       "knockout/": ["./node_modules/knockout/build/types/knockout/"],
+      "lit/": ["./node_modules/lit/development/"],
       "mocha/*": ["./node_modules/mocha/*"]
     },
+    // https://lit.dev/docs/components/decorators/#decorators-typescript
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     // ---- CODING STANDARDS TYPICAL FOR ALL PROJECTS START HERE ----
     "allowJs": false,
     "module": "esnext",

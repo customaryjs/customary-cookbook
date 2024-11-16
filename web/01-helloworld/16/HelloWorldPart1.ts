@@ -1,7 +1,7 @@
-import {CustomaryHTMLElement} from "#customary/CustomaryHTMLElement.js";
-import {CustomaryOptions} from "#customary/CustomaryOptions.js";
+import {CustomaryOptions} from "#customary/index.js";
+import {CustomaryLitElement} from "#customary/lit/CustomaryLitElement.js";
 
-export class HelloWorldPart1 extends CustomaryHTMLElement {
+export class HelloWorldPart1 extends CustomaryLitElement {
     static customary: CustomaryOptions<HelloWorldPart1> = {
         config: {name: 'hello-world-part-1'},
         hooks: {externalLoader: {import_meta: import.meta}}

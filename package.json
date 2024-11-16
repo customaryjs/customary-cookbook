@@ -23,6 +23,7 @@
     "dev-dependency:customary": "npm run --prefix node_modules/customary dev",
     "dist-dependencies": "run-p dist-dependency:*",
     "dist-dependency:customary": "npm run --prefix node_modules/customary dist",
+    "dist-dependency:lit-for-customary": "npm run --prefix node_modules/lit-for-customary build",
     "clean-dependencies": "run-p clean-dependency:*",
     "clean-dependency:customary": "npm run --prefix node_modules/customary clean"
   },
@@ -32,6 +33,8 @@
     "chai": "^5.1.1",
     "customary": "file:../customary",
     "highlight.js": "^11.10.0",
+    "lit": "^3.2.0",
+    "lit-for-customary": "file:../lit-for-customary",
     "knockout": "^3.5.1",
     "mocha": "^10.7.3"
   },

@@ -23,19 +23,19 @@
         <p>Teach yourself Customary with examples</p>
         <hr/>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol /></a>
+            <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':unit_test}">Unit Test <external-link-symbol /></a>
+            <a target="_blank" data-bind="attr:{'href':unit_test}">Unit Test <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':source_html}">Source: HTML <external-link-symbol /></a>
+            <a target="_blank" data-bind="attr:{'href':source_html}">Source: HTML <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':source_everything}">Source: Everything <external-link-symbol /></a>
+            <a target="_blank" data-bind="attr:{'href':source_everything}">Source: Everything <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol /></a>
+            <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
         </div>
 
     </div>
@@ -45,16 +45,16 @@
             flex-basis: 10%;
             display: flex; justify-content: space-between; align-items: center;
         ">
-            <button class="previous" style="flex-basis: 25%">{this.state.previous_name} &lt;&lt;</button>
+            <button class="previous" style="flex-basis: 25%">${this.state.previous_name} &lt;&lt;</button>
             <div style="flex-grow: 1">
                 <div class="tutorial-chapter">
-                    {this.state.chapter_name}
+                    ${this.state.chapter_name}
                 </div>
                 <div class="tutorial-name">
-                    {this.state.tutorial_name}
+                    ${this.state.tutorial_name}
                 </div>
             </div>
-            <button class="next" style="flex-basis: 25%">&gt;&gt; {this.state.next_name}</button>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; ${this.state.next_name}</button>
         </div>
         <div class="tutorial-vision-container">
             <iframe data-bind="attr:{'src':html}" style="flex-basis: 40%"></iframe>
@@ -161,13 +161,14 @@
     "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
 }}</script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['customary-tutorials-navigator'] = {
-        lifecycle: {connected: use_param_id},
-        events: {
-            'button.previous': navigate_previous,
-            'button.next': navigate_next,
-        },
+    globalThis['customary:customary-tutorials-navigator'] = {
+        hooks: {
+            lifecycle: {connected: use_param_id},
+            events: {
+                'button.previous': navigate_previous,
+                'button.next': navigate_next,
+            },
+        }
     };
 
     import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
@@ -185,7 +186,7 @@
             "html": tutorial.page_html,
             "source_html": tutorial.github_page_html,
             "source_everything": tutorial.github_dir,
-            "unit_test": "./test/test-ALL-the-things.html?grep=" + encodeURIComponent(tutorial.page_html),
+            "unit_test": "./test.html?grep=" + encodeURIComponent(tutorial.page_html),
         }));
     }
 
@@ -204,8 +205,7 @@
     }
 </script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['view-source'] = {attributes: {src: (el,_,__,src) => viewSource(el, src)}};
+    globalThis['customary:view-source'] = {hooks:{attributes: {src: (el,_,__,src) => viewSource(el, src)}}};
 
     import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     // does not work because should use "export default" but it's using "module.exports"

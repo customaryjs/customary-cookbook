@@ -11,9 +11,10 @@
 
 <script type="importmap">{"imports": {"#customary/": "../../../node_modules/customary/web/_script/"}}</script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['hello-world'] = {
-        events: {'button': el => el.style.fontSize = 40 + Math.random() * 40 + 'px'},
+    globalThis['customary:hello-world'] = {
+        hooks: {
+            events: {'button': el => el.style.fontSize = 40 + Math.random() * 40 + 'px'},
+        }
     };
 </script>
 <script type="module">import '#customary/now.js'</script>

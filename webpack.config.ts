@@ -22,6 +22,10 @@ const config: webpack.Configuration = {
                     to: '_lib/customary/',
                 },
                 {
+                    from: 'node_modules/lit-for-customary/.parcel-dist/',
+                    to: '_lib/lit-for-customary/',
+                },
+                {
                     context: 'node_modules',
                     from: 'chai/chai.js',
                     to: '_lib/chai/',
@@ -54,10 +58,16 @@ const config: webpack.Configuration = {
         new ReplaceInFileWebpackPlugin([{
             dir: '.dist',
             test: /\.html$/,
-            rules: [{
-                search: / "(.*)..\/node_modules(.*)"/g,
-                replace: ' "$1./_lib$2"',
-            }]
+            rules: [
+                {
+                    search: / "(.*)..\/node_modules(.*)"/g,
+                    replace: ' "$1./_lib$2"',
+                },
+                {
+                    search: /lit-for-customary\/.parcel-dist/g,
+                    replace: 'lit-for-customary',
+                },
+            ]
         }]),
     ],
     mode: "none",

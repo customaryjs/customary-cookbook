@@ -8,5 +8,12 @@
     <hello-world></hello-world>
 </h1>
 
-<script type="importmap">{"imports": {"#customary/": "../../../node_modules/customary/web/_script/"}}</script>
+<!--
+"lit-bundle": "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js",
+-->
+<script type="importmap">{"imports": {
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "lit-for-customary": "../../../node_modules/lit-for-customary/.parcel-dist/lit-for-customary.mjs"
+}}</script>
+<script type="module">globalThis.customaryLit=true;</script>
 <script type="module">import '#customary/now.js'</script>

@@ -1,6 +1,7 @@
-import {KnockoutBridge as ko} from 'customary/knockoutjs/KnockoutBridge.js';
+import {KnockoutBridgeFactory} from '#customary/knockoutjs/KnockoutBridge.js';
 
 export async function bind() {
+    const ko = await new KnockoutBridgeFactory().createKnockoutBridge();
     const model = {
         parts: ko.observableArray([
             {word: 'Hello'},

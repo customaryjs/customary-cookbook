@@ -7,10 +7,12 @@
     "start": "npm run dist && npm run start-dist",
     "dist": "npx webpack",
     "start-dist": "http-server .dist -i=false -c-1",
+    "test-dist": "npx open-cli http://localhost:8080/test.html",
     "clean": "rimraf web/_script .dist",
     "clean-src": "rimraf --glob src/**/*.d.ts src/**/*.js.map src/**/*.js",
     "dev": "run-p dev-dependencies compile-watch start-dev",
     "start-dev": "http-server -i=true -c-1",
+    "test-dev": "npx open-cli http://localhost:8080/web/test.html",
     "// ---- pre & post ---- //": "",
     "predist": "npm run clean && npm run dist-dependencies && npm run compile",
     "// ---- private ---- //": "",
@@ -39,6 +41,7 @@
     "copy-webpack-plugin": "^12.0.2",
     "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
+    "open-cli": "^8.0.0",
     "remove-files-webpack-plugin": "^1.5.0",
     "replace-in-file-webpack-plugin": "^1.0.6",
     "rimraf": "^6.0.1",
@@ -46,6 +49,10 @@
     "typescript": "^5.6.2",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
+  },
+  "imports": {
+    "#customary-tutorials/*.js": "./web/*.ts",
+    "#customary/*.js": "./node_modules/customary/src/*.ts"
   },
   "engines": {
     "node": "20.17.0"

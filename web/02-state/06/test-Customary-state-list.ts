@@ -1,5 +1,5 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "customary/testing/CustomaryTestingQueries.js";
+import {CustomaryTestingQueries} from "#customary/testing/CustomaryTestingQueries.js";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);

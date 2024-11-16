@@ -1,5 +1,5 @@
-import {CustomaryHTMLElement} from "customary/CustomaryHTMLElement.js";
-import {CustomaryOptions} from "customary/CustomaryOptions.js";
+import {CustomaryHTMLElement} from "#customary/CustomaryHTMLElement.js";
+import {CustomaryOptions} from "#customary/CustomaryOptions.js";
 
 export class HelloWorldPart1 extends CustomaryHTMLElement {
     static customary: CustomaryOptions<HelloWorldPart1> = {

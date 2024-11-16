@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "web",
     "paths": {
-      "customary/*": ["./node_modules/customary/src/*"],
+      "#customary/*": ["./node_modules/customary/src/*"],
       "chai/*": ["./node_modules/chai/*"],
       "knockout/": ["./node_modules/knockout/build/types/knockout/"],
       "mocha/*": ["./node_modules/mocha/*"]

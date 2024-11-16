@@ -1,4 +1,4 @@
-import {FetchText_DOM_singleton} from "customary/fetch/FetchText.js";
+import {FetchText_DOM_singleton} from "#customary/fetch/FetchText.js";
 
 export class CustomaryTutorialsData {
     static async generateData() {

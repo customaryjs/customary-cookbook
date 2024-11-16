@@ -1,31 +1,34 @@
-<!doctype html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>
 
-<html>
-<head>
-    <title>Customary: test ALL the things!</title>
-</head>
-<body>
-<h1>Customary: test ALL the things!</h1>
+    customary-tutorials tests
+
+</title></head><body>
+
+<h1>customary-tutorials 👩‍🔬🔬 tests</h1>
+
 <template data-customary-name="test-runner">
-<button autofocus onclick="run_unit_tests()">Run unit tests</button>
+<button autofocus>Run tests</button>
 </template>
+
 <test-runner></test-runner>
+
 <div id="mocha"></div>
+
 </body>
 
 <script type="importmap">
     {
         "imports": {
-            "customary-tutorials/": "../",
-            "customary/": "../../node_modules/customary/web/_script/",
-            "chai": "../../node_modules/chai/chai.js",
-            "mocha": "../../node_modules/mocha/mocha.js",
-            "mocha.css": "../../node_modules/mocha/mocha.css"
+            "#customary-tutorials/": "./",
+            "#customary/": "./../node_modules/customary/web/_script/",
+            "chai": "./../node_modules/chai/chai.js",
+            "mocha": "./../node_modules/mocha/mocha.js",
+            "mocha.css": "./../node_modules/mocha/mocha.css"
         }
     }
 </script>
 <script type="module">
-    import {adoptCSSStylesheets} from "customary/cssstylesheet/CSSStyleSheetAdopter.js";
+    import {adoptCSSStylesheets} from "#customary/cssstylesheet/CSSStyleSheetAdopter.js";
     await adoptCSSStylesheets(import.meta.resolve('mocha.css'));
 </script>
 <script type="module">
@@ -35,8 +38,8 @@
     mocha.cleanReferencesAfterRun(false);
 </script>
 <script type="module">
-    import {Customary} from 'customary/Customary.js';
-    import {CustomaryTutorialsData} from 'customary-tutorials/data/CustomaryTutorialsData.js';
+    import {Customary} from '#customary/Customary.js';
+    import {CustomaryTutorialsData} from '#customary-tutorials/data/CustomaryTutorialsData.js';
 
     Customary.hooks['test-runner'] = {
         lifecycle: {connected: connected},
@@ -46,7 +49,7 @@
     async function connected() {
         const data = await CustomaryTutorialsData.loadData();
         for (const test of data.tests) {
-            await import(`../${test}`);
+            await import(`./${test}`);
         }
         const params = new URLSearchParams(window.location.search);
         if (params.has("run")) {
@@ -59,5 +62,5 @@
         mocha.run();
     }
 </script>
-<script type="module">import 'customary/go.js'</script>
+<script type="module">import '#customary/now.js'</script>
 </html>

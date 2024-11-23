@@ -1,49 +1,44 @@
-// @ts-ignore
-import CopyPlugin = require("copy-webpack-plugin");
-// @ts-ignore
-import RemovePlugin = require('remove-files-webpack-plugin');
-// @ts-ignore
-import ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
-// @ts-ignore
-import webpack = require('webpack');
-// @ts-ignore
-import path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
+const RemovePlugin = require('remove-files-webpack-plugin');
+const path = require('path');
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 
-const config: webpack.Configuration = {
+module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
                 {
                     // we copy web/*.ts files too because browsers can step debug them
                     from: 'web/',
+                    to: 'development/',
                 },
                 {
-                    from: 'node_modules/customary/.dist/',
-                    to: '_lib/customary/',
+                    from: 'node_modules/customary/.dist/development/',
+                    to: 'development/_lib/customary/',
                 },
                 {
-                    from: 'node_modules/lit-for-customary/.parcel-dist/',
-                    to: '_lib/lit-for-customary/',
+                    from: 'node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs',
+                    to: 'development/_lib/lit-for-customary/',
                 },
                 {
                     context: 'node_modules',
                     from: 'chai/chai.js',
-                    to: '_lib/chai/',
+                    to: 'development/_lib/chai/',
                 },
                 {
                     context: 'node_modules',
                     from: 'highlight.js/es/languages/xml.js',
-                    to: '_lib/highlight.js/es/languages/',
+                    to: 'development/_lib/highlight.js/es/languages/',
                 },
                 {
                     context: 'node_modules',
                     from: 'knockout/build/output/knockout-latest.debug.js',
-                    to: '_lib/knockout/build/output/',
+                    to: 'development/_lib/knockout/build/output/',
                 },
                 {
                     context: 'node_modules',
                     from: 'mocha/mocha.*',
-                    to: '_lib/',
+                    to: 'development/_lib/',
                 }
             ]
         }),
@@ -56,16 +51,20 @@ const config: webpack.Configuration = {
            }
         }),
         new ReplaceInFileWebpackPlugin([{
-            dir: '.dist',
+            dir: '.dist/development',
             test: /\.html$/,
             rules: [
+                {
+                    search: /node_modules\/customary\/node_modules\/lit-for-customary\/.dist\/bundled/g,
+                    replace: 'node_modules/lit-for-customary',
+                },
                 {
                     search: / "(.*)..\/node_modules(.*)"/g,
                     replace: ' "$1./_lib$2"',
                 },
                 {
-                    search: /lit-for-customary\/.parcel-dist/g,
-                    replace: 'lit-for-customary',
+                    search: /customary\/web\/_script/g,
+                    replace: 'customary/_script',
                 },
             ]
         }]),
@@ -77,5 +76,3 @@ const config: webpack.Configuration = {
         filename: '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
     },
 }
-
-export default config;

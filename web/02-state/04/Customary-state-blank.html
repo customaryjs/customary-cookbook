@@ -24,12 +24,14 @@
 
 <script type="importmap">{"imports": {
   "#customary/": "../../../node_modules/customary/web/_script/",
-  "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js"
+  "knockout": "../../../node_modules/knockout/build/output/knockout-latest.debug.js",
+  "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-  import {Customary} from '#customary/Customary.js';
-  Customary.hooks['tutorial-card'] = {
-    events: {'button': el => el.setState(loadState())},
+  globalThis['customary:tutorial-card'] = {
+    hooks: {
+      events: {'button': el => el.setState(loadState())},
+    }
   };
   function loadState() {
     return {

@@ -10,41 +10,40 @@ module.exports = {
                 {
                     // we copy web/*.ts files too because browsers can step debug them
                     from: 'web/',
-                    to: 'development/',
                 },
                 {
                     from: 'node_modules/customary/.dist/development/',
-                    to: 'development/_lib/customary/',
+                    to: 'node_modules/customary/',
                 },
                 {
                     from: 'node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs',
-                    to: 'development/_lib/lit-for-customary/',
+                    to: 'node_modules/lit-for-customary/',
                 },
                 {
                     context: 'node_modules',
                     from: 'chai/chai.js',
-                    to: 'development/_lib/chai/',
+                    to: 'node_modules/chai/',
                 },
                 {
                     context: 'node_modules',
                     from: 'highlight.js/es/languages/xml.js',
-                    to: 'development/_lib/highlight.js/es/languages/',
+                    to: 'node_modules/highlight.js/es/languages/',
                 },
                 {
                     context: 'node_modules',
                     from: 'knockout/build/output/knockout-latest.debug.js',
-                    to: 'development/_lib/knockout/build/output/',
+                    to: 'node_modules/knockout/build/output/',
                 },
                 {
                     context: 'node_modules',
                     from: 'mocha/mocha.*',
-                    to: 'development/_lib/',
+                    to: 'node_modules/',
                 }
             ]
         }),
         new RemovePlugin({
            after: {
-               root: '.dist',
+               root: '.dist/development',
                include: [
                    '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
                ]
@@ -60,7 +59,7 @@ module.exports = {
                 },
                 {
                     search: / "(.*)..\/node_modules(.*)"/g,
-                    replace: ' "$1./_lib$2"',
+                    replace: ' "$1./node_modules$2"',
                 },
                 {
                     search: /customary\/web\/_script/g,
@@ -72,7 +71,7 @@ module.exports = {
     mode: "none",
     entry: './webpack-entry-SKIP.json',
     output: {
-        path: path.resolve(__dirname, '.dist'),
+        path: path.resolve(__dirname, '.dist/development'),
         filename: '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
     },
 }

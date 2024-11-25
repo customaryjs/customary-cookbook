@@ -3,28 +3,69 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "// ---- public ---- //": "",
-    "start": "npm run dist && npm run start-dist",
-    "start-dist": "npx web-dev-server --watch --root-dir=.dist/development --open",
-    "test-dist": "npx web-dev-server --watch --root-dir=.dist/development --open=/test.html?run",
-    "dist": "run-p dist:*",
-    "clean": "run-p clean:*",
-    "dev": "run-p dev-dependencies compile-watch start-dev",
-    "start-dev": "npx web-dev-server --watch --open=web/index.html",
-    "test-dev": "npx web-dev-server --watch --open=web/test.html?run",
-    "// ---- pre & post ---- //": "",
-    "predist": "npm run clean && npm run dist-dependencies && npm run compile",
-    "// ---- private ---- //": "",
-    "dist:development": "npx webpack",
-    "clean:dist": "rimraf .dist",
-    "clean:web": "rimraf --glob web/**/*.{d.ts,js.map,js}",
-    "compile-watch": "tsc --build --verbose --watch",
-    "compile": "tsc --build --verbose",
-    "// ---- dependencies ---- //": "",
-    "dev-dependencies": "run-p dev-dependency:*",
-    "dev-dependency:customary": "npm run --prefix node_modules/customary dev",
-    "dist-dependencies": "run-p dist-dependency:*",
-    "dist-dependency:customary": "npm run --prefix node_modules/customary dist"
+    "// ---- public ---- //": "//",
+    "start": "wireit",
+    "start-dist": "wireit",
+    "test-dist": "wireit",
+    "dist": "wireit",
+    "dev": "wireit",
+    "clean": "wireit",
+    "start-dev": "wireit",
+    "test-dev": "wireit",
+    "// ---- private ---- //": "//",
+    "dist:*": "wireit",
+    "dist:development": "wireit",
+    "compile-watch": "wireit",
+    "compile": "wireit"
+  },
+  "wireit": {
+    "start": {
+      "command": "npm run start-dist",
+      "service": true,
+      "dependencies": ["dist"]
+    },
+    "start-dist": {
+      "command": "npx web-dev-server --watch --root-dir=.dist/development --open",
+      "service": true
+    },
+    "test-dist": {
+      "command": "npx web-dev-server --watch --root-dir=.dist/development --open=/test.html?run",
+      "service": true
+    },
+    "dist": {
+      "command": "npm run dist:*",
+      "dependencies": ["clean", "compile"]
+    },
+    "dev": {
+      "command": "npm run start-dev",
+      "service": true,
+      "dependencies": ["compile-watch"]
+    },
+    "start-dev": {
+      "command": "npx web-dev-server --watch --open=web/index.html",
+      "service": true
+    },
+    "test-dev": {
+      "command": "npx web-dev-server --watch --open=web/test.html?run",
+      "service": true
+    },
+    "clean": {
+      "dependencies": ["clean:dist", "clean:compile", "clean:src"]
+    },
+    "clean:dist": {"command": "rimraf .dist"},
+    "clean:compile": {"command": "rimraf web/_script"},
+    "clean:src": {"command": "rimraf --glob web/**/*.{d.ts,js.map,js}"},
+    "dist:*": {
+      "dependencies": ["dist:development"]
+    },
+    "dist:development": {"command": "npx webpack"},
+    "compile-watch": {
+      "command": "tsc --build --pretty --verbose --watch",
+      "service": true
+    },
+    "compile": {
+      "command": "tsc --build --pretty --verbose"
+    }
   },
   "dependencies": {
     "chai": "^5.1.1",
@@ -40,13 +81,13 @@
     "@types/node": "^20.16.5",
     "@web/dev-server": "^0.4.6",
     "copy-webpack-plugin": "^12.0.2",
-    "npm-run-all": "^4.1.5",
     "remove-files-webpack-plugin": "^1.5.0",
     "replace-in-file-webpack-plugin": "^1.0.6",
     "rimraf": "^6.0.1",
     "typescript": "^5.6.2",
     "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "wireit": "^0.14.9"
   },
   "imports": {
     "#customary-tutorials/*.js": "./web/*.ts",

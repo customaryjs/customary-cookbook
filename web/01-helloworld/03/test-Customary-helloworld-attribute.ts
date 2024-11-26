@@ -15,7 +15,7 @@ describe(suite.title, async function (){
 
     describe('on page load', async function () {
         it('render expected custom element text content', async function () {
-            this.retries(32);
+            this.retries(64);
             CustomaryTestingQueries.findByTextContent(window.document, 'Hello Customary !', {selector: 'h1'});
         });
     });

@@ -1,18 +1,13 @@
 <title>Hello World ~ with an attribute ~ Customary Tutorials</title>
 
-<template data-customary-name="hello-world"></template>
+<template data-customary-name="hello-world">${this.title}</template>
 
 <h1><hello-world title="Hello Customary !"></hello-world></h1>
 
 ~ with an attribute ~
 
-<script type="importmap">{"imports": {"#customary/": "../../../node_modules/customary/web/_script/"}}</script>
-<script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['hello-world'] = {
-        attributes: {
-            title: el => el.shadowRoot.textContent = el.title
-        }
-    };
-</script>
+<script type="importmap">{"imports": {
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+}}</script>
 <script type="module">import '#customary/now.js';</script>

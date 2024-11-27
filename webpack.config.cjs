@@ -31,11 +31,6 @@ module.exports = {
                 },
                 {
                     context: 'node_modules',
-                    from: 'knockout/build/output/knockout-latest.debug.js',
-                    to: 'node_modules/knockout/build/output/',
-                },
-                {
-                    context: 'node_modules',
                     from: 'mocha/mocha.*',
                     to: 'node_modules/',
                 }

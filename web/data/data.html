@@ -20,19 +20,18 @@ min-height: 98vh;
 <script type="importmap">{"imports": {
   "#customary-tutorials/": "../",
   "#customary/": "../../node_modules/customary/web/_script/",
-  "knockout": "../../node_modules/knockout/build/output/knockout-latest.debug.js"
+  "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['customary-tutorials-data'] = {
-        events: {'button': generateData}
-    };
     import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
     async function generateData(el) {
         const data = await CustomaryTutorialsData.generateData();
         el.shadowRoot.querySelector('textarea').value =
             JSON.stringify(data, undefined, 4);
     }
+    globalThis['customary:customary-tutorials-data'] = {
+        hooks: {events: {'button': generateData}}
+    };
 </script>
 <script type="module">import '#customary/now.js';</script>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Customary Tutorials</title>
+    <title>Customary Recipes</title>
     <style>html{display:none}</style>
 </head>
 <body>
@@ -18,21 +18,21 @@
     <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
         <div class="logo">
         Customary<br>
-        Tutorials
+        Recipes
         </div>
         <p>Teach yourself Customary with examples</p>
         <hr/>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':html}">View in new tab <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="${state?.html}">View in new tab <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':unit_test}">Unit Test <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="${state?.unit_test}&run">Unit Test <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':source_html}">Source: HTML <external-link-symbol></external-link-symbol></a>
+            <a target="_blank"  href="${state?.source_html}">Source: HTML <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" data-bind="attr:{'href':source_everything}">Source: Everything <external-link-symbol></external-link-symbol></a>
+            <a target="_blank"  href="${state?.source_everything}">Source: Everything <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
             <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
@@ -45,20 +45,20 @@
             flex-basis: 10%;
             display: flex; justify-content: space-between; align-items: center;
         ">
-            <button class="previous" style="flex-basis: 25%">${this.state.previous_name} &lt;&lt;</button>
+            <button class="previous" style="flex-basis: 25%">${state?.previous_name} &lt;&lt;</button>
             <div style="flex-grow: 1">
                 <div class="tutorial-chapter">
-                    ${this.state.chapter_name}
+                    ${state?.chapter_name}
                 </div>
                 <div class="tutorial-name">
-                    ${this.state.tutorial_name}
+                    ${state?.tutorial_name}
                 </div>
             </div>
-            <button class="next" style="flex-basis: 25%">&gt;&gt; ${this.state.next_name}</button>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; ${state?.next_name}</button>
         </div>
         <div class="tutorial-vision-container">
-            <iframe data-bind="attr:{'src':html}" style="flex-basis: 40%"></iframe>
-            <view-source data-bind="attr:{'src':html}" style="flex-basis: 60%"></view-source>
+            <iframe src="${state?.html}" style="flex-basis: 40%"></iframe>
+            <view-source src="${state?.html}" style="flex-basis: 60%"></view-source>
         </div>
     </div>
 
@@ -94,9 +94,10 @@
 
     .logo {
         display: inline-block;
+        text-align: center;
         font-family: serif; font-size: xxx-large; font-style: italic;
         border-style: double; border-radius: 16px;
-        padding: 0px 14px 0px 14px;
+        padding: 0px 14px 10px 14px;
     }
     .action {
         text-align: center;
@@ -155,10 +156,10 @@
 </template>
 
 <script type="importmap">{"imports": {
+    "highlight.js/": "../node_modules/highlight.js/es/",
     "#customary-tutorials/": "./",
     "#customary/": "../node_modules/customary/web/_script/",
-    "highlight.js/": "../node_modules/highlight.js/es/",
-    "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
+    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
     globalThis['customary:customary-tutorials-navigator'] = {

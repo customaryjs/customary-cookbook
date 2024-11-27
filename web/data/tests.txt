@@ -3,7 +3,6 @@ web/01-helloworld/02/test-Customary-helloworld-multiple.ts
 web/01-helloworld/03/test-Customary-helloworld-attribute.ts
 web/01-helloworld/04/test-Customary-helloworld-slot.ts
 web/01-helloworld/06/test-Customary-helloworld-external.ts
-web/01-helloworld/08/test-Customary-helloworld-knockoutjs.ts
 web/01-helloworld/10/test-Customary-helloworld-event.ts
 web/01-helloworld/12/test-Customary-helloworld-createElement.ts
 web/01-helloworld/16/test-Customary-helloworld-components.ts

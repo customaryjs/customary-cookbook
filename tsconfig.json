@@ -5,7 +5,6 @@
     "paths": {
       "#customary/*": ["./node_modules/customary/src/*"],
       "chai/*": ["./node_modules/chai/*"],
-      "knockout/": ["./node_modules/knockout/build/types/knockout/"],
       "lit/": ["./node_modules/lit/development/"],
       "mocha/*": ["./node_modules/mocha/*"]
     },

@@ -3,9 +3,9 @@
 <customary-tutorials></customary-tutorials>
 
 <template data-customary-name="customary-tutorials">
-    <div data-bind="foreach: $data">
-        ${map(this.state, this_state => html`
-        <p><a target="_blank" data-bind="attr:{'href':file},text:file" href="${this_state.file}">${this_state.file}</a></p>
+    <div>
+        ${map(state, value => html`
+        <p><a target="_blank" href="${value.file}">${value.file}</a></p>
         `)}
     </div>
 </template>
@@ -17,21 +17,18 @@
         "imports": {
             "#customary-tutorials/": "./",
             "#customary/": "../node_modules/customary/web/_script/",
-            "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs",
-            "knockout": "../node_modules/knockout/build/output/knockout-latest.debug.js"
+            "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
         }
     }
 </script>
 
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
-    Customary.hooks['customary-tutorials'] = {lifecycle: {connected: loadData}};
     import {CustomaryTutorialsData} from '#customary-tutorials/data/CustomaryTutorialsData.js';
     async function loadData(el) {
         const data = await CustomaryTutorialsData.loadData();
         const state = data.pages.map(file => ({file}));
         el.setState(state);
     }
+    globalThis['customary:customary-tutorials'] = {hooks: {lifecycle: {connected: loadData}}};
 </script>
-<script type="module">globalThis.customaryLit=true;</script>
 <script type="module">import '#customary/now.js';</script>

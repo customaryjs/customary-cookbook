@@ -14,16 +14,16 @@
 </script>
 
 <template data-customary-name="story-teller">
-    <div data-bind="foreach: $data" style="font-family: monospace; font-size: large">
-        ${map(this.state, this_state => html`
+    <div style="font-family: monospace; font-size: large">
+        ${map(state, value => html`
         <p style="margin-top: 40px; margin-left: 20px">
-            <strong>${this_state.who}</strong>
+            <strong>${value.who}</strong>
         </p>
         <p style="margin-left: 40px">
-            went to <strong>${this_state.where}</strong>
+            went to <strong>${value.where}</strong>
         </p>
         <p style="margin-left: 60px">
-            to see <strong>${this_state.what}</strong>
+            to see <strong>${value.what}</strong>
         </p>
         `)}
     </div>
@@ -37,5 +37,4 @@
     "#customary/": "../../../node_modules/customary/web/_script/",
     "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
-<script type="module">globalThis.customaryLit=true;</script>
 <script type="module">import '#customary/now.js';</script>

@@ -37,14 +37,7 @@
     mocha.cleanReferencesAfterRun(false);
 </script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
     import {CustomaryTutorialsData} from '#customary-tutorials/data/CustomaryTutorialsData.js';
-
-    Customary.hooks['test-runner'] = {
-        lifecycle: {connected: connected},
-        events: {'button': run_unit_tests}
-    };
-
     async function connected() {
         const data = await CustomaryTutorialsData.loadData();
         for (const test of data.tests) {
@@ -55,11 +48,16 @@
             run_unit_tests();
         }
     }
-
     function run_unit_tests() {
         document.getElementById('mocha').replaceChildren();
         mocha.run();
     }
+    globalThis['customary:test-runner'] = {
+        hooks: {
+            lifecycle: {connected: connected},
+            events: {'button': run_unit_tests}
+        }
+    };
 </script>
 <script type="module">import '#customary/now.js';</script>
 

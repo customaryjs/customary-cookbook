@@ -49,16 +49,6 @@
     "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/01-helloworld/06"
   },
   {
-    "id": "01-08",
-    "chapter_name": "Hello World",
-    "tutorial_name": "with Knockout.js",
-    "page_html": "01-helloworld/08/Customary-helloworld-knockoutjs.html",
-    "test_ts": "01-helloworld/08/test-Customary-helloworld-knockoutjs.ts",
-    "test_js": "01-helloworld/08/test-Customary-helloworld-knockoutjs.js",
-    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/01-helloworld/08/Customary-helloworld-knockoutjs.html",
-    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/01-helloworld/08"
-  },
-  {
     "id": "01-10",
     "chapter_name": "Hello World",
     "tutorial_name": "with an event",

@@ -1,12 +1,15 @@
 import {html, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
 import {findHTMLTemplateElementInDOMDocument} from "#customary/CustomaryHTMLTemplates.js";
 
 export class HelloLitElement extends LitElement {
     
     @property()
-    incomplete: string = 'INCOMPLETE';
+    incomplete: string = 'FIELD';
+
+    @property({reflect: true})
+    attrib: string = 'UNSET';
 
     static properties = {
         after: {},
@@ -14,42 +17,32 @@ export class HelloLitElement extends LitElement {
 
     constructor() {
         super();
-        (this as any).completed = 'COMPLETED';
+        (this as any).completed = 'CONSTRUCTOR';
     }
 
     protected render() {
+        console.log('render');
+
         const template: HTMLTemplateElement =
             findHTMLTemplateElementInDOMDocument(this.tagName.toLowerCase())!;
-
-        /*
-        const documentFragment = template.content;
-        const clone: Node = documentFragment.cloneNode(true);
-        const dom_node = clone;
-        const middle = dom_node;
-         */
-
-        /*
-        const s = template.innerHTML;
-        const a = [`${s}`] as any;
-        a.raw = a;
-        const html_from_template = html(a);
-        const middle = html_from_template;
-         */
-
-        /*
-        const s = template.innerHTML;
-
-        // https://stackoverflow.com/a/51012181/
-        const a = [`${s}`] as any;
-        a.raw = a;
-        return html(a);
-         */
-
-        // return eval(`html\`${html_string}\``);
 
         const s = template.innerHTML;
         const middle = eval(`html\`${s}\``);
 
         return html`${middle}`;
     }
+
+    private _setAttribute() {
+        this.setAttribute('attrib', "SET ATTRIBUTE");
+    }
+
+    private _assignProperty() {
+        this.attrib = "ASSIGN ATTRIBUTE";
+    }
+
+    override attributeChangedCallback(property: string, oldValue: string, newValue: string) {
+        super.attributeChangedCallback(property, oldValue, newValue);
+        console.log(`attributeChangedCallback: ${property} ${oldValue} ${newValue}`);
+    }
+
 }

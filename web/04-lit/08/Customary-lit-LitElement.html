@@ -5,7 +5,12 @@
 </h1>
 
 <template data-customary-name="hello-lit-element">
-    ${this.incomplete} Hello LitElement ! ${this.completed}
+    <p>Hello LitElement !</p>
+    <p>Field: ${this.incomplete} </p>
+    <p>Constructor:  ${this.completed}</p>
+    <p>Attribute:  ${this.attrib}</p>
+    <button @click="${this._setAttribute}">setAttribute</button>
+    <button @click="${this._assignProperty}">assign property</button>
 </template>
 
 <script type="importmap">{"imports": {

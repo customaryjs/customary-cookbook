@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Customary Recipes</title>
+    <title>Customary Cookbook</title>
     <style>html{display:none}</style>
 </head>
 <body>
@@ -17,11 +17,17 @@
 
     <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
         <div class="logo">
-        Customary<br>
-        Recipes
+            <span class="logo-caption">
+                Customary<br>Cookbook<br>
+            </span>
+            <span class="logo-emoji">
+                &#x1F475;&#x1F373;
+            </span>
+            <p class="logo-tagline">
+                Customary recipes to teach yourself
+            </p>
         </div>
-        <p>Teach yourself Customary with examples</p>
-        <hr/>
+
         <div class="action">
             <a target="_blank" href="${state?.html}">View in new tab <external-link-symbol></external-link-symbol></a>
         </div>
@@ -57,8 +63,8 @@
             <button class="next" style="flex-basis: 25%">&gt;&gt; ${state?.next_name}</button>
         </div>
         <div class="tutorial-vision-container">
-            <iframe src="${state?.html}" style="flex-basis: 40%"></iframe>
-            <view-source src="${state?.html}" style="flex-basis: 60%"></view-source>
+            <iframe src="${state?.html}"></iframe>
+            <view-source src="${state?.html}"></view-source>
         </div>
     </div>
 
@@ -95,10 +101,23 @@
     .logo {
         display: inline-block;
         text-align: center;
-        font-family: serif; font-size: xxx-large; font-style: italic;
-        border-style: double; border-radius: 16px;
-        padding: 0px 14px 10px 14px;
+        font-family: serif;
+        border-style: outset; border-radius: 16px;
+        padding: 0px 10px 10px 10px;
+        margin-bottom: 32px;
     }
+    .logo-caption {
+        font-style: italic; font-size: xxx-large;
+    }
+    .logo-emoji {
+        font-size: xxx-large;
+        margin: 0;
+    }
+    .logo-tagline {
+        font-style: italic;
+        margin: 8px 0 0;
+    }
+
     .action {
         text-align: center;
         font-size: large;
@@ -113,7 +132,6 @@
     .tutorial-header {
         margin-bottom: 10px;
         padding-bottom: 10px;
-        border-bottom-style: solid;
         border-bottom-width: 2px;
         border-bottom-color: grey;
     }
@@ -140,6 +158,8 @@
     }
     view-source {
         margin: 20px;
+        width: 50%;
+        flex-basis: 60%;
     }
 
     button {
@@ -159,7 +179,7 @@
     "highlight.js/": "../node_modules/highlight.js/es/",
     "#customary-tutorials/": "./",
     "#customary/": "../node_modules/customary/web/_script/",
-    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+    "lit-for-customary": "../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
     globalThis['customary:customary-tutorials-navigator'] = {
@@ -206,7 +226,7 @@
     }
 </script>
 <script type="module">
-    globalThis['customary:view-source'] = {hooks:{attributes: {src: (el,_,__,src) => viewSource(el, src)}}};
+    globalThis['customary:view-source'] = {hooks: {lifecycle: {firstUpdated: viewSource}}};
 
     import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
     // does not work because should use "export default" but it's using "module.exports"
@@ -215,7 +235,8 @@
     highlight.registerLanguage('html', html);
 
     import {FetchText_DOM_singleton} from '#customary/fetch/FetchText.js';
-    async function viewSource(el, src) {
+    async function viewSource(el) {
+        const src = el.getAttribute('src');
         if (!src) return;
         const codeElement = el.shadowRoot.getElementById("source_html");
         codeElement.textContent = await FetchText_DOM_singleton.fetchText(src);

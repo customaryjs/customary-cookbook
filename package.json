@@ -90,6 +90,7 @@
   },
   "imports": {
     "#customary-tutorials/*.js": "./web/*.ts",
+    "#customary-now": "./node_modules/customary/src/now.ts",
     "#customary/*.js": "./node_modules/customary/src/*.ts"
   },
   "engines": {

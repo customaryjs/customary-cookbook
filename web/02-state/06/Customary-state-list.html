@@ -8,7 +8,7 @@
 
 <template data-customary-name="tutorial-card">
   <div class="d">
-    ${map(state.tutorials, value => html`
+    ${map(state?.tutorials, value => html`
     <div class="c">
       <div class="h">Tutorial</div><div>${value.id}</div>
       <div class="h">Page</div><div>${value.page_html}</div>
@@ -31,6 +31,7 @@
 </template>
 
 <script type="importmap">{"imports": {
+  "#customary-now": "../../../node_modules/customary/web/_script/now.js",
   "#customary/": "../../../node_modules/customary/web/_script/",
   "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
@@ -67,4 +68,4 @@
     ]};
   }
 </script>
-<script type="module">import '#customary/now.js';</script>
+<script type="module">import '#customary-now';</script>

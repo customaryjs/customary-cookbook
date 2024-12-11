@@ -176,10 +176,12 @@
 </template>
 
 <script type="importmap">{"imports": {
-    "highlight.js/": "../node_modules/highlight.js/es/",
+    "highlight.js/": "./../node_modules/highlight.js/es/",
     "#customary-tutorials/": "./",
-    "#customary/": "../node_modules/customary/web/_script/",
-    "lit-for-customary": "../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+    "#customary/fetch/": "./../node_modules/customary/web/_script/fetch/",
+    "#customary-now": "./../node_modules/customary/web/_script/now.js",
+    "#customary/": "./../node_modules/customary/web/_script/",
+    "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
     globalThis['customary:customary-tutorials-navigator'] = {
@@ -244,6 +246,6 @@
         highlight.highlightElement(codeElement);
     }
 </script>
-<script type="module">import '#customary/now.js';</script>
+<script type="module">import '#customary-now';</script>
 <link rel="stylesheet" href="./z.css" />
 </body>

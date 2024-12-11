@@ -16,6 +16,10 @@ module.exports = {
                     to: 'node_modules/customary/',
                 },
                 {
+                    from: 'node_modules/customary/.dist/bundled/customary-now.mjs',
+                    to: 'node_modules/customary/.dist/bundled/',
+                },
+                {
                     from: 'node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs',
                     to: 'node_modules/lit-for-customary/',
                 },
@@ -49,12 +53,20 @@ module.exports = {
             test: /\.html$/,
             rules: [
                 {
+                    search: /"#customary-now": "(.*)",\s*"#customary\/": ".*",\s*"lit-for-customary": ".*"\s*}}/m,
+                    replace: '"#customary-now": "$1"\n}}',
+                },
+                {
+                    search: /node_modules\/customary\/web\/_script\/now.js/g,
+                    replace: 'node_modules/customary/.dist/bundled/customary-now.mjs',
+                },
+                {
                     search: /node_modules\/customary\/node_modules\/lit-for-customary\/.dist\/bundled/g,
                     replace: 'node_modules/lit-for-customary',
                 },
                 {
                     search: / "(.*)..\/node_modules(.*)"/g,
-                    replace: ' "$1./node_modules$2"',
+                    replace: ' "$1node_modules$2"',
                 },
                 {
                     search: /customary\/web\/_script/g,

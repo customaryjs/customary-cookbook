@@ -1,33 +1,25 @@
+<!DOCTYPE html>
 <title>Forms ~ Customary Cookbook</title>
 
 <h1>Customary Forms</h1>
 
-<tutorial-form></tutorial-form>
+<recipe-page></recipe-page>
 
-<script type="application/json" data-customary-name="tutorial-form">
+<script type="application/json" data-customary-name="client-side">
   {
-    "tutorial": "Customary Forms",
+    "recipe": "Customary Forms",
     "id": "03-01"
   }
 </script>
 
-<template data-customary-name="tutorial-form">
+<template data-customary-name="client-side">
   <form id="entry" class="framed">
     <div class="tabled">
-      <label>Name</label><input value="${state.tutorial}" />
-      <label>Id</label><input value="${state.id}"/>
+      <label for="recipe">Recipe</label><input id="recipe" name="recipe" value="${state.recipe}" />
+      <label for="id">Id</label><input id="id" name="id" value="${state.id}"/>
     </div>
     <div class="button-row"><input type="submit" /></div>
   </form>
-  <dialog>
-    <div class="framed tabled">
-      <label>Name</label><div>${state.tutorial}</div>
-      <label>Id</label><div>${state.id}</div>
-    </div>
-    <form method="dialog">
-      <div class="button-row"><button>return</button></div>
-    </form>
-  </dialog>
   <style>
     .framed {width: 420px; padding: 10px; border: solid turquoise}
     .tabled {display: grid; grid-template-columns: 14% auto; gap: 10px}
@@ -39,21 +31,58 @@
   </style>
 </template>
 
+<template data-customary-name="server-side">
+  <dialog style="border-style: dashed" open>
+    <pre>${view.json}</pre>
+    <form method="dialog">
+      <div class="button-row"><button>close</button></div>
+    </form>
+  </dialog>
+  <style>
+    .button-row {
+      display: flex; justify-content: center; gap: 10px;
+      padding-top: 10px; padding-bottom: 0px;
+    }
+  </style>
+</template>
+
+<template data-customary-name="recipe-page">
+  <div style="display: flex; flex-direction: row">
+    <client-side></client-side>
+    <server-side></server-side>
+  </div>
+</template>
+
 <script type="importmap">{"imports": {
   "#customary-now": "../../../node_modules/customary/web/_script/now.js",
   "#customary/": "../../../node_modules/customary/web/_script/",
   "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-  globalThis['customary:tutorial-form'] = {
-    hooks:{
-      events: {
-        'form#entry': (el, event) => {
-          event.preventDefault();
-          el.shadowRoot.querySelector('dialog').showModal();
-        }
-      }
+  globalThis['customary:client-side'] = {hooks: {events: {
+    'form': (el, event) => {
+        el.setState(Object.fromEntries(new FormData(event.target, event.submitter)));
+        el.dispatchEvent(new CustomEvent('submitted', {composed: true}));
+        event.preventDefault();
     }
-  };
+  }}};
+
+  globalThis['customary:recipe-page'] = {hooks: {events: [{
+    type: 'submitted',
+    listener: el =>
+        el.shadowRoot.querySelector('server-side').setState(
+          el.shadowRoot.querySelector('client-side').state
+        )
+  }]}};
+
+  globalThis['customary:server-side'] = {hooks: {
+    render: {
+      view: state => ({json: JSON.stringify(state, undefined, 4)})
+    },
+    lifecycle: {
+      // FIXME should be "updated" instead, and remove "open" attribute from element
+      firstUpdated: el => el.shadowRoot.querySelector('dialog').open = !!el.state
+    }
+  }};
 </script>
 <script type="module">import '#customary-now';</script>

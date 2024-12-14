@@ -184,6 +184,10 @@
     "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
+    import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
+
+    const dataPromise = CustomaryTutorialsData.loadData();
+
     globalThis['customary:customary-tutorials-navigator'] = {
         hooks: {
             lifecycle: {connected: use_param_id},
@@ -194,12 +198,10 @@
         }
     };
 
-    import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
-
     async function use_param_id(el) {
         const params = new URLSearchParams(window.location.search);
         const idParam = params.get("id") ?? '01-01';
-        const data = await CustomaryTutorialsData.loadData();
+        const data = await dataPromise;
         const tutorial = data.getNavigationData(idParam);
         el.setState(state => ({
             "tutorial_name": "",

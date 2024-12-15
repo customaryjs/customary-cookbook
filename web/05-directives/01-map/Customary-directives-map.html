@@ -1,0 +1,30 @@
+<title>Directives ~ map ~ Customary Cookbook</title>
+
+<h1>Customary Directives</h1>
+
+<p>~ map ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="directives-map"
+    data-customary-state="list"
+>
+  ["Peas", "Carrots", "Tomatoes"]
+</script>
+
+<directives-map></directives-map>
+
+<template data-customary-name="directives-map">
+  <p>Render a list:</p>
+  <ul>
+    <map-- items="this.list" value="item" index="index">
+          <li>${index}: ${item}</li>
+    </map-->
+  </ul>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary-now": "../../../node_modules/customary/web/_script/now.js",
+  "#customary/": "../../../node_modules/customary/web/_script/",
+  "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+}}</script>
+<script type="module">import '#customary-now';</script>

@@ -8,13 +8,13 @@
 
 <template data-customary-name="tutorial-card">
   <div class="d">
-    ${map(state?.tutorials, value => html`
+    <map-- items="state">
     <div class="c">
       <div class="h">Tutorial</div><div>${value.id}</div>
       <div class="h">Page</div><div>${value.page_html}</div>
       <div class="h">Test</div><div>${value.test_ts}</div>
     </div>
-    `)}
+    </map-->
   </div>
   <style>
     .d {
@@ -36,14 +36,16 @@
   "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
+  const statePromise = fetchState();
+
   globalThis['customary:tutorial-card'] = {hooks: {
-    lifecycle: {connected: connected}
+    lifecycle: {connected}
   }};
   async function connected(el) {
-    const state = await loadState();
-    el.setState(state);
+    el.setState((await statePromise).tutorials);
   }
-  async function loadState() {
+
+  async function fetchState() {
     return {tutorials:[
       {
         id: "02-06",

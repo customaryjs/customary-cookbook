@@ -13,3 +13,6 @@ web/02-state/04/test-Customary-state-blank.ts
 web/02-state/05/test-Customary-state-connected.ts
 web/02-state/06/test-Customary-state-list.ts
 web/02-state/16/test-Customary-state-journey.ts
+web/05-directives/01/test-Customary-directives-map.ts
+web/05-directives/02/test-Customary-directives-choose.ts
+web/05-directives/03/test-Customary-directives-when.ts

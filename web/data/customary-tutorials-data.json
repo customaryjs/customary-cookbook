@@ -146,5 +146,35 @@
     "test_js": "02-state/16/test-Customary-state-journey.js",
     "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/02-state/16/Customary-state-journey.html",
     "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/02-state/16"
+  },
+  {
+    "id": "05-01",
+    "chapter_name": "Directives",
+    "tutorial_name": "map",
+    "page_html": "05-directives/01/Customary-directives-map.html",
+    "test_ts": "05-directives/01/test-Customary-directives-map.ts",
+    "test_js": "05-directives/01/test-Customary-directives-map.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/05-directives/01/Customary-directives-map.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/05-directives/01"
+  },
+  {
+    "id": "05-02",
+    "chapter_name": "Directives",
+    "tutorial_name": "choose",
+    "page_html": "05-directives/02/Customary-directives-choose.html",
+    "test_ts": "05-directives/02/test-Customary-directives-choose.ts",
+    "test_js": "05-directives/02/test-Customary-directives-choose.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/05-directives/02/Customary-directives-choose.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/05-directives/02"
+  },
+  {
+    "id": "05-03",
+    "chapter_name": "Directives",
+    "tutorial_name": "when",
+    "page_html": "05-directives/03/Customary-directives-when.html",
+    "test_ts": "05-directives/03/test-Customary-directives-when.ts",
+    "test_js": "05-directives/03/test-Customary-directives-when.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/05-directives/03/Customary-directives-when.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/05-directives/03"
   }
 ]

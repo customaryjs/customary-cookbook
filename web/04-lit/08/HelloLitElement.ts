@@ -1,8 +1,6 @@
 import {html, LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import {findHTMLTemplateElementInDOMDocument} from "#customary/CustomaryHTMLTemplates.js";
-
 export class HelloLitElement extends LitElement {
     
     @property()
@@ -45,4 +43,8 @@ export class HelloLitElement extends LitElement {
         console.log(`attributeChangedCallback: ${property} ${oldValue} ${newValue}`);
     }
 
+}
+
+function findHTMLTemplateElementInDOMDocument(name: string): HTMLTemplateElement | undefined {
+    return document.querySelector(`template[data-customary-name='${name}']`) as HTMLTemplateElement ?? undefined;
 }

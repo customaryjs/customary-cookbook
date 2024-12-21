@@ -1,0 +1,32 @@
+<title>Attributes ~ with a component ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ with a component ~</p><br/>
+
+<script type="application/json"
+        data-customary-name="attributes-component"
+        data-customary-state="notes"
+>
+    ["C", "D", "E", "F", "G", "A", "B"]
+</script>
+
+<attributes-component id="one" chord="CEG"></attributes-component>
+<attributes-component id="two"></attributes-component>
+<attributes-component id="three"></attributes-component>
+
+<script type="importmap">{"imports": {
+    "@lit/reactive-element/": "../../../node_modules/@lit/reactive-element/",
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+}}</script>
+<script type="module">
+    import {Customary} from '#customary/Customary.js';
+    import {AttributesComponent} from "./AttributesComponent.js";
+
+    await Customary.define(AttributesComponent);
+</script>
+<script type="module">
+    document.getElementById('two').setAttribute('chord', 'DFA');
+    document.getElementById('three').chord = "EGB";
+</script>

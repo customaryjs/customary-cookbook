@@ -176,5 +176,45 @@
     "test_js": "05-directives/03/test-Customary-directives-when.js",
     "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/05-directives/03/Customary-directives-when.html",
     "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/05-directives/03"
+  },
+  {
+    "id": "06-01",
+    "chapter_name": "Attributes",
+    "tutorial_name": "from template",
+    "page_html": "06-attributes/01/Customary-attributes-template.html",
+    "test_ts": "06-attributes/01/test-Customary-attributes-template.ts",
+    "test_js": "06-attributes/01/test-Customary-attributes-template.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/01/Customary-attributes-template.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/01"
+  },
+  {
+    "id": "06-02",
+    "chapter_name": "Attributes",
+    "tutorial_name": "global HTML attributes",
+    "page_html": "06-attributes/02/Customary-attributes-global.html",
+    "test_ts": "06-attributes/02/test-Customary-attributes-global.ts",
+    "test_js": "06-attributes/02/test-Customary-attributes-global.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/02/Customary-attributes-global.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/02"
+  },
+  {
+    "id": "06-03",
+    "chapter_name": "Attributes",
+    "tutorial_name": "from options",
+    "page_html": "06-attributes/03/Customary-attributes-options.html",
+    "test_ts": "06-attributes/03/test-Customary-attributes-options.ts",
+    "test_js": "06-attributes/03/test-Customary-attributes-options.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/03/Customary-attributes-options.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/03"
+  },
+  {
+    "id": "06-04",
+    "chapter_name": "Attributes",
+    "tutorial_name": "with a component",
+    "page_html": "06-attributes/04/Customary-attributes-component.html",
+    "test_ts": "06-attributes/04/test-Customary-attributes-component.ts",
+    "test_js": "06-attributes/04/test-Customary-attributes-component.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/04/Customary-attributes-component.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/04"
   }
 ]

@@ -16,3 +16,7 @@ web/02-state/16/test-Customary-state-journey.ts
 web/05-directives/01/test-Customary-directives-map.ts
 web/05-directives/02/test-Customary-directives-choose.ts
 web/05-directives/03/test-Customary-directives-when.ts
+web/06-attributes/01/test-Customary-attributes-template.ts
+web/06-attributes/02/test-Customary-attributes-global.ts
+web/06-attributes/03/test-Customary-attributes-options.ts
+web/06-attributes/04/test-Customary-attributes-component.ts

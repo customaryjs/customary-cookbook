@@ -1,0 +1,23 @@
+<title>Attributes ~ from template ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ from template ~</p><br/>
+
+<attributes-template caption="RED" color="red"></attributes-template>
+<attributes-template caption="GREEN" color="green"></attributes-template>
+<attributes-template caption="BLUE" color="blue"></attributes-template>
+
+<template
+        data-customary-name="attributes-template"
+        data-customary-attributes="caption,color"
+>
+    <h1 style="color: ${this.color}">caption: ${this.caption}<br>color: ${this.color}</h1>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary-now": "../../../node_modules/customary/web/_script/now.js",
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+}}</script>
+<script type="module">import '#customary-now';</script>

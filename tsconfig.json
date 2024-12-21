@@ -8,9 +8,11 @@
       "lit/": ["./node_modules/lit/development/"],
       "mocha/*": ["./node_modules/mocha/*"]
     },
+    // ---- BEGIN lit decorators: @property @state @query
     // https://lit.dev/docs/components/decorators/#decorators-typescript
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+    // ---- END lit decorators: @property @state @query
     // ---- CODING STANDARDS TYPICAL FOR ALL PROJECTS START HERE ----
     "allowJs": false,
     "module": "esnext",

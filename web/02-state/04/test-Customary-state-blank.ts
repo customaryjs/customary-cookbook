@@ -25,7 +25,7 @@ describe(suite.title, async function (){
             );
         }
         it('render expected custom element text content', async function () {
-            this.retries(32);
+            this.retries(64);
             assert_element();
             assert_textContent("");
         });

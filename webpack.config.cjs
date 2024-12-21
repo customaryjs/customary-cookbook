@@ -25,6 +25,16 @@ module.exports = {
                 },
                 {
                     context: 'node_modules',
+                    from: '@lit/reactive-element/decorators/{property.js,}',
+                    to: 'node_modules/',
+                },
+                {
+                    context: 'node_modules',
+                    from: '@lit/reactive-element/{reactive-element.js,css-tag.js}',
+                    to: 'node_modules/',
+                },
+                {
+                    context: 'node_modules',
                     from: 'chai/chai.js',
                     to: 'node_modules/chai/',
                 },

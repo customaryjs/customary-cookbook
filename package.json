@@ -34,7 +34,7 @@
     },
     "dist": {
       "command": "npm run dist:*",
-      "dependencies": ["clean", "compile"]
+      "dependencies": ["compile-from-scratch"]
     },
     "dev": {
       "command": "npm run start-dev",
@@ -52,6 +52,10 @@
     "clean": {
       "dependencies": ["clean:dist", "clean:compile", "clean:src"]
     },
+    "compile-from-scratch": {
+      "command": "npm run compile",
+      "dependencies": ["dist-dependency:*", "clean"]
+    },
     "clean:dist": {"command": "rimraf .dist"},
     "clean:compile": {"command": "rimraf web/_script"},
     "clean:src": {"command": "rimraf --glob web/**/*.{d.ts,js.map,js}"},
@@ -65,6 +69,9 @@
     },
     "compile": {
       "command": "tsc --build --pretty --verbose"
+    },
+    "dist-dependency:*": {
+      "dependencies": ["../customary:dist"]
     }
   },
   "dependencies": {

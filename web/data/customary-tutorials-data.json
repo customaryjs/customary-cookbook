@@ -216,5 +216,15 @@
     "test_js": "06-attributes/04/test-Customary-attributes-component.js",
     "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/04/Customary-attributes-component.html",
     "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/04"
+  },
+  {
+    "id": "06-05",
+    "chapter_name": "Attributes",
+    "tutorial_name": "in composed templates",
+    "page_html": "06-attributes/05/Customary-attributes-composed.html",
+    "test_ts": "06-attributes/05/test-Customary-attributes-composed.ts",
+    "test_js": "06-attributes/05/test-Customary-attributes-composed.js",
+    "github_page_html": "https://github.com/customaryjs/customary-tutorials/blob/main/web/06-attributes/05/Customary-attributes-composed.html",
+    "github_dir": "https://github.com/customaryjs/customary-tutorials/tree/main/web/06-attributes/05"
   }
 ]

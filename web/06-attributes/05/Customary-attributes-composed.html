@@ -1,0 +1,34 @@
+<title>Attributes ~ in composed templates ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ in composed templates ~</p><br/>
+
+<attributes-composed call="I am not composed..."></attributes-composed>
+
+<nested-element response="I am not composed either."></nested-element>
+
+<attributes-composed call="Are we composed now?">
+    <nested-element response="Yes, yes we are."></nested-element>
+</attributes-composed>
+
+<template
+        data-customary-name="attributes-composed"
+        data-customary-attributes="call"
+>
+    <h1>${this.call}<slot></slot></h1>
+</template>
+
+<template
+        data-customary-name="nested-element"
+        data-customary-attributes="response"
+>
+    <i>${this.response}</i>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary-now": "../../../node_modules/customary/web/_script/now.js",
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+}}</script>
+<script type="module">import '#customary-now';</script>

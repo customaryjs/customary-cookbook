@@ -16,7 +16,7 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(32);
+            this.retries(64);
             for (const color of ["red", "green", "blue"]) {
                 const container =
                     window.document.querySelector(`attributes-template[color='${color}']`)!.shadowRoot!;

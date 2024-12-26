@@ -26,11 +26,13 @@
      * @type {CustomaryOptions}
      */
     globalThis['customary:attributes-options'] = {
+        config: {
+            attributes: ['task'],
+            state: ['color'],
+        },
         hooks: {
-            attributes: {
-                'task': {},
+            properties: {
                 'done': {type: Boolean},
-                'color': {state: true}
             },
             lifecycle: {
                 willUpdate: el => el.color = el.done ? 'done' : ''

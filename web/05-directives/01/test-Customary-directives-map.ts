@@ -13,8 +13,8 @@ describe(suite.title, async function (){
     before(() => window = globalThis.window.open(suite.subject_html)!);
     after(() => window.close());
 
-    describe('on page load', async function () {
-        it('render expected custom element text content', async function () {
+    describe('happy day', async function () {
+        it('looks good', async function () {
             this.retries(32);
             for (const s of ["0: Peas", "1: Carrots", "2: Tomatoes"]) {
                 CustomaryTestingQueries.findByTextContent(

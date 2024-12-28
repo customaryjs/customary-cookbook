@@ -178,10 +178,9 @@
 <script type="importmap">{"imports": {
     "highlight.js/": "./../node_modules/highlight.js/es/",
     "#customary-cookbook/": "./",
-    "#customary/fetch/": "./../node_modules/customary/web/_script/fetch/",
-    "#customary-now": "./../node_modules/customary/web/_script/now.js",
+    "#customary": "./../node_modules/customary/web/_script/now.js",
     "#customary/": "./../node_modules/customary/web/_script/",
-    "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+    "#customary/lit": "./../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
 <script type="module">
     import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
@@ -238,16 +237,17 @@
     import html from 'highlight.js/languages/xml.js';
     highlight.registerLanguage('html', html);
 
-    import {FetchText_DOM_singleton} from '#customary/fetch/FetchText.js';
     async function viewSource(el) {
-        const src = el.getAttribute('src');
-        if (!src) return;
+        const location = el.getAttribute('src');
+        if (!location) return;
+        const response = await fetch(location);
+        const text = await response.text();
         const codeElement = el.shadowRoot.getElementById("source_html");
-        codeElement.textContent = await FetchText_DOM_singleton.fetchText(src);
+        codeElement.textContent = text;
         delete codeElement.dataset.highlighted;
         highlight.highlightElement(codeElement);
     }
 </script>
-<script type="module">import '#customary-now';</script>
+<script type="module">import '#customary';</script>
 <link rel="stylesheet" href="./z.css" />
 </body>

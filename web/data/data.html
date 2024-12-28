@@ -19,9 +19,9 @@ min-height: 98vh;
 
 <script type="importmap">{"imports": {
     "#customary-cookbook/": "../",
-    "#customary-now": "../../../node_modules/customary/web/_script/now.js",
+    "#customary": "../../../node_modules/customary/web/_script/now.js",
     "#customary/": "../../node_modules/customary/web/_script/",
-    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
 <script type="module">
     import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
@@ -34,6 +34,6 @@ min-height: 98vh;
         hooks: {events: {'button': generateData}}
     };
 </script>
-<script type="module">import '#customary-now';</script>
+<script type="module">import '#customary';</script>
 
 </body></html>

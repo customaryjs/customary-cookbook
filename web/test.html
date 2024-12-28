@@ -21,15 +21,12 @@
             "mocha": "./../node_modules/mocha/mocha.js",
             "mocha.css": "./../node_modules/mocha/mocha.css",
             "#customary-cookbook/": "./",
-            "#customary-now": "./../node_modules/customary/web/_script/now.js",
+            "#customary-testing": "./../node_modules/customary/web/_script/now.js",
+            "#customary": "./../node_modules/customary/web/_script/now.js",
             "#customary/": "./../node_modules/customary/web/_script/",
-            "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+            "#customary/lit": "./../node_modules/customary/.dist/bundled/customary-library.mjs"
         }
     }
-</script>
-<script type="module">
-    import {adoptCSSStylesheets} from "#customary/cssstylesheet/CSSStyleSheetAdopter.js";
-    await adoptCSSStylesheets(import.meta.resolve('mocha.css'));
 </script>
 <script type="module">
     // https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
@@ -39,11 +36,17 @@
 </script>
 <script type="module">
     import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
-    async function connected() {
+
+    async function import_tests() {
         const data = await CustomaryCookbookData.loadData();
         for (const test of data.tests) {
             await import(`./${test}`);
         }
+    }
+
+    //
+    async function connected() {
+        await import_tests();
         const params = new URLSearchParams(window.location.search);
         if (params.has("run")) {
             run_unit_tests();
@@ -53,14 +56,22 @@
         document.getElementById('mocha').replaceChildren();
         mocha.run();
     }
+    const cssLocation = import.meta.resolve('mocha.css');
+    /**
+     * @type {CustomaryDeclaration}
+     */
     globalThis['customary:test-runner'] = {
+        config: {
+            define: {fontLocation: cssLocation}
+        },
         hooks: {
             lifecycle: {connected: connected},
             events: {'button': run_unit_tests}
         }
     };
+    //
 </script>
-<script type="module">import '#customary-now';</script>
+<script type="module">import '#customary';</script>
 
 </body>
 

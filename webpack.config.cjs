@@ -12,23 +12,27 @@ module.exports = {
                     from: 'web/',
                 },
                 {
+                    // TODO source map in bundled is fire, maybe no need to ship code
                     from: 'node_modules/customary/.dist/development/',
                     to: 'node_modules/customary/',
                 },
                 {
-                    from: 'node_modules/customary/.dist/bundled/customary-now.mjs',
+                    from: 'node_modules/customary/.dist/bundled/customary.mjs',
                     to: 'node_modules/customary/.dist/bundled/',
                 },
                 {
-                    from: 'node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs',
-                    to: 'node_modules/lit-for-customary/',
+                    // TODO customary-testing
+                    from: 'node_modules/customary/.dist/bundled/customary-library.mjs',
+                    to: 'node_modules/customary/.dist/bundled/',
                 },
                 {
+                    // surprisingly, customary bundled does not ship lit decorators
                     context: 'node_modules',
                     from: '@lit/reactive-element/decorators/{property.js,}',
                     to: 'node_modules/',
                 },
                 {
+                    // surprisingly, customary bundled does not export lit classes
                     context: 'node_modules',
                     from: '@lit/reactive-element/{reactive-element.js,css-tag.js}',
                     to: 'node_modules/',
@@ -63,24 +67,29 @@ module.exports = {
             test: /\.html$/,
             rules: [
                 {
-                    search: /"#customary-now": "(.*)",\s*"#customary\/": ".*",\s*"lit-for-customary": ".*"\s*}}/m,
-                    replace: '"#customary-now": "$1"\n}}',
+                    // code: only used in development (live compile)
+                    search: /,?\s*\n\s+"#customary\/": ".*"/m,
+                    replace: '',
                 },
                 {
-                    search: /node_modules\/customary\/web\/_script\/now.js/g,
-                    replace: 'node_modules/customary/.dist/bundled/customary-now.mjs',
+                    // code: only used in development (bundled mjs has lit essentials)
+                    search: /,?\s*\n\s+"#customary\/lit": ".*"/m,
+                    replace: '',
                 },
                 {
-                    search: /node_modules\/customary\/node_modules\/lit-for-customary\/.dist\/bundled/g,
-                    replace: 'node_modules/lit-for-customary',
+                    // code: from development (live compile) to production (bundled)
+                    search: /("#customary": ".*)node_modules\/customary\/web\/_script\/now.js/g,
+                    replace: '$1node_modules/customary/.dist/bundled/customary.mjs',
                 },
                 {
+                    // TODO customary-testing
+                    search: /("#customary-testing": ".*)node_modules\/customary\/web\/_script\/now.js/g,
+                    replace: '$1node_modules/customary/.dist/bundled/customary-library.mjs',
+                },
+                {
+                    // node_modules: from development (sibling) to production (child)
                     search: / "(.*)..\/node_modules(.*)"/g,
                     replace: ' "$1node_modules$2"',
-                },
-                {
-                    search: /customary\/web\/_script/g,
-                    replace: 'customary/_script',
                 },
             ]
         }]),

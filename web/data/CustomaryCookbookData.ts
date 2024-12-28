@@ -1,10 +1,8 @@
-import {FetchText_DOM_singleton} from "#customary/fetch/FetchText.js";
-
 export class CustomaryCookbookData {
     static async generateData() {
-        const fetchText = FetchText_DOM_singleton;
         const location = './tests.txt';
-        const text = await fetchText.fetchText(import.meta.resolve(location));
+        const response = await fetch(import.meta.resolve(location));
+        const text = await response.text();
         const lines = text.split('\n')
             .map(s=>s.trim().replace('web/', ''))
             .filter(s=>s.length);
@@ -12,10 +10,10 @@ export class CustomaryCookbookData {
     }
 
     static async loadData(): Promise<Data> {
-        const fetchText = FetchText_DOM_singleton;
         const location = './customary-cookbook-data.json';
-        const text = await fetchText.fetchText(import.meta.resolve(location));
-        return new Data(JSON.parse(text));
+        const response = await fetch(import.meta.resolve(location));
+        const json = await response.json();
+        return new Data(json);
     }
 }
 
@@ -116,8 +114,9 @@ function test_ts_to_dir(s: string) {
 }
 
 async function load_page_content(page_html: string) {
-    return await FetchText_DOM_singleton.fetchText(
-        import.meta.resolve('../' + page_html));
+    const location = '../' + page_html;
+    const response = await fetch(import.meta.resolve(location));
+    return await response.text();
 }
 
 function from_content(content: string) {

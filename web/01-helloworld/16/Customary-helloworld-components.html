@@ -5,11 +5,12 @@
 ~ with components ~
 
 <script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/web/_script/now.js",
     "#customary/": "../../../node_modules/customary/web/_script/",
-    "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
 <script type="module">
-    import {Customary} from '#customary/Customary.js';
+    import {Customary} from '#customary';
     import {HelloWorld} from "./HelloWorld.js";
     import {HelloWorldPart1} from "./HelloWorldPart1.js";
     import {HelloWorldPart2} from "./HelloWorldPart2.js";

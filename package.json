@@ -98,7 +98,7 @@
   },
   "imports": {
     "#customary-cookbook/*.js": "./web/*.ts",
-    "#customary-now": "./node_modules/customary/src/now.ts",
+    "#customary": "./node_modules/customary/src/now.ts",
     "#customary/*.js": "./node_modules/customary/src/*.ts"
   },
   "engines": {

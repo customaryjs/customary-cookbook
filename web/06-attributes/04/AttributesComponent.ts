@@ -1,8 +1,8 @@
-import {CustomaryLitElement, CustomaryOptions} from "#customary/index.js";
+import {CustomaryElement, CustomaryOptions} from "#customary";
 import {property} from "@lit/reactive-element/decorators/property.js";
 
 // noinspection JSUnusedGlobalSymbols
-export class AttributesComponent extends CustomaryLitElement {
+export class AttributesComponent extends CustomaryElement {
 
 	/*
 		!!! IMPORTANT !!!

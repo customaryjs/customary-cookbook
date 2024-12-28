@@ -4,14 +4,14 @@
 
 <p>~ with a list ~</p><br/>
 
-<tutorial-card></tutorial-card>
+<recipe-card></recipe-card>
 
-<template data-customary-name="tutorial-card">
+<template data-customary-name="recipe-card">
   <div class="d">
     <map-- items="state">
     <div class="c">
-      <div class="h">Tutorial</div><div>${value.id}</div>
-      <div class="h">Page</div><div>${value.page_html}</div>
+      <div class="h">Id</div><div>${value.id}</div>
+      <div class="h">Recipe</div><div>${value.page_html}</div>
       <div class="h">Test</div><div>${value.test_ts}</div>
     </div>
     </map-->
@@ -38,15 +38,15 @@
 <script type="module">
   const statePromise = fetchState();
 
-  globalThis['customary:tutorial-card'] = {hooks: {
+  globalThis['customary:recipe-card'] = {hooks: {
     lifecycle: {connected}
   }};
   async function connected(el) {
-    el.setState((await statePromise).tutorials);
+    el.setState((await statePromise).items);
   }
 
   async function fetchState() {
-    return {tutorials:[
+    return {items:[
       {
         id: "02-06",
         page_html: "02-state/06/Customary-state-list.html",

@@ -5,11 +5,11 @@
 </head>
 <body>
 
-<customary-tutorials-navigator></customary-tutorials-navigator>
+<customary-cookbook-navigator></customary-cookbook-navigator>
 
 <template data-customary-name="external-link-symbol">&#x2B77;</template>
 
-<template data-customary-name="customary-tutorials-navigator">
+<template data-customary-name="customary-cookbook-navigator">
 
 <div class="page-flex-container">
 
@@ -46,23 +46,23 @@
 
     </div>
 
-    <div class="navigator-right-half navigator-flex-item tutorial-view-container" style="flex-basis: 85%">
-        <div class="tutorial-header" style="
+    <div class="navigator-right-half navigator-flex-item recipe-view-container" style="flex-basis: 85%">
+        <div class="recipe-header" style="
             flex-basis: 10%;
             display: flex; justify-content: space-between; align-items: center;
         ">
             <button class="previous" style="flex-basis: 25%">${state?.previous_name} &lt;&lt;</button>
             <div style="flex-grow: 1">
-                <div class="tutorial-chapter">
+                <div class="recipe-chapter">
                     ${state?.chapter_name}
                 </div>
-                <div class="tutorial-name">
-                    ${state?.tutorial_name}
+                <div class="recipe-name">
+                    ${state?.recipe_name}
                 </div>
             </div>
             <button class="next" style="flex-basis: 25%">&gt;&gt; ${state?.next_name}</button>
         </div>
-        <div class="tutorial-vision-container">
+        <div class="recipe-vision-container">
             <iframe src="${state?.html}"></iframe>
             <view-source src="${state?.html}"></view-source>
         </div>
@@ -124,26 +124,26 @@
         margin: 40px;
     }
 
-    .tutorial-view-container {
+    .recipe-view-container {
         display: flex;
         flex-direction: column;
         align-items: stretch;
     }
-    .tutorial-header {
+    .recipe-header {
         margin-bottom: 10px;
         padding-bottom: 10px;
         border-bottom-width: 2px;
         border-bottom-color: grey;
     }
-    .tutorial-chapter {
+    .recipe-chapter {
         font-size: xxx-large;
         text-align: center;
     }
-    .tutorial-name {
+    .recipe-name {
         font-size: xx-large;
         text-align: center;
     }
-    .tutorial-vision-container {
+    .recipe-vision-container {
         flex-grow: 1;
         display: flex;
         align-items: stretch;
@@ -177,18 +177,18 @@
 
 <script type="importmap">{"imports": {
     "highlight.js/": "./../node_modules/highlight.js/es/",
-    "#customary-tutorials/": "./",
+    "#customary-cookbook/": "./",
     "#customary/fetch/": "./../node_modules/customary/web/_script/fetch/",
     "#customary-now": "./../node_modules/customary/web/_script/now.js",
     "#customary/": "./../node_modules/customary/web/_script/",
     "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-    import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
+    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
 
-    const dataPromise = CustomaryTutorialsData.loadData();
+    const dataPromise = CustomaryCookbookData.loadData();
 
-    globalThis['customary:customary-tutorials-navigator'] = {
+    globalThis['customary:customary-cookbook-navigator'] = {
         hooks: {
             lifecycle: {connected: use_param_id},
             events: {
@@ -202,16 +202,16 @@
         const params = new URLSearchParams(window.location.search);
         const idParam = params.get("id") ?? '01-01';
         const data = await dataPromise;
-        const tutorial = data.getNavigationData(idParam);
+        const recipe = data.getNavigationData(idParam);
         el.setState(state => ({
-            "tutorial_name": "",
+            "recipe_name": "",
             "previous_name": "",
             "next_name": "",
-            ...tutorial,
-            "html": tutorial.page_html,
-            "source_html": tutorial.github_page_html,
-            "source_everything": tutorial.github_dir,
-            "unit_test": "./test.html?grep=" + encodeURIComponent(tutorial.page_html),
+            ...recipe,
+            "html": recipe.page_html,
+            "source_html": recipe.github_page_html,
+            "source_everything": recipe.github_dir,
+            "unit_test": "./test.html?grep=" + encodeURIComponent(recipe.page_html),
         }));
     }
 

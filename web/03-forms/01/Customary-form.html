@@ -15,8 +15,8 @@
 <template data-customary-name="client-side">
   <form id="entry" class="framed">
     <div class="tabled">
-      <label for="recipe">Recipe</label><input id="recipe" name="recipe" value="${state.recipe}" />
-      <label for="id">Id</label><input id="id" name="id" value="${state.id}"/>
+      <label for="recipe">Recipe</label><input id="recipe" name="recipe" value="${this.state.recipe}" />
+      <label for="id">Id</label><input id="id" name="id" value="${this.state.id}"/>
     </div>
     <div class="button-row"><input type="submit" /></div>
   </form>
@@ -33,7 +33,7 @@
 
 <template data-customary-name="server-side">
   <dialog style="border-style: dashed" open>
-    <pre>${view.json}</pre>
+    <pre>${this.json}</pre>
     <form method="dialog">
       <div class="button-row"><button>close</button></div>
     </form>
@@ -59,30 +59,41 @@
   "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
+  /**
+   * @type {CustomaryDeclaration}
+   */
   globalThis['customary:client-side'] = {hooks: {events: {
     'form': (el, event) => {
-        el.setState(Object.fromEntries(new FormData(event.target, event.submitter)));
-        el.dispatchEvent(new CustomEvent('submitted', {composed: true}));
-        event.preventDefault();
+      el.state = Object.fromEntries(new FormData(event.target, event.submitter));
+      el.dispatchEvent(new CustomEvent('submitted', {composed: true}));
+      event.preventDefault();
     }
   }}};
 
+  /**
+   * @type {CustomaryDeclaration}
+   */
   globalThis['customary:recipe-page'] = {hooks: {events: [{
     type: 'submitted',
     listener: el =>
-        el.shadowRoot.querySelector('server-side').setState(
+        el.shadowRoot.querySelector('server-side').state =
           el.shadowRoot.querySelector('client-side').state
-        )
   }]}};
 
-  globalThis['customary:server-side'] = {hooks: {
-    render: {
-      view: state => ({json: JSON.stringify(state, undefined, 4)})
-    },
-    lifecycle: {
-      // FIXME should be "updated" instead, and remove "open" attribute from element
-      firstUpdated: el => el.shadowRoot.querySelector('dialog').open = !!el.state
+  /**
+   * @type {CustomaryDeclaration}
+   */
+  globalThis['customary:server-side'] = {
+    config: {state: ['json']},
+    hooks: {
+      changes: {
+        state: el => {el.json = JSON.stringify(el.state, undefined, 4)}
+      },
+      lifecycle: {
+        // FIXME should be "updated" instead, and remove "open" attribute from element
+        firstUpdated: el => el.shadowRoot.querySelector('dialog').open = !!el.state
+      }
     }
-  }};
+  };
 </script>
 <script type="module">import '#customary-now';</script>

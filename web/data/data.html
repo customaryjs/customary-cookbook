@@ -4,9 +4,9 @@ Customary Cookbook Data
 
 </title></head><body>
 
-<customary-tutorials-data></customary-tutorials-data>
+<customary-cookbook-data></customary-cookbook-data>
 
-<template data-customary-name="customary-tutorials-data">
+<template data-customary-name="customary-cookbook-data">
     <div style="
 display: flex;
 flex-direction: column;
@@ -18,19 +18,19 @@ min-height: 98vh;
 </template>
 
 <script type="importmap">{"imports": {
-    "#customary-tutorials/": "../",
+    "#customary-cookbook/": "../",
     "#customary-now": "../../../node_modules/customary/web/_script/now.js",
     "#customary/": "../../node_modules/customary/web/_script/",
     "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-    import {CustomaryTutorialsData} from "#customary-tutorials/data/CustomaryTutorialsData.js";
+    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
     async function generateData(el) {
-        const data = await CustomaryTutorialsData.generateData();
+        const data = await CustomaryCookbookData.generateData();
         el.shadowRoot.querySelector('textarea').value =
             JSON.stringify(data, undefined, 4);
     }
-    globalThis['customary:customary-tutorials-data'] = {
+    globalThis['customary:customary-cookbook-data'] = {
         hooks: {events: {'button': generateData}}
     };
 </script>

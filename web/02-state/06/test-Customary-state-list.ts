@@ -17,7 +17,7 @@ describe(suite.title, async function (){
         it('render expected custom element text content', async function () {
             this.retries(32);
             CustomaryTestingQueries.findByTextContent(
-                window.document.querySelector('tutorial-card')!.shadowRoot!,
+                window.document.querySelector('recipe-card')!.shadowRoot!,
                 "02-state/06/test-Customary-state-list.ts",
                 {selector: 'div.c > div'}
             );

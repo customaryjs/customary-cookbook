@@ -5,9 +5,9 @@
 
 <p>~ with setState ~</p><br/>
 
-<tutorial-card></tutorial-card>
+<recipe-card></recipe-card>
 
-<script type="application/json" data-customary-name="tutorial-card">
+<script type="application/json" data-customary-name="recipe-card">
   {
     "id": "02-02",
     "page_html": "02-state/02/Customary-state-setState.html",
@@ -15,10 +15,10 @@
   }
 </script>
 
-<template data-customary-name="tutorial-card">
+<template data-customary-name="recipe-card">
   <div class="c">
-    <div class="h">Tutorial</div><div>${state.id}</div>
-    <div class="h">Page</div><div>${state.page_html}</div>
+    <div class="h">Id</div><div>${state.id}</div>
+    <div class="h">Recipe</div><div>${state.page_html}</div>
     <div class="h">Test</div><div>${state.test_ts}</div>
   </div>
   <button>Set state</button>
@@ -37,7 +37,7 @@
   "lit-for-customary": "../../../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
 }}</script>
 <script type="module">
-  globalThis['customary:tutorial-card'] = {
+  globalThis['customary:recipe-card'] = {
     hooks: {
       events: {'button': el => el.setState({test_ts: 'Hello Customary !'})},
     }

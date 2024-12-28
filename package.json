@@ -1,5 +1,5 @@
 {
-  "name": "customary-tutorials",
+  "name": "customary-cookbook",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "// ---- private ---- //": "//",
     "dist:*": "wireit",
     "dist:development": "wireit",
+    "clean:src": "wireit",
     "compile-watch": "wireit",
     "compile": "wireit"
   },
@@ -96,7 +97,7 @@
     "wireit": "^0.14.9"
   },
   "imports": {
-    "#customary-tutorials/*.js": "./web/*.ts",
+    "#customary-cookbook/*.js": "./web/*.ts",
     "#customary-now": "./node_modules/customary/src/now.ts",
     "#customary/*.js": "./node_modules/customary/src/*.ts"
   },

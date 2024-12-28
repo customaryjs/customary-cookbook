@@ -16,7 +16,7 @@ describe(suite.title, async function (){
     describe('on page load', async function () {
         let container: ShadowRoot;
         function assert_element() {
-            container = window.document.querySelector('tutorial-card')!.shadowRoot!;
+            container = window.document.querySelector('recipe-card')!.shadowRoot!;
         }
         function assert_textContent(textContent: string) {
             CustomaryTestingQueries.findByTextContent(

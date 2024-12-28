@@ -1,8 +1,8 @@
 <!doctype html>
 
-<customary-tutorials></customary-tutorials>
+<customary-cookbook></customary-cookbook>
 
-<template data-customary-name="customary-tutorials">
+<template data-customary-name="customary-cookbook">
     <div>
         ${map(state, value => html`
         <p><a target="_blank" href="${value.file}">${value.file}</a></p>
@@ -15,7 +15,7 @@
 <script type="importmap">
     {
         "imports": {
-            "#customary-tutorials/": "./",
+            "#customary-cookbook/": "./",
             "#customary/fetch/": "./../node_modules/customary/web/_script/fetch/",
             "#customary-now": "./../node_modules/customary/web/_script/now.js",
             "#customary/": "./../node_modules/customary/web/_script/",
@@ -25,12 +25,12 @@
 </script>
 
 <script type="module">
-    import {CustomaryTutorialsData} from '#customary-tutorials/data/CustomaryTutorialsData.js';
+    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
     async function loadData(el) {
-        const data = await CustomaryTutorialsData.loadData();
+        const data = await CustomaryCookbookData.loadData();
         const state = data.pages.map(file => ({file}));
         el.setState(state);
     }
-    globalThis['customary:customary-tutorials'] = {hooks: {lifecycle: {connected: loadData}}};
+    globalThis['customary:customary-cookbook'] = {hooks: {lifecycle: {connected: loadData}}};
 </script>
 <script type="module">import '#customary-now';</script>

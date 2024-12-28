@@ -2,9 +2,9 @@
 
 <h1>Customary State</h1>
 
-<tutorial-card></tutorial-card>
+<recipe-card></recipe-card>
 
-<script type="application/json" data-customary-name="tutorial-card">
+<script type="application/json" data-customary-name="recipe-card">
   {
     "id": "02-01",
     "page_html": "02-state/01/Customary-state.html",
@@ -12,10 +12,10 @@
   }
 </script>
 
-<template data-customary-name="tutorial-card">
+<template data-customary-name="recipe-card">
   <div class="c">
-    <div class="h">Tutorial</div><div>${state.id}</div>
-    <div class="h">Page</div><div>${state.page_html}</div>
+    <div class="h">Id</div><div>${state.id}</div>
+    <div class="h">Recipe</div><div>${state.page_html}</div>
     <div class="h">Test</div><div>${state.test_ts}</div>
   </div>
   <style>

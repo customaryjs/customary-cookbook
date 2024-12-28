@@ -1,0 +1,230 @@
+[
+  {
+    "id": "01-01",
+    "chapter_name": "Hello World",
+    "page_html": "01-helloworld/01/Customary-helloworld.html",
+    "test_ts": "01-helloworld/01/test-Customary-helloworld.ts",
+    "test_js": "01-helloworld/01/test-Customary-helloworld.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/01/Customary-helloworld.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/01"
+  },
+  {
+    "id": "01-02",
+    "chapter_name": "Hello World",
+    "recipe_name": "with multiple elements",
+    "page_html": "01-helloworld/02/Customary-helloworld-multiple.html",
+    "test_ts": "01-helloworld/02/test-Customary-helloworld-multiple.ts",
+    "test_js": "01-helloworld/02/test-Customary-helloworld-multiple.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/02/Customary-helloworld-multiple.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/02"
+  },
+  {
+    "id": "01-03",
+    "chapter_name": "Hello World",
+    "recipe_name": "with an attribute",
+    "page_html": "01-helloworld/03/Customary-helloworld-attribute.html",
+    "test_ts": "01-helloworld/03/test-Customary-helloworld-attribute.ts",
+    "test_js": "01-helloworld/03/test-Customary-helloworld-attribute.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/03/Customary-helloworld-attribute.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/03"
+  },
+  {
+    "id": "01-04",
+    "chapter_name": "Hello World",
+    "recipe_name": "with a slot",
+    "page_html": "01-helloworld/04/Customary-helloworld-slot.html",
+    "test_ts": "01-helloworld/04/test-Customary-helloworld-slot.ts",
+    "test_js": "01-helloworld/04/test-Customary-helloworld-slot.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/04/Customary-helloworld-slot.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/04"
+  },
+  {
+    "id": "01-06",
+    "chapter_name": "Hello World",
+    "recipe_name": "with an external template",
+    "page_html": "01-helloworld/06/Customary-helloworld-external.html",
+    "test_ts": "01-helloworld/06/test-Customary-helloworld-external.ts",
+    "test_js": "01-helloworld/06/test-Customary-helloworld-external.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/06/Customary-helloworld-external.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/06"
+  },
+  {
+    "id": "01-10",
+    "chapter_name": "Hello World",
+    "recipe_name": "with an event",
+    "page_html": "01-helloworld/10/Customary-helloworld-event.html",
+    "test_ts": "01-helloworld/10/test-Customary-helloworld-event.ts",
+    "test_js": "01-helloworld/10/test-Customary-helloworld-event.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/10/Customary-helloworld-event.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/10"
+  },
+  {
+    "id": "01-12",
+    "chapter_name": "Hello World",
+    "recipe_name": "with createElement",
+    "page_html": "01-helloworld/12/Customary-helloworld-createElement.html",
+    "test_ts": "01-helloworld/12/test-Customary-helloworld-createElement.ts",
+    "test_js": "01-helloworld/12/test-Customary-helloworld-createElement.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/12/Customary-helloworld-createElement.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/12"
+  },
+  {
+    "id": "01-16",
+    "chapter_name": "Hello World",
+    "recipe_name": "with components",
+    "page_html": "01-helloworld/16/Customary-helloworld-components.html",
+    "test_ts": "01-helloworld/16/test-Customary-helloworld-components.ts",
+    "test_js": "01-helloworld/16/test-Customary-helloworld-components.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/01-helloworld/16/Customary-helloworld-components.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/01-helloworld/16"
+  },
+  {
+    "id": "02-01",
+    "chapter_name": "State",
+    "page_html": "02-state/01/Customary-state.html",
+    "test_ts": "02-state/01/test-Customary-state.ts",
+    "test_js": "02-state/01/test-Customary-state.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/01/Customary-state.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/01"
+  },
+  {
+    "id": "02-02",
+    "chapter_name": "State",
+    "recipe_name": "with setState",
+    "page_html": "02-state/02/Customary-state-setState.html",
+    "test_ts": "02-state/02/test-Customary-state-setState.ts",
+    "test_js": "02-state/02/test-Customary-state-setState.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/02/Customary-state-setState.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/02"
+  },
+  {
+    "id": "02-03",
+    "chapter_name": "State",
+    "recipe_name": "with setState and a function",
+    "page_html": "02-state/03/Customary-state-setState-function.html",
+    "test_ts": "02-state/03/test-Customary-state-setState-function.ts",
+    "test_js": "02-state/03/test-Customary-state-setState-function.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/03/Customary-state-setState-function.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/03"
+  },
+  {
+    "id": "02-04",
+    "chapter_name": "State",
+    "recipe_name": "with blank state",
+    "page_html": "02-state/04/Customary-state-blank.html",
+    "test_ts": "02-state/04/test-Customary-state-blank.ts",
+    "test_js": "02-state/04/test-Customary-state-blank.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/04/Customary-state-blank.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/04"
+  },
+  {
+    "id": "02-05",
+    "chapter_name": "State",
+    "recipe_name": "when connected",
+    "page_html": "02-state/05/Customary-state-connected.html",
+    "test_ts": "02-state/05/test-Customary-state-connected.ts",
+    "test_js": "02-state/05/test-Customary-state-connected.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/05/Customary-state-connected.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/05"
+  },
+  {
+    "id": "02-06",
+    "chapter_name": "State",
+    "recipe_name": "with a list",
+    "page_html": "02-state/06/Customary-state-list.html",
+    "test_ts": "02-state/06/test-Customary-state-list.ts",
+    "test_js": "02-state/06/test-Customary-state-list.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/06/Customary-state-list.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/06"
+  },
+  {
+    "id": "02-16",
+    "chapter_name": "State",
+    "recipe_name": "A Customary Journey",
+    "page_html": "02-state/16/Customary-state-journey.html",
+    "test_ts": "02-state/16/test-Customary-state-journey.ts",
+    "test_js": "02-state/16/test-Customary-state-journey.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/02-state/16/Customary-state-journey.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/02-state/16"
+  },
+  {
+    "id": "05-01",
+    "chapter_name": "Directives",
+    "recipe_name": "map",
+    "page_html": "05-directives/01/Customary-directives-map.html",
+    "test_ts": "05-directives/01/test-Customary-directives-map.ts",
+    "test_js": "05-directives/01/test-Customary-directives-map.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-directives/01/Customary-directives-map.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-directives/01"
+  },
+  {
+    "id": "05-02",
+    "chapter_name": "Directives",
+    "recipe_name": "choose",
+    "page_html": "05-directives/02/Customary-directives-choose.html",
+    "test_ts": "05-directives/02/test-Customary-directives-choose.ts",
+    "test_js": "05-directives/02/test-Customary-directives-choose.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-directives/02/Customary-directives-choose.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-directives/02"
+  },
+  {
+    "id": "05-03",
+    "chapter_name": "Directives",
+    "recipe_name": "when",
+    "page_html": "05-directives/03/Customary-directives-when.html",
+    "test_ts": "05-directives/03/test-Customary-directives-when.ts",
+    "test_js": "05-directives/03/test-Customary-directives-when.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-directives/03/Customary-directives-when.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-directives/03"
+  },
+  {
+    "id": "06-01",
+    "chapter_name": "Attributes",
+    "recipe_name": "from template",
+    "page_html": "06-attributes/01/Customary-attributes-template.html",
+    "test_ts": "06-attributes/01/test-Customary-attributes-template.ts",
+    "test_js": "06-attributes/01/test-Customary-attributes-template.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/06-attributes/01/Customary-attributes-template.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/06-attributes/01"
+  },
+  {
+    "id": "06-02",
+    "chapter_name": "Attributes",
+    "recipe_name": "global HTML attributes",
+    "page_html": "06-attributes/02/Customary-attributes-global.html",
+    "test_ts": "06-attributes/02/test-Customary-attributes-global.ts",
+    "test_js": "06-attributes/02/test-Customary-attributes-global.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/06-attributes/02/Customary-attributes-global.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/06-attributes/02"
+  },
+  {
+    "id": "06-03",
+    "chapter_name": "Attributes",
+    "recipe_name": "from options",
+    "page_html": "06-attributes/03/Customary-attributes-options.html",
+    "test_ts": "06-attributes/03/test-Customary-attributes-options.ts",
+    "test_js": "06-attributes/03/test-Customary-attributes-options.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/06-attributes/03/Customary-attributes-options.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/06-attributes/03"
+  },
+  {
+    "id": "06-04",
+    "chapter_name": "Attributes",
+    "recipe_name": "with a component",
+    "page_html": "06-attributes/04/Customary-attributes-component.html",
+    "test_ts": "06-attributes/04/test-Customary-attributes-component.ts",
+    "test_js": "06-attributes/04/test-Customary-attributes-component.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/06-attributes/04/Customary-attributes-component.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/06-attributes/04"
+  },
+  {
+    "id": "06-05",
+    "chapter_name": "Attributes",
+    "recipe_name": "in composed templates",
+    "page_html": "06-attributes/05/Customary-attributes-composed.html",
+    "test_ts": "06-attributes/05/test-Customary-attributes-composed.ts",
+    "test_js": "06-attributes/05/test-Customary-attributes-composed.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/06-attributes/05/Customary-attributes-composed.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/06-attributes/05"
+  }
+]

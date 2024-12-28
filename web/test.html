@@ -20,7 +20,7 @@
             "chai": "./../node_modules/chai/chai.js",
             "mocha": "./../node_modules/mocha/mocha.js",
             "mocha.css": "./../node_modules/mocha/mocha.css",
-            "#customary-tutorials/": "./",
+            "#customary-cookbook/": "./",
             "#customary-now": "./../node_modules/customary/web/_script/now.js",
             "#customary/": "./../node_modules/customary/web/_script/",
             "lit-for-customary": "./../node_modules/customary/node_modules/lit-for-customary/.dist/bundled/lit-for-customary.mjs"
@@ -38,9 +38,9 @@
     mocha.cleanReferencesAfterRun(false);
 </script>
 <script type="module">
-    import {CustomaryTutorialsData} from '#customary-tutorials/data/CustomaryTutorialsData.js';
+    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
     async function connected() {
-        const data = await CustomaryTutorialsData.loadData();
+        const data = await CustomaryCookbookData.loadData();
         for (const test of data.tests) {
             await import(`./${test}`);
         }

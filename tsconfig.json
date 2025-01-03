@@ -4,7 +4,7 @@
     "rootDir": "web",
     "paths": {
       "#customary": ["./node_modules/customary/src/index.ts"],
-      "#customary-testing": ["./node_modules/customary/src/index.ts"],
+      "#customary-testing": ["./node_modules/customary-testing/src/index.ts"],
       "#customary/*": ["./node_modules/customary/src/*"], // live compile of this!!
       "chai/*": ["./node_modules/chai/*"],
       "lit/": ["./node_modules/lit/development/"],

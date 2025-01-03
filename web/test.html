@@ -1,18 +1,14 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>
 
-    Customary Cookbook tests
+    customary-cookbook tests
 
 </title></head><body>
 
-<h1>Customary Cookbook 👩‍🔬🔬 tests</h1>
-
-<template data-customary-name="test-runner">
-<button autofocus>Run tests</button>
+<template data-customary-name="tests-customary-cookbook">
+    <tester-customary title="Customary Cookbook"></tester-customary>
 </template>
 
-<test-runner></test-runner>
-
-<div id="mocha"></div>
+<tests-customary-cookbook></tests-customary-cookbook>
 
 <script type="importmap">
     {
@@ -21,19 +17,19 @@
             "mocha": "./../node_modules/mocha/mocha.js",
             "mocha.css": "./../node_modules/mocha/mocha.css",
             "#customary-cookbook/": "./",
-            "#customary-testing": "./../node_modules/customary/web/_script/now.js",
+            "#customary-testing": "./../node_modules/customary-testing/src/index.js",
+            "#customary-testing/": "./../node_modules/customary-testing/src/",
             "#customary": "./../node_modules/customary/web/_script/now.js",
             "#customary/": "./../node_modules/customary/web/_script/",
             "#customary/lit": "./../node_modules/customary/.dist/bundled/customary-library.mjs"
         }
     }
 </script>
+
 <script type="module">
-    // https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
-    import 'mocha';
-    mocha.setup({ui: 'bdd', checkLeaks: true});
-    mocha.cleanReferencesAfterRun(false);
+    globalThis['customary-flag:detect-dont'] = true;
 </script>
+
 <script type="module">
     import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
 
@@ -44,35 +40,21 @@
         }
     }
 
-    //
-    async function connected() {
-        await import_tests();
-        const params = new URLSearchParams(window.location.search);
-        if (params.has("run")) {
-            run_unit_tests();
-        }
-    }
-    function run_unit_tests() {
-        document.getElementById('mocha').replaceChildren();
-        mocha.run();
-    }
-    const cssLocation = import.meta.resolve('mocha.css');
+    import {TesterCustomary} from '#customary-testing/tester-customary/tester-customary.js';
+
+    const mocha_css = import.meta.resolve('mocha.css');
+
     /**
      * @type {CustomaryDeclaration}
      */
-    globalThis['customary:test-runner'] = {
-        config: {
-            define: {fontLocation: cssLocation}
-        },
-        hooks: {
-            lifecycle: {connected: connected},
-            events: {'button': run_unit_tests}
-        }
-    };
-    //
+    globalThis['customary:tests-customary-cookbook'] = {hooks: {lifecycle: {firstUpdated:
+        el => TesterCustomary.attach(el, mocha_css, import_tests)
+    }}};
+
+    import {Customary} from '#customary';
+    await Customary.define(TesterCustomary);
+    await Customary.detect();
 </script>
-<script type="module">import '#customary';</script>
 
 </body>
-
 </html>

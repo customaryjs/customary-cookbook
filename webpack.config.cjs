@@ -21,9 +21,7 @@ module.exports = {
                     to: 'node_modules/customary/.dist/bundled/',
                 },
                 {
-                    // TODO customary-testing
-                    from: 'node_modules/customary/.dist/bundled/customary-library.mjs',
-                    to: 'node_modules/customary/.dist/bundled/',
+                    from: 'node_modules/customary-testing/src/**/*',
                 },
                 {
                     // surprisingly, customary bundled does not ship lit decorators
@@ -80,11 +78,6 @@ module.exports = {
                     // code: from development (live compile) to production (bundled)
                     search: /("#customary": ".*)node_modules\/customary\/web\/_script\/now.js/g,
                     replace: '$1node_modules/customary/.dist/bundled/customary.mjs',
-                },
-                {
-                    // TODO customary-testing
-                    search: /("#customary-testing": ".*)node_modules\/customary\/web\/_script\/now.js/g,
-                    replace: '$1node_modules/customary/.dist/bundled/customary-library.mjs',
                 },
                 {
                     // node_modules: from development (sibling) to production (child)

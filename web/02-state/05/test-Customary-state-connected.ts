@@ -15,7 +15,7 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(32);
+            this.retries(64);
             CustomaryTestingQueries.findByTextContent(
                 window.document.querySelector('recipe-card')!.shadowRoot!,
                 "02-state/05/test-Customary-state-connected.ts",

@@ -4,7 +4,7 @@ import {property} from 'lit/decorators.js';
 export class HelloLitElement extends LitElement {
     
     @property()
-    incomplete: string = 'FIELD';
+    field_property: string = 'FIELD';
 
     @property({reflect: true})
     attrib: string = 'UNSET';
@@ -13,21 +13,27 @@ export class HelloLitElement extends LitElement {
         after: {},
     };
 
+    declare completed: string;
+
     constructor() {
         super();
-        (this as any).completed = 'CONSTRUCTOR';
+        this.completed = 'CONSTRUCTOR';
     }
 
     protected render() {
-        console.log('render');
+        return html`
+            
+<p>Field: ${this.field_property} </p>
+<input .value="${this.field_property}" @input="${this._handleFieldInput}"></input>
+<hr>
+<p>Constructor: ${this.completed}</p>
+<hr>
+<p>Attribute: ${this.attrib}</p>
+<button @click="${this._setAttribute}">this.setAttribute('attrib'</button>
+<button @click="${this._assignProperty}">this.attrib=</button>
+<hr>
 
-        const template: HTMLTemplateElement =
-            findHTMLTemplateElementInDOMDocument(this.tagName.toLowerCase())!;
-
-        const s = template.innerHTML;
-        const middle = eval(`html\`${s}\``);
-
-        return html`${middle}`;
+`;
     }
 
     private _setAttribute() {
@@ -38,13 +44,13 @@ export class HelloLitElement extends LitElement {
         this.attrib = "ASSIGN ATTRIBUTE";
     }
 
+    private _handleFieldInput(event: InputEvent) {
+        this.field_property = (event.target as HTMLInputElement).value;
+    }
+
     override attributeChangedCallback(property: string, oldValue: string, newValue: string) {
         super.attributeChangedCallback(property, oldValue, newValue);
         console.log(`attributeChangedCallback: ${property} ${oldValue} ${newValue}`);
     }
 
-}
-
-function findHTMLTemplateElementInDOMDocument(name: string): HTMLTemplateElement | undefined {
-    return document.querySelector(`template[data-customary-name='${name}']`) as HTMLTemplateElement ?? undefined;
 }

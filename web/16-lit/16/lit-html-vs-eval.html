@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<body>
+
+<lit-html-vs-eval></lit-html-vs-eval>
+
+<script type="module">
+//    
+import {html, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
+
+class LitHtmlVsEvalElement extends LitElement {
+    static properties = {
+        str: {},
+    };
+
+    constructor() {
+        super();
+        this.str = 'must... stay... focused!';
+    }
+
+    render() {
+        const a =        html`${this.str}<input .value=${this.str} @input=${this.ev}>`;
+        const b = eval('html\`${this.str}<input .value=${this.str} @input=${this.ev}>\`');
+        
+        this.#superpose_original_TemplateStringsArray_into_CompiledTemplate_from_eval(b);
+
+        return html`
+            <pre>html :)</pre>
+            ${a}
+            <hr>
+            <pre>eval :)</pre>
+            ${b}
+            <hr/>
+        `;
+    }
+
+    ev(e) {
+        this.str = e.target.value;
+    }
+
+    #superpose_original_TemplateStringsArray_into_CompiledTemplate_from_eval(
+        compiled_template
+    ) {
+        const template_strings_array = compiled_template.strings;
+
+        if (!this.#original_template_strings_array) {
+            this.#original_template_strings_array = template_strings_array;
+            return;
+        }
+
+        for (let i = 0; i < template_strings_array.length; i++) {
+            if (template_strings_array[i] !== this.#original_template_strings_array[i]) {
+                throw new Error(`
+Original html first registered only once from named template tag in page
+(or first registered only once from external html file)
+could not have possibly changed structure inbetween calls to render.... tampering??
+(see https://github.com/lit/lit/pull/3987)
+`);
+            }
+        }
+
+        compiled_template.strings = this.#original_template_strings_array;
+    }
+
+    #original_template_strings_array;
+}
+
+customElements.define('lit-html-vs-eval', LitHtmlVsEvalElement);
+//
+</script>
+
+</body>

@@ -1,17 +1,16 @@
-<title>Hello LitElement ~ Customary Cookbook</title>
+<!DOCTYPE html><html><head><title>
+
+    Hello Lit ~ Customary Cookbook
+
+</title></head><body>
 
 <h1>
-    <hello-lit-element></hello-lit-element>
+    <p>Hello Lit !</p>
 </h1>
 
-<template data-customary-name="hello-lit-element">
-    <p>Hello LitElement !</p>
-    <p>Field: ${this.incomplete} </p>
-    <p>Constructor:  ${this.completed}</p>
-    <p>Attribute:  ${this.attrib}</p>
-    <button @click="${this._setAttribute}">setAttribute</button>
-    <button @click="${this._assignProperty}">assign property</button>
-</template>
+<hr>
+
+<hello-lit-element></hello-lit-element>
 
 <script type="importmap">{"imports": {
     "#customary/": "../../../node_modules/customary/web/_script/",
@@ -27,3 +26,5 @@
     import {HelloLitElement} from "./HelloLitElement.js";
     await customElements.define('hello-lit-element', HelloLitElement);
 </script>
+
+</body></html>

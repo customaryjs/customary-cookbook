@@ -226,5 +226,35 @@
     "test_js": "04-state/16/test-Customary-state-journey.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/04-state/16/Customary-state-journey.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/04-state/16"
+  },
+  {
+    "id": "05-01",
+    "chapter_name": "Bindings",
+    "recipe_name": "with a text input",
+    "page_html": "05-bindings/01/Customary-bindings-input.html",
+    "test_ts": "05-bindings/01/test-Customary-bindings-input.ts",
+    "test_js": "05-bindings/01/test-Customary-bindings-input.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-bindings/01/Customary-bindings-input.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-bindings/01"
+  },
+  {
+    "id": "05-02",
+    "chapter_name": "Bindings",
+    "recipe_name": "with a textarea",
+    "page_html": "05-bindings/02/Customary-bindings-textarea.html",
+    "test_ts": "05-bindings/02/test-Customary-bindings-textarea.ts",
+    "test_js": "05-bindings/02/test-Customary-bindings-textarea.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-bindings/02/Customary-bindings-textarea.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-bindings/02"
+  },
+  {
+    "id": "05-03",
+    "chapter_name": "Bindings",
+    "recipe_name": "with a checkbox",
+    "page_html": "05-bindings/03/Customary-bindings-checkbox.html",
+    "test_ts": "05-bindings/03/test-Customary-bindings-checkbox.ts",
+    "test_js": "05-bindings/03/test-Customary-bindings-checkbox.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/web/05-bindings/03/Customary-bindings-checkbox.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/web/05-bindings/03"
   }
 ]

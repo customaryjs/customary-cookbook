@@ -1,0 +1,27 @@
+<title>Bindings ~ with a textarea ~ Customary Cookbook</title>
+
+<h1>Customary Bindings</h1>
+
+<p>~ with a textarea ~</p><br/>
+
+<template data-customary-name="bindings-textarea" data-customary-attributes="value">
+    <textarea .value="${this.value}"></textarea>
+    <pre style="font-size: xxx-large">${this.value}</pre>
+</template>
+
+<bindings-textarea value="Hello Customary !"></bindings-textarea>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/web/_script/now.js",
+    "#customary/": "../../../node_modules/customary/web/_script/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:bindings-textarea'] = {
+        hooks: {events: {'textarea': (el, event) => el.value = event.target.value}}
+    };
+</script>
+<script type="module">import '#customary';</script>

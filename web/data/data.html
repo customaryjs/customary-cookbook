@@ -12,8 +12,8 @@ display: flex;
 flex-direction: column;
 min-height: 98vh;
 ">
-<button autofocus>Generate data</button>
-<textarea style="flex-grow: 1"></textarea>
+        <button autofocus>Generate data</button>
+        <textarea .value="${this.data}" style="flex-grow: 1"></textarea>
     </div>
 </template>
 
@@ -25,14 +25,20 @@ min-height: 98vh;
 }}</script>
 <script type="module">
     import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:customary-cookbook-data'] = {
+        config: {state: ['data']},
+        state: {'data': ''},
+        hooks: {events: {'button': generateData}},
+    };
     async function generateData(el) {
         const data = await CustomaryCookbookData.generateData();
-        el.shadowRoot.querySelector('textarea').value =
-            JSON.stringify(data, undefined, 4);
+        const s = JSON.stringify(data, undefined, 2);
+        el.data = s;
+        navigator.clipboard.writeText(s);
     }
-    globalThis['customary:customary-cookbook-data'] = {
-        hooks: {events: {'button': generateData}}
-    };
 </script>
 <script type="module">import '#customary';</script>
 

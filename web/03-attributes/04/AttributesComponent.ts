@@ -15,7 +15,7 @@ export class AttributesComponent extends CustomaryElement {
 
 	static customary: CustomaryOptions<AttributesComponent> = {
 		name: 'attributes-component',
-		state: {'notes': ["C", "D", "E", "F", "G", "A", "B"]},
+		values: {'notes': ["C", "D", "E", "F", "G", "A", "B"]},
 		hooks: {
 			externalLoader: {import_meta: import.meta},
 			changes: {

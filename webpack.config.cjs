@@ -8,48 +8,47 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    // we copy web/*.ts files too because browsers can step debug them
+                    // html and js, unbundled. ship sources too; let browsers step debug
                     from: 'web/',
                 },
                 {
-                    // TODO source map in bundled is fire, maybe no need to ship code
-                    from: 'node_modules/customary/.dist/development/',
-                    to: 'node_modules/customary/',
+                    // contains customary and lit sources; maps let browsers step debug
+                    context: 'node_modules/customary',
+                    from: '.dist/bundled/customary.mjs',
+                    to: 'node_modules/customary',
                 },
                 {
-                    from: 'node_modules/customary/.dist/bundled/customary.mjs',
-                    to: 'node_modules/customary/.dist/bundled/',
+                    context: 'node_modules/customary-testing',
+                    // FIXME from dist, but not bundled: tester-customary html and css
+                    from: 'src/', // hop!
+                    to: 'node_modules/customary-testing',
                 },
                 {
-                    from: 'node_modules/customary-testing/src/**/*',
-                },
-                {
+                    // FIXME confirm assertion, improve comment
                     // surprisingly, customary bundled does not ship lit decorators
                     context: 'node_modules',
                     from: '@lit/reactive-element/decorators/{property.js,}',
                     to: 'node_modules/',
                 },
                 {
+                    // FIXME confirm assertion, improve comment
                     // surprisingly, customary bundled does not export lit classes
                     context: 'node_modules',
                     from: '@lit/reactive-element/{reactive-element.js,css-tag.js}',
                     to: 'node_modules/',
                 },
                 {
-                    context: 'node_modules',
-                    from: 'chai/chai.js',
-                    to: 'node_modules/chai/',
+                    from: 'node_modules/chai/{chai.js,}',
                 },
                 {
+                    // FIXME attempt module, collapse clauses, add comment
                     context: 'node_modules',
                     from: 'highlight.js/es/languages/xml.js',
                     to: 'node_modules/highlight.js/es/languages/',
                 },
                 {
-                    context: 'node_modules',
-                    from: 'mocha/mocha.*',
-                    to: 'node_modules/',
-                }
+                    from: 'node_modules/mocha/{mocha.*,}',
+                },
             ]
         }),
         new RemovePlugin({
@@ -77,12 +76,17 @@ module.exports = {
                 {
                     // code: from development (live compile) to production (bundled)
                     search: /("#customary": ".*)node_modules\/customary\/web\/_script\/now.js/g,
-                    replace: '$1node_modules/customary/.dist/bundled/customary.mjs',
+                    replace: '$1node_modules/customary/customary.mjs',
                 },
                 {
                     // node_modules: from development (sibling) to production (child)
                     search: / "(.*)..\/node_modules(.*)"/g,
                     replace: ' "$1node_modules$2"',
+                },
+                {
+                    // code: from development (live compile) to production (hop)
+                    search: /customary-testing\/src/g,
+                    replace: 'customary-testing',
                 },
             ]
         }]),

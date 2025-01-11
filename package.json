@@ -5,6 +5,7 @@
   "scripts": {
     "// ---- public ---- //": "//",
     "start": "wireit",
+    "test": "wireit",
     "start-dist": "wireit",
     "test-dist": "wireit",
     "dist": "wireit",
@@ -22,6 +23,11 @@
   "wireit": {
     "start": {
       "command": "npm run start-dist",
+      "service": true,
+      "dependencies": ["dist"]
+    },
+    "test": {
+      "command": "npm run test-dist",
       "service": true,
       "dependencies": ["dist"]
     },

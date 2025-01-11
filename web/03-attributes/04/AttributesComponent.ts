@@ -14,7 +14,7 @@ export class AttributesComponent extends CustomaryElement {
 	chord: string = '';
 
 	static customary: CustomaryOptions<AttributesComponent> = {
-		config: {name: 'attributes-component'},
+		name: 'attributes-component',
 		state: {'notes': ["C", "D", "E", "F", "G", "A", "B"]},
 		hooks: {
 			externalLoader: {import_meta: import.meta},

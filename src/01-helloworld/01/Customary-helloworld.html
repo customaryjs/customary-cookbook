@@ -1,0 +1,16 @@
+<title>Hello World ~ Customary Cookbook</title>
+
+<template data-customary-name="hello-world">
+    Hello Customary !
+</template>
+
+<h1>
+    <hello-world></hello-world>
+</h1>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

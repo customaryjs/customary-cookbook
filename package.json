@@ -49,23 +49,22 @@
       "dependencies": ["compile-watch"]
     },
     "start-dev": {
-      "command": "npx web-dev-server --watch --open=web/index.html",
+      "command": "npx web-dev-server --watch --open=src/index.html",
       "service": true
     },
     "test-dev": {
-      "command": "npx web-dev-server --watch --open=web/test.html?run",
+      "command": "npx web-dev-server --watch --open=src/test.html",
       "service": true
     },
     "clean": {
-      "dependencies": ["clean:dist", "clean:compile", "clean:src"]
+      "dependencies": ["clean:dist", "clean:src"]
     },
     "compile-from-scratch": {
       "command": "npm run compile",
       "dependencies": ["dist-dependency:*", "clean"]
     },
     "clean:dist": {"command": "rimraf .dist"},
-    "clean:compile": {"command": "rimraf web/_script"},
-    "clean:src": {"command": "rimraf --glob web/**/*.{d.ts,js.map,js}"},
+    "clean:src": {"command": "rimraf --glob src/**/*.{d.ts,js.map,js}"},
     "dist:*": {
       "dependencies": ["dist:development"]
     },
@@ -104,7 +103,7 @@
     "wireit": "^0.14.9"
   },
   "imports": {
-    "#customary-cookbook/*.js": "./web/*.ts",
+    "#customary-cookbook/*.js": "./src/*.ts",
     "#customary": "./node_modules/customary/src/now.ts",
     "#customary/*.js": "./node_modules/customary/src/*.ts"
   },

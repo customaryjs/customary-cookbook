@@ -1,0 +1,27 @@
+<title>Bindings ~ with a text input ~ Customary Cookbook</title>
+
+<h1>Customary Bindings</h1>
+
+<p>~ with a text input ~</p><br/>
+
+<template data-customary-name="bindings-input" data-customary-attributes="value">
+    <input value="${this.value}">
+    <h1>${this.value}</h1>
+</template>
+
+<bindings-input value="Hello Customary !"></bindings-input>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:bindings-input'] = {
+        hooks: {events: {'input': (el, event) => el.value = event.target.value}}
+    };
+</script>
+<script type="module">import '#customary';</script>

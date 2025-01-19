@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<head>
+    <title>Customary Cookbook</title>
+    <style>html{display:none}</style>
+</head>
+<body>
+
+<customary-cookbook-navigator></customary-cookbook-navigator>
+
+<template data-customary-name="external-link-symbol">&#x2B77;</template>
+
+<template data-customary-name="customary-cookbook-navigator">
+
+<div class="page-flex-container">
+
+<div class="page-upper-item navigator-flex-container">
+
+    <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
+        <div class="logo">
+            <span class="logo-caption">
+                Customary<br>Cookbook<br>
+            </span>
+            <span class="logo-emoji">
+                &#x1F475;&#x1F373;
+            </span>
+            <p class="logo-tagline">
+                Customary recipes to teach yourself
+            </p>
+        </div>
+
+        <div class="action">
+            <a target="_blank" href="${this.navigation?.html}">View in new tab <external-link-symbol></external-link-symbol></a>
+        </div>
+        <div class="action">
+            <a target="_blank" href="${this.navigation?.unit_test}&run">Unit Test <external-link-symbol></external-link-symbol></a>
+        </div>
+        <div class="action">
+            <a target="_blank"  href="${this.navigation?.source_html}">Source: HTML <external-link-symbol></external-link-symbol></a>
+        </div>
+        <div class="action">
+            <a target="_blank"  href="${this.navigation?.source_everything}">Source: Everything <external-link-symbol></external-link-symbol></a>
+        </div>
+        <div class="action">
+            <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
+        </div>
+
+    </div>
+
+    <div class="navigator-right-half navigator-flex-item recipe-view-container" style="flex-basis: 85%">
+        <div class="recipe-header" style="
+            flex-basis: 10%;
+            display: flex; justify-content: space-between; align-items: center;
+        ">
+            <button class="previous" style="flex-basis: 25%">${this.navigation?.previous_name} &lt;&lt;</button>
+            <div style="flex-grow: 1">
+                <div class="recipe-chapter">
+                    ${this.navigation?.chapter_name}
+                </div>
+                <div class="recipe-name">
+                    ${this.navigation?.recipe_name}
+                </div>
+            </div>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; ${this.navigation?.next_name}</button>
+        </div>
+        <div class="recipe-vision-container">
+            <iframe src="${this.navigation?.html}"></iframe>
+            <view-source source="${this.navigation?.html}"></view-source>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<style>
+    .page-flex-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 98vh;
+    }
+    .page-upper-item {
+        flex-grow: 1;
+    }
+
+    .navigator-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .navigator-flex-item {
+        border-style: dotted; border-width: 1px; border-color: lightgrey;
+    }
+    .navigator-left-half {
+        flex-grow: 1;
+    }
+    .navigator-right-half {
+        flex-grow: 2;
+    }
+
+    .logo {
+        display: inline-block;
+        text-align: center;
+        font-family: serif;
+        border-style: outset; border-radius: 16px;
+        padding: 0px 10px 10px 10px;
+        margin-bottom: 32px;
+    }
+    .logo-caption {
+        font-style: italic; font-size: xxx-large;
+    }
+    .logo-emoji {
+        font-size: xxx-large;
+        margin: 0;
+    }
+    .logo-tagline {
+        font-style: italic;
+        margin: 8px 0 0;
+    }
+
+    .action {
+        text-align: center;
+        font-size: large;
+        margin: 40px;
+    }
+
+    .recipe-view-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .recipe-header {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom-width: 2px;
+        border-bottom-color: grey;
+    }
+    .recipe-chapter {
+        font-size: xxx-large;
+        text-align: center;
+    }
+    .recipe-name {
+        font-size: xx-large;
+        text-align: center;
+    }
+    .recipe-vision-container {
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+    }
+    iframe {
+        flex-grow: 1;
+        border-style: dashed;
+        border-radius: 64px;
+        border-color: darkkhaki;
+        padding: 40px;
+        margin: 20px;
+    }
+    view-source {
+        margin: 20px;
+        width: 50%;
+        flex-basis: 60%;
+    }
+
+    button {
+        font-size: large;
+    }
+</style>
+
+</template>
+
+<template data-customary-name="view-source">
+    <style>code {font-size: 16px}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/idea.min.css">
+    <pre><code class="language-html" id="source_html"></code></pre>
+</template>
+
+<script type="importmap">{"imports": {
+    "highlight.js/": "./../node_modules/highlight.js/es/",
+    "#customary-cookbook/": "./",
+    "#customary": "./../node_modules/customary/src/now.js",
+    "#customary/": "./../node_modules/customary/src/",
+    "#customary/lit": "./../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
+
+    const dataPromise = CustomaryCookbookData.loadData();
+
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:customary-cookbook-navigator'] = {
+        config: {state: ['navigation']},
+        hooks: {
+            lifecycle: {connected: use_param_id},
+            events: {
+                'button.previous': navigate_previous,
+                'button.next': navigate_next,
+            },
+        }
+    };
+
+    async function use_param_id(el) {
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get("id") ?? '01-01';
+        const data = await dataPromise;
+        const recipe = data.getNavigationData(idParam);
+        el.navigation = {
+            "recipe_name": "",
+            "previous_name": "",
+            "next_name": "",
+            ...recipe,
+            "html": recipe.page_html,
+            "source_html": recipe.github_page_html,
+            "source_everything": recipe.github_dir,
+            "unit_test": "./test.html?grep=" + encodeURIComponent(recipe.page_html),
+        };
+    }
+
+    function navigate_previous(el) {
+        navigate_to_id(el.navigation.previous_id);
+    }
+    function navigate_next(el) {
+        navigate_to_id(el.navigation.next_id);
+    }
+    function navigate_to_id(id) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('id', id);
+        window.location.href = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+    }
+</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:view-source'] = {
+        config: {attributes: ['source']},
+        hooks: {changes: {'source': viewSource}}
+    };
+
+    import highlight from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/es/core.min.js';
+    // does not work because should use "export default" but it's using "module.exports"
+    //    import highlight from 'highlight.js/core.js';
+    import html from 'highlight.js/languages/xml.js';
+    highlight.registerLanguage('html', html);
+
+    async function viewSource(el, source) {
+        if (!source) return;
+        const response = await fetch(source);
+        const text = await response.text();
+        const codeElement = el.shadowRoot.getElementById("source_html");
+        codeElement.textContent = text;
+        delete codeElement.dataset.highlighted;
+        highlight.highlightElement(codeElement);
+    }
+</script>
+<script type="module">import '#customary';</script>
+<link rel="stylesheet" href="./z.css" />
+</body>

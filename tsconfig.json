@@ -1,7 +1,7 @@
 {
-  "include": ["web/**/*"],
+  "include": ["src/**/*"],
   "compilerOptions": {
-    "rootDir": "web",
+    "rootDir": "src",
     "paths": {
       "#customary": ["./node_modules/customary/src/index.ts"],
       "#customary-testing": ["./node_modules/customary-testing/src/index.ts"],

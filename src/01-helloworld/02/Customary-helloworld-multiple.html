@@ -1,0 +1,20 @@
+<title>Hello World ~ with multiple elements ~ Customary Cookbook</title>
+
+<template data-customary-name="hello-world-part-1">Hello</template>
+<template data-customary-name="hello-world-part-2">Customary</template>
+<template data-customary-name="hello-world-part-3">!</template>
+
+<h1>
+    <hello-world-part-1></hello-world-part-1>
+    <hello-world-part-2></hello-world-part-2>
+    <hello-world-part-3></hello-world-part-3>
+</h1>
+
+~ with multiple elements ~
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

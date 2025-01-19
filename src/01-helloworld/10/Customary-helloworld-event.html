@@ -1,0 +1,24 @@
+<title>Hello World ~ with an event ~ Customary Cookbook</title>
+
+<template data-customary-name="hello-world">
+    <span>Hello Customary !</span>
+    <button autofocus>Click</button>
+</template>
+
+<h1><hello-world></hello-world></h1>
+
+~ with an event ~
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    globalThis['customary:hello-world'] = {
+        hooks: {
+            events: {'button': el => el.style.fontSize = 40 + Math.random() * 40 + 'px'},
+        }
+    };
+</script>
+<script type="module">import '#customary';</script>

@@ -9,7 +9,7 @@ module.exports = {
             patterns: [
                 {
                     // html and js, unbundled. ship sources too; let browsers step debug
-                    from: 'web/',
+                    from: 'src/',
                 },
                 {
                     // contains customary and lit sources; maps let browsers step debug
@@ -75,7 +75,7 @@ module.exports = {
                 },
                 {
                     // code: from development (live compile) to production (bundled)
-                    search: /("#customary": ".*)node_modules\/customary\/web\/_script\/now.js/g,
+                    search: /("#customary": ".*)node_modules\/customary\/src\/now.js/g,
                     replace: '$1node_modules/customary/customary.mjs',
                 },
                 {

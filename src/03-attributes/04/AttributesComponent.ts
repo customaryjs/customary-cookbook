@@ -1,4 +1,4 @@
-import {CustomaryElement, CustomaryOptions} from "#customary";
+import {CustomaryElement, CustomaryDeclaration} from "#customary";
 import {property} from "@lit/reactive-element/decorators/property.js";
 
 // noinspection JSUnusedGlobalSymbols
@@ -13,7 +13,7 @@ export class AttributesComponent extends CustomaryElement {
 	@property()
 	chord: string = '';
 
-	static customary: CustomaryOptions<AttributesComponent> = {
+	static customary: CustomaryDeclaration<AttributesComponent> = {
 		name: 'attributes-component',
 		values: {'notes': ["C", "D", "E", "F", "G", "A", "B"]},
 		hooks: {

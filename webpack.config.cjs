@@ -51,16 +51,8 @@ module.exports = {
                 },
             ]
         }),
-        new RemovePlugin({
-           after: {
-               root: '.dist/development',
-               include: [
-                   '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
-               ]
-           }
-        }),
         new ReplaceInFileWebpackPlugin([{
-            dir: '.dist/development',
+            dir: '.dist/website',
             test: /\.html$/,
             rules: [
                 {
@@ -90,11 +82,19 @@ module.exports = {
                 },
             ]
         }]),
+        new RemovePlugin({
+            after: {
+                root: '.dist/website',
+                include: [
+                    '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
+                ]
+            }
+        }),
     ],
     mode: "none",
     entry: './webpack-entry-SKIP.json',
     output: {
-        path: path.resolve(__dirname, '.dist/development'),
+        path: path.resolve(__dirname, '.dist/website'),
         filename: '__JUST_HERE_BECAUSE_CANT_SKIP_WEBPACK_ENTRY.js',
     },
 }

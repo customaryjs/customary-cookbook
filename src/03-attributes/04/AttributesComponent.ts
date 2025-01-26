@@ -1,4 +1,4 @@
-import {CustomaryElement, CustomaryDeclaration} from "#customary";
+import {CustomaryElement, CustomaryDeclaration, Customary} from "#customary";
 import {property} from "@lit/reactive-element/decorators/property.js";
 
 // noinspection JSUnusedGlobalSymbols
@@ -27,3 +27,5 @@ export class AttributesComponent extends CustomaryElement {
 		}
 	}
 }
+
+Customary.declare(AttributesComponent);

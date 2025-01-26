@@ -27,10 +27,6 @@
 </script>
 
 <script type="module">
-    globalThis['customary-flag:detect-dont'] = true;
-</script>
-
-<script type="module">
     import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
 
     async function import_tests() {
@@ -40,21 +36,19 @@
         }
     }
 
-    import {TesterCustomary} from '#customary-testing/tester-customary/tester-customary.js';
-
     const mocha_css = import.meta.resolve('mocha.css');
+
+    import {TesterCustomary} from '#customary-testing/tester-customary/tester-customary.js';
 
     /**
      * @type {CustomaryDeclaration}
      */
-    globalThis['customary:tests-customary-cookbook'] = {hooks: {lifecycle: {firstUpdated:
-        el => TesterCustomary.attach(el, mocha_css, import_tests)
-    }}};
-
-    import {Customary} from '#customary';
-    await Customary.define(TesterCustomary);
-    await Customary.detect();
+    globalThis['customary:tests-customary-cookbook'] = {hooks: {
+        requires: [TesterCustomary],
+        lifecycle: {
+            firstUpdated: el => TesterCustomary.attach(el, mocha_css, import_tests)
+        }
+    }};
 </script>
 
-</body>
-</html>
+</body></html>

@@ -1,4 +1,4 @@
-import {CustomaryElement, CustomaryDeclaration} from "#customary";
+import {CustomaryElement, CustomaryDeclaration, Customary} from "#customary";
 
 export class HelloWorldPart3 extends CustomaryElement {
     static customary: CustomaryDeclaration<HelloWorldPart3> = {
@@ -6,3 +6,5 @@ export class HelloWorldPart3 extends CustomaryElement {
         hooks: {externalLoader: {import_meta: import.meta, css_dont: true}}
     }
 }
+
+Customary.declare(HelloWorldPart3);

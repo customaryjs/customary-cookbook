@@ -2,11 +2,11 @@
 
 <customary-cookbook></customary-cookbook>
 
-<template data-customary-name="customary-cookbook">
+<template data-customary-name="customary-cookbook" data-customary-attributes="pages">
     <div>
-        ${map(state, value => html`
-        <p><a target="_blank" href="${value.file}">${value.file}</a></p>
-        `)}
+        <map-- items="this.pages">
+            <p><a target="_blank" href="${value}">${value}</a></p>
+        </map-->
     </div>
 </template>
 
@@ -27,8 +27,7 @@
     import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
     async function loadData(el) {
         const data = await CustomaryCookbookData.loadData();
-        const state = data.pages.map(file => ({file}));
-        el.setState(state);
+        el.pages = data.pages;
     }
     globalThis['customary:customary-cookbook'] = {hooks: {lifecycle: {connected: loadData}}};
 </script>

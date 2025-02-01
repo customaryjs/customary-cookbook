@@ -23,7 +23,7 @@ describe(suite.title, async function (){
             }
             for (const entry of Object.entries(expected)) {
                 CustomaryTestingQueries.findByTextContent(
-                    window.document.querySelector(`directives-choose[mode='${entry[0]}']`)!.shadowRoot!,
+                    window.document.querySelector(`directives-switch[mode='${entry[0]}']`)!.shadowRoot!,
                     entry[1],
                     {selector: 'h1'}
                 );

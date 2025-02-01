@@ -1,24 +1,24 @@
-<title>Directives ~ map ~ Customary Cookbook</title>
+<title>Directives ~ for ~ Customary Cookbook</title>
 
 <h1>Customary Directives</h1>
 
-<p>~ map ~</p><br/>
+<p>~ for ~</p><br/>
 
 <script type="application/json"
-    data-customary-name="directives-map"
+    data-customary-name="directives-for"
     data-customary-value="list"
 >
   ["Peas", "Carrots", "Tomatoes"]
 </script>
 
-<directives-map></directives-map>
+<directives-for></directives-for>
 
-<template data-customary-name="directives-map">
+<template data-customary-name="directives-for">
   <p>Render a list:</p>
   <ul>
-    <map-- items="this.list" value="item" index="index">
+    <for-- items="this.list" value="item" index="index">
           <li>${index}: ${item}</li>
-    </map-->
+    </for-->
   </ul>
 </template>
 

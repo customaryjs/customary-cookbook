@@ -24,7 +24,7 @@ describe(suite.title, async function (){
                 CustomaryTestingQueries.findByTextContent(
                     window.document.querySelector('body')!,
                     entry[1],
-                    {selector: `directives-when${entry[0]}`}
+                    {selector: `directives-if${entry[0]}`}
                 );
             }
         });

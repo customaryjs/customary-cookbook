@@ -18,7 +18,7 @@ describe(suite.title, async function (){
             this.retries(64);
             for (const s of ["0: Peas", "1: Carrots", "2: Tomatoes"]) {
                 CustomaryTestingQueries.findByTextContent(
-                    window.document.querySelector('directives-map')!.shadowRoot!,
+                    window.document.querySelector('directives-for')!.shadowRoot!,
                     s,
                     {selector: 'li'}
                 );

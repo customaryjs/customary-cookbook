@@ -1,0 +1,31 @@
+<title>Directives ~ inside ~ Customary Cookbook</title>
+
+<h1>Customary Directives</h1>
+
+<p>~ inside ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="directives-inside-recipe"
+    data-customary-value="list"
+>
+  ["Peas", "Carrots", "Tomatoes"]
+</script>
+
+<directives-inside-recipe></directives-inside-recipe>
+
+<template data-customary-name="directives-inside-recipe">
+  <p>Render options inside a select:</p>
+  <select></select>
+  <inside-- target="select">
+    <for-- items="this.list" value="item" index="index">
+      <option value="${index}">${index}: ${item}</option>
+    </for-->
+  </inside-->
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

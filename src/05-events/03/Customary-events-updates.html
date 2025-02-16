@@ -1,0 +1,62 @@
+<title>Events ~ updates ~ Customary Cookbook</title>
+
+<h1>Customary Events</h1>
+
+<p>~ with updates ~</p><br/>
+
+<template data-customary-name="events-updates-recipe">
+    <for-- items="this.dynamic_faces" value="item" index="index">
+        <button value="${index}" class="dynamic">${item}</button>
+    </for-->
+    <if-- condition="this.add_button_visible">
+        <button id="add_button">Add another button</button>
+    </if-->
+</template>
+
+<events-updates-recipe></events-updates-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-updates-recipe'] = {
+        config: {
+            state: ['add_button_visible', 'dynamic_faces', 'number_of_buttons']
+        },
+        values: {
+            'add_button_visible': true,
+            'number_of_buttons': 3,
+            'names_of_buttons': ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
+        },
+        hooks: {
+            changes: {
+                'number_of_buttons': (el, a, z) => {
+                    if (!z) {
+                        el.dynamic_faces = el.names_of_buttons.slice(0, a);
+                        return;
+                    }
+                    el.dynamic_faces = [...el.dynamic_faces, el.names_of_buttons[a - 1]];
+                    if (z === el.names_of_buttons.length - 1) {
+                        el.add_button_visible = false;
+                    }
+                }
+            },
+            events: {
+                'button.dynamic': (el, event) => {
+                    const list = [...el.dynamic_faces];
+                    const index = Number.parseInt(event.target.value);
+                    list[index] = list[index].split('').reverse().join('');
+                    el.dynamic_faces = list;
+                },
+                '#add_button': el =>
+                    el.number_of_buttons = el.number_of_buttons + 1,
+            },
+        }
+    }
+</script>
+<script type="module">import '#customary';</script>

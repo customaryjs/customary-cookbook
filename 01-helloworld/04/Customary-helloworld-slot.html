@@ -1,0 +1,18 @@
+<title>Hello World ~ with a slot ~ Customary Cookbook</title>
+
+<template data-customary-name="hello-world-part">
+    <i><slot /></i>
+</template>
+
+<h1>
+    <hello-world-part>Hello</hello-world-part>
+    <hello-world-part>Customary</hello-world-part>
+    <hello-world-part>!</hello-world-part>
+</h1>
+
+~ with a slot ~
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

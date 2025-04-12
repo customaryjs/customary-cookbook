@@ -1,0 +1,71 @@
+<title>State ~ with a list ~ Customary Cookbook</title>
+
+<h1>Customary State</h1>
+
+<p>~ with a list ~</p><br/>
+
+<recipe-card></recipe-card>
+
+<template data-customary-name="recipe-card">
+  <div class="d">
+    <for-- items="state">
+    <div class="c">
+      <div class="h">Id</div><div>${value.id}</div>
+      <div class="h">Recipe</div><div>${value.page_html}</div>
+      <div class="h">Test</div><div>${value.test_ts}</div>
+    </div>
+    </for-->
+  </div>
+  <style>
+    .d {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .c {
+      display: grid; grid-template-columns: 14% auto; gap: 10px;
+      width: 420px; border: solid turquoise; padding: 10px;
+    }
+    .h {font-weight: bold; text-align: right}
+  </style>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+  const statePromise = fetchState();
+
+  globalThis['customary:recipe-card'] = {hooks: {
+    lifecycle: {connected}
+  }};
+  async function connected(el) {
+    el.setState((await statePromise).items);
+  }
+
+  async function fetchState() {
+    return {items:[
+      {
+        id: "02-06",
+        page_html: "02-state/06/Customary-state-list.html",
+        test_ts: "02-state/06/test-Customary-state-list.ts",
+      },
+      {
+        id: "02-05",
+        page_html: "02-state/05/Customary-state-connected.html",
+        test_ts: "02-state/05/test-Customary-state-connected.ts",
+      },
+      {
+        id: "02-04",
+        page_html: "02-state/04/Customary-state-blank.html",
+        test_ts: "02-state/04/test-Customary-state-blank.ts",
+      },
+      {
+        "id": "02-03",
+        "page_html": "02-state/03/Customary-state-setState-function.html",
+        "test_ts": "02-state/03/test-Customary-state-setState-function.ts"
+      },
+    ]};
+  }
+</script>
+<script type="module">import '#customary';</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>
+
+Customary Cookbook Data
+
+</title></head><body>
+
+<customary-cookbook-data></customary-cookbook-data>
+
+<template data-customary-name="customary-cookbook-data">
+    <div style="
+display: flex;
+flex-direction: column;
+min-height: 98vh;
+">
+        <button autofocus>Generate data</button>
+        <textarea .value="${this.data}" style="flex-grow: 1"></textarea>
+    </div>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary-cookbook/": "../",
+    "#customary": "../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:customary-cookbook-data'] = {
+        config: {state: ['data']},
+        values: {'data': ''},
+        hooks: {events: {'button': generateData}},
+    };
+    async function generateData(el) {
+        const data = await CustomaryCookbookData.generateData();
+        const s = JSON.stringify(data, undefined, 2);
+        el.data = s;
+        navigator.clipboard.writeText(s);
+    }
+</script>
+<script type="module">import '#customary';</script>
+
+</body></html>

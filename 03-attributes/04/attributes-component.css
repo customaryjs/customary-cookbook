@@ -1,0 +1,15 @@
+.notes {
+    display: flex;
+}
+.note {
+    display: inline-block;
+    width: 30px;
+    height: 90px;
+    padding: 15px;
+    font-size: xxx-large;
+    font-family: monospace;
+    border: 1px solid black;
+}
+.chord {
+    background-color: gold;
+}

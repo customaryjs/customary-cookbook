@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><title>
+
+    Hello Lit ~ Customary Cookbook
+
+</title></head><body>
+
+<h1>
+    <p>Hello Lit !</p>
+</h1>
+
+<hr>
+
+<hello-lit-element></hello-lit-element>
+
+<script type="importmap">{"imports": {
+    "lit": "../../_dependencies/lit/development/index.js",
+    "lit/": "../../_dependencies/lit/development/",
+    "@lit/reactive-element": "../../_dependencies/@lit/reactive-element/reactive-element.js",
+    "@lit/reactive-element/": "../../_dependencies/@lit/reactive-element/",
+    "lit-html": "../../_dependencies/lit-html/development/lit-html.js",
+    "lit-element/": "../../_dependencies/lit-element/development/",
+    "lit-html/": "../../_dependencies/lit-html/development/"
+}}</script>
+<script type="module">
+    import {HelloLitElement} from "./HelloLitElement.js";
+    await customElements.define('hello-lit-element', HelloLitElement);
+</script>
+
+</body></html>

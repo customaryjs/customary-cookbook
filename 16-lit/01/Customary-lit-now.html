@@ -1,0 +1,32 @@
+<title>Hello Lit ~ Customary Cookbook</title>
+
+<h1>
+    <hello-lit></hello-lit>
+</h1>
+
+<template data-customary-name="hello-lit">
+    Hello Customary Lit !
+</template>
+
+<!--
+"lit-bundle": "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js",
+-->
+<!--
+"lit": "../../_dependencies/lit/index.js",
+"@lit/reactive-element": "../../_dependencies/@lit/reactive-element/development/reactive-element.js",
+"@lit/reactive-element/": "../../_dependencies/@lit/reactive-element/",
+"lit-element/": "../../_dependencies/lit-element/development/",
+"lit-html": "../../_dependencies/lit-html/development/lit-html.js",
+"lit-html/": "../../_dependencies/lit-html/",
+-->
+<script type="importmap">{"imports": {
+    "lit": "../../_dependencies/lit/development/index.js",
+    "lit/": "../../_dependencies/lit/development/",
+    "@lit/reactive-element": "../../_dependencies/@lit/reactive-element/reactive-element.js",
+    "@lit/reactive-element/": "../../_dependencies/@lit/reactive-element/",
+    "lit-element/": "../../_dependencies/lit-element/development/",
+    "lit-html": "../../_dependencies/lit-html/development/lit-html.js",
+    "lit-html/": "../../_dependencies/lit-html/development/",
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

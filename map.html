@@ -1,0 +1,32 @@
+<!doctype html>
+
+<customary-cookbook></customary-cookbook>
+
+<template data-customary-name="customary-cookbook" data-customary-attributes="pages">
+    <div>
+        <for-- items="this.pages">
+            <p><a target="_blank" href="${value}">${value}</a></p>
+        </for-->
+    </div>
+</template>
+
+<p><a href="./test.html" target="_blank">Run the Unit Tests</a></p>
+
+<script type="importmap">
+    {
+        "imports": {
+            "#customary-cookbook/": "./",
+            "#customary": "./_dependencies/customary/customary.mjs"
+        }
+    }
+</script>
+
+<script type="module">
+    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
+    async function loadData(el) {
+        const data = await CustomaryCookbookData.loadData();
+        el.pages = data.pages;
+    }
+    globalThis['customary:customary-cookbook'] = {hooks: {lifecycle: {connected: loadData}}};
+</script>
+<script type="module">import '#customary';</script>

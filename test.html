@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>
+
+    customary-cookbook tests
+
+</title></head><body>
+
+<template data-customary-name="tests-customary-cookbook">
+    <tester-customary title="Customary Cookbook"></tester-customary>
+</template>
+
+<tests-customary-cookbook></tests-customary-cookbook>
+
+<script type="importmap">
+    {
+        "imports": {
+            "chai": "./_dependencies/chai/chai.js",
+            "mocha": "./_dependencies/mocha/mocha.js",
+            "mocha.css": "./_dependencies/mocha/mocha.css",
+            "#customary-cookbook/": "./",
+            "#customary-testing": "./_dependencies/customary-testing/index.js",
+            "#customary-testing/": "./_dependencies/customary-testing/",
+            "#customary": "./_dependencies/customary/customary.mjs"
+        }
+    }
+</script>
+
+<script type="module">
+    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
+
+    async function import_tests() {
+        const data = await CustomaryCookbookData.loadData();
+        for (const test of data.tests) {
+            await import(`./${test}`);
+        }
+    }
+
+    const mocha_css = import.meta.resolve('mocha.css');
+
+    import {TesterCustomary} from '#customary-testing/tester-customary/tester-customary.js';
+
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:tests-customary-cookbook'] = {hooks: {
+        requires: [TesterCustomary],
+        lifecycle: {
+            firstUpdated: el => TesterCustomary.attach(el, mocha_css, import_tests)
+        }
+    }};
+</script>
+
+</body></html>

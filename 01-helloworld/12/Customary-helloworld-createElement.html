@@ -1,0 +1,23 @@
+<title>Hello World ~ with createElement ~ Customary Cookbook</title>
+
+<template data-customary-name="hello-world-part-1">Hello</template>
+<template data-customary-name="hello-world-part-2">Customary</template>
+<template data-customary-name="hello-world-part-3">!</template>
+
+<h1></h1>
+
+~ with createElement ~
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+<script type="module">
+    document.querySelector('h1').append(
+        document.createElement('hello-world-part-1'),
+        document.createTextNode(' '),
+        document.createElement('hello-world-part-2'),
+        document.createTextNode(' '),
+        document.createElement('hello-world-part-3'),
+    );
+</script>

@@ -1,0 +1,19 @@
+<title>Attributes ~ with a component ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ with a component ~</p><br/>
+
+<attributes-component id="one" chord="CEG"></attributes-component>
+<attributes-component id="two"></attributes-component>
+<attributes-component id="three"></attributes-component>
+
+<script type="importmap">{"imports": {
+    "@lit/reactive-element/": "../../_dependencies/@lit/reactive-element/",
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    import "./AttributesComponent.js";
+    document.getElementById('two').setAttribute('chord', 'DFA');
+    document.getElementById('three').chord = "EGB";
+</script>

@@ -1,0 +1,16 @@
+<title>Hello World ~ with components ~ Customary Cookbook</title>
+
+<h1></h1>
+
+~ with components ~
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    import {Customary} from "#customary";
+    import {HelloWorld} from "./HelloWorld.js";
+
+    await Customary.untilDefined(HelloWorld);
+    document.querySelector('h1').append(new HelloWorld());
+</script>

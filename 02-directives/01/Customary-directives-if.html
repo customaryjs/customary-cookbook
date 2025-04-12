@@ -1,0 +1,28 @@
+<title>Directives ~ if ~ Customary Cookbook</title>
+
+<h1>Customary Directives</h1>
+
+<p>~ if ~</p><br/>
+
+<directives-if></directives-if>
+<hr>
+<directives-if user="root" admin="true"></directives-if>
+
+<template
+    data-customary-name="directives-if"
+    data-customary-attributes="user,admin"
+>
+  <if-- condition="this.user">
+    <false-->Sign In...</false-->
+    <true-->
+      User: ${this.user}
+      <if-- condition="this.admin">(admin)</if-->
+    </true-->
+  </if-->
+
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

@@ -34,11 +34,11 @@
       "dependencies": ["dist"]
     },
     "start:in-dist": {
-      "command": "npx web-dev-server --watch --root-dir=.dist/website --open",
+      "command": "npx web-dev-server --watch --root-dir=.dist/website --base-path=/customary-cookbook --open",
       "service": true
     },
     "test:in-dist": {
-      "command": "npx web-dev-server --watch --root-dir=.dist/website --open=/test.html",
+      "command": "npx web-dev-server --watch --root-dir=.dist/website --base-path=/customary-cookbook --open=/customary-cookbook/test.html",
       "service": true
     },
     "dist": {

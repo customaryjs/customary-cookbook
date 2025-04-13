@@ -15,39 +15,42 @@ module.exports = {
                     // contains customary and lit sources; maps let browsers step debug
                     context: 'node_modules/customary',
                     from: '.dist/bundled/customary.mjs',
-                    to: 'node_modules/customary',
+                    to: '_dependencies/customary',
                 },
                 {
                     context: 'node_modules/customary-testing',
                     // FIXME from dist, but not bundled: tester-customary html and css
                     from: 'src/', // hop!
-                    to: 'node_modules/customary-testing',
+                    to: '_dependencies/customary-testing',
                 },
                 {
                     // FIXME confirm assertion, improve comment
                     // surprisingly, customary bundled does not ship lit decorators
                     context: 'node_modules',
                     from: '@lit/reactive-element/decorators/{property.js,}',
-                    to: 'node_modules/',
+                    to: '_dependencies/',
                 },
                 {
                     // FIXME confirm assertion, improve comment
                     // surprisingly, customary bundled does not export lit classes
                     context: 'node_modules',
                     from: '@lit/reactive-element/{reactive-element.js,css-tag.js}',
-                    to: 'node_modules/',
+                    to: '_dependencies/',
                 },
                 {
-                    from: 'node_modules/chai/{chai.js,}',
+                    context: 'node_modules',
+                    from: 'chai/{chai.js,}',
+                    to: '_dependencies/',
                 },
                 {
-                    // FIXME attempt module, collapse clauses, add comment
                     context: 'node_modules',
                     from: 'highlight.js/es/languages/xml.js',
-                    to: 'node_modules/highlight.js/es/languages/',
+                    to: '_dependencies/highlight.js/es/languages/',
                 },
                 {
-                    from: 'node_modules/mocha/{mocha.*,}',
+                    context: 'node_modules',
+                    from: 'mocha/{mocha.*,}',
+                    to: '_dependencies/',
                 },
             ]
         }),
@@ -66,14 +69,14 @@ module.exports = {
                     replace: '',
                 },
                 {
-                    // code: from development (live compile) to production (bundled)
-                    search: /("#customary": ".*)node_modules\/customary\/src\/now.js/g,
-                    replace: '$1node_modules/customary/customary.mjs',
+                    // node_modules: from development (sibling) to production (child)
+                    search: / "(.*)[.][.]\/node_modules(.*)"/g,
+                    replace: ' "$1_dependencies$2"',
                 },
                 {
-                    // node_modules: from development (sibling) to production (child)
-                    search: / "(.*)..\/node_modules(.*)"/g,
-                    replace: ' "$1node_modules$2"',
+                    // code: from development (live compile) to production (bundled)
+                    search: /customary\/src\/now[.]js/g,
+                    replace: 'customary/customary.mjs',
                 },
                 {
                     // code: from development (live compile) to production (hop)

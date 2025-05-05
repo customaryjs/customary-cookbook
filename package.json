@@ -93,7 +93,8 @@
     "customary": "file:../customary",
     "customary-testing": "file:../customary-testing",
     "highlight.js": "^11.10.0",
-    "lit": "^3.2.0",
+    "@lit/reactive-element": "^2.1.0",
+    "lit": "^3.3.0",
     "mocha": "^11.0.1"
   },
   "devDependencies": {

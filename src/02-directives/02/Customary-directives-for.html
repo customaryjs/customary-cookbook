@@ -1,3 +1,4 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 <title>Directives ~ for ~ Customary Cookbook</title>
 
 <h1>Customary Directives</h1>
@@ -16,9 +17,9 @@
 <template data-customary-name="directives-for">
   <p>Render a list:</p>
   <ul>
-    <for-- items="this.list" value="item" index="index">
+    <customary:for items="this.list" value="item" index="index">
           <li>${index}: ${item}</li>
-    </for-->
+    </customary:for>
   </ul>
 </template>
 
@@ -28,3 +29,4 @@
   "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
 <script type="module">import '#customary';</script>
+</html>

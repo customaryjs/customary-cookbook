@@ -1,12 +1,13 @@
 <!doctype html>
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 
 <customary-cookbook></customary-cookbook>
 
 <template data-customary-name="customary-cookbook" data-customary-attributes="pages">
     <div>
-        <for-- items="this.pages">
+        <customary:for items="this.pages">
             <p><a target="_blank" href="${value}">${value}</a></p>
-        </for-->
+        </customary:for>
     </div>
 </template>
 
@@ -32,3 +33,4 @@
     globalThis['customary:customary-cookbook'] = {hooks: {lifecycle: {connected: loadData}}};
 </script>
 <script type="module">import '#customary';</script>
+</html>

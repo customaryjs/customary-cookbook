@@ -1,3 +1,4 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 <title>State ~ with a list ~ Customary Cookbook</title>
 
 <h1>Customary State</h1>
@@ -8,13 +9,13 @@
 
 <template data-customary-name="recipe-card">
   <div class="d">
-    <for-- items="state">
+    <customary:for items="state">
     <div class="c">
       <div class="h">Id</div><div>${value.id}</div>
       <div class="h">Recipe</div><div>${value.page_html}</div>
       <div class="h">Test</div><div>${value.test_ts}</div>
     </div>
-    </for-->
+    </customary:for>
   </div>
   <style>
     .d {
@@ -69,3 +70,4 @@
   }
 </script>
 <script type="module">import '#customary';</script>
+</html>

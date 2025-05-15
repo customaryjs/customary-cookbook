@@ -1,3 +1,4 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 <title>Events ~ updates ~ Customary Cookbook</title>
 
 <h1>Customary Events</h1>
@@ -5,12 +6,12 @@
 <p>~ with updates ~</p><br/>
 
 <template data-customary-name="events-updates-recipe">
-    <for-- items="this.dynamic_faces" value="item" index="index">
+    <customary:for items="this.dynamic_faces" value="item" index="index">
         <button value="${index}" class="dynamic">${item}</button>
-    </for-->
-    <if-- condition="this.add_button_visible">
+    </customary:for>
+    <customary:if condition="this.add_button_visible">
         <button id="add_button">Add another button</button>
-    </if-->
+    </customary:if>
 </template>
 
 <events-updates-recipe></events-updates-recipe>
@@ -58,3 +59,4 @@
     }
 </script>
 <script type="module">import '#customary';</script>
+</html>

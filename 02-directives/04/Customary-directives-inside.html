@@ -1,3 +1,4 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 <title>Directives ~ inside ~ Customary Cookbook</title>
 
 <h1>Customary Directives</h1>
@@ -16,14 +17,15 @@
 <template data-customary-name="directives-inside-recipe">
   <p>Render options inside a select:</p>
   <select></select>
-  <inside-- target="select">
-    <for-- items="this.list" value="item" index="index">
+  <customary:inside target="select">
+    <customary:for items="this.list" value="item" index="index">
       <option value="${index}">${index}: ${item}</option>
-    </for-->
-  </inside-->
+    </customary:for>
+  </customary:inside>
 </template>
 
 <script type="importmap">{"imports": {
   "#customary": "../../_dependencies/customary/customary.mjs"
 }}</script>
 <script type="module">import '#customary';</script>
+</html>

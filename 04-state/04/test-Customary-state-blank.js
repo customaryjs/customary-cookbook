@@ -1,20 +1,20 @@
 import 'mocha';
-import { CustomaryTestingQueries } from "#customary-testing";
+import * as CT from "#customary-testing";
 import { test_suite } from "../../test/suite.js";
 const suite = test_suite(import.meta);
 describe(suite.title, async function () {
     this.timeout(4000);
     this.slow(500);
     let window;
-    before(() => window = globalThis.window.open(suite.subject_html));
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
     describe('happy day', async function () {
         let container;
         function assert_element() {
-            container = window.document.querySelector('recipe-card').shadowRoot;
+            container = CT.querySelector('recipe-card', window);
         }
         function assert_textContent(textContent) {
-            CustomaryTestingQueries.findByTextContent(container, textContent, { selector: 'div.c > div' });
+            CT.spot(textContent, container, { selectors: 'div.c > div' });
         }
         it('looks good', async function () {
             this.retries(64);
@@ -22,7 +22,7 @@ describe(suite.title, async function () {
             assert_textContent("");
         });
         it('interact', async function () {
-            container.querySelector('button').click();
+            CT.querySelector('button', container).click();
         });
         it('looks good', async function () {
             this.retries(16);

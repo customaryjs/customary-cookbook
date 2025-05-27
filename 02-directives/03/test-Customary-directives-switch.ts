@@ -1,6 +1,6 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
+import * as CT from "#customary-testing";
 
 const suite = test_suite(import.meta);
 
@@ -8,10 +8,10 @@ describe(suite.title, async function (){
     this.timeout(4000);
     this.slow(500);
 
-    let window: Window;
+    let _window: Window;
 
-    before(() => window = globalThis.window.open(suite.subject_html)!);
-    after(() => window.close());
+    before(() => _window = CT.open(suite.subject_html));
+    after(() => _window.close());
 
     describe('happy day', async function () {
         it('looks good', async function () {
@@ -21,12 +21,9 @@ describe(suite.title, async function (){
                 dark: "Dark mode",
                 other: "System default"
             }
-            for (const entry of Object.entries(expected)) {
-                CustomaryTestingQueries.findByTextContent(
-                    window.document.querySelector(`directives-switch[mode='${entry[0]}']`)!.shadowRoot!,
-                    entry[1],
-                    {selector: 'h1'}
-                );
+            for (const [key, value] of Object.entries(expected)) {
+                const container = CT.querySelector(`directives-switch[mode='${key}']`, _window);
+                CT.spot(value, container, {selectors: 'h1'});
             }
         });
     });

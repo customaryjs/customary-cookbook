@@ -1,6 +1,6 @@
 import {assert} from "chai";
 import 'mocha';
-import {CustomaryTesting as CT} from "#customary-testing";
+import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);

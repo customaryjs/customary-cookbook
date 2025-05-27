@@ -1,28 +1,27 @@
 import { assert } from "chai";
 import 'mocha';
-import { CustomaryTestingQueries } from "#customary-testing";
+import * as CT from "#customary-testing";
 import { test_suite } from "../../test/suite.js";
 const suite = test_suite(import.meta);
 describe(suite.title, async function () {
     this.timeout(4000);
     this.slow(500);
     let window;
-    before(() => window = globalThis.window.open(suite.subject_html));
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
     describe('happy day', async function () {
         const tasks = ["open", "to do", "doing", "done"];
         it('looks good', async function () {
             this.retries(32);
             for (const task of tasks) {
-                const el = window.document.querySelector(`attributes-options[task='${task}']`);
-                const container = el.shadowRoot;
-                CustomaryTestingQueries.findByTextContent(container, `${task}`, { selector: 'h1' });
+                const container = CT.querySelector(`attributes-options[task='${task}']`, window);
+                CT.spot(`${task}`, container, { selectors: 'h1' });
             }
         });
         let checkbox;
         it('interact', async function () {
-            const el = window.document.querySelector(`attributes-options[task='to do']`);
-            checkbox = el.shadowRoot.querySelector('input');
+            const el = CT.querySelector(`attributes-options[task='to do']`, window);
+            checkbox = CT.querySelector('input', el);
             checkbox.click();
         });
         it('looks good', async function () {

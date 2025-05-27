@@ -1,28 +1,26 @@
 import { assert } from "chai";
 import 'mocha';
-import { CustomaryTestingQueries } from "#customary-testing";
+import * as CT from "#customary-testing";
 import { test_suite } from "../../test/suite.js";
 const suite = test_suite(import.meta);
 describe(suite.title, async function () {
     this.timeout(4000);
     this.slow(500);
     let window;
-    before(() => window = globalThis.window.open(suite.subject_html));
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
     describe('happy day', async function () {
         let element;
-        let container;
         function assert_element() {
-            element = window.document.querySelector('hello-world');
-            container = element.shadowRoot;
+            element = CT.querySelector('hello-world', window);
         }
         it('looks good', async function () {
             this.retries(64);
             assert_element();
-            CustomaryTestingQueries.findByTextContent(container, 'Hello Customary !', { selector: 'span' });
+            CT.spot('Hello Customary !', element, { selectors: 'span' });
         });
         it('interact', async function () {
-            container.querySelector('button').click();
+            CT.querySelector('button', element).click();
         });
         it('looks good', async function () {
             this.retries(16);

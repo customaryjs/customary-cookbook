@@ -1,5 +1,5 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "#customary-testing";
+import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);
@@ -10,16 +10,16 @@ describe(suite.title, async function (){
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(suite.subject_html)!);
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
 
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            CustomaryTestingQueries.findByTextContent(
-                window.document.querySelector('recipe-card')!.shadowRoot!,
+            CT.spot(
                 "02-state/01/test-Customary-state.ts",
-                {selector: 'div.c > div'}
+                CT.querySelector('recipe-card', window),
+                {selectors: 'div.c > div'}
             );
         });
     });

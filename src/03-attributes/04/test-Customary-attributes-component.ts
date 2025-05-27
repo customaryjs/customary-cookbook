@@ -1,5 +1,5 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "#customary-testing";
+import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);
@@ -10,7 +10,7 @@ describe(suite.title, async function (){
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(suite.subject_html)!);
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
 
     describe('happy day', async function () {
@@ -18,12 +18,10 @@ describe(suite.title, async function (){
             this.retries(128);
 
             function assertChord(id: string, chord: string) {
-                const container = window.document.getElementById(id)!.shadowRoot!;
+                const element = CT.querySelector(`#${id}`, window);
                 const keys = chord.split('');
                 for (const key of keys) {
-                    CustomaryTestingQueries.findByClass(
-                        container, 'chord', {selector: `#${key}`}
-                    );
+                    findByClass(element, 'chord', {selector: `#${key}`});
                 }
             }
 
@@ -33,3 +31,14 @@ describe(suite.title, async function (){
         });
     });
 });
+
+function findByClass(element: Element, expected: string, {selector}:{selector: string})
+{
+    const elements = CT.querySelectorAll(selector, element);
+    for (const element of elements) {
+        if (element.classList.contains(expected)) {
+            return element;
+        }
+    }
+    throw new Error(`No element matching ${selector} has class ${expected}`);
+}

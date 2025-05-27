@@ -1,5 +1,5 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "#customary-testing";
+import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);
@@ -10,19 +10,16 @@ describe(suite.title, async function (){
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(suite.subject_html)!);
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
 
     describe('happy day', async function () {
-        let container: ShadowRoot;
+        let container: Element;
         function assert_element() {
-            container = window.document.querySelector('recipe-card')!.shadowRoot!;
+            container = CT.querySelector('recipe-card', window);
         }
         function assert_textContent(textContent: string) {
-            CustomaryTestingQueries.findByTextContent(
-                container, textContent,
-                {selector: 'div.c > div'}
-            );
+            CT.spot(textContent, container, {selectors: 'div.c > div'});
         }
         it('looks good', async function () {
             this.retries(64);
@@ -30,7 +27,7 @@ describe(suite.title, async function (){
             assert_textContent("02-state/03/test-Customary-state-setState-function.ts");
         });
         it('interact', async function () {
-            (container.querySelector('button') as HTMLButtonElement).click();
+            (CT.querySelector('button', container) as HTMLButtonElement).click();
         });
         it('looks good', async function () {
             this.retries(16);

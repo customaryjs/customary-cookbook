@@ -1,5 +1,5 @@
 import 'mocha';
-import {CustomaryTestingQueries} from "#customary-testing";
+import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
 
 const suite = test_suite(import.meta);
@@ -10,21 +10,21 @@ describe(suite.title, async function (){
 
     let window: Window;
 
-    before(() => window = globalThis.window.open(suite.subject_html)!);
+    before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
 
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(32);
-            CustomaryTestingQueries.findByTextContent(
-                window.document.querySelector(`attributes-global[title='title only']`)!.shadowRoot!,
+            CT.spot(
                 'title: title only' + 'style:',
-                {selector: 'h1'}
+                CT.querySelector(`attributes-global[title='title only']`, window),
+                {selectors: 'h1'}
             );
-            CustomaryTestingQueries.findByTextContent(
-                window.document.querySelector(`attributes-global[title='style too']`)!.shadowRoot!,
+            CT.spot(
                 'title: style too' + 'style: color',
-                {selector: 'h1'}
+                CT.querySelector(`attributes-global[title='style too']`, window),
+                {selectors: 'h1'}
             );
         });
     });

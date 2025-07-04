@@ -4,8 +4,10 @@
 
 <p>~ with a text input ~</p><br/>
 
-<template data-customary-name="bindings-input" data-customary-attributes="value">
-    <input value="${this.value}">
+<template data-customary-name="bindings-input"
+          data-customary-attributes="value"
+>
+    <input data-customary-bind="value" />
     <h1>${this.value}</h1>
 </template>
 
@@ -16,12 +18,4 @@
     "#customary/": "../../../node_modules/customary/src/",
     "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
-<script type="module">
-    /**
-     * @type {CustomaryDeclaration}
-     */
-    globalThis['customary:bindings-input'] = {
-        hooks: {events: {'input': (el, event) => el.value = event.target.value}}
-    };
-</script>
 <script type="module">import '#customary';</script>

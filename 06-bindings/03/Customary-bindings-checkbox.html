@@ -5,7 +5,7 @@
 <p>~ with a checkbox ~</p><br/>
 
 <template data-customary-name="bindings-checkbox" data-customary-attributes="value">
-    <input type="checkbox" ?checked="${this.checked}">checked?</input>
+    <label><input type="checkbox" data-customary-bind="value" />checked?</label>
     <h1>${this.value}</h1>
 </template>
 
@@ -14,15 +14,4 @@
 <script type="importmap">{"imports": {
     "#customary": "../../_dependencies/customary/customary.mjs"
 }}</script>
-<script type="module">
-    /**
-     * @type {CustomaryDeclaration}
-     */
-    globalThis['customary:bindings-checkbox'] = {
-        hooks: {
-            changes: {'value': el => el.checked = el.value === 'true'},
-            events: {'input': (el, event) => el.value = event.target.checked},
-        }
-    };
-</script>
 <script type="module">import '#customary';</script>

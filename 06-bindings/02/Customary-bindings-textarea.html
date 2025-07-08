@@ -4,8 +4,10 @@
 
 <p>~ with a textarea ~</p><br/>
 
-<template data-customary-name="bindings-textarea" data-customary-attributes="value">
-    <textarea .value="${this.value}"></textarea>
+<template data-customary-name="bindings-textarea"
+          data-customary-attributes="value"
+>
+    <textarea data-customary-bind="value"></textarea>
     <pre style="font-size: xxx-large">${this.value}</pre>
 </template>
 
@@ -14,12 +16,4 @@
 <script type="importmap">{"imports": {
     "#customary": "../../_dependencies/customary/customary.mjs"
 }}</script>
-<script type="module">
-    /**
-     * @type {CustomaryDeclaration}
-     */
-    globalThis['customary:bindings-textarea'] = {
-        hooks: {events: {'textarea': (el, event) => el.value = event.target.value}}
-    };
-</script>
 <script type="module">import '#customary';</script>

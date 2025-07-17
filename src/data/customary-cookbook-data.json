@@ -276,5 +276,15 @@
     "test_js": "06-bindings/03/test-Customary-bindings-checkbox.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/03/Customary-bindings-checkbox.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/03"
+  },
+  {
+    "id": "06-08",
+    "chapter_name": "Bindings",
+    "recipe_name": "with directive markup",
+    "page_html": "06-bindings/08/Customary-bindings-markup.html",
+    "test_ts": "06-bindings/08/test-Customary-bindings-markup.ts",
+    "test_js": "06-bindings/08/test-Customary-bindings-markup.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-markup.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
   }
 ]

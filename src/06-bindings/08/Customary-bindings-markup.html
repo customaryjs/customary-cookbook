@@ -1,0 +1,48 @@
+<title>Bindings ~ with directive markup ~ Customary Cookbook</title>
+
+<h1>Customary Bindings</h1>
+
+<p>~ with directive markup ~</p><br/>
+
+<script type="application/json" data-customary-name="bindings-markup">
+    ["input_editor", "textarea_editor"]
+</script>
+
+<template data-customary-name="bindings-markup"
+          data-customary-attributes="value, is_editable"
+>
+    <fieldset><legend>customary:if</legend>
+        <customary:if condition="this.is_editable">
+            <fieldset><legend>customary:for</legend>
+                <customary:for items="this.state" value="item">
+                    <fieldset><legend>customary:switch</legend>
+                        <customary:switch value="item">
+                            <customary:case value="input_editor">
+                                <label>
+                                    Edit as input<br/>
+                                    <input data-customary-bind="value" />
+                                </label>
+                            </customary:case>
+                            <customary:case value="textarea_editor">
+                                <label>
+                                    Edit as textarea<br/>
+                                    <textarea data-customary-bind="value"></textarea>
+                                </label>
+                            </customary:case>
+                        </customary:switch>
+                    </fieldset>
+                </customary:for>
+            </fieldset>
+        </customary:if>
+    </fieldset>
+    <h1>${this.value}</h1>
+</template>
+
+<bindings-markup is_editable="1" value="Hello Customary !"></bindings-markup>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

@@ -21,15 +21,15 @@ describe(suite.title, async function (){
             this.retries(32);
 
             for (const task of tasks) {
-                const container = CT.querySelector(`attributes-options[task='${task}']`, window);
+                const container = CT.querySelector(`attributes-declaration[task='${task}']`, window);
                 CT.spot(`${task}`, container, {selectors: 'h1'});
             }
         });
         let checkbox: HTMLInputElement;
         it('interact', async function () {
-            const el = CT.querySelector(`attributes-options[task='to do']`, window);
+            const el = CT.querySelector(`attributes-declaration[task='to do']`, window);
             checkbox = CT.querySelector('input', el);
-            checkbox.click();
+            CT.checkbox(checkbox);
         });
         it('looks good', async function () {
             this.retries(32);
@@ -37,13 +37,12 @@ describe(suite.title, async function (){
             assert.ok(checkbox.checked);
 
             for (const task of tasks) {
-                const element = window.document.querySelector(
-                    `attributes-options[task='${task}']`)!;
-                const done = element.hasAttribute('done');
-                const container = element.shadowRoot!;
-                const checkbox = container.querySelector('input')! as HTMLInputElement;
+                const element = CT.querySelector(
+                    `attributes-declaration[task='${task}']`, window);
+                const done: boolean = (element as any).done;
+                const checkbox = CT.querySelector('input', element) as HTMLInputElement;
                 assert.strictEqual(checkbox.checked, done);
-                const h1 = container.querySelector('h1')! as HTMLElement;
+                const h1 = CT.querySelector('h1', element);
                 assert.strictEqual(h1.classList.contains('done'), done);
             }
         });

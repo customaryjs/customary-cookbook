@@ -141,11 +141,11 @@
   {
     "id": "03-03",
     "chapter_name": "Attributes",
-    "recipe_name": "from options",
-    "page_html": "03-attributes/03/Customary-attributes-options.html",
-    "test_ts": "03-attributes/03/test-Customary-attributes-options.ts",
-    "test_js": "03-attributes/03/test-Customary-attributes-options.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/03-attributes/03/Customary-attributes-options.html",
+    "recipe_name": "from declaration",
+    "page_html": "03-attributes/03/Customary-attributes-declaration.html",
+    "test_ts": "03-attributes/03/test-Customary-attributes-declaration.ts",
+    "test_js": "03-attributes/03/test-Customary-attributes-declaration.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/03-attributes/03/Customary-attributes-declaration.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/03-attributes/03"
   },
   {

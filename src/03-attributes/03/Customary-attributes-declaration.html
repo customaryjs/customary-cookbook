@@ -1,0 +1,47 @@
+<title>Attributes ~ from declaration ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ from declaration ~</p><br/>
+
+<attributes-declaration task="open"></attributes-declaration>
+<attributes-declaration task="to do"></attributes-declaration>
+<attributes-declaration task="doing"></attributes-declaration>
+<attributes-declaration task="done" value="true"></attributes-declaration>
+
+<template data-customary-name="attributes-declaration">
+    <h1 class="${this.color}">
+        <label><input type="checkbox" data-customary-bind="value" /> ${this.task}</label>
+    </h1>
+    <style>.done {color: green}</style>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:attributes-declaration'] = {
+        config: {
+            attributes: ['task', 'value'],
+            state: ['color'],
+        },
+        hooks: {
+            properties: {
+                'done': {type: Boolean},
+            },
+            lifecycle: {
+                willUpdate: el => derive(el)
+            },
+        }
+    };
+    function derive(el) {
+        el.done = el.value === 'true';
+        el.color = el.done ? 'done' : ''
+    }
+</script>
+<script type="module">import '#customary';</script>

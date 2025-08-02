@@ -133,7 +133,7 @@ function from_content(content: string) {
     const recipe_name = i2 < 0 ? '' : title.substring(i1 + de.length, i2);
 
     if (recipe_name && !content.includes(recipe_name, i2)) {
-        throw new Error(recipe_name);
+        throw new Error(`Must update title to include the recipe name: ${recipe_name}`);
     }
 
     return {chapter_name, recipe_name};

@@ -12,7 +12,7 @@ src/02-directives/03/test-Customary-directives-switch.ts
 src/02-directives/04/test-Customary-directives-inside.ts
 src/03-attributes/01/test-Customary-attributes-template.ts
 src/03-attributes/02/test-Customary-attributes-global.ts
-src/03-attributes/03/test-Customary-attributes-options.ts
+src/03-attributes/03/test-Customary-attributes-declaration.ts
 src/03-attributes/04/test-Customary-attributes-component.ts
 src/03-attributes/05/test-Customary-attributes-composed.ts
 src/04-state/01/test-Customary-state.ts
@@ -26,3 +26,4 @@ src/05-events/03/test-Customary-events-updates.ts
 src/06-bindings/01/test-Customary-bindings-input.ts
 src/06-bindings/02/test-Customary-bindings-textarea.ts
 src/06-bindings/03/test-Customary-bindings-checkbox.ts
+src/06-bindings/08/test-Customary-bindings-markup.ts

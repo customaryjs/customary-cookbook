@@ -13,7 +13,10 @@ flex-direction: column;
 min-height: 98vh;
 ">
         <button autofocus>Generate data</button>
-        <textarea .value="${this.data}" style="flex-grow: 1"></textarea>
+        <textarea readonly
+                  data-customary-bind="data"
+                  style="flex-grow: 1"
+        ></textarea>
     </div>
 </template>
 
@@ -35,7 +38,7 @@ min-height: 98vh;
         const data = await CustomaryCookbookData.generateData();
         const s = JSON.stringify(data, undefined, 2);
         el.data = s;
-        navigator.clipboard.writeText(s);
+        await navigator.clipboard.writeText(s);
     }
 </script>
 <script type="module">import '#customary';</script>

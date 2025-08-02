@@ -141,11 +141,11 @@
   {
     "id": "03-03",
     "chapter_name": "Attributes",
-    "recipe_name": "from options",
-    "page_html": "03-attributes/03/Customary-attributes-options.html",
-    "test_ts": "03-attributes/03/test-Customary-attributes-options.ts",
-    "test_js": "03-attributes/03/test-Customary-attributes-options.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/03-attributes/03/Customary-attributes-options.html",
+    "recipe_name": "from declaration",
+    "page_html": "03-attributes/03/Customary-attributes-declaration.html",
+    "test_ts": "03-attributes/03/test-Customary-attributes-declaration.ts",
+    "test_js": "03-attributes/03/test-Customary-attributes-declaration.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/03-attributes/03/Customary-attributes-declaration.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/03-attributes/03"
   },
   {
@@ -276,5 +276,15 @@
     "test_js": "06-bindings/03/test-Customary-bindings-checkbox.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/03/Customary-bindings-checkbox.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/03"
+  },
+  {
+    "id": "06-08",
+    "chapter_name": "Bindings",
+    "recipe_name": "with directive markup",
+    "page_html": "06-bindings/08/Customary-bindings-markup.html",
+    "test_ts": "06-bindings/08/test-Customary-bindings-markup.ts",
+    "test_js": "06-bindings/08/test-Customary-bindings-markup.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-markup.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
   }
 ]

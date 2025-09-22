@@ -16,16 +16,11 @@ describe(suite.title, async function (){
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            CT.spot(
-                'title: title only' + 'style:',
-                CT.querySelector(`attributes-global[title='title only']`, window),
-                {selectors: 'h1'}
-            );
-            CT.spot(
-                'title: style too' + 'style: color',
-                CT.querySelector(`attributes-global[title='style too']`, window),
-                {selectors: 'h1'}
-            );
+            for (const s of ["0: 4", "1: 8", "2: 15", "3: 16", "4: 23", "5: 42"]) {
+                const parent = CT.querySelector('expressions-property-recipe', window);
+                const container = CT.querySelector('expressions-property-recipe-child', parent);
+                CT.spot(s, container, {selectors: 'li'});
+            }
         });
     });
 });

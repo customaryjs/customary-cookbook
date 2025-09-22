@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Expressions ~ boolean ~ Customary Cookbook</title>
+
+<h1>Customary Expressions</h1>
+
+<p>~ boolean ~</p><br/>
+
+<script type="application/json"
+        data-customary-name="expressions-boolean-recipe"
+        data-customary-value="checkboxes"
+>
+  [
+    {
+        "caption": "checked and enabled",
+        "checked": true,
+        "enabled": true
+    },
+    {
+        "caption": "checked and disabled",
+        "checked": true
+    },
+    {
+        "caption": "unchecked and enabled",
+        "enabled": true
+    },
+    {
+        "caption": "unchecked and disabled"
+    }
+  ]
+</script>
+
+<template data-customary-name="expressions-boolean-recipe">
+    <ul>
+        <customary:for items="this.checkboxes" value="checkbox">
+            <li>
+                <input type="checkbox"
+                       data-customary-expressions
+                       data-customary-expression-name-1="checked"
+                       data-customary-expression-type-1="boolean"
+                       data-customary-expression-data-1="${checkbox.checked}"
+                       data-customary-expression-name-2="disabled"
+                       data-customary-expression-type-2="boolean"
+                       data-customary-expression-data-2="${!checkbox.enabled}"
+                />
+                ${checkbox.caption}
+            </li>
+        </customary:for>
+    </ul>
+</template>
+
+<expressions-boolean-recipe></expressions-boolean-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

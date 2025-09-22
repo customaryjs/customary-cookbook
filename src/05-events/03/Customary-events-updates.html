@@ -27,35 +27,38 @@
      */
     globalThis['customary:events-updates-recipe'] = {
         config: {
-            state: ['add_button_visible', 'dynamic_faces', 'number_of_buttons']
+            state: ['dynamic_faces', 'number_of_buttons'],
         },
         values: {
-            'add_button_visible': true,
+            'dynamic_faces': [],
             'number_of_buttons': 3,
             'names_of_buttons': ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
         },
         hooks: {
+            lifecycle: {
+                willUpdate: el =>
+                    el.add_button_visible = el.number_of_buttons < el.names_of_buttons.length,
+            },
             changes: {
                 'number_of_buttons': (el, a, z) => {
-                    if (!z) {
-                        el.dynamic_faces = el.names_of_buttons.slice(0, a);
-                        return;
-                    }
-                    el.dynamic_faces = [...el.dynamic_faces, el.names_of_buttons[a - 1]];
-                    if (z === el.names_of_buttons.length - 1) {
-                        el.add_button_visible = false;
-                    }
+                    el.dynamic_faces =
+                        [
+                            ...el.dynamic_faces,
+                            ...el.names_of_buttons.slice(
+                                el.dynamic_faces.length, el.number_of_buttons
+                            )
+                        ];
                 }
             },
             events: {
-                'button.dynamic': (el, event) => {
+                '#add_button': el =>
+                    el.number_of_buttons = el.number_of_buttons + 1,
+                'button.dynamic': (el, event, target) => {
+                    const index = Number.parseInt(target.value);
                     const list = [...el.dynamic_faces];
-                    const index = Number.parseInt(event.target.value);
                     list[index] = list[index].split('').reverse().join('');
                     el.dynamic_faces = list;
                 },
-                '#add_button': el =>
-                    el.number_of_buttons = el.number_of_buttons + 1,
             },
         }
     }

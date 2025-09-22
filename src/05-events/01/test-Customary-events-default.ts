@@ -1,3 +1,4 @@
+import {assert} from "chai";
 import 'mocha';
 import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
@@ -14,24 +15,24 @@ describe(suite.title, async function (){
     after(() => window.close());
 
     describe('happy day', async function () {
-        let container: Element;
+        let element: HTMLElement;
         function assert_element() {
-            container = CT.querySelector('recipe-card', window);
-        }
-        function assert_textContent(textContent: string) {
-            CT.spot(textContent, container, {selectors: 'div.c > div'});
+            element = CT.querySelector('events-default-recipe', window);
         }
         it('looks good', async function () {
-            this.retries(128);
+            this.retries(64);
             assert_element();
-            assert_textContent("");
+            CT.spot('Ready to click!', element, {selectors: 'h1'});
         });
         it('interact', async function () {
-            (CT.querySelector('button', container) as HTMLButtonElement).click();
+            element.click();
         });
         it('looks good', async function () {
             this.retries(16);
-            assert_textContent("02-state/04/test-Customary-state-blank.ts");
+            assert.isAbove(
+                Number.parseFloat(element.style.fontSize.replace('px', '')),
+                40
+            );
         });
     });
 });

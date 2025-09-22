@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Expressions ~ property ~ Customary Cookbook</title>
+
+<h1>Customary Expressions</h1>
+
+<p>~ property ~</p><br/>
+
+<script type="application/json"
+        data-customary-name="expressions-property-recipe"
+        data-customary-value="parentListOfNumbers"
+>
+    [4, 8, 15, 16, 23, 42]
+</script>
+
+<template data-customary-name="expressions-property-recipe">
+    <expressions-property-recipe-child
+            data-customary-expressions
+            TODO---data-customary-expression-name-1="childListOfNumbers"
+            data-customary-expression-name-1="child_list_of_numbers"
+            data-customary-expression-data-1="${this.parentListOfNumbers}"
+    ></expressions-property-recipe-child>
+</template>
+
+<template data-customary-name="expressions-property-recipe-child">
+    <ul>
+        <customary:for
+                TODO---items="this.childListOfNumbers"
+                items="this.child_list_of_numbers"
+                value="number" index="index">
+            <li>${index}: ${number}</li>
+        </customary:for>
+    </ul>
+</template>
+
+<expressions-property-recipe></expressions-property-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>

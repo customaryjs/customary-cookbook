@@ -24,6 +24,7 @@ src/04-state/06/test-Customary-state-list.ts
 src/04-state/16/test-Customary-state-journey.ts
 src/05-events/01/test-Customary-events-default.ts
 src/05-events/03/test-Customary-events-updates.ts
+src/05-events/08/test-Customary-events-input-type-file.ts
 src/06-bindings/01/test-Customary-bindings-input.ts
 src/06-bindings/02/test-Customary-bindings-textarea.ts
 src/06-bindings/03/test-Customary-bindings-checkbox.ts

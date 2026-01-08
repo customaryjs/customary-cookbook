@@ -258,6 +258,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/03"
   },
   {
+    "id": "05-08",
+    "chapter_name": "Events",
+    "recipe_name": "input type file",
+    "page_html": "05-events/08/Customary-events-input-type-file.html",
+    "test_ts": "05-events/08/test-Customary-events-input-type-file.ts",
+    "test_js": "05-events/08/test-Customary-events-input-type-file.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/08/Customary-events-input-type-file.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/08"
+  },
+  {
     "id": "06-01",
     "chapter_name": "Bindings",
     "recipe_name": "with a text input",

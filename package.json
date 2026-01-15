@@ -2,80 +2,133 @@
   "name": "customary-cookbook",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "// ---- public ---- //": "//",
+    "compile": "wireit",
+    "build": "wireit",
     "start": "wireit",
     "test": "wireit",
     "// ---- troubleshoot ---- //": "//",
-    "start:in-dist": "wireit",
-    "test:in-dist": "wireit",
+    "start:in-dist-dir": "wireit",
+    "start:test-runner:in-dist-dir": "wireit",
     "// ---- make ---- //": "//",
     "dist": "wireit",
-    "clean": "wireit",
     "// ---- dev ---- //": "//",
     "dev": "wireit",
-    "start:in-src": "wireit",
-    "test:in-src": "wireit",
+    "start:test-runner:in-src-dir": "wireit",
     "compile:watch": "wireit",
+    "clean": "wireit",
     "// ---- command ---- //": "//",
-    "dist:website": "wireit",
-    "clean:src": "wireit",
-    "compile": "wireit"
+    "dist:copy-and-replace": "wireit",
+    "test:in-src-dir": "wireit",
+    "test:in-dist-dir": "wireit",
+    "test:in-____-dir": "wireit",
+    "// ---- help ---- //": "//",
+    "help": "wireit"
   },
   "wireit": {
+    "help": {
+      "command": "echo WIREIT_LOGGER=metrics npm run dist"
+    },
     "start": {
-      "command": "npm run start:in-dist",
-      "service": true,
-      "dependencies": ["dist"]
+      "dependencies": [
+        "start:in-src-dir"
+      ]
+    },
+    "start:in-src-dir": {
+      "command": "npx web-dev-server --watch --open=src/index.html",
+      "service": true
+    },
+    "start:test-runner:in-src-dir": {
+      "command": "npx web-dev-server --watch --open=src/test.html",
+      "service": true
     },
     "test": {
-      "command": "npm run test:in-dist",
-      "service": true,
-      "dependencies": ["dist"]
+      "command": "npm run test:in-src-dir"
     },
-    "start:in-dist": {
-      "command": "npx web-dev-server --watch --root-dir=.dist/website --base-path=/customary-cookbook --open",
-      "service": true
+    "test:in-src-dir": {
+      "command": "____IN_DIR=src npm run test:in-____-dir",
+      "dependencies": [
+        "compile"
+      ]
     },
-    "test:in-dist": {
-      "command": "npx web-dev-server --watch --root-dir=.dist/website --base-path=/customary-cookbook --open=/customary-cookbook/test.html",
-      "service": true
+    "test:in-____-dir": {
+      "command": "cd ${____IN_DIR} && node test.js | tap-mocha-reporter spec"
     },
     "dist": {
-      "command": "npm run dist:website",
-      "dependencies": ["build"]
+      "command": "npm run test:in-dist-dir",
+      "dependencies": [
+        "dist:without:test"
+      ]
     },
-    "dist:website": {
+    "dist:without:test": {
+      "command": "npm run dist:copy-and-replace",
+      "dependencies": [
+        "clean:dist",
+        "dist:participants:then:build"
+      ]
+    },
+    "dist:copy-and-replace": {
       "command": "npx webpack"
+    },
+    "clean:dist": {
+      "command": "rimraf .dist"
+    },
+    "dist:then:start": {
+      "command": "npm run start:in-dist-dir",
+      "service": true,
+      "dependencies": [
+        "dist"
+      ]
+    },
+    "dist:then:start:test-runner": {
+      "command": "npm run start:test-runner:in-dist-dir",
+      "service": true,
+      "dependencies": [
+        "dist"
+      ]
+    },
+    "test:in-dist-dir": {
+      "command": "____IN_DIR=.dist/$(cat package-json-dist-what.txt) npm run test:in-____-dir"
+    },
+    "start:in-dist-dir": {
+      "command": "npx web-dev-server --watch --root-dir=.dist/$(cat package-json-dist-what.txt) --base-path=/customary-cookbook --open",
+      "service": true
+    },
+    "start:test-runner:in-dist-dir": {
+      "command": "npx web-dev-server --watch --root-dir=.dist/$(cat package-json-dist-what.txt) --base-path=/customary-cookbook --open=/customary-cookbook/test.html",
+      "service": true
     },
     "build": {
       "command": "npm run compile",
-      "dependencies": ["clean", "dist:participants"]
+      "dependencies": [
+        "clean:src"
+      ]
+    },
+    "dist:participants:then:build": {
+      "command": "npm run build",
+      "dependencies": [
+        "dist:participants"
+      ]
     },
     "compile": {
       "command": "tsc --build --pretty --verbose"
     },
     "clean": {
-      "dependencies": ["clean:dist", "clean:src"]
-    },
-    "clean:dist": {
-      "command": "rimraf .dist"
+      "dependencies": [
+        "clean:src"
+      ]
     },
     "clean:src": {
       "command": "rimraf --glob src/**/*.{d.ts,js.map,js} --glob tsconfig.tsbuildinfo"
     },
     "dev": {
-      "command": "npm run start:in-src",
+      "command": "npm run start:in-src-dir",
       "service": true,
-      "dependencies": ["compile:watch"]
-    },
-    "start:in-src": {
-      "command": "npx web-dev-server --watch --open=src/index.html",
-      "service": true
-    },
-    "test:in-src": {
-      "command": "npx web-dev-server --watch --open=src/test.html",
-      "service": true
+      "dependencies": [
+        "compile:watch"
+      ]
     },
     "compile:watch": {
       "command": "tsc --build --pretty --verbose --watch",
@@ -95,7 +148,7 @@
     "highlight.js": "^11.10.0",
     "@lit/reactive-element": "^2.1.0",
     "lit": "^3.3.0",
-    "mocha": "^11.0.1"
+    "mocha": "^11.7.5"
   },
   "devDependencies": {
     "@types/chai": "^4.3.19",
@@ -103,9 +156,13 @@
     "@types/node": "^20.16.5",
     "@web/dev-server": "^0.4.6",
     "copy-webpack-plugin": "^12.0.2",
+    "faucet": "^0.0.4",
+    "playwright-mocha-browser-adapter": "file:../playwright-mocha-browser-adapter",
     "remove-files-webpack-plugin": "^1.5.0",
     "replace-in-file-webpack-plugin": "^1.0.6",
     "rimraf": "^6.0.1",
+    "tap-mocha-reporter": "^5.0.4",
+    "tap-spec": "^5.0.0",
     "typescript": "^5.6.2",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
@@ -115,9 +172,6 @@
     "#customary-cookbook/*.js": "./src/*.ts",
     "#customary": "./node_modules/customary/src/now.ts",
     "#customary/*.js": "./node_modules/customary/src/*.ts"
-  },
-  "engines": {
-    "node": "22.11.0"
   },
   "license": "MIT",
   "author": "Andre de Oliveira"

@@ -1,0 +1,32 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Directives ~ classMap ~ Customary Cookbook</title>
+
+<h1>Customary Directives</h1>
+
+<p>~ classMap ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="directives-classmap-recipe"
+    data-customary-value="classes"
+>
+  {"highlight": true, "active": false}
+</script>
+
+<directives-classmap-recipe></directives-classmap-recipe>
+
+<template data-customary-name="directives-classmap-recipe">
+  <div>Classy text</div>
+  <customary:classMap
+      target="div"
+      classInfo="this.classes"
+  >
+  </customary:classMap>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

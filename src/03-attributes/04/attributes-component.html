@@ -1,8 +1,13 @@
 <html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
 <h1>chord: ${this.chord}</h1>
-<div class="notes">
-    <customary:for items="this.notes">
-        <span id="${value}" class="note">${value}</span>
+<div class="keys">
+    <customary:for items="this.scale">
+        <span id="${value.note}" class="key">${value.note}</span>
+        <customary:classMap
+                target="span"
+                classInfo="{bright: value.bright}"
+        >
+        </customary:classMap>
     </customary:for>
 </div>
 </html>

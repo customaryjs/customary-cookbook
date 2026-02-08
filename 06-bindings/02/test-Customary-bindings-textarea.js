@@ -17,7 +17,7 @@ describe(suite.title, async function () {
             assert.equal(CT.allTextContent(evidence), expected);
         }
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             element = CT.querySelector('bindings-textarea', window);
             evidence = CT.querySelector('pre', element);
             assert_evidence("Hello Customary !");

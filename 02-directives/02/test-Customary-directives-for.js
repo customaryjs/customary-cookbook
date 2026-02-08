@@ -12,7 +12,7 @@ describe(suite.title, async function () {
         it('looks good', async function () {
             this.retries(64);
             for (const s of ["0: Peas", "1: Carrots", "2: Tomatoes"]) {
-                const container = CT.querySelector('directives-for', window);
+                const container = CT.querySelector('directives-for-recipe', window);
                 CT.spot(s, container, { selectors: 'li' });
             }
         });

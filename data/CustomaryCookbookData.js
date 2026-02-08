@@ -36,6 +36,7 @@ async function to_entry(test_ts) {
     };
 }
 export class Data {
+    items;
     constructor(items) {
         this.items = items;
     }

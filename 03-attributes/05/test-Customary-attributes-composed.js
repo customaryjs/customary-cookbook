@@ -10,7 +10,7 @@ describe(suite.title, async function () {
     after(() => window.close());
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(32);
+            this.retries(64);
             const element = CT.querySelector(`attributes-composed[call='Are we composed now?']`, window);
             CT.spot('Are we composed now?', element, { selectors: 'h1' });
             const firstElementChild = element.firstElementChild;

@@ -12,15 +12,15 @@ export class TesterCustomary extends CustomaryElement {
 		},
 		hooks: {
 			lifecycle: {
-				connected: (el: TesterCustomary) => el.on_connected()
+				connected: (el: TesterCustomary) => el.on_connected(),
 			},
 			events: {
-				button: (el: TesterCustomary) => el.run_requested = true
+				'button': (el: TesterCustomary) => el.run_requested = true,
 			},
 			changes: {
-				run_requested: (el: TesterCustomary) => el.run_tests(),
-				import_tests_callback: (el: TesterCustomary) => el.run_tests(),
-				mocha_css_location: (el: TesterCustomary) => el.adopt_mocha_css()
+				'run_requested': (el: TesterCustomary) => el.run_tests(),
+				'import_tests_callback': (el: TesterCustomary) => el.run_tests(),
+				'mocha_css_location': (el: TesterCustomary) => el.adopt_mocha_css(),
 			},
 			externalLoader: {import_meta: import.meta},
 		},

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Events ~ input type file ~ Customary Cookbook</title>
+
+<h1>Customary Events</h1>
+
+<p>~ input type file ~</p><br/>
+
+<template data-customary-name="events-input-file-shadow-root">
+    <events-input-file-picker legend="with change event" class="with-change-event">
+    </events-input-file-picker>
+    <events-input-file-picker legend="with input event" class="with-input-event">
+    </events-input-file-picker>
+</template>
+
+<template data-customary-name="events-input-file-no-shadow-root">
+    <events-input-file-picker legend="with change event" class="with-change-event">
+    </events-input-file-picker>
+    <events-input-file-picker legend="with input event" class="with-input-event">
+    </events-input-file-picker>
+</template>
+
+<template data-customary-name="events-input-file-picker" 
+          data-customary-attributes="legend, filename, eventJson"
+>
+    <fieldset><legend>${this.legend}</legend>
+        <input type="file" />
+        <button>Simulate</button>
+        <span class="outcome">${this.filename} ${this.eventJson}</span>
+    </fieldset>
+</template>
+
+<template data-customary-name="events-input-file-recipe">
+    <fieldset><legend>&#x1f31a; shadowRoot</legend>
+        <events-input-file-shadow-root></events-input-file-shadow-root>
+    </fieldset>
+    <fieldset><legend>&#x1f31d; no shadowRoot</legend>
+        <events-input-file-no-shadow-root></events-input-file-no-shadow-root>
+    </fieldset>
+</template>
+
+<events-input-file-recipe></events-input-file-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-input-file-shadow-root'] = {
+        config: {
+            construct: {
+                shadowRootDont: false,
+            }
+        },
+        hooks: {
+            events: [
+                {
+                    selector: '.with-change-event input[type="file"]',
+                    type: 'change',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+                {
+                    selector: '.with-change-event button',
+                    listener: (_el, _, target) => simulateChangeEvent(target),
+                },
+                {
+                    selector: '.with-input-event input[type="file"]',
+                    type: 'input',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+                {
+                    selector: '.with-input-event button',
+                    listener: (_el, _, target) => simulateInputEvent(target),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-input-file-no-shadow-root'] = {
+        config: {
+            construct: {
+                shadowRootDont: true,
+            }
+        },
+        hooks: {
+            events: [
+                {
+                    selector: '.with-change-event input[type="file"]',
+                    type: 'change',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+                {
+                    selector: '.with-change-event button',
+                    listener: (_el, _, target) => simulateChangeEvent(target),
+                },
+                {
+                    selector: '.with-input-event input[type="file"]',
+                    type: 'input',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+                {
+                    selector: '.with-input-event button',
+                    listener: (_el, _, target) => simulateInputEvent(target),
+                },
+            ],
+        }
+    };
+    function simulateChangeEvent(target) {
+        simulateEvent(target, new CustomEvent('change', {bubbles: true, composed: false}));
+    }
+    function simulateInputEvent(target) {
+        simulateEvent(target, new InputEvent('input', {bubbles: true, composed: true}));
+    }
+    function simulateEvent(target, event) {
+        const input = target.parentElement.querySelector('input[type="file"]');
+        const dt = new DataTransfer();
+        dt.items.add(new File([''], '.gitconfig'));
+        input.files = dt.files;
+        input.dispatchEvent(event);
+    }
+    function printEventJson(el, event, target) {
+        const picker = target.closest('events-input-file-picker');
+        picker.filename = target.files[0].name;
+        const {type, bubbles, composed} = event;
+        picker.eventJson = JSON.stringify({type, bubbles, composed});
+    }
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-input-file-picker'] = {
+        config: {
+            construct: {
+                shadowRootDont: true,
+            }
+        },
+    };
+</script>
+
+<script type="module">import '#customary';</script>
+</html>

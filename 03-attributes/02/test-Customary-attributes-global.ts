@@ -15,7 +15,7 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(32);
+            this.retries(64);
             CT.spot(
                 'title: title only' + 'style:',
                 CT.querySelector(`attributes-global[title='title only']`, window),

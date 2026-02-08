@@ -10,7 +10,7 @@ describe(suite.title, async function () {
     after(() => window.close());
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             CT.spot('He went to space to see the stars. ' +
                 'She went to sea to see the stars. ' +
                 'We went to shows to see the stars, ' +

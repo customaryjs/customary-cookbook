@@ -238,6 +238,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/04-state/16"
   },
   {
+    "id": "05-01",
+    "chapter_name": "Events",
+    "recipe_name": "direct",
+    "page_html": "05-events/01/Customary-events-default.html",
+    "test_ts": "05-events/01/test-Customary-events-default.ts",
+    "test_js": "05-events/01/test-Customary-events-default.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/01/Customary-events-default.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/01"
+  },
+  {
     "id": "05-03",
     "chapter_name": "Events",
     "recipe_name": "updates",
@@ -246,6 +256,16 @@
     "test_js": "05-events/03/test-Customary-events-updates.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/03/Customary-events-updates.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/03"
+  },
+  {
+    "id": "05-08",
+    "chapter_name": "Events",
+    "recipe_name": "input type file",
+    "page_html": "05-events/08/Customary-events-input-type-file.html",
+    "test_ts": "05-events/08/test-Customary-events-input-type-file.ts",
+    "test_js": "05-events/08/test-Customary-events-input-type-file.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/08/Customary-events-input-type-file.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/08"
   },
   {
     "id": "06-01",
@@ -286,5 +306,25 @@
     "test_js": "06-bindings/08/test-Customary-bindings-markup.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-markup.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
+  },
+  {
+    "id": "07-01",
+    "chapter_name": "Expressions",
+    "recipe_name": "property",
+    "page_html": "07-expressions/01/Customary-expressions-property.html",
+    "test_ts": "07-expressions/01/test-Customary-expressions-property.ts",
+    "test_js": "07-expressions/01/test-Customary-expressions-property.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/07-expressions/01/Customary-expressions-property.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/07-expressions/01"
+  },
+  {
+    "id": "07-02",
+    "chapter_name": "Expressions",
+    "recipe_name": "boolean",
+    "page_html": "07-expressions/02/Customary-expressions-boolean.html",
+    "test_ts": "07-expressions/02/test-Customary-expressions-boolean.ts",
+    "test_js": "07-expressions/02/test-Customary-expressions-boolean.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/07-expressions/02/Customary-expressions-boolean.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/07-expressions/02"
   }
 ]

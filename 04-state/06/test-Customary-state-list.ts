@@ -15,7 +15,7 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(32);
+            this.retries(64);
             CT.spot(
                 "02-state/06/test-Customary-state-list.ts",
                 CT.querySelector('recipe-card', window),

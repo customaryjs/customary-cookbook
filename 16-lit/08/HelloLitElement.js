@@ -8,14 +8,14 @@ import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 export class HelloLitElement extends LitElement {
-    static { this.properties = {
+    field_property = 'FIELD';
+    attrib = 'UNSET';
+    button_faces = ['Zero', 'One', 'Two', 'Three'];
+    static properties = {
         after: {},
-    }; }
+    };
     constructor() {
         super();
-        this.field_property = 'FIELD';
-        this.attrib = 'UNSET';
-        this.button_faces = ['Zero', 'One', 'Two', 'Three'];
         this.field_constructor = 'CONSTRUCTOR';
     }
     render() {

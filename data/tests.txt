@@ -22,8 +22,12 @@ src/04-state/04/test-Customary-state-blank.ts
 src/04-state/05/test-Customary-state-connected.ts
 src/04-state/06/test-Customary-state-list.ts
 src/04-state/16/test-Customary-state-journey.ts
+src/05-events/01/test-Customary-events-default.ts
 src/05-events/03/test-Customary-events-updates.ts
+src/05-events/08/test-Customary-events-input-type-file.ts
 src/06-bindings/01/test-Customary-bindings-input.ts
 src/06-bindings/02/test-Customary-bindings-textarea.ts
 src/06-bindings/03/test-Customary-bindings-checkbox.ts
 src/06-bindings/08/test-Customary-bindings-markup.ts
+src/07-expressions/01/test-Customary-expressions-property.ts
+src/07-expressions/02/test-Customary-expressions-boolean.ts

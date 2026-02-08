@@ -1,0 +1,28 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Events ~ direct ~ Customary Cookbook</title>
+
+<h1>Customary Events</h1>
+
+<p>~ direct ~</p><br/>
+
+<template data-customary-name="events-default-recipe">
+    <h1>Ready to click!</h1>
+</template>
+
+<events-default-recipe></events-default-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-default-recipe'] = {
+        hooks: {
+            events: [{listener: el => el.style.fontSize = 40 + Math.random() * 40 + 'px'}],
+        }
+    }
+</script>
+<script type="module">import '#customary';</script>
+</html>

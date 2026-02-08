@@ -15,7 +15,7 @@ describe(suite.title, async function () {
                 const element = CT.querySelector(`#${id}`, window);
                 const keys = chord.split('');
                 for (const key of keys) {
-                    findByClass(element, 'chord', { selector: `#${key}` });
+                    findByClass(element, 'bright', { selector: `#${key}` });
                 }
             }
             assertChord('one', 'CEG');

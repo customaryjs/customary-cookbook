@@ -27,10 +27,10 @@
 </script>
 
 <script type="module">
-    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
+    import {CustomaryCookbookIndexLoader} from '#customary-cookbook/data/CustomaryCookbookIndexLoader.js';
 
     async function import_tests() {
-        const data = await CustomaryCookbookData.loadData();
+        const data = await CustomaryCookbookIndexLoader.loadIndex();
         for (const test of data.tests) {
             await import(`./${test}`);
         }

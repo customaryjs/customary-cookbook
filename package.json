@@ -14,6 +14,7 @@
     "start:test-runner:in-dist-dir": "wireit",
     "// ---- make ---- //": "//",
     "dist": "wireit",
+    "build:_command_:data:generate": "wireit",
     "// ---- dev ---- //": "//",
     "dev": "wireit",
     "start:test-runner:in-src-dir": "wireit",
@@ -105,6 +106,9 @@
       "dependencies": [
         "clean:src"
       ]
+    },
+    "build:_command_:data:generate": {
+      "command": "node package-json-build-data-generate.ts"
     },
     "dist:participants:then:build": {
       "command": "npm run build",

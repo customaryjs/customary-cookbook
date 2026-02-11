@@ -183,9 +183,9 @@
     "#customary/lit": "./../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
 <script type="module">
-    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
+    import {CustomaryCookbookIndexLoader} from "#customary-cookbook/data/CustomaryCookbookIndexLoader.js";
 
-    const dataPromise = CustomaryCookbookData.loadData();
+    const dataPromise = CustomaryCookbookIndexLoader.loadIndex();
 
     /**
      * @type {CustomaryDeclaration}

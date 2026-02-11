@@ -1,0 +1,32 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Directives ~ styleMap ~ Customary Cookbook</title>
+
+<h1>Customary Directives</h1>
+
+<p>~ styleMap ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="directives-stylemap-recipe"
+    data-customary-value="styles"
+>
+  {"color": "red", "fontSize": "20px"}
+</script>
+
+<directives-stylemap-recipe></directives-stylemap-recipe>
+
+<template data-customary-name="directives-stylemap-recipe">
+  <div>Stylized text</div>
+  <customary:styleMap
+      target="div"
+      styleInfo="this.styles"
+  >
+  </customary:styleMap>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

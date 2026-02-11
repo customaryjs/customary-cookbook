@@ -129,6 +129,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/05"
   },
   {
+    "id": "02-06",
+    "chapter_name": "Directives",
+    "recipe_name": "styleMap",
+    "page_html": "02-directives/06/Customary-directives-styleMap.html",
+    "test_ts": "02-directives/06/test-Customary-directives-styleMap.ts",
+    "test_js": "02-directives/06/test-Customary-directives-styleMap.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/06/Customary-directives-styleMap.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/06"
+  },
+  {
     "id": "03-01",
     "chapter_name": "Attributes",
     "recipe_name": "from template",

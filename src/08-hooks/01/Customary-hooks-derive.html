@@ -1,0 +1,36 @@
+<html lang="en">
+<title>Hooks ~ derive ~ Customary Cookbook</title>
+
+<h1>Customary Hooks</h1>
+
+<p>~ derive ~</p><br/>
+
+<hooks-derive-recipe name="Customary"></hooks-derive-recipe>
+
+<template data-customary-name="hooks-derive-recipe"
+    data-customary-attributes="name"
+>
+  <p class="greeting">${this.greeting}</p>
+  <p class="shout">${this.shout}</p>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:hooks-derive-recipe'] = {
+        hooks: {
+            derive: {
+                'greeting': el => `Hello, ${el.name}!`,
+                'shout': el => `Hello, ${el.name}!`.toUpperCase()
+            }
+        }
+    };
+</script>
+<script type="module">import '#customary';</script>
+</html>

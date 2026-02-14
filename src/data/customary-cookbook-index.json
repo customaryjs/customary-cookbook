@@ -346,5 +346,15 @@
     "test_js": "07-expressions/02/test-Customary-expressions-boolean.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/07-expressions/02/Customary-expressions-boolean.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/07-expressions/02"
+  },
+  {
+    "id": "08-01",
+    "chapter_name": "Hooks",
+    "recipe_name": "derive",
+    "page_html": "08-hooks/01/Customary-hooks-derive.html",
+    "test_ts": "08-hooks/01/test-Customary-hooks-derive.ts",
+    "test_js": "08-hooks/01/test-Customary-hooks-derive.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/08-hooks/01/Customary-hooks-derive.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/08-hooks/01"
   }
 ]

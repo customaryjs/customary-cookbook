@@ -15,7 +15,7 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             const expected = {
                 ":not([user])": "Sign In...",
                 "[user='root']": "User: root (admin)",

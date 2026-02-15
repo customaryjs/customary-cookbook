@@ -18,8 +18,8 @@
   <p>Render options inside a select:</p>
   <select></select>
   <customary:inside target="select">
-    <customary:for items="this.list" value="item" index="index">
-      <option value="${index}">${index}: ${item}</option>
+    <customary:for items="{{list}}" value="item" index="index">
+      <option value="{[index]}">{[index]}: {[item]}</option>
     </customary:for>
   </customary:inside>
 </template>

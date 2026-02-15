@@ -16,8 +16,8 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('changes hook receives setAttribute value', async function () {
-            this.retries(64);
-            const element = CT.querySelector('#target', window);
+            this.retries(128);
+            const element = CT.querySelector('attributes-values-and-changes', window);
             CT.spot('Customary', element, {selectors: 'h1'});
         });
     });

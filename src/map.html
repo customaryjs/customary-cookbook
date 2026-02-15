@@ -5,8 +5,8 @@
 
 <template data-customary-name="customary-cookbook" data-customary-attributes="pages">
     <div>
-        <customary:for items="this.pages">
-            <p><a target="_blank" href="${value}">${value}</a></p>
+        <customary:for items="{{pages}}">
+            <p><a target="_blank" href="{[value]}">{[value]}</a></p>
         </customary:for>
     </div>
 </template>

@@ -13,11 +13,11 @@
     data-customary-name="directives-if"
     data-customary-attributes="user,admin"
 >
-  <customary:if condition="this.user">
+  <customary:if condition="{{user}}">
     <customary:false>Sign In...</customary:false>
     <customary:true>
-      User: ${this.user}
-      <customary:if condition="this.admin">(admin)</customary:if>
+      User: {{user}}
+      <customary:if condition="{{admin}}">(admin)</customary:if>
     </customary:true>
   </customary:if>
 

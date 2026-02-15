@@ -14,12 +14,14 @@ export class AttributesComponent extends CustomaryElement {
 			externalLoader: {import_meta: import.meta},
 			changes: {
 				'chord': (el: AttributesComponent, a: string) =>
-					el.scale = el.notes.map(note => ({note, bright: a.includes(note)})),
+					el.scale = el.notes.map(
+						note => ({note, classInfo: {bright: a.includes(note)}})
+					),
 			},
 		},
 	}
 	declare notes: string[];
-	declare scale: {note: string, bright: boolean}[];
+	declare scale: {note: string, classInfo: {bright: boolean}}[];
 }
 
 Customary.declare(AttributesComponent);

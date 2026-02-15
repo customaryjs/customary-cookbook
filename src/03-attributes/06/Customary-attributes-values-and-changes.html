@@ -4,13 +4,13 @@
 
 <p>~ values and changes ~</p><br/>
 
-<attributes-values-and-changes id="target"></attributes-values-and-changes>
+<attributes-values-and-changes></attributes-values-and-changes>
 
 <template
         data-customary-name="attributes-values-and-changes"
-        data-customary-attributes="word"
+        data-customary-attributes="word-initially-empty"
 >
-    <h1>Hello ${this.display} !</h1>
+    <h1>Hello {{word-to-display}} !</h1>
 </template>
 
 <script type="importmap">{"imports": {
@@ -21,12 +21,12 @@
 <script type="module">
     import '#customary';
     self['customary:attributes-values-and-changes'] = {
-        values: {word: '', display: ''},
+        values: {'word-initially-empty': '', 'word-to-display': ''},
         hooks: {
             changes: {
-                'word': (el, value) => el.display = value,
+                'word-initially-empty': (el, value) => el['word-to-display'] = value,
             },
         },
     };
-    document.querySelector('attributes-values-and-changes').setAttribute('word', 'Customary');
+    document.querySelector('attributes-values-and-changes').setAttribute('word-initially-empty', 'Customary');
 </script>

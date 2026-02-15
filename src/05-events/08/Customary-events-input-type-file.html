@@ -23,10 +23,10 @@
 <template data-customary-name="events-input-file-picker" 
           data-customary-attributes="legend, filename, eventJson"
 >
-    <fieldset><legend>${this.legend}</legend>
+    <fieldset><legend>{{legend}}</legend>
         <input type="file" />
         <button>Simulate</button>
-        <span class="outcome">${this.filename} ${this.eventJson}</span>
+        <span class="outcome">{{filename}} {{eventJson}}</span>
     </fieldset>
 </template>
 

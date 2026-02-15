@@ -5,7 +5,10 @@
 
 <recipe-page></recipe-page>
 
-<script type="application/json" data-customary-name="client-side">
+<script type="application/json"
+        data-customary-name="client-side"
+        data-customary-value="state"
+>
   {
     "recipe": "Customary Forms",
     "id": "03-01"
@@ -15,8 +18,8 @@
 <template data-customary-name="client-side">
   <form id="entry" class="framed">
     <div class="tabled">
-      <label for="recipe">Recipe</label><input id="recipe" name="recipe" value="${this.state.recipe}" />
-      <label for="id">Id</label><input id="id" name="id" value="${this.state.id}"/>
+      <label for="recipe">Recipe</label><input id="recipe" name="recipe" value="{{state.recipe}}" />
+      <label for="id">Id</label><input id="id" name="id" value="{{state.id}}"/>
     </div>
     <div class="button-row"><input type="submit" /></div>
   </form>
@@ -33,7 +36,7 @@
 
 <template data-customary-name="server-side">
   <dialog style="border-style: dashed" open>
-    <pre>${this.json}</pre>
+    <pre>{{json}}</pre>
     <form method="dialog">
       <div class="button-row"><button>close</button></div>
     </form>

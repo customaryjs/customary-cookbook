@@ -18,32 +18,34 @@
     },
     {
         "caption": "checked and disabled",
-        "checked": true
+        "checked": true,
+        "disabled": true
     },
     {
         "caption": "unchecked and enabled",
         "enabled": true
     },
     {
-        "caption": "unchecked and disabled"
+        "caption": "unchecked and disabled",
+        "disabled": true
     }
   ]
 </script>
 
 <template data-customary-name="expressions-boolean-recipe">
     <ul>
-        <customary:for items="this.checkboxes" value="checkbox">
+        <customary:for items="{{checkboxes}}" value="checkbox">
             <li>
                 <input type="checkbox"
                        data-customary-expressions
                        data-customary-expression-name-1="checked"
                        data-customary-expression-type-1="boolean"
-                       data-customary-expression-data-1="${checkbox.checked}"
+                       data-customary-expression-data-1="{[checkbox.checked]}"
                        data-customary-expression-name-2="disabled"
                        data-customary-expression-type-2="boolean"
-                       data-customary-expression-data-2="${!checkbox.enabled}"
+                       data-customary-expression-data-2="{[checkbox.disabled]}"
                 />
-                ${checkbox.caption}
+                {[checkbox.caption]}
             </li>
         </customary:for>
     </ul>

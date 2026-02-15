@@ -4,7 +4,10 @@
 
 <recipe-card></recipe-card>
 
-<script type="application/json" data-customary-name="recipe-card">
+<script type="application/json" 
+        data-customary-name="recipe-card"
+        data-customary-value="state"
+>
   {
     "id": "02-01",
     "page_html": "02-state/01/Customary-state.html",
@@ -14,9 +17,9 @@
 
 <template data-customary-name="recipe-card">
   <div class="c">
-    <div class="h">Id</div><div>${state.id}</div>
-    <div class="h">Recipe</div><div>${state.page_html}</div>
-    <div class="h">Test</div><div>${state.test_ts}</div>
+    <div class="h">Id</div><div>{{state.id}}</div>
+    <div class="h">Recipe</div><div>{{state.page_html}}</div>
+    <div class="h">Test</div><div>{{state.test_ts}}</div>
   </div>
   <style>
     .c {

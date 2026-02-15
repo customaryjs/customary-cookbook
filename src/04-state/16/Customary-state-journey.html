@@ -4,7 +4,10 @@
 
 <h1 style="font-style: italic">A Customary Journey</h1>
 
-<script type="application/json" data-customary-name="story-teller">
+<script type="application/json"
+        data-customary-name="story-teller"
+        data-customary-value="state"
+>
     [
         {"who": "He", "where": "space", "what": "the stars."},
         {"who": "She", "where": "sea", "what": "the stars."},
@@ -15,15 +18,15 @@
 
 <template data-customary-name="story-teller">
     <div style="font-family: monospace; font-size: large">
-        <customary:for items="state">
+        <customary:for items="{{state}}">
         <p style="margin-top: 40px; margin-left: 20px">
-            <strong>${value.who}</strong>
+            <strong>{[value.who]}</strong>
         </p>
         <p style="margin-left: 40px">
-            went to <strong>${value.where}</strong>
+            went to <strong>{[value.where]}</strong>
         </p>
         <p style="margin-left: 60px">
-            to see <strong>${value.what}</strong>
+            to see <strong>{[value.what]}</strong>
         </p>
         </customary:for>
     </div>

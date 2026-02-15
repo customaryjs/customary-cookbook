@@ -17,8 +17,8 @@
 <template data-customary-name="directives-for-recipe">
   <p>Render a list:</p>
   <ul>
-    <customary:for items="this.list" value="item" index="index">
-          <li>${index}: ${item}</li>
+    <customary:for items="{{list}}" value="item" index="index">
+          <li>{[index]}: {[item]}</li>
     </customary:for>
   </ul>
 </template>

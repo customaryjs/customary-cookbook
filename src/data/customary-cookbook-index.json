@@ -189,6 +189,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/03-attributes/05"
   },
   {
+    "id": "03-06",
+    "chapter_name": "Attributes",
+    "recipe_name": "values and changes",
+    "page_html": "03-attributes/06/Customary-attributes-values-and-changes.html",
+    "test_ts": "03-attributes/06/test-Customary-attributes-values-and-changes.ts",
+    "test_js": "03-attributes/06/test-Customary-attributes-values-and-changes.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/03-attributes/06/Customary-attributes-values-and-changes.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/03-attributes/06"
+  },
+  {
     "id": "04-01",
     "chapter_name": "State",
     "page_html": "04-state/01/Customary-state.html",

@@ -1,0 +1,32 @@
+<title>Attributes ~ values and changes ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ values and changes ~</p><br/>
+
+<attributes-values-and-changes id="target"></attributes-values-and-changes>
+
+<template
+        data-customary-name="attributes-values-and-changes"
+        data-customary-attributes="word"
+>
+    <h1>Hello ${this.display} !</h1>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    import '#customary';
+    self['customary:attributes-values-and-changes'] = {
+        values: {word: '', display: ''},
+        hooks: {
+            changes: {
+                'word': (el, value) => el.display = value,
+            },
+        },
+    };
+    document.querySelector('attributes-values-and-changes').setAttribute('word', 'Customary');
+</script>

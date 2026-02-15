@@ -1,3 +1,4 @@
+import {assert} from "chai";
 import 'mocha';
 import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
@@ -14,9 +15,10 @@ describe(suite.title, async function (){
     after(() => window.close());
 
     describe('happy day', async function () {
-        it('looks good', async function () {
-            this.retries(256);
-            CT.spot('Hello Customary !', window, {selectors: 'h1'});
+        it('changes hook receives setAttribute value', async function () {
+            this.retries(64);
+            const element = CT.querySelector('#target', window);
+            CT.spot('Customary', element, {selectors: 'h1'});
         });
     });
 });

@@ -39,11 +39,17 @@
     },
     "start:in-src-dir": {
       "command": "npx web-dev-server --watch --open=src/index.html",
-      "service": true
+      "service": true,
+      "dependencies": [
+        "compile"
+      ]
     },
     "start:test-runner:in-src-dir": {
       "command": "npx web-dev-server --watch --open=src/test.html",
-      "service": true
+      "service": true,
+      "dependencies": [
+        "compile"
+      ]
     },
     "test": {
       "command": "npm run test:in-src-dir"

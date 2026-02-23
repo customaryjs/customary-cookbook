@@ -1,0 +1,52 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ nested for ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ nested for ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-nested-for-recipe"
+    data-customary-value="groups"
+>
+  [
+    {
+      "name": "Fruits",
+      "categories": [
+        {"name": "Citrus",  "items": ["Orange", "Lemon", "Lime"]},
+        {"name": "Berries", "items": ["Strawberry", "Blueberry", "Raspberry"]}
+      ]
+    },
+    {
+      "name": "Vegetables",
+      "categories": [
+        {"name": "Root",  "items": ["Carrot", "Potato", "Beet"]},
+        {"name": "Leafy", "items": ["Spinach", "Kale", "Arugula"]}
+      ]
+    }
+  ]
+</script>
+
+<logic-nested-for-recipe></logic-nested-for-recipe>
+
+<template data-customary-name="logic-nested-for-recipe">
+  <customary:for items="{{groups}}" value="group">
+    <h2>{[group.name]}</h2>
+    <customary:for items="{[group.categories]}" value="category">
+      <h3>{[category.name]}</h3>
+      <ul>
+        <customary:for items="{[category.items]}" value="item">
+          <li>{[item]}</li>
+        </customary:for>
+      </ul>
+    </customary:for>
+  </customary:for>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

@@ -139,6 +139,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/06"
   },
   {
+    "id": "02-07",
+    "chapter_name": "Logic",
+    "recipe_name": "nested for",
+    "page_html": "02-logic/07/Customary-logic-nested-for.html",
+    "test_ts": "02-logic/07/test-Customary-logic-nested-for.ts",
+    "test_js": "02-logic/07/test-Customary-logic-nested-for.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/07/Customary-logic-nested-for.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/07"
+  },
+  {
     "id": "03-01",
     "chapter_name": "Attributes",
     "recipe_name": "from template",

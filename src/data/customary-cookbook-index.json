@@ -80,63 +80,63 @@
   },
   {
     "id": "02-01",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "if",
-    "page_html": "02-directives/01/Customary-directives-if.html",
-    "test_ts": "02-directives/01/test-Customary-directives-if.ts",
-    "test_js": "02-directives/01/test-Customary-directives-if.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/01/Customary-directives-if.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/01"
+    "page_html": "02-logic/01/Customary-logic-if.html",
+    "test_ts": "02-logic/01/test-Customary-logic-if.ts",
+    "test_js": "02-logic/01/test-Customary-logic-if.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/01/Customary-logic-if.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/01"
   },
   {
     "id": "02-02",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "for",
-    "page_html": "02-directives/02/Customary-directives-for.html",
-    "test_ts": "02-directives/02/test-Customary-directives-for.ts",
-    "test_js": "02-directives/02/test-Customary-directives-for.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/02/Customary-directives-for.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/02"
+    "page_html": "02-logic/02/Customary-logic-for.html",
+    "test_ts": "02-logic/02/test-Customary-logic-for.ts",
+    "test_js": "02-logic/02/test-Customary-logic-for.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/02/Customary-logic-for.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/02"
   },
   {
     "id": "02-03",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "switch",
-    "page_html": "02-directives/03/Customary-directives-switch.html",
-    "test_ts": "02-directives/03/test-Customary-directives-switch.ts",
-    "test_js": "02-directives/03/test-Customary-directives-switch.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/03/Customary-directives-switch.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/03"
+    "page_html": "02-logic/03/Customary-logic-switch.html",
+    "test_ts": "02-logic/03/test-Customary-logic-switch.ts",
+    "test_js": "02-logic/03/test-Customary-logic-switch.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/03/Customary-logic-switch.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/03"
   },
   {
     "id": "02-04",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "inside",
-    "page_html": "02-directives/04/Customary-directives-inside.html",
-    "test_ts": "02-directives/04/test-Customary-directives-inside.ts",
-    "test_js": "02-directives/04/test-Customary-directives-inside.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/04/Customary-directives-inside.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/04"
+    "page_html": "02-logic/04/Customary-logic-inside.html",
+    "test_ts": "02-logic/04/test-Customary-logic-inside.ts",
+    "test_js": "02-logic/04/test-Customary-logic-inside.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/04/Customary-logic-inside.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/04"
   },
   {
     "id": "02-05",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "classMap",
-    "page_html": "02-directives/05/Customary-directives-classMap.html",
-    "test_ts": "02-directives/05/test-Customary-directives-classMap.ts",
-    "test_js": "02-directives/05/test-Customary-directives-classMap.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/05/Customary-directives-classMap.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/05"
+    "page_html": "02-logic/05/Customary-logic-classMap.html",
+    "test_ts": "02-logic/05/test-Customary-logic-classMap.ts",
+    "test_js": "02-logic/05/test-Customary-logic-classMap.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/05/Customary-logic-classMap.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/05"
   },
   {
     "id": "02-06",
-    "chapter_name": "Directives",
+    "chapter_name": "Logic",
     "recipe_name": "styleMap",
-    "page_html": "02-directives/06/Customary-directives-styleMap.html",
-    "test_ts": "02-directives/06/test-Customary-directives-styleMap.ts",
-    "test_js": "02-directives/06/test-Customary-directives-styleMap.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-directives/06/Customary-directives-styleMap.html",
-    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-directives/06"
+    "page_html": "02-logic/06/Customary-logic-styleMap.html",
+    "test_ts": "02-logic/06/test-Customary-logic-styleMap.ts",
+    "test_js": "02-logic/06/test-Customary-logic-styleMap.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/06/Customary-logic-styleMap.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/06"
   },
   {
     "id": "03-01",
@@ -210,7 +210,7 @@
   {
     "id": "04-02",
     "chapter_name": "State",
-    "recipe_name": "with setState",
+    "recipe_name": "modify state",
     "page_html": "04-state/02/Customary-state-setState.html",
     "test_ts": "04-state/02/test-Customary-state-setState.ts",
     "test_js": "04-state/02/test-Customary-state-setState.js",
@@ -220,7 +220,7 @@
   {
     "id": "04-03",
     "chapter_name": "State",
-    "recipe_name": "with setState and a function",
+    "recipe_name": "derive from current",
     "page_html": "04-state/03/Customary-state-setState-function.html",
     "test_ts": "04-state/03/test-Customary-state-setState-function.ts",
     "test_js": "04-state/03/test-Customary-state-setState-function.js",

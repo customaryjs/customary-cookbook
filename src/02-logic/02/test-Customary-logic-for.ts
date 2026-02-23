@@ -15,14 +15,10 @@ describe(suite.title, async function (){
 
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(128);
-            const expected = {
-                ":not([user])": "Sign In...",
-                "[user='root']": "User: root (admin)",
-            }
-            for (const [key, value] of Object.entries(expected)) {
-                const container = CT.querySelector('body', window);
-                CT.spot(value, container, {selectors: `directives-if${key}`});
+            this.retries(64);
+            for (const s of ["0: Peas", "1: Carrots", "2: Tomatoes"]) {
+                const container = CT.querySelector('logic-for-recipe', window);
+                CT.spot(s, container, {selectors: 'li'});
             }
         });
     });

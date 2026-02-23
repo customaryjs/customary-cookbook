@@ -17,7 +17,7 @@ describe(suite.title, async function (){
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            const element = CT.querySelector('directives-styleMap-recipe', window);
+            const element = CT.querySelector('logic-styleMap-recipe', window);
             const div: HTMLElement = CT.querySelector('div', element);
 
             // Computed style check might be safer if style attribute parsing varies

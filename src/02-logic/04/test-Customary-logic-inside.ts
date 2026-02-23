@@ -24,7 +24,7 @@ describe(suite.title, async function (){
         }
         it('looks good', async function () {
             this.retries(64);
-            element = CT.querySelector('directives-inside-recipe', window);
+            element = CT.querySelector('logic-inside-recipe', window);
             evidence = CT.querySelector('select', element);
             assert_evidence("0: Peas");
             assert_evidence("1: Carrots");

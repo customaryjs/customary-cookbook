@@ -1,6 +1,7 @@
 import 'mocha';
 import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
+import * as chai from "chai";
 
 const suite = test_suite(import.meta);
 
@@ -10,16 +11,17 @@ describe(suite.title, async function (){
 
     let window: Window;
 
-    before(() => window = CT.open(suite.subject_html));
+    before(async () => window = await CT.open(suite.subject_html));
     after(() => window.close());
 
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            for (const s of ["0: Peas", "1: Carrots", "2: Tomatoes"]) {
-                const container = CT.querySelector('directives-for-recipe', window);
-                CT.spot(s, container, {selectors: 'li'});
-            }
+            const element = CT.querySelector('logic-classMap-recipe', window);
+            const div: HTMLElement = CT.querySelector('div', element);
+
+            chai.assert.isTrue(div.classList.contains('highlight'));
+            chai.assert.isFalse(div.classList.contains('active'));
         });
     });
 });

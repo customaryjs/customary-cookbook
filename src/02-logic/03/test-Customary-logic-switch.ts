@@ -22,7 +22,7 @@ describe(suite.title, async function (){
                 other: "System default"
             }
             for (const [key, value] of Object.entries(expected)) {
-                const container = CT.querySelector(`directives-switch[mode='${key}']`, _window);
+                const container = CT.querySelector(`logic-switch-recipe[mode='${key}']`, _window);
                 CT.spot(value, container, {selectors: 'h1'});
             }
         });

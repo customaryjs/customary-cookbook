@@ -1,26 +1,27 @@
 <html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
-<title>Directives ~ for ~ Customary Cookbook</title>
+<title>Logic ~ inside ~ Customary Cookbook</title>
 
-<h1>Customary Directives</h1>
+<h1>Customary Logic Tags</h1>
 
-<p>~ for ~</p><br/>
+<p>~ inside ~</p><br/>
 
 <script type="application/json"
-    data-customary-name="directives-for-recipe"
+    data-customary-name="logic-inside-recipe"
     data-customary-value="list"
 >
   ["Peas", "Carrots", "Tomatoes"]
 </script>
 
-<directives-for-recipe></directives-for-recipe>
+<logic-inside-recipe></logic-inside-recipe>
 
-<template data-customary-name="directives-for-recipe">
-  <p>Render a list:</p>
-  <ul>
+<template data-customary-name="logic-inside-recipe">
+  <p>Render options inside a select:</p>
+  <select></select>
+  <customary:inside target="select">
     <customary:for items="{{list}}" value="item" index="index">
-          <li>{[index]}: {[item]}</li>
+      <option value="{[index]}">{[index]}: {[item]}</option>
     </customary:for>
-  </ul>
+  </customary:inside>
 </template>
 
 <script type="importmap">{"imports": {

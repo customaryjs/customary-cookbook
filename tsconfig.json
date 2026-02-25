@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../customary-testing-mocha-runner/src/*.d.ts"],
   "compilerOptions": {
     "rootDir": "src",
     "paths": {

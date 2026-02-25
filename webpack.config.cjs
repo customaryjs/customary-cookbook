@@ -52,6 +52,11 @@ module.exports = {
                     from: 'mocha/{mocha.*,}',
                     to: '_dependencies/',
                 },
+                {
+                    context: 'node_modules',
+                    from: 'mocha-json-serialize-reporter/dist/{mocha-json-serialize-reporter.umd.js,}',
+                    to: '_dependencies/',
+                },
             ]
         }),
         new ReplaceInFileWebpackPlugin([{

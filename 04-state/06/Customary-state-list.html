@@ -9,11 +9,11 @@
 
 <template data-customary-name="recipe-card">
   <div class="d">
-    <customary:for items="state">
+    <customary:for items="{{state}}">
     <div class="c">
-      <div class="h">Id</div><div>${value.id}</div>
-      <div class="h">Recipe</div><div>${value.page_html}</div>
-      <div class="h">Test</div><div>${value.test_ts}</div>
+      <div class="h">Id</div><div>{[value.id]}</div>
+      <div class="h">Recipe</div><div>{[value.page_html]}</div>
+      <div class="h">Test</div><div>{[value.test_ts]}</div>
     </div>
     </customary:for>
   </div>
@@ -37,11 +37,16 @@
 <script type="module">
   const statePromise = fetchState();
 
-  globalThis['customary:recipe-card'] = {hooks: {
-    lifecycle: {connected}
-  }};
+  globalThis['customary:recipe-card'] = {
+    config: {
+      state: ['state'],
+    },
+    hooks: {
+      lifecycle: {connected}
+    }
+  };
   async function connected(el) {
-    el.setState((await statePromise).items);
+    el.state = (await statePromise).items;
   }
 
   async function fetchState() {

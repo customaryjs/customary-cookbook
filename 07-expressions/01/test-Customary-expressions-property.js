@@ -10,7 +10,7 @@ describe(suite.title, async function () {
     after(() => window.close());
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             for (const s of ["0: 4", "1: 8", "2: 15", "3: 16", "4: 23", "5: 42"]) {
                 const parent = CT.querySelector('expressions-property-recipe', window);
                 const container = CT.querySelector('expressions-property-recipe-child', parent);

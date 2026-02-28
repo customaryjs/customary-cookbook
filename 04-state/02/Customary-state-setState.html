@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<title>State ~ with setState ~ Customary Cookbook</title>
+<title>State ~ modify state ~ Customary Cookbook</title>
 
 <h1>Customary State</h1>
 
-<p>~ with setState ~</p><br/>
+<p>~ modify state ~</p><br/>
 
 <recipe-card></recipe-card>
 
-<script type="application/json" data-customary-name="recipe-card">
+<script type="application/json"
+        data-customary-name="recipe-card"
+        data-customary-value="state"
+>
   {
     "id": "02-02",
     "page_html": "02-state/02/Customary-state-setState.html",
@@ -17,9 +20,9 @@
 
 <template data-customary-name="recipe-card">
   <div class="c">
-    <div class="h">Id</div><div>${state.id}</div>
-    <div class="h">Recipe</div><div>${state.page_html}</div>
-    <div class="h">Test</div><div>${state.test_ts}</div>
+    <div class="h">Id</div><div>{{state.id}}</div>
+    <div class="h">Recipe</div><div>{{state.page_html}}</div>
+    <div class="h">Test</div><div>{{state.test_ts}}</div>
   </div>
   <button>Set state</button>
   <style>
@@ -37,7 +40,7 @@
 <script type="module">
   globalThis['customary:recipe-card'] = {
     hooks: {
-      events: {'button': el => el.setState({test_ts: 'Hello Customary !'})},
+      events: {'button': el => el.state = {...el.state, test_ts: 'Hello Customary !'}},
     }
   };
 </script>

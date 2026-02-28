@@ -1,0 +1,30 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ for ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ for ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-for-recipe"
+    data-customary-value="list"
+>
+  ["Peas", "Carrots", "Tomatoes"]
+</script>
+
+<logic-for-recipe></logic-for-recipe>
+
+<template data-customary-name="logic-for-recipe">
+  <p>Render a list:</p>
+  <ul>
+    <customary:for items="{{list}}" value="item" index="index">
+          <li>{[index]}: {[item]}</li>
+    </customary:for>
+  </ul>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

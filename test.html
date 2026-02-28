@@ -16,6 +16,7 @@
             "chai": "./_dependencies/chai/chai.js",
             "mocha": "./_dependencies/mocha/mocha.js",
             "mocha.css": "./_dependencies/mocha/mocha.css",
+            "mocha-json-serialize-reporter": "./_dependencies/mocha-json-serialize-reporter/dist/mocha-json-serialize-reporter.umd.js",
             "#customary-cookbook/": "./",
             "#customary-testing": "./_dependencies/customary-testing/index.js",
             "#customary-testing/": "./_dependencies/customary-testing/",
@@ -25,10 +26,10 @@
 </script>
 
 <script type="module">
-    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
+    import {CustomaryCookbookIndexLoader} from '#customary-cookbook/data/CustomaryCookbookIndexLoader.js';
 
     async function import_tests() {
-        const data = await CustomaryCookbookData.loadData();
+        const data = await CustomaryCookbookIndexLoader.loadIndex();
         for (const test of data.tests) {
             await import(`./${test}`);
         }

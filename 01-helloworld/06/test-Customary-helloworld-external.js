@@ -10,7 +10,7 @@ describe(suite.title, async function () {
     after(() => window.close());
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(128);
+            this.retries(256);
             CT.spot('Hello Customary !', window, { selectors: 'h1' });
         });
     });

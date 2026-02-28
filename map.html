@@ -5,8 +5,8 @@
 
 <template data-customary-name="customary-cookbook" data-customary-attributes="pages">
     <div>
-        <customary:for items="this.pages">
-            <p><a target="_blank" href="${value}">${value}</a></p>
+        <customary:for items="{{pages}}">
+            <p><a target="_blank" href="{[value]}">{[value]}</a></p>
         </customary:for>
     </div>
 </template>
@@ -23,12 +23,15 @@
 </script>
 
 <script type="module">
-    import {CustomaryCookbookData} from '#customary-cookbook/data/CustomaryCookbookData.js';
-    async function loadData(el) {
-        const data = await CustomaryCookbookData.loadData();
-        el.pages = data.pages;
-    }
-    globalThis['customary:customary-cookbook'] = {hooks: {lifecycle: {connected: loadData}}};
+    import {CustomaryCookbookIndexLoader} from '#customary-cookbook/data/CustomaryCookbookIndexLoader.js';
+    const indexPromise = CustomaryCookbookIndexLoader.loadIndex();
+    globalThis['customary:customary-cookbook'] = {
+        hooks: {
+            lifecycle: {
+                connected: async el => el.pages = (await indexPromise).pages
+            }
+        }
+    };
 </script>
 <script type="module">import '#customary';</script>
 </html>

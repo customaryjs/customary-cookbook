@@ -1,0 +1,30 @@
+<title>Attributes ~ values and changes ~ Customary Cookbook</title>
+
+<h1>Customary Attributes</h1>
+
+<p>~ values and changes ~</p><br/>
+
+<attributes-values-and-changes></attributes-values-and-changes>
+
+<template
+        data-customary-name="attributes-values-and-changes"
+        data-customary-attributes="word-initially-empty"
+>
+    <h1>Hello {{word-to-display}} !</h1>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">
+    import '#customary';
+    self['customary:attributes-values-and-changes'] = {
+        values: {'word-initially-empty': '', 'word-to-display': ''},
+        hooks: {
+            changes: {
+                'word-initially-empty': (el, value) => el['word-to-display'] = value,
+            },
+        },
+    };
+    document.querySelector('attributes-values-and-changes').setAttribute('word-initially-empty', 'Customary');
+</script>

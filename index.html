@@ -29,16 +29,16 @@
         </div>
 
         <div class="action">
-            <a target="_blank" href="${this.navigation?.html}">View in new tab <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="{{navigation.html}}">View in new tab <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank" href="${this.navigation?.unit_test}&run">Unit Test <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="{{navigation.unit_test}}&run">Unit Test <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank"  href="${this.navigation?.source_html}">Source: HTML <external-link-symbol></external-link-symbol></a>
+            <a target="_blank"  href="{{navigation.source_html}}">Source: HTML <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
-            <a target="_blank"  href="${this.navigation?.source_everything}">Source: Everything <external-link-symbol></external-link-symbol></a>
+            <a target="_blank"  href="{{navigation.source_everything}}">Source: Everything <external-link-symbol></external-link-symbol></a>
         </div>
         <div class="action">
             <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
@@ -51,20 +51,20 @@
             flex-basis: 10%;
             display: flex; justify-content: space-between; align-items: center;
         ">
-            <button class="previous" style="flex-basis: 25%">${this.navigation?.previous_name} &lt;&lt;</button>
+            <button class="previous" style="flex-basis: 25%">{{navigation.previous_name}} &lt;&lt;</button>
             <div style="flex-grow: 1">
                 <div class="recipe-chapter">
-                    ${this.navigation?.chapter_name}
+                    {{navigation.chapter_name}}
                 </div>
                 <div class="recipe-name">
-                    ${this.navigation?.recipe_name}
+                    {{navigation.recipe_name}}
                 </div>
             </div>
-            <button class="next" style="flex-basis: 25%">&gt;&gt; ${this.navigation?.next_name}</button>
+            <button class="next" style="flex-basis: 25%">&gt;&gt; {{navigation.next_name}}</button>
         </div>
         <div class="recipe-vision-container">
-            <iframe src="${this.navigation?.html}"></iframe>
-            <view-source source="${this.navigation?.html}"></view-source>
+            <iframe src="{{navigation.html}}"></iframe>
+            <view-source source="{{navigation.html}}"></view-source>
         </div>
     </div>
 
@@ -181,9 +181,9 @@
     "#customary": "./_dependencies/customary/customary.mjs"
 }}</script>
 <script type="module">
-    import {CustomaryCookbookData} from "#customary-cookbook/data/CustomaryCookbookData.js";
+    import {CustomaryCookbookIndexLoader} from "#customary-cookbook/data/CustomaryCookbookIndexLoader.js";
 
-    const dataPromise = CustomaryCookbookData.loadData();
+    const dataPromise = CustomaryCookbookIndexLoader.loadIndex();
 
     /**
      * @type {CustomaryDeclaration}

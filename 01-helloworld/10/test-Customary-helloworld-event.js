@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import * as chai from "chai";
 import 'mocha';
 import * as CT from "#customary-testing";
 import { test_suite } from "../../test/suite.js";
@@ -24,7 +24,7 @@ describe(suite.title, async function () {
         });
         it('looks good', async function () {
             this.retries(16);
-            assert.isAbove(Number.parseFloat(element.style.fontSize.replace('px', '')), 40);
+            chai.assert.isAbove(Number.parseFloat(element.style.fontSize.replace('px', '')), 40);
         });
     });
 });

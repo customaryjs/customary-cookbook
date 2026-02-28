@@ -6,10 +6,10 @@
 <p>~ with updates ~</p><br/>
 
 <template data-customary-name="events-updates-recipe">
-    <customary:for items="this.dynamic_faces" value="item" index="index">
-        <button value="${index}" class="dynamic">${item}</button>
+    <customary:for items="{{dynamic_faces}}" value="item" index="index">
+        <button value="{[index]}" class="dynamic">{[item]}</button>
     </customary:for>
-    <customary:if condition="this.add_button_visible">
+    <customary:if condition="{{add_button_visible}}">
         <button id="add_button">Add another button</button>
     </customary:if>
 </template>

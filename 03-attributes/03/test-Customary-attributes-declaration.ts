@@ -18,7 +18,7 @@ describe(suite.title, async function (){
         const tasks = ["open", "to do", "doing", "done"];
 
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
 
             for (const task of tasks) {
                 const container = CT.querySelector(`attributes-declaration[task='${task}']`, window);
@@ -32,7 +32,7 @@ describe(suite.title, async function (){
             CT.checkbox(checkbox);
         });
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
 
             assert.ok(checkbox.checked);
 

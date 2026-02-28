@@ -1,5 +1,6 @@
 import {Customary, CustomaryDeclaration, CustomaryElement} from "#customary";
 import 'mocha';
+import 'mocha-json-serialize-reporter';
 
 export class TesterCustomary extends CustomaryElement {
 	static customary: CustomaryDeclaration<TesterCustomary> = {
@@ -7,7 +8,7 @@ export class TesterCustomary extends CustomaryElement {
 		config: {
 			state: [
 					'run_requested', 'import_tests_callback', 'mocha_css_location',
-					'mocha_stats_placeholder_hidden'
+					'mocha_stats_placeholder_hidden', 'mocha-json-serialize-reporter-output'
 			],
 		},
 		hooks: {
@@ -55,15 +56,29 @@ export class TesterCustomary extends CustomaryElement {
 	}
 
 	private on_connected() {
+		// Mocha *needs* the `#mocha` `div` at `body` root - avoid shadow DOM at all costs
 		const htmlDivElement = document.createElement('div');
 		htmlDivElement.id = 'mocha';
 		document.body.append(htmlDivElement);
 
+		const params = new URLSearchParams(window.location.search);
+		const useJsonReporter = params.has('mocha-json-serialize-reporter');
+
 		// https://medium.com/dailyjs/running-mocha-tests-as-native-es6-modules-in-a-browser-882373f2ecb0
-		mocha.setup({ui: 'bdd', checkLeaks: true});
+		mocha.setup({
+			ui: 'bdd', checkLeaks: true,
+			...(useJsonReporter ? {reporter: (globalThis as any).MochaJsonSerializeReporter} : {}),
+		});
+		if (useJsonReporter) {
+			mocha.options.reporterOptions = {
+				callback: (results: string) => {
+					(this as any)['mocha-json-serialize-reporter-output'] = '\n' + results;
+				}
+			};
+		}
 		mocha.cleanReferencesAfterRun(false);
 
-		if (!new URLSearchParams(window.location.search).has("run-dont"))
+		if (!params.has("run-dont"))
 			this.run_requested = true;
 	}
 

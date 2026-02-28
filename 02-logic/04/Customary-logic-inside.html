@@ -1,0 +1,31 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ inside ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ inside ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-inside-recipe"
+    data-customary-value="list"
+>
+  ["Peas", "Carrots", "Tomatoes"]
+</script>
+
+<logic-inside-recipe></logic-inside-recipe>
+
+<template data-customary-name="logic-inside-recipe">
+  <p>Render options inside a select:</p>
+  <select></select>
+  <customary:inside target="select">
+    <customary:for items="{{list}}" value="item" index="index">
+      <option value="{[index]}">{[index]}: {[item]}</option>
+    </customary:for>
+  </customary:inside>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

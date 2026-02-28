@@ -1,3 +1,3 @@
-import {PlaywrightMochaBrowserAdapter} from "playwright-mocha-browser-adapter/src/index.js";
+import {CustomaryTestingMochaRunner} from "customary-testing-mocha-runner/src/CustomaryTestingMochaRunner.js";
 
-await new PlaywrightMochaBrowserAdapter().execute();
+await new CustomaryTestingMochaRunner().runCustomaryTests();

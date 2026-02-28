@@ -10,8 +10,8 @@
 <attributes-declaration task="done" value="true"></attributes-declaration>
 
 <template data-customary-name="attributes-declaration">
-    <h1 class="${this.color}">
-        <label><input type="checkbox" data-customary-bind="value" /> ${this.task}</label>
+    <h1 class="{{color}}">
+        <label><input type="checkbox" data-customary-bind="value" /> {{task}}</label>
     </h1>
     <style>.done {color: green}</style>
 </template>
@@ -26,20 +26,13 @@
     globalThis['customary:attributes-declaration'] = {
         config: {
             attributes: ['task', 'value'],
-            state: ['color'],
         },
         hooks: {
-            properties: {
-                'done': {type: Boolean},
-            },
-            lifecycle: {
-                willUpdate: el => derive(el)
+            derive: {
+                'done': el => el.value === 'true',
+                'color': el => el.done ? 'done' : ''
             },
         }
     };
-    function derive(el) {
-        el.done = el.value === 'true';
-        el.color = el.done ? 'done' : ''
-    }
 </script>
 <script type="module">import '#customary';</script>

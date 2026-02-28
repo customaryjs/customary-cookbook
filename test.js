@@ -1,6 +1,3 @@
-import { PlaywrightMochaBrowserAdapter } from "playwright-mocha-browser-adapter/src/index.js";
-await test();
-async function test() {
-    await new PlaywrightMochaBrowserAdapter().execute();
-}
+import { CustomaryTestingMochaRunner } from "customary-testing-mocha-runner/src/CustomaryTestingMochaRunner.js";
+await new CustomaryTestingMochaRunner().runCustomaryTests();
 //# sourceMappingURL=test.js.map

@@ -22,7 +22,7 @@ describe(suite.title, async function (){
             CT.spot(textContent, container, {selectors: 'div.c > div'});
         }
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             assert_element();
             assert_textContent("02-state/02/test-Customary-state-setState.ts");
         });

@@ -4,7 +4,10 @@
 
 <p>~ with directive markup ~</p><br/>
 
-<script type="application/json" data-customary-name="bindings-markup">
+<script type="application/json"
+        data-customary-name="bindings-markup"
+        data-customary-value="state"
+>
     ["input_editor", "textarea_editor"]
 </script>
 
@@ -12,11 +15,11 @@
           data-customary-attributes="value, is_editable"
 >
     <fieldset><legend>customary:if</legend>
-        <customary:if condition="this.is_editable">
+        <customary:if condition="{{is_editable}}">
             <fieldset><legend>customary:for</legend>
-                <customary:for items="this.state" value="item">
+                <customary:for items="{{state}}" value="item">
                     <fieldset><legend>customary:switch</legend>
-                        <customary:switch value="item">
+                        <customary:switch value="{[item]}">
                             <customary:case value="input_editor">
                                 <label>
                                     Edit as input<br/>
@@ -35,7 +38,7 @@
             </fieldset>
         </customary:if>
     </fieldset>
-    <h1>${this.value}</h1>
+    <h1>{{value}}</h1>
 </template>
 
 <bindings-markup is_editable="1" value="Hello Customary !"></bindings-markup>

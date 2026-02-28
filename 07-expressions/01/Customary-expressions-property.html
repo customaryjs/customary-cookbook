@@ -18,7 +18,7 @@
             data-customary-expressions
             TODO---data-customary-expression-name-1="childListOfNumbers"
             data-customary-expression-name-1="child_list_of_numbers"
-            data-customary-expression-data-1="${this.parentListOfNumbers}"
+            data-customary-expression-data-1="{{parentListOfNumbers}}"
     ></expressions-property-recipe-child>
 </template>
 
@@ -26,9 +26,9 @@
     <ul>
         <customary:for
                 TODO---items="this.childListOfNumbers"
-                items="this.child_list_of_numbers"
+                items="{{child_list_of_numbers}}"
                 value="number" index="index">
-            <li>${index}: ${number}</li>
+            <li>{[index]}: {[number]}</li>
         </customary:for>
     </ul>
 </template>

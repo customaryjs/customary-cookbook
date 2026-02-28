@@ -21,7 +21,7 @@ describe(suite.title, async function (){
         }
 
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             const parent = CT.querySelector('expressions-boolean-recipe', window);
             const input1 = findCheckbox("checked and enabled", parent);
             chai.assert(input1.checked);

@@ -1,0 +1,38 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ classMap ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ classMap ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-classmap-recipe"
+    data-customary-value="classes"
+>
+  {"highlight": true, "active": false}
+</script>
+
+<logic-classmap-recipe></logic-classmap-recipe>
+
+<template data-customary-name="logic-classmap-recipe">
+  <div>Classy text</div>
+  <customary:classMap
+      target="div"
+      classInfo="{{classes}}"
+  >
+  </customary:classMap>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+    .active {
+      font-size: xx-large;
+    }
+  </style>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

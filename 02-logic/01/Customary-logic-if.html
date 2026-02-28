@@ -1,0 +1,30 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ if ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ if ~</p><br/>
+
+<logic-if-recipe></logic-if-recipe>
+<hr>
+<logic-if-recipe user="root" admin="true"></logic-if-recipe>
+
+<template
+    data-customary-name="logic-if-recipe"
+    data-customary-attributes="user,admin"
+>
+  <customary:if condition="{{user}}">
+    <customary:false>Sign In...</customary:false>
+    <customary:true>
+      User: {{user}}
+      <customary:if condition="{{admin}}">(admin)</customary:if>
+    </customary:true>
+  </customary:if>
+
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

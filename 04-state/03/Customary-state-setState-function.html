@@ -1,12 +1,15 @@
-<title>State ~ with setState and a function ~ Customary Cookbook</title>
+<title>State ~ derive from current ~ Customary Cookbook</title>
 
 <h1>Customary State</h1>
 
-<p>~ with setState and a function ~</p><br/>
+<p>~ derive from current ~</p><br/>
 
 <recipe-card></recipe-card>
 
-<script type="application/json" data-customary-name="recipe-card">
+<script type="application/json"
+        data-customary-name="recipe-card"
+        data-customary-value="state"
+>
   {
     "id": "02-03",
     "page_html": "02-state/03/Customary-state-setState-function.html",
@@ -16,9 +19,9 @@
 
 <template data-customary-name="recipe-card">
   <div class="c">
-    <div class="h">Id</div><div>${state.id}</div>
-    <div class="h">Recipe</div><div>${state.page_html}</div>
-    <div class="h">Test</div><div>${state.test_ts}</div>
+    <div class="h">Id</div><div>{{state.id}}</div>
+    <div class="h">Recipe</div><div>{{state.page_html}}</div>
+    <div class="h">Test</div><div>{{state.test_ts}}</div>
   </div>
   <button data-customary>Set state</button>
   <style>
@@ -36,7 +39,13 @@
 <script type="module">
   globalThis['customary:recipe-card'] = {
     hooks: {
-      events: {'button': el => el.setState(state => ({test_ts: state.test_ts.split('').reverse().join('')}))},
+      events: {
+        'button': el =>
+                el.state = {
+                  ...el.state,
+                  test_ts: el.state.test_ts.split('').reverse().join('')
+                },
+      }
     }
   };
 </script>

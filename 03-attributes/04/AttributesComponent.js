@@ -11,7 +11,7 @@ export class AttributesComponent extends CustomaryElement {
         hooks: {
             externalLoader: { import_meta: import.meta },
             changes: {
-                'chord': (el, a) => el.scale = el.notes.map(note => ({ note, bright: a.includes(note) })),
+                'chord': (el, a) => el.scale = el.notes.map(note => ({ note, classInfo: { bright: a.includes(note) } })),
             },
         },
     };

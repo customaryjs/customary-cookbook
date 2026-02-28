@@ -1,0 +1,30 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ styleMap ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ styleMap ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-stylemap-recipe"
+    data-customary-value="styles"
+>
+  {"color": "red", "fontSize": "20px"}
+</script>
+
+<logic-stylemap-recipe></logic-stylemap-recipe>
+
+<template data-customary-name="logic-stylemap-recipe">
+  <div>Stylish text</div>
+  <customary:styleMap
+      target="div"
+      styleInfo="{{styles}}"
+  >
+  </customary:styleMap>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

@@ -1,0 +1,27 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ switch ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ switch ~</p><br/>
+
+<logic-switch-recipe mode="light"></logic-switch-recipe>
+<logic-switch-recipe mode="dark"></logic-switch-recipe>
+<logic-switch-recipe mode="other"></logic-switch-recipe>
+
+<template
+    data-customary-name="logic-switch-recipe"
+    data-customary-attributes="mode"
+>
+  <customary:switch value="{{mode}}">
+    <customary:case value="light"><h1>Light mode</h1></customary:case>
+    <customary:case value="dark"><h1>Dark mode</h1></customary:case>
+    <customary:case><h1>System default</h1></customary:case>
+  </customary:switch>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

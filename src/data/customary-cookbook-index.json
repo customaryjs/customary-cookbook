@@ -338,6 +338,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/03"
   },
   {
+    "id": "06-04",
+    "chapter_name": "Bindings",
+    "recipe_name": "with a select",
+    "page_html": "06-bindings/04/Customary-bindings-select.html",
+    "test_ts": "06-bindings/04/test-Customary-bindings-select.ts",
+    "test_js": "06-bindings/04/test-Customary-bindings-select.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/04/Customary-bindings-select.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/04"
+  },
+  {
     "id": "06-08",
     "chapter_name": "Bindings",
     "recipe_name": "with directive markup",

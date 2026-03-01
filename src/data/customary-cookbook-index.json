@@ -149,6 +149,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/07"
   },
   {
+    "id": "02-08",
+    "chapter_name": "Logic",
+    "recipe_name": "for-body",
+    "page_html": "02-logic/08/Customary-logic-for-body.html",
+    "test_ts": "02-logic/08/test-Customary-logic-for-body.ts",
+    "test_js": "02-logic/08/test-Customary-logic-for-body.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-for-body.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/08"
+  },
+  {
     "id": "03-01",
     "chapter_name": "Attributes",
     "recipe_name": "from template",

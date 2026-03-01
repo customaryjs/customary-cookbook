@@ -1,0 +1,43 @@
+<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<title>Logic ~ for-body ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ for-body ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-for-body-recipe"
+    data-customary-value="rows"
+>
+  [
+    {"name": "Alice", "role": "Engineer"},
+    {"name": "Bob",   "role": "Designer"},
+    {"name": "Carol", "role": "Manager"}
+  ]
+</script>
+
+<logic-for-body-recipe></logic-for-body-recipe>
+
+<template data-customary-name="logic-for-body-recipe">
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{[row.name]}</td><td>{[row.role]}</td></tr>
+    </tbody>
+  </table>
+  <customary:inside target="tbody">
+    <customary:for items="{{rows}}" value="row">
+      <customary:for-body target="tbody tr"></customary:for-body>
+    </customary:for>
+  </customary:inside>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary/": "../../../node_modules/customary/src/",
+  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

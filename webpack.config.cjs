@@ -39,7 +39,7 @@ module.exports = {
                 },
                 {
                     context: 'node_modules',
-                    from: 'chai/{chai.js,}',
+                    from: 'chai/{chai.js,index.js}',
                     to: '_dependencies/',
                 },
                 {

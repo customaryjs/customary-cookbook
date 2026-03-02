@@ -368,6 +368,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
   },
   {
+    "id": "06-09",
+    "chapter_name": "Bindings",
+    "recipe_name": "changes and derive",
+    "page_html": "06-bindings/09/Customary-bindings-changes-and-derive.html",
+    "test_ts": "06-bindings/09/test-Customary-bindings-changes-and-derive.ts",
+    "test_js": "06-bindings/09/test-Customary-bindings-changes-and-derive.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/09/Customary-bindings-changes-and-derive.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/09"
+  },
+  {
     "id": "07-01",
     "chapter_name": "Expressions",
     "recipe_name": "property",

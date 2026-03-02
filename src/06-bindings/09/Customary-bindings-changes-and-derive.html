@@ -1,0 +1,42 @@
+<title>Bindings ~ changes and derive ~ Customary Cookbook</title>
+
+<h1>Customary Bindings</h1>
+
+<p>~ changes and derive ~</p><br/>
+
+<template data-customary-name="bindings-changes-and-derive"
+          data-customary-attributes="value"
+>
+    <style>
+        .bg-green { background-color: lightgreen; }
+        .bg-red { background-color: lightcoral; }
+    </style>
+    <input data-customary-bind="value" />
+    <customary:classMap target="input" classInfo="{{bg_classes}}"></customary:classMap>
+    <p>Is digits: {{is_digits}}</p>
+</template>
+
+<bindings-changes-and-derive value=""></bindings-changes-and-derive>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary/": "../../../node_modules/customary/src/",
+    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:bindings-changes-and-derive'] = {
+        config: { state: ['is_digits'] },
+        hooks: {
+            changes: {
+                'value': (el, value) => el.is_digits = /^\d*$/.test(value)
+            },
+            derive: {
+                'bg_classes': el => ({ 'bg-green': el.is_digits, 'bg-red': !el.is_digits })
+            }
+        }
+    };
+</script>
+<script type="module">import '#customary';</script>

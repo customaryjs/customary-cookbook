@@ -8,29 +8,70 @@
 
 <script type="application/json"
         data-customary-name="expressions-property-recipe"
-        data-customary-value="parentListOfNumbers"
+        data-customary-value="parentListOfGroups"
 >
-    [4, 8, 15, 16, 23, 42]
+    [
+        {
+            "name": "Vegetables",
+            "categories": [
+                {"name": "Root",  "items": ["Carrot", "Potato", "Beet"]},
+                {"name": "Leafy", "items": ["Spinach", "Kale", "Arugula"]}
+            ]
+        },
+        {
+            "name": "Fruits",
+            "categories": [
+                {"name": "Citrus",  "items": ["Orange", "Lemon", "Lime"]},
+                {"name": "Berries", "items": ["Strawberry", "Blueberry", "Raspberry"]}
+            ]
+        }
+    ]
+</script>
+
+<script type="application/json"
+        data-customary-name="expressions-property-recipe"
+        data-customary-value="basket"
+>
+    []
 </script>
 
 <template data-customary-name="expressions-property-recipe">
-    <expressions-property-recipe-child
+    <expressions-property-recipe-deck-groups
             data-customary-expressions
-            TODO---data-customary-expression-name-1="childListOfNumbers"
-            data-customary-expression-name-1="child_list_of_numbers"
-            data-customary-expression-data-1="{{parentListOfNumbers}}"
-    ></expressions-property-recipe-child>
-</template>
+            data-customary-expression-name="list_of_groups"
+            data-customary-expression-data="{{parentListOfGroups}}"
+    ></expressions-property-recipe-deck-groups>
 
-<template data-customary-name="expressions-property-recipe-child">
+    <hr/>
+
+    <h2>Basket</h2>
     <ul>
-        <customary:for
-                TODO---items="this.childListOfNumbers"
-                items="{{child_list_of_numbers}}"
-                value="number" index="index">
-            <li>{[index]}: {[number]}</li>
+        <customary:for items="{{basket}}" value="item">
+            <li>{[item]}</li>
         </customary:for>
     </ul>
+</template>
+
+<template data-customary-name="expressions-property-recipe-deck-groups">
+    <customary:for items="{{list_of_groups}}" value="group">
+        <h2>{[group.name]}</h2>
+        <expressions-property-recipe-deck-categories
+                data-customary-expressions
+                data-customary-expression-name="list_of_categories"
+                data-customary-expression-data="{[group.categories]}"
+        ></expressions-property-recipe-deck-categories>
+    </customary:for>
+</template>
+
+<template data-customary-name="expressions-property-recipe-deck-categories">
+    <customary:for items="{{list_of_categories}}" value="category">
+        <h3>{[category.name]}</h3>
+        <ul>
+            <customary:for items="{[category.items]}" value="item">
+                <li><button data-item="{[item]}">Pick</button> {[item]}</li>
+            </customary:for>
+        </ul>
+    </customary:for>
 </template>
 
 <expressions-property-recipe></expressions-property-recipe>
@@ -40,4 +81,30 @@
     "#customary/": "../../../node_modules/customary/src/",
     "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
 }}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:expressions-property-recipe'] = {
+        config: {
+          construct: {shadowRootDont: true},
+        },
+        hooks: {
+            events: {
+                'button': (el, _, target) =>
+                    el.basket = [...el.basket, target.getAttribute('data-item')]
+            }
+        }
+    };
+    globalThis['customary:expressions-property-recipe-deck-groups'] = {
+        config: {
+            construct: {shadowRootDont: true},
+        },
+    };
+    globalThis['customary:expressions-property-recipe-deck-categories'] = {
+        config: {
+            construct: {shadowRootDont: true},
+        },
+    };
+</script>
 <script type="module">import '#customary';</script>

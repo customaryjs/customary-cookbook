@@ -7,15 +7,24 @@
     <xs:element name="if">
         <xs:complexType>
             <xs:all>
-                <xs:element name="true" type="xs:string" minOccurs="0"/>
-                <xs:element name="false" type="xs:string" minOccurs="0"/>
+                <xs:element name="true" minOccurs="0">
+                    <xs:complexType mixed="true">
+                        <xs:sequence><xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/></xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="false" minOccurs="0">
+                    <xs:complexType mixed="true">
+                        <xs:sequence><xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/></xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:all>
             <xs:attribute name="condition" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="for">
-        <xs:complexType>
+        <xs:complexType mixed="true">
+            <xs:sequence><xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/></xs:sequence>
             <xs:attribute name="items" type="xs:string" use="required"/>
             <xs:attribute name="value" type="xs:string"/>
             <xs:attribute name="index" type="xs:string"/>
@@ -26,21 +35,27 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="case" maxOccurs="unbounded">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:any/>
-                        </xs:sequence>
-                        <!--
-                        <xs:simpleContent>
-                            <xs:extension base="xs:string">
-                                <xs:attribute name="value" type="xs:string"/>
-                            </xs:extension>
-                        </xs:simpleContent>
-                        -->
+                    <xs:complexType mixed="true">
+                        <xs:sequence><xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/></xs:sequence>
+                        <xs:attribute name="value" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="value" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="classMap">
+        <xs:complexType>
+            <xs:attribute name="target" type="xs:string" use="required"/>
+            <xs:attribute name="classInfo" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="styleMap">
+        <xs:complexType>
+            <xs:attribute name="target" type="xs:string" use="required"/>
+            <xs:attribute name="styleInfo" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 

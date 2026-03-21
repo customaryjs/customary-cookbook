@@ -360,11 +360,11 @@
   {
     "id": "06-08",
     "chapter_name": "Bindings",
-    "recipe_name": "with directive markup",
-    "page_html": "06-bindings/08/Customary-bindings-markup.html",
-    "test_ts": "06-bindings/08/test-Customary-bindings-markup.ts",
-    "test_js": "06-bindings/08/test-Customary-bindings-markup.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-markup.html",
+    "recipe_name": "with logic tags",
+    "page_html": "06-bindings/08/Customary-bindings-logic-tags.html",
+    "test_ts": "06-bindings/08/test-Customary-bindings-logic-tags.ts",
+    "test_js": "06-bindings/08/test-Customary-bindings-logic-tags.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-logic-tags.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
   },
   {

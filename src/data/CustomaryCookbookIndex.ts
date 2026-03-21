@@ -9,6 +9,10 @@ type Recipe = {
     github_dir: string;
 }
 
+type ChapterRecipe = {id: string; name: string; is_current: boolean};
+
+type Chapter = {chapter_name: string; recipes: Array<ChapterRecipe>};
+
 export type NavigationData = Recipe & {
     previous_id?: string;
     previous_name?: string;
@@ -18,6 +22,24 @@ export type NavigationData = Recipe & {
 
 export class CustomaryCookbookIndex {
     constructor(private readonly items: Array<Recipe>) {}
+
+    buildChapters(currentId: string): Chapter[] {
+        const chapterMap = new Map<string, Chapter>();
+        for (const recipe of this.items) {
+            if (!chapterMap.has(recipe.chapter_name)) {
+                chapterMap.set(recipe.chapter_name, {chapter_name: recipe.chapter_name, recipes: []});
+            }
+            chapterMap.get(recipe.chapter_name)!.recipes.push({
+                id: recipe.id,
+                name: recipe.recipe_name ?? recipe.chapter_name,
+                is_current: recipe.id === currentId,
+            });
+        }
+        return Array.from(chapterMap.values());
+    }
+
+    get firstId(): string { return this.items[0]?.id ?? ''; }
+    get lastId(): string { return this.items[this.items.length - 1]?.id ?? ''; }
 
     getNavigationData(id: string): NavigationData | undefined {
         const i = this.items.findIndex(t => t.id === id);

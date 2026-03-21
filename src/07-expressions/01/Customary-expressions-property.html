@@ -4,7 +4,7 @@
 
 <h1>Customary Expressions</h1>
 
-<p>~ property ~</p><br/>
+<p>~ property ~</p>
 
 <script type="application/json"
         data-customary-name="expressions-property-recipe"
@@ -42,14 +42,11 @@
             data-customary-expression-data="{{parentListOfGroups}}"
     ></expressions-property-recipe-deck-groups>
 
-    <hr/>
-
-    <h2>Basket</h2>
-    <ul>
+    <div class="basket">
         <customary:for items="{{basket}}" value="item">
-            <li>{[item]}</li>
+            <span style="background-color: limegreen; padding: 2px">{[item]}</span>
         </customary:for>
-    </ul>
+    </div>
 </template>
 
 <template data-customary-name="expressions-property-recipe-deck-groups">
@@ -64,14 +61,18 @@
 </template>
 
 <template data-customary-name="expressions-property-recipe-deck-categories">
-    <customary:for items="{{list_of_categories}}" value="category">
-        <h3>{[category.name]}</h3>
-        <ul>
-            <customary:for items="{[category.items]}" value="item">
-                <li><button data-item="{[item]}">Pick</button> {[item]}</li>
-            </customary:for>
-        </ul>
-    </customary:for>
+    <div style="display: flex; gap: 2em">
+        <customary:for items="{{list_of_categories}}" value="category">
+            <div>
+                <h3>{[category.name]}</h3>
+                <ul>
+                    <customary:for items="{[category.items]}" value="item">
+                        <li><button data-item="{[item]}">Pick</button> {[item]}</li>
+                    </customary:for>
+                </ul>
+            </div>
+        </customary:for>
+    </div>
 </template>
 
 <expressions-property-recipe></expressions-property-recipe>

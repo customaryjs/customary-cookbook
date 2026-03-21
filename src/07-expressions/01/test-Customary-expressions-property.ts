@@ -14,12 +14,21 @@ describe(suite.title, async function (){
     after(() => window.close());
 
     describe('happy day', async function () {
+        let el: Element, elA: HTMLLIElement, elB: HTMLLIElement;
+        const a = 'Spinach', b = 'Blueberry';
         it('looks good', async function () {
             this.retries(128);
-            const el = CT.querySelector('expressions-property-recipe', window);
-            CT.spot('Basket', el, {selectors: 'h2'});
-            CT.spot('Orange', el, {selectors: 'li'});
-            CT.spot('Kale', el, {selectors: 'li'});
+            el = CT.querySelector('expressions-property-recipe', window);
+            elA = CT.spot(a, el, {selectors: 'li'}).parentElement as HTMLLIElement;
+            elB = CT.spot(b, el, {selectors: 'li'}).parentElement as HTMLLIElement;
+        });
+        it('interact', async function () {
+            (CT.querySelector('button', elA) as HTMLButtonElement).click();
+            (CT.querySelector('button', elB) as HTMLButtonElement).click();
+        });
+        it('looks good', async function () {
+            this.retries(128);
+            CT.spot(`${a} ${b}`, el, {selectors: '.basket'});
         });
     });
 });

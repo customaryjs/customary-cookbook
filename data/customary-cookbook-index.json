@@ -149,6 +149,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/07"
   },
   {
+    "id": "02-08",
+    "chapter_name": "Logic",
+    "recipe_name": "for-body",
+    "page_html": "02-logic/08/Customary-logic-for-body.html",
+    "test_ts": "02-logic/08/test-Customary-logic-for-body.ts",
+    "test_js": "02-logic/08/test-Customary-logic-for-body.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-for-body.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/08"
+  },
+  {
     "id": "03-01",
     "chapter_name": "Attributes",
     "recipe_name": "from template",
@@ -338,6 +348,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/03"
   },
   {
+    "id": "06-04",
+    "chapter_name": "Bindings",
+    "recipe_name": "with a select",
+    "page_html": "06-bindings/04/Customary-bindings-select.html",
+    "test_ts": "06-bindings/04/test-Customary-bindings-select.ts",
+    "test_js": "06-bindings/04/test-Customary-bindings-select.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/04/Customary-bindings-select.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/04"
+  },
+  {
     "id": "06-08",
     "chapter_name": "Bindings",
     "recipe_name": "with directive markup",
@@ -346,6 +366,16 @@
     "test_js": "06-bindings/08/test-Customary-bindings-markup.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/08/Customary-bindings-markup.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/08"
+  },
+  {
+    "id": "06-09",
+    "chapter_name": "Bindings",
+    "recipe_name": "changes and derive",
+    "page_html": "06-bindings/09/Customary-bindings-changes-and-derive.html",
+    "test_ts": "06-bindings/09/test-Customary-bindings-changes-and-derive.ts",
+    "test_js": "06-bindings/09/test-Customary-bindings-changes-and-derive.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/06-bindings/09/Customary-bindings-changes-and-derive.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/06-bindings/09"
   },
   {
     "id": "07-01",

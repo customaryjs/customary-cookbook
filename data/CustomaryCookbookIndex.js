@@ -3,6 +3,22 @@ export class CustomaryCookbookIndex {
     constructor(items) {
         this.items = items;
     }
+    buildChapters(currentId) {
+        const chapterMap = new Map();
+        for (const recipe of this.items) {
+            if (!chapterMap.has(recipe.chapter_name)) {
+                chapterMap.set(recipe.chapter_name, { chapter_name: recipe.chapter_name, recipes: [] });
+            }
+            chapterMap.get(recipe.chapter_name).recipes.push({
+                id: recipe.id,
+                name: recipe.recipe_name ?? recipe.chapter_name,
+                is_current: recipe.id === currentId,
+            });
+        }
+        return Array.from(chapterMap.values());
+    }
+    get firstId() { return this.items[0]?.id ?? ''; }
+    get lastId() { return this.items[this.items.length - 1]?.id ?? ''; }
     getNavigationData(id) {
         const i = this.items.findIndex(t => t.id === id);
         if (i < 0)

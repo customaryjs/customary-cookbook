@@ -32,14 +32,18 @@
 <template data-customary-name="logic-nested-for-recipe">
   <customary:for items="{{groups}}" value="group">
     <h2>{[group.name]}</h2>
-    <customary:for items="{[group.categories]}" value="category">
-      <h3>{[category.name]}</h3>
-      <ul>
-        <customary:for items="{[category.items]}" value="item">
-          <li>{[item]}</li>
-        </customary:for>
-      </ul>
-    </customary:for>
+    <div style="display: flex; gap: 2em">
+      <customary:for items="{[group.categories]}" value="category">
+        <div>
+          <h3>{[category.name]}</h3>
+          <ul>
+            <customary:for items="{[category.items]}" value="item">
+              <li>{[item]}</li>
+            </customary:for>
+        </ul>
+        </div>
+      </customary:for>
+    </div>
   </customary:for>
 </template>
 

@@ -16,6 +16,20 @@ export function checkbox(element: HTMLInputElement) {
     element.dispatchEvent(new_Event_input());
 }
 
+export function select(value: string, element: HTMLSelectElement) {
+    element.focus();
+    element.value = value;
+    element.dispatchEvent(new_Event_input());
+}
+
+export function keydown(keyboardEventInit: KeyboardEventInit, target: EventTarget) {
+    target.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            ...keyboardEventInit,
+            bubbles: true, composed: true
+        }));
+}
+
 function new_Event_input(): Event {
     return new InputEvent("input", {bubbles: true, composed: true});
 }

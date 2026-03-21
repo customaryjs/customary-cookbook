@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
     <title>Customary Cookbook</title>
-    <style>html{display:none}</style>
 </head>
 <body>
 
@@ -11,166 +10,293 @@
 
 <template data-customary-name="customary-cookbook-navigator">
 
-<div class="page-flex-container">
+<div class="page-layout">
 
-<div class="page-upper-item navigator-flex-container">
-
-    <div class="navigator-left-half navigator-flex-item i1" style="flex-basis: 15%">
-        <div class="logo">
-            <span class="logo-caption">
-                Customary<br>Cookbook<br>
-            </span>
-            <span class="logo-emoji">
-                &#x1F475;&#x1F373;
-            </span>
-            <p class="logo-tagline">
+    <nav class="index-panel">
+        <div class="cookbook-cover">
+            <div class="cookbook-cover-caption">Customary<br>Cookbook</div>
+            <div class="cookbook-cover-emoji">&#x1F475;&#x1F373;</div>
+            <div class="cookbook-cover-tagline">
                 <a target="_blank" href="https://customaryjs.github.io/">Customary</a> recipes<br>to teach yourself
-            </p>
-        </div>
-
-        <div class="action">
-            <a target="_blank" href="{{navigation.html}}">View in new tab <external-link-symbol></external-link-symbol></a>
-        </div>
-        <div class="action">
-            <a target="_blank" href="{{navigation.unit_test}}&run">Unit Test <external-link-symbol></external-link-symbol></a>
-        </div>
-        <div class="action">
-            <a target="_blank"  href="{{navigation.source_html}}">Source: HTML <external-link-symbol></external-link-symbol></a>
-        </div>
-        <div class="action">
-            <a target="_blank"  href="{{navigation.source_everything}}">Source: Everything <external-link-symbol></external-link-symbol></a>
-        </div>
-        <div class="action">
-            <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
-        </div>
-
-    </div>
-
-    <div class="navigator-right-half navigator-flex-item recipe-view-container" style="flex-basis: 85%">
-        <div class="recipe-header" style="
-            flex-basis: 10%;
-            display: flex; justify-content: space-between; align-items: center;
-        ">
-            <button class="previous" style="flex-basis: 25%">{{navigation.previous_name}} &lt;&lt;</button>
-            <div style="flex-grow: 1">
-                <div class="recipe-chapter">
-                    {{navigation.chapter_name}}
-                </div>
-                <div class="recipe-name">
-                    {{navigation.recipe_name}}
-                </div>
             </div>
-            <button class="next" style="flex-basis: 25%">&gt;&gt; {{navigation.next_name}}</button>
         </div>
-        <div class="recipe-vision-container">
-            <iframe src="{{navigation.html}}"></iframe>
+        <div class="cookbook-index">
+            <customary:for items="{{chapters}}" value="chapter">
+                <div class="chapter-label">{[chapter.chapter_name]}</div>
+                <customary:for items="{[chapter.recipes]}" value="recipe">
+                    <a class="recipe-link" href="{[recipe.href]}" data-current="{[recipe.is_current]}">{[recipe.name]}</a>
+                </customary:for>
+            </customary:for>
+        </div>
+    </nav>
+
+    <div class="recipe-area">
+
+        <div class="recipe-header-band">
+            <div class="nav-side nav-prev">
+                <customary:if condition="{{navigation.has_previous}}">
+                    <button class="previous" aria-label="Previous recipe">&#x25C4;</button>
+                </customary:if>
+                <small class="nav-adjacent-name">{{navigation.previous_name}}</small>
+            </div>
+            <div class="recipe-title">
+                <div class="recipe-chapter">{{navigation.chapter_name}}</div>
+                <customary:if condition="{{navigation.recipe_name}}">
+                    <div class="recipe-name">{{navigation.recipe_name}}</div>
+                </customary:if>
+            </div>
+            <div class="nav-side nav-next">
+                <customary:if condition="{{navigation.has_next}}">
+                    <button class="next" aria-label="Next recipe">&#x25BA;</button>
+                </customary:if>
+                <small class="nav-adjacent-name">{{navigation.next_name}}</small>
+            </div>
+        </div>
+
+        <div class="actions-toolbar">
+            <a target="_blank" href="{{navigation.html}}">View in new tab <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="{{navigation.unit_test}}&run">Unit Test <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="{{navigation.source_html}}">Source: HTML <external-link-symbol></external-link-symbol></a>
+            <a target="_blank" href="{{navigation.source_everything}}">Source: Everything <external-link-symbol></external-link-symbol></a>
+            <a href="./test.html?run" target="_blank">Run all Unit Tests <external-link-symbol></external-link-symbol></a>
+            <div class="help-container">
+                <button class="help-toggle" aria-label="Keyboard shortcuts">?</button>
+                <customary:if condition="{{show_help}}">
+                    <div class="help-popup">
+                        <table>
+                            <tr><td><kbd>&larr;</kbd> <kbd>&rarr;</kbd></td><td>Previous / Next recipe</td></tr>
+                            <tr><td><kbd>Home</kbd></td><td>First recipe</td></tr>
+                            <tr><td><kbd>End</kbd></td><td>Last recipe</td></tr>
+                            <tr><td><kbd>?</kbd> <kbd>/</kbd></td><td>This help</td></tr>
+                        </table>
+                    </div>
+                </customary:if>
+            </div>
+        </div>
+
+        <div class="recipe-vision">
+            <div class="tv1">
+            <div class="tv2">
+                <iframe src="{{navigation.html}}"></iframe>
+            </div>
+            </div>
             <view-source source="{{navigation.html}}"></view-source>
         </div>
-    </div>
 
-</div>
+    </div>
 
 </div>
 
 <style>
-    .page-flex-container {
+    .page-layout {
         display: flex;
-        flex-direction: column;
-        min-height: 98vh;
-    }
-    .page-upper-item {
-        flex-grow: 1;
+        min-height: 100vh;
+        align-items: flex-start;
     }
 
-    .navigator-flex-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: stretch;
-        align-content: stretch;
+    .index-panel {
+        overflow-y: auto;
+        background-color: whitesmoke;
+        border-right: 1px dashed silver;
+        padding: 0.5em 0.75em;
     }
-    .navigator-flex-item {
-        border-style: dotted; border-width: 1px; border-color: lightgrey;
-    }
-    .navigator-left-half {
-        flex-grow: 1;
-    }
-    .navigator-right-half {
-        flex-grow: 2;
-    }
-
-    .logo {
-        display: inline-block;
-        text-align: center;
+    
+    .cookbook-cover {
         font-family: serif;
-        border-style: outset; border-radius: 16px;
-        padding: 0px 10px 10px 10px;
-        margin-bottom: 32px;
-    }
-    .logo-caption {
-        font-style: italic; font-size: xxx-large;
-    }
-    .logo-emoji {
-        font-size: xxx-large;
-        margin: 0;
-    }
-    .logo-tagline {
-        font-style: italic;
-        margin: 8px 0 0;
-    }
-
-    .action {
-        text-align: center;
-        font-size: large;
-        margin: 40px;
-    }
-
-    .recipe-view-container {
+        border-style: outset;
+        border-radius: 8px;
+        margin-bottom: 1.1em;
         display: flex;
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+        gap: 0.5em;
+        aspect-ratio: 1;
+        overflow: hidden;
     }
-    .recipe-header {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        border-bottom-width: 2px;
-        border-bottom-color: grey;
+    .cookbook-cover-caption {
+        font-style: italic;
+        font-size: x-large;
+    }
+    .cookbook-cover-emoji {
+        font-size: xx-large;
+    }
+    .cookbook-cover-tagline {
+        font-style: italic;
+        font-size: small;
+        text-align: center;
+    }
+    
+    .chapter-label {
+        font-weight: bold;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: dimgray;
+        border-bottom: 1px dotted silver;
+        padding-bottom: 2px;
+        margin: 0.75em 0 0.25em;
+    }
+    .recipe-link {
+        display: block;
+        text-decoration: none;
+        padding: 2px 4px 2px 8px;
+        font-size: 0.85em;
+        color: inherit;
+        line-height: 1.6;
+    }
+    .recipe-link:visited {
+        color: gray;
+    }
+    .recipe-link:hover {
+        text-decoration: underline;
+    }
+    .recipe-link[data-current="true"] {
+        font-weight: bold;
+        border-left: 3px solid darkkhaki;
+        padding-left: 5px;
+        background-color: white;
+    }
+
+    .recipe-area {
+        flex: 1;
+        min-height: 100vh;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .recipe-header-band {
+        background-color: whitesmoke;
+        border-bottom: 1px dashed silver;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0.5em 1em;
+        gap: 1em;
+    }
+    .nav-side {
+        flex: 0 0 auto;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-prev {
+        align-items: flex-start;
+    }
+    .nav-next {
+        align-items: flex-end;
+    }
+    .nav-adjacent-name {
+        font-size: small;
+        color: gray;
+        margin-top: 0.25em;
+    }
+    .recipe-title {
+        flex: 1;
+        text-align: center;
     }
     .recipe-chapter {
-        font-size: xxx-large;
-        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
     }
     .recipe-name {
-        font-size: xx-large;
-        text-align: center;
+        font-size: large;
+        color: dimgray;
     }
-    .recipe-vision-container {
-        flex-grow: 1;
-        display: flex;
-        align-items: stretch;
-    }
-    iframe {
-        flex-grow: 1;
-        border-style: dashed;
-        border-radius: 64px;
-        border-color: darkkhaki;
-        padding: 40px;
-        margin: 20px;
-    }
-    view-source {
-        margin: 20px;
-        width: 50%;
-        flex-basis: 60%;
-    }
-
     button {
         font-size: large;
+        cursor: pointer;
+    }
+    button.help-toggle {
+        font-size: x-small;
+    }
+
+    .actions-toolbar {
+        display: flex;
+        gap: 1.5em;
+        padding: 0.3em 1em;
+        border-bottom: 1px dotted silver;
+        font-size: x-small;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .help-container {
+        margin-left: auto;
+        position: relative;
+    }
+    .help-popup {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 10;
+        background-color: white;
+        border-style: outset;
+        border-width: 3px;
+        padding: 0.5em 1em;
+        white-space: nowrap;
+        margin-top: 4px;
+    }
+    .help-popup table {
+        border-collapse: collapse;
+    }
+    .help-popup td {
+        padding: 0.2em 0.75em 0.2em 0;
+        vertical-align: middle;
+    }
+
+    .recipe-vision {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+        margin: 16px;
+        gap: 10px;
+    }
+    .tv1 {
+        height: 82vh;
+        flex: 1;
+        display: flex;
+        border-color: darkkhaki;
+        border-style: double;
+        border-left-style: none;
+        border-right-style: none;
+        border-top-left-radius:  100% 40px;
+        border-top-right-radius: 100% 40px;
+        border-bottom-left-radius: 100% 40px;
+        border-bottom-right-radius: 100% 40px;
+    }
+    .tv2 {
+        flex: 1;
+        display: flex;
+        border-color: darkkhaki;
+        border-style: double;
+        border-top-style: none;
+        border-bottom-style: none;
+        border-top-left-radius: 40px 100%;
+        border-top-right-radius: 40px 100%;
+        border-bottom-left-radius: 40px 100%;
+        border-bottom-right-radius: 40px 100%;
+        padding: 16px;
+    }
+    iframe {
+        flex: 1;
+        border-style: none;
+    }
+    view-source {
+        flex: 1.4;
+        min-width: 0;
+        overflow-x: auto;
     }
 </style>
 
 </template>
 
 <template data-customary-name="view-source">
-    <style>code {font-size: 16px}</style>
+    <style>
+        :host { display: block; }
+        pre { overflow-x: auto; }
+        code { font-size: 13px; }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/idea.min.css">
     <pre><code class="language-html" id="source_html"></code></pre>
 </template>
@@ -189,15 +315,33 @@
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:customary-cookbook-navigator'] = {
-        config: {state: ['navigation']},
+        config: {state: ['navigation', 'chapters', 'show_help']},
+        values: {'show_help': false},
         hooks: {
-            lifecycle: {connected: use_param_id},
+            lifecycle: {connected: on_connected},
             events: {
                 'button.previous': navigate_previous,
                 'button.next': navigate_next,
+                'button.help-toggle': toggle_help,
             },
         }
     };
+
+    async function on_connected(el) {
+        document.addEventListener('keydown', on_keydown.bind(null, el));
+        await use_param_id(el);
+    }
+
+    function on_keydown(el, e) {
+        const tag = document.activeElement?.tagName?.toLowerCase();
+        if (tag === 'input' || tag === 'textarea') return;
+        if (e.key === '?' || e.key === '/') { e.preventDefault(); toggle_help(el); return; }
+        if (e.key === 'Escape') { e.preventDefault(); el.show_help = false; return; }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); navigate_previous(el); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); navigate_next(el); }
+        if (e.key === 'Home') { e.preventDefault(); navigate_to_id(el.navigation?.first_id); }
+        if (e.key === 'End') { e.preventDefault(); navigate_to_id(el.navigation?.last_id); }
+    }
 
     async function use_param_id(el) {
         const params = new URLSearchParams(window.location.search);
@@ -213,16 +357,34 @@
             "source_html": recipe.github_page_html,
             "source_everything": recipe.github_dir,
             "unit_test": "./test.html?grep=" + encodeURIComponent(recipe.page_html),
+            "first_id": data.firstId,
+            "last_id": data.lastId,
+            "has_previous": !!recipe.previous_id,
+            "has_next": !!recipe.next_id,
         };
+        const chapters = data.buildChapters(idParam);
+        for (const chapter of chapters)
+            for (const recipe of chapter.recipes) {
+                params.set('id', recipe.id);
+                recipe.href = `${window.location.pathname}?${params.toString()}`;
+            }
+        el.chapters = chapters;
+    }
+
+    function toggle_help(el) {
+        el.show_help = !el.show_help;
     }
 
     function navigate_previous(el) {
-        navigate_to_id(el.navigation.previous_id);
+        if (el.navigation?.has_previous) navigate_to_id(el.navigation.previous_id);
     }
+
     function navigate_next(el) {
-        navigate_to_id(el.navigation.next_id);
+        if (el.navigation?.has_next) navigate_to_id(el.navigation.next_id);
     }
+
     function navigate_to_id(id) {
+        if (!id) return;
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set('id', id);
         window.location.href = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
@@ -254,5 +416,4 @@
     }
 </script>
 <script type="module">import '#customary';</script>
-<link rel="stylesheet" href="./z.css" />
 </body>

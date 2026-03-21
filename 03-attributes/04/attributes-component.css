@@ -3,10 +3,10 @@
 }
 .key {
     display: inline-block;
-    width: 30px;
-    height: 90px;
-    padding: 15px;
-    font-size: xxx-large;
+    width: 20px;
+    height: 60px;
+    padding: 10px;
+    font-size: xx-large;
     font-family: monospace;
     border: 1px solid black;
 }

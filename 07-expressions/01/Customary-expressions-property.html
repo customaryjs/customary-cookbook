@@ -8,29 +8,71 @@
 
 <script type="application/json"
         data-customary-name="expressions-property-recipe"
-        data-customary-value="parentListOfNumbers"
+        data-customary-value="parentListOfGroups"
 >
-    [4, 8, 15, 16, 23, 42]
+    [
+        {
+            "name": "Vegetables",
+            "categories": [
+                {"name": "Root",  "items": ["Carrot", "Potato", "Beet"]},
+                {"name": "Leafy", "items": ["Spinach", "Kale", "Arugula"]}
+            ]
+        },
+        {
+            "name": "Fruits",
+            "categories": [
+                {"name": "Citrus",  "items": ["Orange", "Lemon", "Lime"]},
+                {"name": "Berries", "items": ["Strawberry", "Blueberry", "Raspberry"]}
+            ]
+        }
+    ]
+</script>
+
+<script type="application/json"
+        data-customary-name="expressions-property-recipe"
+        data-customary-value="basket"
+>
+    []
 </script>
 
 <template data-customary-name="expressions-property-recipe">
-    <expressions-property-recipe-child
+    <expressions-property-recipe-deck-groups
             data-customary-expressions
-            TODO---data-customary-expression-name-1="childListOfNumbers"
-            data-customary-expression-name-1="child_list_of_numbers"
-            data-customary-expression-data-1="{{parentListOfNumbers}}"
-    ></expressions-property-recipe-child>
+            data-customary-expression-name="list_of_groups"
+            data-customary-expression-data="{{parentListOfGroups}}"
+    ></expressions-property-recipe-deck-groups>
+
+    <div class="basket">
+        <customary:for items="{{basket}}" value="item">
+            <span style="background-color: limegreen; padding: 2px">{[item]}</span>
+        </customary:for>
+    </div>
 </template>
 
-<template data-customary-name="expressions-property-recipe-child">
-    <ul>
-        <customary:for
-                TODO---items="this.childListOfNumbers"
-                items="{{child_list_of_numbers}}"
-                value="number" index="index">
-            <li>{[index]}: {[number]}</li>
+<template data-customary-name="expressions-property-recipe-deck-groups">
+    <customary:for items="{{list_of_groups}}" value="group">
+        <h2>{[group.name]}</h2>
+        <expressions-property-recipe-deck-categories
+                data-customary-expressions
+                data-customary-expression-name="list_of_categories"
+                data-customary-expression-data="{[group.categories]}"
+        ></expressions-property-recipe-deck-categories>
+    </customary:for>
+</template>
+
+<template data-customary-name="expressions-property-recipe-deck-categories">
+    <div style="display: flex; gap: 2em">
+        <customary:for items="{{list_of_categories}}" value="category">
+            <div>
+                <h3>{[category.name]}</h3>
+                <ul>
+                    <customary:for items="{[category.items]}" value="item">
+                        <li><button data-item="{[item]}">Pick</button> {[item]}</li>
+                    </customary:for>
+                </ul>
+            </div>
         </customary:for>
-    </ul>
+    </div>
 </template>
 
 <expressions-property-recipe></expressions-property-recipe>
@@ -38,4 +80,30 @@
 <script type="importmap">{"imports": {
     "#customary": "../../_dependencies/customary/customary.mjs"
 }}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:expressions-property-recipe'] = {
+        config: {
+          construct: {shadowRootDont: true},
+        },
+        hooks: {
+            events: {
+                'button': (el, _, target) =>
+                    el.basket = [...el.basket, target.getAttribute('data-item')]
+            }
+        }
+    };
+    globalThis['customary:expressions-property-recipe-deck-groups'] = {
+        config: {
+            construct: {shadowRootDont: true},
+        },
+    };
+    globalThis['customary:expressions-property-recipe-deck-categories'] = {
+        config: {
+            construct: {shadowRootDont: true},
+        },
+    };
+</script>
 <script type="module">import '#customary';</script>

@@ -3,7 +3,7 @@
     <title>Customary Cookbook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        @media (width < 420px) {
+        @media (width <= 425px) {
             body { zoom: 0.98; }
         }
     </style>
@@ -136,9 +136,9 @@
 </div>
 
 <style>
-    /* --mobile-breakpoint: 1238px
+    /* --mobile-breakpoint: 768px
        Note: CSS variables cannot be used in @media conditions.
-       Search "1238" to find all uses of this breakpoint. */
+       Search "768" to find all uses of this breakpoint. */
 
     .page-layout {
         display: flex;
@@ -157,22 +157,8 @@
         margin-bottom: 1.1em;
     }
 
-    @media (width < 1238px) {
-        /* --mobile-breakpoint */
-        .desktop-cover-band {
-            display: none;
-        }
-    }
-    
     .mobile-cover-band {
         display: none;
-    }
-    @media (width < 1238px) { /* --mobile-breakpoint */
-        .mobile-cover-band { 
-            display: flex; 
-            justify-content: center; 
-            min-height: 174px;
-        }
     }
     
     .chapter-label {
@@ -264,9 +250,6 @@
         display: none;
         font-size: large;
     }
-    @media (width < 1238px) { /* --mobile-breakpoint */
-        button.hamburger { display: block; }
-    }
 
     .actions-toolbar {
         display: flex;
@@ -309,6 +292,7 @@
         gap: 10px;
     }
     .tv1 {
+        flex: 1;
         display: flex;
         border-color: Gainsboro;
         border-style: double;
@@ -325,12 +309,18 @@
     .tv2 {
         height: 626px;
     }
-    @media (width >= 1238px) { /* --mobile-breakpoint */
-        .tv1 {
-            flex: 1;
+    @media (width <= 768px) { /* --mobile-breakpoint */
+        button.hamburger { 
+            display: block;
         }
-    }
-    @media (width < 1238px) { /* --mobile-breakpoint */
+        .desktop-cover-band {
+            display: none;
+        }
+        .mobile-cover-band {
+            display: flex;
+            justify-content: center;
+            min-height: 174px;
+        }
         .index-panel {
             display: none;
         }
@@ -340,7 +330,7 @@
             top: 0;
             left: 0;
             z-index: 100;
-            height: 100vh;
+            height: 98vh;
             overflow-y: auto;
         }
         .recipe-header-band {
@@ -350,6 +340,15 @@
             flex-direction: column;
             margin-left: 0;
             margin-right: 0;
+        }
+        .tv1 {
+            height: auto;
+        }
+        .tv2 {
+            height: auto;
+        }
+        iframe {
+            height: 300px;
         }
     }
     .tv2 {
@@ -406,6 +405,7 @@
         values: {'show_help': false, 'show_index': false},
         hooks: {
             derive: {'index_classmap': el => ({"open": el.show_index})},
+            changes: {'navigation': on_navigation_change},
             lifecycle: {connected: on_connected},
             events: {
                 'button.hamburger': toggle_index,
@@ -420,6 +420,16 @@
         document.addEventListener('keydown', on_keydown.bind(null, el));
         document.addEventListener('click', on_document_click.bind(null, el));
         await use_param_id(el);
+    }
+
+    function on_navigation_change(el) {
+        const iframe = el.renderRoot.querySelector('iframe');
+        iframe.addEventListener('load', () => resize_iframe(iframe), {once: true});
+    }
+
+    function resize_iframe(iframe) {
+        if (!window.matchMedia('(width <= 768px)').matches) return;
+        iframe.style.height = (iframe.contentDocument.body.scrollHeight * 110/100) + 'px';
     }
 
     function on_document_click(el, e) {

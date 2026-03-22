@@ -20,4 +20,8 @@ export function querySelectorAll(selectors, target) {
         ? list
         : (() => { throw new Error(`No element matching ${selectors}`); })();
 }
+export function activeElement(target) {
+    return q(target).activeElement
+        || document.activeElement;
+}
 //# sourceMappingURL=query.js.map

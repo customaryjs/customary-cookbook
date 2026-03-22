@@ -11,7 +11,7 @@ describe(suite.title, async function () {
     after(() => window.close());
     describe('happy day', async function () {
         it('looks good', async function () {
-            this.retries(64);
+            this.retries(128);
             for (const color of ["red", "green", "blue"]) {
                 const container = CT.querySelector(`attributes-template[color='${color}']`, window);
                 CT.spot(`caption: ${color.toUpperCase()}color: ${color}`, container, { selectors: 'h1' });

@@ -1,7 +1,8 @@
-import {assert} from "chai";
-import 'mocha';
+import {CustomaryElement} from "#customary";
 import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";
+import * as chai from "chai";
+import 'mocha';
 
 const suite = test_suite(import.meta);
 
@@ -10,7 +11,7 @@ describe(suite.title, async function (){
 	this.slow(500);
 
 	let window: Window;
-	let element: Element;
+	let element: CustomaryElement;
 	let input: HTMLInputElement;
 	let textarea: HTMLTextAreaElement;
 
@@ -18,31 +19,31 @@ describe(suite.title, async function (){
 	after(() => window.close());
 
 	describe('happy day', async function () {
-		function assert_evidence(expected: string) {
+		function spot_binding_output(expected: string) {
 			CT.spot(expected, element, {selectors: 'h1'});
 		}
 		it('looks good', async function () {
 			this.retries(64);
-			element = CT.querySelector('bindings-markup', window);
-			assert_evidence("Hello Customary !");
+			element = CT.querySelector('bindings-logic-tags-recipe', window);
+			input = CT.querySelector('input', element) as HTMLInputElement;
+			textarea = CT.querySelector('textarea', element) as HTMLTextAreaElement;
+			spot_binding_output("Hello Customary !");
 		});
 		it('interact', async function () {
-			input = CT.querySelector('input', element) as HTMLInputElement;
 			CT.input('!!!', input);
 		});
 		it('looks good', async function () {
 			this.retries(64);
-			assert_evidence("Hello Customary !!!!");
-			assert.equal(element.shadowRoot!.activeElement, input);
+			spot_binding_output("Hello Customary !!!!");
+			chai.assert.equal(CT.activeElement(element), input);
 		});
 		it('interact', async function () {
-			textarea = CT.querySelector('textarea', element) as HTMLTextAreaElement;
 			CT.textarea('!!!!!', textarea);
 		});
 		it('looks good', async function () {
 			this.retries(64);
-			assert_evidence("Hello Customary !!!!!!!!!");
-			assert.equal(element.shadowRoot!.activeElement, textarea);
+			spot_binding_output("Hello Customary !!!!!!!!!");
+			chai.assert.equal(CT.activeElement(element), textarea);
 		});
 	});
 });

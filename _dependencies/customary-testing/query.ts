@@ -32,3 +32,8 @@ export function querySelectorAll<T extends Element>(
         ? list as NodeListOf<T>
         : (()=>{throw new Error(`No element matching ${selectors}`)})();
 }
+
+export function activeElement(target: Window | Element) {
+    return (q(target) as unknown as DocumentOrShadowRoot).activeElement
+        || document.activeElement;
+}

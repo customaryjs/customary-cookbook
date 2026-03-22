@@ -67,33 +67,77 @@
 
     <div class="recipe-area">
 
-        <div class="mobile-cover-band">
-            <cookbook-cover></cookbook-cover>
-        </div>
+        <div class="recipe-header-band"
+             style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;             
+"
+        >
+            <cookbook-cover class="mobile-cover-band"></cookbook-cover>
+            <button class="hamburger" aria-label="Toggle index"
+                    style="align-self: flex-start;"
+            >
+                &#x2630;
+            </button>
 
-        <div class="recipe-header-band">
-            <button class="hamburger" aria-label="Toggle index">&#x2630;</button>
-            <div class="nav-side nav-prev">
-                <customary:if condition="{{navigation.has_previous}}">
-                    <button class="previous" aria-label="Previous recipe">&#x25C4;</button>
-                </customary:if>
-                <small class="nav-adjacent-name">{{navigation.previous_name}}</small>
-            </div>
-            <div class="recipe-title">
-                <div class="recipe-chapter">{{navigation.chapter_name}}</div>
-                    <div class="recipe-name">
-                <customary:if condition="{{navigation.recipe_name}}">
-                    <customary:true>{{navigation.recipe_name}}</customary:true>
-                    <customary:false>&nbsp;</customary:false>
-                </customary:if>
+            <customary:if condition="{{within_mobile_breakpoint}}">
+                <customary:true>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 1em;">
+                        <recipe-title
+                                style="flex: 2;"
+                                data-customary-expressions
+                                data-customary-expression-name="navigation"
+                                data-customary-expression-data="{{navigation}}"
+                        ></recipe-title>
+                        <div style="
+                            flex: 1;
+                            display: flex; justify-content: space-evenly; gap: 1em;
+                            align-items: center;
+                        ">
+                            <navigation-previous
+                                    style="flex: 1;"
+                                    data-customary-expressions
+                                    data-customary-expression-name="navigation"
+                                    data-customary-expression-data="{{navigation}}"
+                            ></navigation-previous>
+                            <navigation-next
+                                    style="flex: 1;"
+                                    data-customary-expressions
+                                    data-customary-expression-name="navigation"
+                                    data-customary-expression-data="{{navigation}}"
+                            ></navigation-next>
+                        </div>
                     </div>
-            </div>
-            <div class="nav-side nav-next">
-                <customary:if condition="{{navigation.has_next}}">
-                    <button class="next" aria-label="Next recipe">&#x25BA;</button>
-                </customary:if>
-                <small class="nav-adjacent-name">{{navigation.next_name}}</small>
-            </div>
+                </customary:true>
+                <customary:false>
+                    <div style="
+                        flex: 1;
+                        display: flex; justify-content: space-evenly;
+                        align-items: center;
+                    ">
+                        <navigation-previous
+                                style="flex: 1;"
+                                data-customary-expressions
+                                data-customary-expression-name="navigation"
+                                data-customary-expression-data="{{navigation}}"
+                        ></navigation-previous>
+                        <recipe-title
+                                style="flex: 2;"
+                                data-customary-expressions
+                                data-customary-expression-name="navigation"
+                                data-customary-expression-data="{{navigation}}"
+                        ></recipe-title>
+                        <navigation-next
+                                style="flex: 1;"
+                                data-customary-expressions
+                                data-customary-expression-name="navigation"
+                                data-customary-expression-data="{{navigation}}"
+                        ></navigation-next>
+                    </div>
+                </customary:false>
+            </customary:if>
+            
         </div>
 
         <div class="actions-toolbar">
@@ -139,7 +183,18 @@
       Search each number to find all uses of its breakpoint.
    */
 
-    .page-layout {
+   @media (width <= 768px) {  /* --mobile-breakpoint */
+       .page-layout {
+           --within-mobile-breakpoint: true;
+       }
+   }
+   @media (width <= 832px) {  /* --foldable-breakpoint */
+       .page-layout {
+           --within-foldable-breakpoint: true;
+       }
+   }
+
+   .page-layout {
         display: flex;
         min-height: 100vh;
         align-items: flex-start;
@@ -203,40 +258,8 @@
     .recipe-header-band {
         background-color: whitesmoke;
         border-bottom: 1px dashed silver;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
         padding: 0.5em 1em;
         gap: 1em;
-    }
-    .nav-side {
-        flex: 0 0 auto;
-        width: 25%;
-        display: flex;
-        flex-direction: column;
-    }
-    .nav-prev {
-        align-items: flex-start;
-    }
-    .nav-next {
-        align-items: flex-end;
-    }
-    .nav-adjacent-name {
-        font-size: small;
-        color: gray;
-        margin-top: 0.25em;
-    }
-    .recipe-title {
-        flex: 1;
-        text-align: center;
-    }
-    .recipe-chapter {
-        font-size: xx-large;
-        font-weight: bold;
-    }
-    .recipe-name {
-        font-size: large;
-        color: dimgray;
     }
     button {
         font-size: large;
@@ -332,9 +355,7 @@
             display: none;
         }
         .mobile-cover-band {
-            display: flex;
-            justify-content: center;
-            min-height: 174px;
+            display: block;
         }
     }
     @media (width <= 768px) { /* --mobile-breakpoint */
@@ -388,6 +409,71 @@
 
 </template>
 
+<template data-customary-name="recipe-title">
+    <div class="recipe-title">
+        <div class="recipe-chapter">{{navigation.chapter_name}}</div>
+        <div class="recipe-name">
+            <customary:if condition="{{navigation.recipe_name}}">
+                <customary:true>{{navigation.recipe_name}}</customary:true>
+                <customary:false>&nbsp;</customary:false>
+            </customary:if>
+        </div>
+    </div>
+    <style>
+        .recipe-title {
+            text-align: center;
+        }
+        .recipe-chapter {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        .recipe-name {
+            font-size: large;
+            color: dimgray;
+        }
+    </style>
+</template>
+
+<template data-customary-name="navigation-previous">
+    <div style="display: flex; gap: 0.4em; align-items: center;" class="nav-prev">
+        <customary:if condition="{{navigation.has_previous}}">
+            <button class="previous" aria-label="Previous recipe">&#x25C4;</button>
+            <small class="nav-adjacent-name">{{navigation.previous_name}}</small>
+        </customary:if>
+    </div>
+    <style>
+        .nav-adjacent-name {
+            font-size: small;
+            color: gray;
+            margin-top: 0.25em;
+        }
+        .nav-prev {
+            align-items: flex-start;
+            flex-direction: row;
+        }
+    </style>
+</template>
+
+<template data-customary-name="navigation-next">
+    <div style="display: flex; gap: 0.4em; align-items: center;" class="nav-next">
+        <customary:if condition="{{navigation.has_next}}">
+            <button class="next" aria-label="Next recipe">&#x25BA;</button>
+            <small class="nav-adjacent-name">{{navigation.next_name}}</small>
+        </customary:if>
+    </div>
+    <style>
+        .nav-adjacent-name {
+            font-size: small;
+            color: gray;
+            margin-top: 0.25em;
+        }
+        .nav-next {
+            justify-content: flex-start;
+            flex-direction: row-reverse;
+        }
+    </style>
+</template>
+
 <template data-customary-name="view-source">
     <style>
         :host { display: block; }
@@ -411,11 +497,27 @@
     /**
      * @type {CustomaryDeclaration}
      */
+    globalThis['customary:recipe-title'] = {config: {state: ['navigation']}};
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:navigation-previous'] = {config: {state: ['navigation']}};
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:navigation-next'] = {config: {state: ['navigation']}};
+
+    /**
+     * @type {CustomaryDeclaration}
+     */
     globalThis['customary:customary-cookbook-navigator'] = {
         config: {state: ['navigation', 'chapters', 'show_help', 'show_index']},
         values: {'show_help': false, 'show_index': false},
         hooks: {
-            derive: {'index_classmap': el => ({"open": el.show_index})},
+            derive: {
+                'index_classmap': el => ({"open": el.show_index}),
+                'within_mobile_breakpoint': el => is_within_mobile_breakpoint(el),
+            },
             changes: {'navigation': on_navigation_change},
             lifecycle: {connected: on_connected},
             events: [
@@ -441,11 +543,11 @@
     }
 
     function on_navigation_change(el) {
-        make_iframe_height_dynamic_on_small_screens(el);
+        make_iframe_height_dynamic_on_narrow_screens(el);
     }
 
-    function make_iframe_height_dynamic_on_small_screens(el) {
-        if (!window.matchMedia('(width <= 768px)').matches) return;
+    function make_iframe_height_dynamic_on_narrow_screens(el) {
+        if (!is_within_mobile_breakpoint(el)) return;
         
         const iframe = el.renderRoot.querySelector('iframe');
         iframe.addEventListener(
@@ -460,6 +562,13 @@
             iframe.style.height = 
                 iframe.contentDocument.body.scrollHeight + 'px';
         }
+    }
+    
+    function is_within_mobile_breakpoint(el) {
+        const holder = el.renderRoot.querySelector('.page-layout');
+        if (!holder) return false;
+        return window.getComputedStyle(holder)
+            .getPropertyValue('--within-mobile-breakpoint');
     }
 
     function on_document_click(el, e) {

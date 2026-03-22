@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import * as chai from "chai";
 import 'mocha';
 import * as CT from "#customary-testing";
 import { test_suite } from "../../test/suite.js";
@@ -9,18 +9,16 @@ describe(suite.title, async function () {
     let window;
     let element;
     let textarea;
-    let evidence;
     before(() => window = CT.open(suite.subject_html));
     after(() => window.close());
     describe('happy day', async function () {
-        function assert_evidence(expected) {
-            assert.equal(CT.allTextContent(evidence), expected);
+        function spot_binding_output(expected) {
+            CT.spot(expected, element, { selectors: 'pre' });
         }
         it('looks good', async function () {
             this.retries(128);
-            element = CT.querySelector('bindings-textarea', window);
-            evidence = CT.querySelector('pre', element);
-            assert_evidence("Hello Customary !");
+            element = CT.querySelector('bindings-textarea-recipe', window);
+            spot_binding_output("Hello Customary !");
         });
         it('interact', async function () {
             textarea = CT.querySelector('textarea', element);
@@ -28,8 +26,8 @@ describe(suite.title, async function () {
         });
         it('looks good', async function () {
             this.retries(64);
-            assert_evidence("Hello Customary !!!");
-            assert.equal(element.shadowRoot.activeElement, textarea);
+            spot_binding_output("Hello Customary !!!");
+            chai.assert.equal(CT.activeElement(element), textarea);
         });
     });
 });

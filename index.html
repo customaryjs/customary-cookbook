@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Customary Cookbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -8,18 +9,51 @@
 
 <template data-customary-name="external-link-symbol">&#x2B77;</template>
 
+<template data-customary-name="cookbook-cover">
+    <style>
+        .cover-content {
+            aspect-ratio: 1;
+            min-height: 174px;
+
+            font-family: serif;
+            border-style: outset;
+            border-radius: 8px;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .caption {
+            font-style: italic;
+            font-size: x-large;
+            min-height: 68px;
+        }
+        .emoji {
+            font-size: xx-large;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: small;
+            text-align: center;
+            min-height: 38px;
+        }
+    </style>
+    <div class="cover-content">
+        <div class="caption">Customary<br>Cookbook</div>
+        <div class="emoji">&#x1F475;&#x1F373;</div>
+        <div class="tagline">
+            <a target="_blank" href="https://customaryjs.github.io/">Customary</a> recipes<br>to teach yourself
+        </div>
+    </div>
+</template>
+
 <template data-customary-name="customary-cookbook-navigator">
 
 <div class="page-layout">
 
     <nav class="index-panel">
-        <div class="cookbook-cover">
-            <div class="cookbook-cover-caption">Customary<br>Cookbook</div>
-            <div class="cookbook-cover-emoji">&#x1F475;&#x1F373;</div>
-            <div class="cookbook-cover-tagline">
-                <a target="_blank" href="https://customaryjs.github.io/">Customary</a> recipes<br>to teach yourself
-            </div>
-        </div>
+        <cookbook-cover class="desktop-cover-band"></cookbook-cover>
         <div class="cookbook-index">
             <customary:for items="{{chapters}}" value="chapter">
                 <div class="chapter-label">{[chapter.chapter_name]}</div>
@@ -29,10 +63,16 @@
             </customary:for>
         </div>
     </nav>
+    <customary:classMap target=".index-panel" classInfo="{{index_classmap}}"></customary:classMap>
 
     <div class="recipe-area">
 
+        <div class="mobile-cover-band">
+            <cookbook-cover></cookbook-cover>
+        </div>
+
         <div class="recipe-header-band">
+            <button class="hamburger" aria-label="Toggle index">&#x2630;</button>
             <div class="nav-side nav-prev">
                 <customary:if condition="{{navigation.has_previous}}">
                     <button class="previous" aria-label="Previous recipe">&#x25C4;</button>
@@ -41,9 +81,12 @@
             </div>
             <div class="recipe-title">
                 <div class="recipe-chapter">{{navigation.chapter_name}}</div>
+                    <div class="recipe-name">
                 <customary:if condition="{{navigation.recipe_name}}">
-                    <div class="recipe-name">{{navigation.recipe_name}}</div>
+                    <customary:true>{{navigation.recipe_name}}</customary:true>
+                    <customary:false>&nbsp;</customary:false>
                 </customary:if>
+                    </div>
             </div>
             <div class="nav-side nav-next">
                 <customary:if condition="{{navigation.has_next}}">
@@ -88,6 +131,10 @@
 </div>
 
 <style>
+    /* --mobile-breakpoint: 1238px
+       Note: CSS variables cannot be used in @media conditions.
+       Search "1238" to find all uses of this breakpoint. */
+
     .page-layout {
         display: flex;
         min-height: 100vh;
@@ -101,29 +148,26 @@
         padding: 0.5em 0.75em;
     }
     
-    .cookbook-cover {
-        font-family: serif;
-        border-style: outset;
-        border-radius: 8px;
+    .index-panel cookbook-cover {
         margin-bottom: 1.1em;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5em;
-        aspect-ratio: 1;
-        overflow: hidden;
     }
-    .cookbook-cover-caption {
-        font-style: italic;
-        font-size: x-large;
+
+    @media (width < 1238px) {
+        /* --mobile-breakpoint */
+        .desktop-cover-band {
+            display: none;
+        }
     }
-    .cookbook-cover-emoji {
-        font-size: xx-large;
+    
+    .mobile-cover-band {
+        display: none;
     }
-    .cookbook-cover-tagline {
-        font-style: italic;
-        font-size: small;
-        text-align: center;
+    @media (width < 1238px) { /* --mobile-breakpoint */
+        .mobile-cover-band { 
+            display: flex; 
+            justify-content: center; 
+            min-height: 174px;
+        }
     }
     
     .chapter-label {
@@ -211,6 +255,13 @@
     button.help-toggle {
         font-size: x-small;
     }
+    button.hamburger {
+        display: none;
+        font-size: large;
+    }
+    @media (width < 1238px) { /* --mobile-breakpoint */
+        button.hamburger { display: block; }
+    }
 
     .actions-toolbar {
         display: flex;
@@ -253,10 +304,8 @@
         gap: 10px;
     }
     .tv1 {
-        height: 82vh;
-        flex: 1;
         display: flex;
-        border-color: darkkhaki;
+        border-color: Gainsboro;
         border-style: double;
         border-left-style: none;
         border-right-style: none;
@@ -265,10 +314,38 @@
         border-bottom-left-radius: 100% 40px;
         border-bottom-right-radius: 100% 40px;
     }
+    .tv1 {
+        height: 660px;
+    }
+    .tv2 {
+        height: 626px;
+    }
+    @media (width >= 1238px) { /* --mobile-breakpoint */
+        .tv1 {
+            flex: 1;
+        }
+    }
+    @media (width < 1238px) { /* --mobile-breakpoint */
+        .index-panel {
+            display: none;
+        }
+        .index-panel.open {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .recipe-vision {
+            flex-direction: column;
+        }
+    }
     .tv2 {
         flex: 1;
         display: flex;
-        border-color: darkkhaki;
+        border-color: Gainsboro;
         border-style: double;
         border-top-style: none;
         border-bottom-style: none;
@@ -315,11 +392,13 @@
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:customary-cookbook-navigator'] = {
-        config: {state: ['navigation', 'chapters', 'show_help']},
-        values: {'show_help': false},
+        config: {state: ['navigation', 'chapters', 'show_help', 'show_index']},
+        values: {'show_help': false, 'show_index': false},
         hooks: {
+            derive: {'index_classmap': el => ({"open": el.show_index})},
             lifecycle: {connected: on_connected},
             events: {
+                'button.hamburger': toggle_index,
                 'button.previous': navigate_previous,
                 'button.next': navigate_next,
                 'button.help-toggle': toggle_help,
@@ -329,7 +408,18 @@
 
     async function on_connected(el) {
         document.addEventListener('keydown', on_keydown.bind(null, el));
+        document.addEventListener('click', on_document_click.bind(null, el));
         await use_param_id(el);
+    }
+
+    function on_document_click(el, e) {
+        if (!el.show_index) return;
+        const path = e.composedPath();
+        const panel = el.shadowRoot.querySelector('.index-panel');
+        const hamburger = el.shadowRoot.querySelector('button.hamburger');
+        if (!path.includes(panel) && !path.includes(hamburger)) {
+            el.show_index = false;
+        }
     }
 
     function on_keydown(el, e) {
@@ -369,6 +459,10 @@
                 recipe.href = `${window.location.pathname}?${params.toString()}`;
             }
         el.chapters = chapters;
+    }
+
+    function toggle_index(el) {
+        el.show_index = !el.show_index;
     }
 
     function toggle_help(el) {

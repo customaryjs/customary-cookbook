@@ -14,13 +14,14 @@
     "start:test-runner:in-dist-dir": "wireit",
     "// ---- make ---- //": "//",
     "dist": "wireit",
-    "build:_command_:data:generate": "wireit",
+    "index-generate": "wireit",
     "// ---- dev ---- //": "//",
     "dev": "wireit",
     "start:test-runner:in-src-dir": "wireit",
     "compile:watch": "wireit",
     "clean": "wireit",
     "// ---- command ---- //": "//",
+    ":compile:_also_:index-generate:": "wireit",
     "dist:copy-and-replace": "wireit",
     "test:in-src-dir": "wireit",
     "test:in-dist-dir": "wireit",
@@ -108,13 +109,27 @@
       "service": true
     },
     "build": {
-      "command": "npm run compile",
       "dependencies": [
-        "clean:src"
+        ":clean:_then_(:compile:_also_:index-generate:)"
       ]
     },
-    "build:_command_:data:generate": {
-      "command": "node package-json-build-data-generate.ts"
+    ":clean:_then_(:compile:_also_:index-generate:)": {
+      "command": "npm run :compile:_also_:index-generate:",
+      "dependencies": [
+        "clean"
+      ]
+    },
+    ":compile:_also_:index-generate:": {
+      "dependencies": [
+        "index-generate",
+        "compile"
+      ]
+    },
+    "index-generate": {
+      "command": "node package-json-index-generate.ts",
+      "dependencies": [
+        "compile"
+      ]
     },
     "dist:participants:then:build": {
       "command": "npm run build",

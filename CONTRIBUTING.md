@@ -16,11 +16,11 @@ Recipe must have a unit test to show in navigation:
 
 Add the new recipe and its unit test, then run the command:
 
-`npm run build:_command_:data:generate`
+`npm run index-generate`
 
 The command updates the cookbook index:
 
-`src/data/customary-cookbook-data.json`
+`src/data/customary-cookbook-index.json`
 
 The cookbook index will then be used to:
 

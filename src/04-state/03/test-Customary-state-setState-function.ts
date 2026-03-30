@@ -14,6 +14,7 @@ describe(suite.title, async function (){
     after(() => window.close());
 
     describe('happy day', async function () {
+        const textContent = "02-state/03/test-Customary-state-setState-function.ts";
         let container: Element;
         function assert_element() {
             container = CT.querySelector('recipe-card', window);
@@ -24,14 +25,14 @@ describe(suite.title, async function (){
         it('looks good', async function () {
             this.retries(64);
             assert_element();
-            assert_textContent("02-state/03/test-Customary-state-setState-function.ts");
+            assert_textContent(textContent);
         });
         it('interact', async function () {
             (CT.querySelector('button', container) as HTMLButtonElement).click();
         });
         it('looks good', async function () {
             this.retries(16);
-            assert_textContent("st.noitcnuf-etatStes-etats-yramotsuC-tset/30/etats-20");
+            assert_textContent(textContent.split('').reverse().join(''));
         });
     });
 });

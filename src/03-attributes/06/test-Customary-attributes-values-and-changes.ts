@@ -1,4 +1,3 @@
-import {assert} from "chai";
 import 'mocha';
 import * as CT from "#customary-testing";
 import {test_suite} from "../../test/suite.js";

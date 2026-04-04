@@ -5,6 +5,7 @@
     xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
 >
 <head>
+    <meta charset="UTF-8">
     <title>Customary Cookbook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -443,7 +444,7 @@
     <div style="display: flex; gap: 0.4em; align-items: center;" class="nav-prev">
         <customary:if condition="{{navigation.has_previous}}">
             <button class="previous" aria-label="Previous recipe">&#x25C4;</button>
-            <small class="nav-adjacent-name">{{navigation.previous_name}}</small>
+            <small class="nav-adjacent-name nav-previous-name">{{navigation.previous_name}}</small>
         </customary:if>
     </div>
     <style>
@@ -451,6 +452,7 @@
             font-size: small;
             color: gray;
             margin-top: 0.25em;
+            cursor: pointer;
         }
         .nav-prev {
             align-items: flex-start;
@@ -463,7 +465,7 @@
     <div style="display: flex; gap: 0.4em; align-items: center;" class="nav-next">
         <customary:if condition="{{navigation.has_next}}">
             <button class="next" aria-label="Next recipe">&#x25BA;</button>
-            <small class="nav-adjacent-name">{{navigation.next_name}}</small>
+            <small class="nav-adjacent-name nav-next-name">{{navigation.next_name}}</small>
         </customary:if>
     </div>
     <style>
@@ -471,6 +473,7 @@
             font-size: small;
             color: gray;
             margin-top: 0.25em;
+            cursor: pointer;
         }
         .nav-next {
             justify-content: flex-start;
@@ -531,6 +534,8 @@
                 {selector:'button.hamburger', listener: toggle_index},
                 {selector:'button.previous', listener: navigate_previous},
                 {selector:'button.next', listener: navigate_next},
+                {selector:'small.nav-previous-name', listener: navigate_previous},
+                {selector:'small.nav-next-name', listener: navigate_next},
                 {selector:'button.help-toggle', listener: toggle_help},
             ],
         }
@@ -625,6 +630,8 @@
                 recipe.href = `${window.location.pathname}?${params.toString()}`;
             }
         el.chapters = chapters;
+        const recipe_part = recipe.recipe_name ? ` ~ ${recipe.recipe_name}` : '';
+        document.title = `Customary Cookbook · ${recipe.chapter_name}${recipe_part}`;
     }
 
     function toggle_index(el) {

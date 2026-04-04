@@ -3,29 +3,36 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
 >
-<title>Logic ~ inside ~ Customary Cookbook</title>
+<title>Logic ~ move-into ~ Customary Cookbook</title>
 
 <h1>Customary Logic Tags</h1>
 
-<p>~ inside ~</p><br/>
+<p>~ move-into ~</p><br/>
 
 <script type="application/json"
-    data-customary-name="logic-inside-recipe"
+    data-customary-name="logic-move-into-recipe"
     data-customary-value="list"
 >
   ["Peas", "Carrots", "Tomatoes"]
 </script>
 
-<logic-inside-recipe></logic-inside-recipe>
+<logic-move-into-recipe></logic-move-into-recipe>
 
-<template data-customary-name="logic-inside-recipe">
+<template data-customary-name="logic-move-into-recipe">
   <p>Render options inside a select:</p>
-  <select></select>
-  <customary:inside target="select">
+  <select>
+    <p>
+      The web browser's HTML parser
+      silently throws away
+      any tags considered illegal
+      to exist inside a &lt;select&gt; tag!
+    </p>
+  </select>
+  <customary:move-into selector="select">
     <customary:for items="{{list}}" value="item" index="index">
       <option value="{[index]}">{[index]}: {[item]}</option>
     </customary:for>
-  </customary:inside>
+  </customary:move-into>
 </template>
 
 <script type="importmap">{"imports": {

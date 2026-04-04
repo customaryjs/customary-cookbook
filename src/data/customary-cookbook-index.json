@@ -111,11 +111,11 @@
   {
     "id": "02-04",
     "chapter_name": "Logic",
-    "recipe_name": "inside",
-    "page_html": "02-logic/04/Customary-logic-inside.html",
-    "test_ts": "02-logic/04/test-Customary-logic-inside.ts",
-    "test_js": "02-logic/04/test-Customary-logic-inside.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/04/Customary-logic-inside.html",
+    "recipe_name": "move-into",
+    "page_html": "02-logic/04/Customary-logic-move-into.html",
+    "test_ts": "02-logic/04/test-Customary-logic-move-into.ts",
+    "test_js": "02-logic/04/test-Customary-logic-move-into.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/04/Customary-logic-move-into.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/04"
   },
   {
@@ -151,11 +151,11 @@
   {
     "id": "02-08",
     "chapter_name": "Logic",
-    "recipe_name": "for-body",
-    "page_html": "02-logic/08/Customary-logic-for-body.html",
-    "test_ts": "02-logic/08/test-Customary-logic-for-body.ts",
-    "test_js": "02-logic/08/test-Customary-logic-for-body.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-for-body.html",
+    "recipe_name": "move-here",
+    "page_html": "02-logic/08/Customary-logic-move-here.html",
+    "test_ts": "02-logic/08/test-Customary-logic-move-here.ts",
+    "test_js": "02-logic/08/test-Customary-logic-move-here.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-move-here.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/08"
   },
   {

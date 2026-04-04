@@ -3,14 +3,14 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
 >
-<title>Logic ~ for-body ~ Customary Cookbook</title>
+<title>Logic ~ move-here ~ Customary Cookbook</title>
 
 <h1>Customary Logic Tags</h1>
 
-<p>~ for-body ~</p><br/>
+<p>~ move-here ~</p><br/>
 
 <script type="application/json"
-    data-customary-name="logic-for-body-recipe"
+    data-customary-name="logic-move-here-recipe"
     data-customary-value="rows"
 >
   [
@@ -20,22 +20,36 @@
   ]
 </script>
 
-<logic-for-body-recipe></logic-for-body-recipe>
+<logic-move-here-recipe></logic-move-here-recipe>
 
-<template data-customary-name="logic-for-body-recipe">
+<template data-customary-name="logic-move-here-recipe">
   <table>
     <thead>
       <tr><th>Name</th><th>Role</th></tr>
     </thead>
     <tbody>
+      <p>
+        The logic tag "move-into" is needed 
+        because we cannot place a "for" logic tag
+        inside a "tbody" tag
+        (the web browser's HTML parser
+        silently displaces it.)
+      </p>
       <tr><td>{[row.name]}</td><td>{[row.role]}</td></tr>
+      <p>
+        The logic tag "move-here" is needed
+        because we cannot place a "tr" tag
+        inside a "for" logic tag
+        (the web browser's HTML parser
+        silently deletes it.)
+      </p>
     </tbody>
   </table>
-  <customary:inside target="tbody">
+  <customary:move-into selector="tbody">
     <customary:for items="{{rows}}" value="row">
-      <customary:for-body target="tbody tr"></customary:for-body>
+      <customary:move-here selector="tbody tr"></customary:move-here>
     </customary:for>
-  </customary:inside>
+  </customary:move-into>
 </template>
 
 <script type="importmap">{"imports": {

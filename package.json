@@ -23,6 +23,7 @@
     "// ---- command ---- //": "//",
     ":compile:_also_:index-generate:": "wireit",
     "dist:copy-and-replace": "wireit",
+    "dist:without:test-in-dist-dir": "wireit",
     "test:in-src-dir": "wireit",
     "test:in-dist-dir": "wireit",
     "test:in-____-dir": "wireit",
@@ -58,7 +59,9 @@
     "test:in-src-dir": {
       "command": "____IN_DIR=src npm run test:in-____-dir --",
       "dependencies": [
-        "compile"
+        "compile",
+        "../customary-testing:compile",
+        "../customary-testing-mocha-runner:compile"
       ]
     },
     "test:in-____-dir": {
@@ -67,14 +70,26 @@
     "dist": {
       "command": "npm run test:in-dist-dir --",
       "dependencies": [
-        "dist:without:test"
+        "dist:participants:_then_:dist:without:test-in-dist-dir"
       ]
     },
-    "dist:without:test": {
+    "dist:participants:_then_:dist:without:test-in-dist-dir": {
+      "command": "npm run dist:without:test-in-dist-dir --",
+      "dependencies": [
+        "dist:participants"
+      ]
+    },
+    "dist:without:test-in-dist-dir": {
       "command": "npm run dist:copy-and-replace",
       "dependencies": [
         "clean:dist",
-        "dist:participants:then:build"
+        ":build:_then_:test:"
+      ]
+    },
+    ":build:_then_:test:": {
+      "command": "npm run test",
+      "dependencies": [
+        "build"
       ]
     },
     "dist:copy-and-replace": {
@@ -129,12 +144,6 @@
       "command": "node package-json-index-generate.ts",
       "dependencies": [
         "compile"
-      ]
-    },
-    "dist:participants:then:build": {
-      "command": "npm run build",
-      "dependencies": [
-        "dist:participants"
       ]
     },
     "compile": {

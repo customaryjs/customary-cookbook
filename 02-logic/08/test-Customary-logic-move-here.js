@@ -11,11 +11,11 @@ describe(suite.title, async function () {
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            const element = CT.querySelector('logic-for-body-recipe', window);
+            const element = CT.querySelector('logic-move-here-recipe', window);
             CT.spot('Alice', element, { selectors: 'td' });
             CT.spot('Engineer', element, { selectors: 'td' });
             CT.spot('Bob', element, { selectors: 'td' });
         });
     });
 });
-//# sourceMappingURL=test-Customary-logic-for-body.js.map
+//# sourceMappingURL=test-Customary-logic-move-here.js.map

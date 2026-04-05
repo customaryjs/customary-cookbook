@@ -18,7 +18,8 @@
 }}</script>
 <script type="module">
     import '#customary';
-    self['customary:attributes-values-and-changes'] = {
+
+    globalThis['customary:attributes-values-and-changes'] = {
         values: {'word-initially-empty': '', 'word-to-display': ''},
         hooks: {
             changes: {
@@ -26,5 +27,8 @@
             },
         },
     };
-    document.querySelector('attributes-values-and-changes').setAttribute('word-initially-empty', 'Customary');
+
+    document
+        .querySelector('attributes-values-and-changes')
+        .setAttribute('word-initially-empty', 'Customary');
 </script>

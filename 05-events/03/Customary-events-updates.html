@@ -1,4 +1,8 @@
-<html lang="en" xmlns:customary="https://customaryjs.github.io/schema">
+<html lang="en"
+      xmlns:customary="https://customaryjs.github.io/schema"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
+>
 <title>Events ~ updates ~ Customary Cookbook</title>
 
 <h1>Customary Events</h1>
@@ -38,7 +42,7 @@
                     el.add_button_visible = el.number_of_buttons < el.names_of_buttons.length,
             },
             changes: {
-                'number_of_buttons': (el, a, z) => {
+                'number_of_buttons': (el, _a, _z) => {
                     el.dynamic_faces =
                         [
                             ...el.dynamic_faces,

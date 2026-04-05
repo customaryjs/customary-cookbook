@@ -111,11 +111,11 @@
   {
     "id": "02-04",
     "chapter_name": "Logic",
-    "recipe_name": "inside",
-    "page_html": "02-logic/04/Customary-logic-inside.html",
-    "test_ts": "02-logic/04/test-Customary-logic-inside.ts",
-    "test_js": "02-logic/04/test-Customary-logic-inside.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/04/Customary-logic-inside.html",
+    "recipe_name": "move-into",
+    "page_html": "02-logic/04/Customary-logic-move-into.html",
+    "test_ts": "02-logic/04/test-Customary-logic-move-into.ts",
+    "test_js": "02-logic/04/test-Customary-logic-move-into.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/04/Customary-logic-move-into.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/04"
   },
   {
@@ -151,17 +151,17 @@
   {
     "id": "02-08",
     "chapter_name": "Logic",
-    "recipe_name": "for-body",
-    "page_html": "02-logic/08/Customary-logic-for-body.html",
-    "test_ts": "02-logic/08/test-Customary-logic-for-body.ts",
-    "test_js": "02-logic/08/test-Customary-logic-for-body.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-for-body.html",
+    "recipe_name": "move-here",
+    "page_html": "02-logic/08/Customary-logic-move-here.html",
+    "test_ts": "02-logic/08/test-Customary-logic-move-here.ts",
+    "test_js": "02-logic/08/test-Customary-logic-move-here.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-move-here.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/08"
   },
   {
     "id": "03-01",
     "chapter_name": "Attributes",
-    "recipe_name": "from template",
+    "recipe_name": "declared at template",
     "page_html": "03-attributes/01/Customary-attributes-template.html",
     "test_ts": "03-attributes/01/test-Customary-attributes-template.ts",
     "test_js": "03-attributes/01/test-Customary-attributes-template.js",
@@ -181,7 +181,7 @@
   {
     "id": "03-03",
     "chapter_name": "Attributes",
-    "recipe_name": "from declaration",
+    "recipe_name": "from declaration config",
     "page_html": "03-attributes/03/Customary-attributes-declaration.html",
     "test_ts": "03-attributes/03/test-Customary-attributes-declaration.ts",
     "test_js": "03-attributes/03/test-Customary-attributes-declaration.js",
@@ -201,7 +201,7 @@
   {
     "id": "03-05",
     "chapter_name": "Attributes",
-    "recipe_name": "in composed templates",
+    "recipe_name": "with composed templates",
     "page_html": "03-attributes/05/Customary-attributes-composed.html",
     "test_ts": "03-attributes/05/test-Customary-attributes-composed.ts",
     "test_js": "03-attributes/05/test-Customary-attributes-composed.js",

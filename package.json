@@ -58,7 +58,9 @@
     "test:in-src-dir": {
       "command": "____IN_DIR=src npm run test:in-____-dir --",
       "dependencies": [
-        "compile"
+        "compile",
+        "../customary-testing:compile",
+        "../customary-testing-mocha-runner:compile"
       ]
     },
     "test:in-____-dir": {
@@ -67,14 +69,21 @@
     "dist": {
       "command": "npm run test:in-dist-dir --",
       "dependencies": [
-        "dist:without:test"
+        "dist:without:test-in-dist-dir"
       ]
     },
-    "dist:without:test": {
+    "dist:without:test-in-dist-dir": {
       "command": "npm run dist:copy-and-replace",
       "dependencies": [
         "clean:dist",
-        "dist:participants:then:build"
+        "dist:participants",
+        ":build:_then_:test:"
+      ]
+    },
+    ":build:_then_:test:": {
+      "command": "npm run test",
+      "dependencies": [
+        "build"
       ]
     },
     "dist:copy-and-replace": {
@@ -129,12 +138,6 @@
       "command": "node package-json-index-generate.ts",
       "dependencies": [
         "compile"
-      ]
-    },
-    "dist:participants:then:build": {
-      "command": "npm run build",
-      "dependencies": [
-        "dist:participants"
       ]
     },
     "compile": {

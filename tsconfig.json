@@ -1,6 +1,7 @@
 {
   "include": ["src/**/*", "../customary-testing-mocha-runner/src/*.d.ts"],
   "compilerOptions": {
+    "types": ["node"],
     "rootDir": "src",
     "paths": {
       "#customary": ["./node_modules/customary/src/index.ts"],
@@ -19,7 +20,7 @@
     // ---- CODING STANDARDS TYPICAL FOR ALL PROJECTS START HERE ----
     "allowJs": false,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "sourceMap": true,

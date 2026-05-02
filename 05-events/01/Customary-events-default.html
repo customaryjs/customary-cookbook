@@ -19,7 +19,12 @@
      */
     globalThis['customary:events-default-recipe'] = {
         hooks: {
-            events: [{listener: el => el.style.fontSize = 40 + Math.random() * 40 + 'px'}],
+            events: [
+                {
+                    listener:
+                        el => el.style.fontSize = 40+Math.random()*40 + 'px'
+                }
+            ],
         }
     }
 </script>

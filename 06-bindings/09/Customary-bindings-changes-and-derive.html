@@ -18,7 +18,9 @@
         .bg-red { background-color: lightcoral; }
     </style>
     <input data-customary-bind="value" />
-    <customary:classMap target="input" classInfo="{{bg_classes}}"></customary:classMap>
+    <customary:classMap
+            target="input" classInfo="{{bg_classes}}"
+    ></customary:classMap>
     <p>Is digits: {{is_digits}}</p>
 </template>
 
@@ -38,7 +40,10 @@
                 'value': (el, value) => el.is_digits = /^\d*$/.test(value)
             },
             derive: {
-                'bg_classes': el => ({ 'bg-green': el.is_digits, 'bg-red': !el.is_digits })
+                'bg_classes': el => ({
+                    'bg-green': el.is_digits,
+                    'bg-red': !el.is_digits
+                })
             }
         }
     };

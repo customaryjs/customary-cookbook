@@ -28,7 +28,7 @@
   <style>
     .c {
       display: grid; grid-template-columns: 14% auto; gap: 10px;
-      width: 420px; border: solid turquoise; padding: 10px;
+      font-size: small; border: solid turquoise; padding: 10px;
     }
     .h {font-weight: bold; text-align: right}
   </style>
@@ -40,7 +40,10 @@
 <script type="module">
   globalThis['customary:recipe-card'] = {
     hooks: {
-      events: {'button': el => el.state = {...el.state, test_ts: 'Hello Customary !'}},
+      events: {
+        'button':
+           el => el.state = {...el.state, test_ts: 'Hello Customary !'}
+      },
     }
   };
 </script>

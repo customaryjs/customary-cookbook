@@ -15,7 +15,10 @@
 <script type="module">
     globalThis['customary:hello-world'] = {
         hooks: {
-            events: {'button': el => el.style.fontSize = 40 + Math.random() * 40 + 'px'},
+            events: {
+                'button':
+                    el => el.style.fontSize = 40+Math.random()*40 + 'px'
+            },
         }
     };
 </script>

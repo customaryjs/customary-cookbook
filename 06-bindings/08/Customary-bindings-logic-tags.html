@@ -35,7 +35,8 @@
                             <customary:case value="textarea_editor">
                                 <label>
                                     Edit as textarea<br/>
-                                    <textarea data-customary-bind="value"></textarea>
+                                    <textarea data-customary-bind="value">
+                                    </textarea>
                                 </label>
                             </customary:case>
                         </customary:switch>
@@ -47,7 +48,9 @@
     <h1>{{value}}</h1>
 </template>
 
-<bindings-logic-tags-recipe is_editable="1" value="Hello Customary !"></bindings-logic-tags-recipe>
+<bindings-logic-tags-recipe
+        is_editable="1" value="Hello Customary !"
+></bindings-logic-tags-recipe>
 
 <script type="importmap">{"imports": {
     "#customary": "../../_dependencies/customary/customary.mjs"

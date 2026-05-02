@@ -34,22 +34,23 @@
         values: {
             'dynamic_faces': [],
             'number_of_buttons': 3,
-            'names_of_buttons': ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
+            'names_of_buttons':
+                ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
         },
         hooks: {
             lifecycle: {
                 willUpdate: el =>
-                    el.add_button_visible = el.number_of_buttons < el.names_of_buttons.length,
+                    el.add_button_visible =
+                        el.number_of_buttons < el.names_of_buttons.length,
             },
             changes: {
                 'number_of_buttons': (el, _a, _z) => {
-                    el.dynamic_faces =
-                        [
-                            ...el.dynamic_faces,
-                            ...el.names_of_buttons.slice(
-                                el.dynamic_faces.length, el.number_of_buttons
-                            )
-                        ];
+                    el.dynamic_faces = [
+                        ...el.dynamic_faces,
+                        ...el.names_of_buttons.slice(
+                            el.dynamic_faces.length, el.number_of_buttons
+                        )
+                    ];
                 }
             },
             events: {

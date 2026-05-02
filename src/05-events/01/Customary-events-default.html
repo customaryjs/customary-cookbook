@@ -11,9 +11,9 @@
 <events-default-recipe></events-default-recipe>
 
 <script type="importmap">{"imports": {
-    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary": "../../../node_modules/customary/src/index.js",
     "#customary/": "../../../node_modules/customary/src/",
-    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+    "#customary/lit": "../../../node_modules/customary/.dist/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
     /**
@@ -21,7 +21,12 @@
      */
     globalThis['customary:events-default-recipe'] = {
         hooks: {
-            events: [{listener: el => el.style.fontSize = 40 + Math.random() * 40 + 'px'}],
+            events: [
+                {
+                    listener:
+                        el => el.style.fontSize = 40+Math.random()*40 + 'px'
+                }
+            ],
         }
     }
 </script>

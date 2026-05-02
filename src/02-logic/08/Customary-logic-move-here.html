@@ -23,12 +23,13 @@
 <logic-move-here-recipe></logic-move-here-recipe>
 
 <template data-customary-name="logic-move-here-recipe">
+  <style>.why {font-size: xx-small}</style>
   <table>
     <thead>
       <tr><th>Name</th><th>Role</th></tr>
     </thead>
     <tbody>
-      <p>
+      <p class="why">
         The logic tag "move-into" is needed 
         because we cannot place a "for" logic tag
         inside a "tbody" tag
@@ -36,7 +37,7 @@
         silently displaces it.)
       </p>
       <tr><td>{[row.name]}</td><td>{[row.role]}</td></tr>
-      <p>
+      <p class="why">
         The logic tag "move-here" is needed
         because we cannot place a "tr" tag
         inside a "for" logic tag
@@ -53,9 +54,9 @@
 </template>
 
 <script type="importmap">{"imports": {
-  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary": "../../../node_modules/customary/src/index.js",
   "#customary/": "../../../node_modules/customary/src/",
-  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+  "#customary/lit": "../../../node_modules/customary/.dist/customary-lit-dev.mjs"
 }}</script>
 <script type="module">import '#customary';</script>
 </html>

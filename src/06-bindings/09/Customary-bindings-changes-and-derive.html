@@ -18,16 +18,18 @@
         .bg-red { background-color: lightcoral; }
     </style>
     <input data-customary-bind="value" />
-    <customary:classMap target="input" classInfo="{{bg_classes}}"></customary:classMap>
+    <customary:classMap
+            target="input" classInfo="{{bg_classes}}"
+    ></customary:classMap>
     <p>Is digits: {{is_digits}}</p>
 </template>
 
 <bindings-changes-and-derive value=""></bindings-changes-and-derive>
 
 <script type="importmap">{"imports": {
-    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary": "../../../node_modules/customary/src/index.js",
     "#customary/": "../../../node_modules/customary/src/",
-    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+    "#customary/lit": "../../../node_modules/customary/.dist/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
     /**
@@ -40,7 +42,10 @@
                 'value': (el, value) => el.is_digits = /^\d*$/.test(value)
             },
             derive: {
-                'bg_classes': el => ({ 'bg-green': el.is_digits, 'bg-red': !el.is_digits })
+                'bg_classes': el => ({
+                    'bg-green': el.is_digits,
+                    'bg-red': !el.is_digits
+                })
             }
         }
     };

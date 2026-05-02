@@ -21,9 +21,9 @@
 <events-updates-recipe></events-updates-recipe>
 
 <script type="importmap">{"imports": {
-    "#customary": "../../../node_modules/customary/src/now.js",
+    "#customary": "../../../node_modules/customary/src/index.js",
     "#customary/": "../../../node_modules/customary/src/",
-    "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+    "#customary/lit": "../../../node_modules/customary/.dist/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
     /**
@@ -36,22 +36,23 @@
         values: {
             'dynamic_faces': [],
             'number_of_buttons': 3,
-            'names_of_buttons': ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
+            'names_of_buttons':
+                ["One", "Two", "Three", "Four", "Five", "Six", "Seven"]
         },
         hooks: {
             lifecycle: {
                 willUpdate: el =>
-                    el.add_button_visible = el.number_of_buttons < el.names_of_buttons.length,
+                    el.add_button_visible =
+                        el.number_of_buttons < el.names_of_buttons.length,
             },
             changes: {
                 'number_of_buttons': (el, _a, _z) => {
-                    el.dynamic_faces =
-                        [
-                            ...el.dynamic_faces,
-                            ...el.names_of_buttons.slice(
-                                el.dynamic_faces.length, el.number_of_buttons
-                            )
-                        ];
+                    el.dynamic_faces = [
+                        ...el.dynamic_faces,
+                        ...el.names_of_buttons.slice(
+                            el.dynamic_faces.length, el.number_of_buttons
+                        )
+                    ];
                 }
             },
             events: {

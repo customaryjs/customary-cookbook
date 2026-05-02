@@ -14,7 +14,7 @@ module.exports = {
                 {
                     // contains customary and lit sources; maps let browsers step debug
                     context: 'node_modules/customary',
-                    from: '.dist/bundled/customary.mjs',
+                    from: '.dist/customary.mjs',
                     to: '_dependencies/customary',
                 },
                 {
@@ -80,7 +80,7 @@ module.exports = {
                 },
                 {
                     // code: from development (live compile) to production (bundled)
-                    search: /customary\/src\/now[.]js/g,
+                    search: /customary\/src\/index[.]js/g,
                     replace: 'customary/customary.mjs',
                 },
                 {

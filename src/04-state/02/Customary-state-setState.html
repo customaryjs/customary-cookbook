@@ -28,21 +28,24 @@
   <style>
     .c {
       display: grid; grid-template-columns: 14% auto; gap: 10px;
-      width: 420px; border: solid turquoise; padding: 10px;
+      font-size: small; border: solid turquoise; padding: 10px;
     }
     .h {font-weight: bold; text-align: right}
   </style>
 </template>
 
 <script type="importmap">{"imports": {
-  "#customary": "../../../node_modules/customary/src/now.js",
+  "#customary": "../../../node_modules/customary/src/index.js",
   "#customary/": "../../../node_modules/customary/src/",
-  "#customary/lit": "../../../node_modules/customary/.dist/bundled/customary-library.mjs"
+  "#customary/lit": "../../../node_modules/customary/.dist/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
   globalThis['customary:recipe-card'] = {
     hooks: {
-      events: {'button': el => el.state = {...el.state, test_ts: 'Hello Customary !'}},
+      events: {
+        'button':
+           el => el.state = {...el.state, test_ts: 'Hello Customary !'}
+      },
     }
   };
 </script>

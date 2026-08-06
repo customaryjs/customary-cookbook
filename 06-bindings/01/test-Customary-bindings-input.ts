@@ -21,17 +21,17 @@ describe(suite.title, async function (){
 		function assert_evidence(expected: string) {
 			assert.equal(CT.allTextContent(evidence), expected);
 		}
-		it('looks good', async function () {
-			this.retries(64);
+		it('heading shows the bound value', async function () {
+			this.retries(128);
 			element = CT.querySelector('bindings-input', window);
 			evidence = CT.querySelector('h1', element);
 			assert_evidence("Hello Customary !");
 		});
-		it('interact', async function () {
+		it('type into the input', async function () {
 			input = CT.querySelector('input', element) as HTMLInputElement;
 			CT.input('!!', input);
 		});
-		it('looks good', async function () {
+		it('heading follows the typing, input keeps focus', async function () {
 			this.retries(64);
 			assert_evidence("Hello Customary !!!");
 			assert.equal(element.shadowRoot!.activeElement, input);

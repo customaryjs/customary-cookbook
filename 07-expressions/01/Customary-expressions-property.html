@@ -39,7 +39,9 @@
     []
 </script>
 
-<template data-customary-name="expressions-property-recipe">
+<template data-customary-name="expressions-property-recipe"
+          data-customary-construct-shadowRootDont="true"
+>
     <expressions-property-recipe-deck-groups
             data-customary-expressions
             data-customary-expression-name="list_of_groups"
@@ -53,7 +55,9 @@
     </div>
 </template>
 
-<template data-customary-name="expressions-property-recipe-deck-groups">
+<template data-customary-name="expressions-property-recipe-deck-groups"
+          data-customary-construct-shadowRootDont="true"
+>
     <customary:for items="{{list_of_groups}}" value="group">
         <h2>{[group.name]}</h2>
         <expressions-property-recipe-deck-categories
@@ -64,7 +68,9 @@
     </customary:for>
 </template>
 
-<template data-customary-name="expressions-property-recipe-deck-categories">
+<template data-customary-name="expressions-property-recipe-deck-categories"
+          data-customary-construct-shadowRootDont="true"
+>
     <div style="display: flex; gap: 2em">
         <customary:for items="{{list_of_categories}}" value="category">
             <div>
@@ -82,32 +88,20 @@
 <expressions-property-recipe></expressions-property-recipe>
 
 <script type="importmap">{"imports": {
-    "#customary": "../../_dependencies/customary/customary.mjs"
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
     /**
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:expressions-property-recipe'] = {
-        config: {
-          construct: {shadowRootDont: true},
-        },
         hooks: {
             events: {
                 'button': (el, _, target) =>
                     el.basket = [...el.basket, target.getAttribute('data-item')]
             }
         }
-    };
-    globalThis['customary:expressions-property-recipe-deck-groups'] = {
-        config: {
-            construct: {shadowRootDont: true},
-        },
-    };
-    globalThis['customary:expressions-property-recipe-deck-categories'] = {
-        config: {
-            construct: {shadowRootDont: true},
-        },
     };
 </script>
 <script type="module">import '#customary';</script>

@@ -1,0 +1,59 @@
+<html lang="en"
+      xmlns:customary="https://customaryjs.github.io/schema"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
+>
+<title>Logic ~ classMap and styleMap within for within if ~ Customary Cookbook</title>
+
+<h1>Customary Logic Tags</h1>
+
+<p>~ classMap and styleMap within for within if ~</p><br/>
+
+<script type="application/json"
+    data-customary-name="logic-classmap-and-stylemap-within-for-within-if-recipe"
+    data-customary-value="tasks"
+>
+  [
+    {"name": "Water the plants", "classes": {"done": true},  "styles": {"color": "green"}},
+    {"name": "Sweep the floor",  "classes": {"done": false}, "styles": {"color": "darkorange"}}
+  ]
+</script>
+
+<logic-classmap-and-stylemap-within-for-within-if-recipe></logic-classmap-and-stylemap-within-for-within-if-recipe>
+
+<template data-customary-name="logic-classmap-and-stylemap-within-for-within-if-recipe">
+  <customary:if condition="{{tasks}}">
+    <customary:false>No tasks yet...</customary:false>
+    <customary:true>
+      <ul>
+        <customary:for items="{{tasks}}" value="task">
+          <li>
+            <span>{[task.name]}</span>
+            <customary:classMap
+                target="span"
+                classInfo="{[task.classes]}"
+            >
+            </customary:classMap>
+            <customary:styleMap
+                target="span"
+                styleInfo="{[task.styles]}"
+            >
+            </customary:styleMap>
+          </li>
+        </customary:for>
+      </ul>
+    </customary:true>
+  </customary:if>
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+</template>
+
+<script type="importmap">{"imports": {
+  "#customary": "../../_dependencies/customary/customary.mjs",
+  "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">import '#customary';</script>
+</html>

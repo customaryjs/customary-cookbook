@@ -11,11 +11,11 @@ describe(suite.title, async function () {
     describe('happy day', async function () {
         it('looks good', async function () {
             this.retries(64);
-            const element = CT.querySelector('logic-nested-for-recipe', window);
+            const element = CT.querySelector('logic-for-within-for-recipe', window);
             CT.spot('Fruits', element, { selectors: 'h2' });
             CT.spot('Citrus', element, { selectors: 'h3' });
             CT.spot('Orange', element, { selectors: 'li' });
         });
     });
 });
-//# sourceMappingURL=test-Customary-logic-nested-for.js.map
+//# sourceMappingURL=test-Customary-logic-for-within-for.js.map

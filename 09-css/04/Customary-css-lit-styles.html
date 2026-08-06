@@ -1,0 +1,58 @@
+<title>CSS ~ the way of Lit ~ Customary Cookbook</title>
+
+<h1>Customary CSS</h1>
+
+<p>~ the way of Lit ~</p>
+
+<style>
+    .stripe {
+        position: relative;
+        margin-left: 4em;
+        padding: 0.7em;
+        background-color: crimson;
+        color: white;
+        font-style: italic;
+    }
+    .stripe::before {
+        content: ".stripe";
+        position: absolute;
+        right: 100%;
+        margin-right: 0.6em;
+        top: 0;
+        bottom: 0;
+        width: 3.5em;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: thin solid crimson;
+        color: crimson;
+        background-color: white;
+        font-family: monospace;
+        font-size: 0.7em;
+        font-style: normal;
+    }
+</style>
+
+<p class="stripe">This page paints every <code>.stripe</code> crimson.</p>
+
+<lit-styles-component></lit-styles-component>
+
+<css-file-component></css-file-component>
+
+<lit-styles-light-component></lit-styles-light-component>
+
+<css-file-light-component></css-file-light-component>
+
+<script type="importmap">{"imports": {
+    "@lit/reactive-element/": "../../_dependencies/@lit/reactive-element/",
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    import "./LitStylesComponent.js";
+    import "./CssFileComponent.js";
+    import "./LitStylesLightComponent.js";
+    import "./CssFileLightComponent.js";
+</script>

@@ -42,7 +42,11 @@ describe(suite.title, async function () {
 
         it('looks good', async function () {
             this.retries(64);
-            CT.spot('', picker1, {selectors: 'span.outcome'});
+            chai.assert.strictEqual(
+                CT.allTextContent(CT.querySelector('span.outcome', picker1)),
+                '',
+                'a change event is not composed, so it must not escape the shadowRoot'
+            );
             CT.spot('.gitconfig {"type":"input","bubbles":true,"composed":true}', picker2);
             CT.spot('.gitconfig {"type":"change","bubbles":true,"composed":false}', picker3);
             CT.spot('.gitconfig {"type":"input","bubbles":true,"composed":true}', picker4);

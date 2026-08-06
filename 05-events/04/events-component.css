@@ -1,0 +1,28 @@
+.tally {
+    font-family: monospace;
+    font-size: xx-large;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8em;
+    margin-bottom: 0.6em;
+}
+button {
+    flex: none;
+    width: 7em;
+}
+code {
+    flex: none;
+    background-color: gainsboro;
+    padding: 0.2em 0.4em;
+}
+.description {
+    font-family: monospace;
+    color: navy;
+    min-height: 1.2em;
+}

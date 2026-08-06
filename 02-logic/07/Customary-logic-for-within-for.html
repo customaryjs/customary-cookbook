@@ -3,14 +3,14 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="https://customaryjs.github.io/schema https://customaryjs.github.io/customary.xsd"
 >
-<title>Logic ~ nested for ~ Customary Cookbook</title>
+<title>Logic ~ for-within-for ~ Customary Cookbook</title>
 
 <h1>Customary Logic Tags</h1>
 
-<p>~ nested for ~</p><br/>
+<p>~ for-within-for ~</p><br/>
 
 <script type="application/json"
-    data-customary-name="logic-nested-for-recipe"
+    data-customary-name="logic-for-within-for-recipe"
     data-customary-value="groups"
 >
   [
@@ -31,9 +31,9 @@
   ]
 </script>
 
-<logic-nested-for-recipe></logic-nested-for-recipe>
+<logic-for-within-for-recipe></logic-for-within-for-recipe>
 
-<template data-customary-name="logic-nested-for-recipe">
+<template data-customary-name="logic-for-within-for-recipe">
   <customary:for items="{{groups}}" value="group">
     <h2>{[group.name]}</h2>
     <div style="display: flex; gap: 2em">
@@ -52,7 +52,8 @@
 </template>
 
 <script type="importmap">{"imports": {
-  "#customary": "../../_dependencies/customary/customary.mjs"
+  "#customary": "../../_dependencies/customary/customary.mjs",
+  "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
 }}</script>
 <script type="module">import '#customary';</script>
 </html>

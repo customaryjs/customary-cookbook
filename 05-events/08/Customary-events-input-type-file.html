@@ -4,7 +4,9 @@
 
 <p>~ input type file ~</p><br/>
 
-<template data-customary-name="events-input-file-shadow-root">
+<template data-customary-name="events-input-file-shadow-root"
+          data-customary-construct-shadowRootDont="false"
+>
     <events-input-file-picker
             legend="with change event" class="with-change-event">
     </events-input-file-picker>
@@ -13,7 +15,9 @@
     </events-input-file-picker>
 </template>
 
-<template data-customary-name="events-input-file-no-shadow-root">
+<template data-customary-name="events-input-file-no-shadow-root"
+          data-customary-construct-shadowRootDont="true"
+>
     <events-input-file-picker
             legend="with change event" class="with-change-event">
     </events-input-file-picker>
@@ -22,8 +26,9 @@
     </events-input-file-picker>
 </template>
 
-<template data-customary-name="events-input-file-picker" 
+<template data-customary-name="events-input-file-picker"
           data-customary-attributes="legend, filename, eventJson"
+          data-customary-construct-shadowRootDont="true"
 >
     <fieldset><legend>{{legend}}</legend>
         <input type="file" />
@@ -44,18 +49,14 @@
 <events-input-file-recipe></events-input-file-recipe>
 
 <script type="importmap">{"imports": {
-    "#customary": "../../_dependencies/customary/customary.mjs"
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
 }}</script>
 <script type="module">
     /**
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:events-input-file-shadow-root'] = {
-        config: {
-            construct: {
-                shadowRootDont: false,
-            }
-        },
         hooks: {
             events: [
                 {
@@ -83,11 +84,6 @@
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:events-input-file-no-shadow-root'] = {
-        config: {
-            construct: {
-                shadowRootDont: true,
-            }
-        },
         hooks: {
             events: [
                 {
@@ -130,16 +126,6 @@
         const {type, bubbles, composed} = event;
         picker.eventJson = JSON.stringify({type, bubbles, composed});
     }
-    /**
-     * @type {CustomaryDeclaration}
-     */
-    globalThis['customary:events-input-file-picker'] = {
-        config: {
-            construct: {
-                shadowRootDont: true,
-            }
-        },
-    };
 </script>
 
 <script type="module">import '#customary';</script>

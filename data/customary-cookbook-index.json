@@ -141,11 +141,11 @@
   {
     "id": "02-07",
     "chapter_name": "Logic",
-    "recipe_name": "nested for",
-    "page_html": "02-logic/07/Customary-logic-nested-for.html",
-    "test_ts": "02-logic/07/test-Customary-logic-nested-for.ts",
-    "test_js": "02-logic/07/test-Customary-logic-nested-for.js",
-    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/07/Customary-logic-nested-for.html",
+    "recipe_name": "for-within-for",
+    "page_html": "02-logic/07/Customary-logic-for-within-for.html",
+    "test_ts": "02-logic/07/test-Customary-logic-for-within-for.ts",
+    "test_js": "02-logic/07/test-Customary-logic-for-within-for.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/07/Customary-logic-for-within-for.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/07"
   },
   {
@@ -157,6 +157,16 @@
     "test_js": "02-logic/08/test-Customary-logic-move-here.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/08/Customary-logic-move-here.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/08"
+  },
+  {
+    "id": "02-09",
+    "chapter_name": "Logic",
+    "recipe_name": "classMap and styleMap within for within if",
+    "page_html": "02-logic/09/Customary-logic-classMap-and-styleMap-within-for-within-if.html",
+    "test_ts": "02-logic/09/test-Customary-logic-classMap-and-styleMap-within-for-within-if.ts",
+    "test_js": "02-logic/09/test-Customary-logic-classMap-and-styleMap-within-for-within-if.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/02-logic/09/Customary-logic-classMap-and-styleMap-within-for-within-if.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/02-logic/09"
   },
   {
     "id": "03-01",
@@ -308,6 +318,16 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/03"
   },
   {
+    "id": "05-04",
+    "chapter_name": "Events",
+    "recipe_name": "with a component",
+    "page_html": "05-events/04/Customary-events-component.html",
+    "test_ts": "05-events/04/test-Customary-events-component.ts",
+    "test_js": "05-events/04/test-Customary-events-component.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/04/Customary-events-component.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/04"
+  },
+  {
     "id": "05-08",
     "chapter_name": "Events",
     "recipe_name": "input type file",
@@ -406,5 +426,15 @@
     "test_js": "08-hooks/01/test-Customary-hooks-derive.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/08-hooks/01/Customary-hooks-derive.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/08-hooks/01"
+  },
+  {
+    "id": "09-04",
+    "chapter_name": "CSS",
+    "recipe_name": "the way of Lit",
+    "page_html": "09-css/04/Customary-css-lit-styles.html",
+    "test_ts": "09-css/04/test-Customary-css-lit-styles.ts",
+    "test_js": "09-css/04/test-Customary-css-lit-styles.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/09-css/04/Customary-css-lit-styles.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/09-css/04"
   }
 ]

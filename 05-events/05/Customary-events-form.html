@@ -1,0 +1,137 @@
+<title>Events ~ form ~ Customary Cookbook</title>
+
+<h1>Customary Events</h1>
+
+<p>~ form ~</p><br/>
+
+<template data-customary-name="events-form-shadow-root"
+          data-customary-construct-shadowRootDont="false"
+>
+    <events-form-sender></events-form-sender>
+</template>
+
+<template data-customary-name="events-form-shadow-root-composed"
+          data-customary-construct-shadowRootDont="false"
+>
+    <events-form-sender></events-form-sender>
+</template>
+
+<template data-customary-name="events-form-no-shadow-root"
+          data-customary-construct-shadowRootDont="true"
+>
+    <events-form-sender></events-form-sender>
+</template>
+
+<template data-customary-name="events-form-sender"
+          data-customary-attributes="eventJson"
+          data-customary-construct-shadowRootDont="true"
+>
+    <form>
+        <input name="what" value="fun" />
+        <button type="submit">submit</button>
+    </form>
+    <span class="outcome">{{eventJson}}</span>
+</template>
+
+<template data-customary-name="events-form-recipe">
+    <fieldset><legend>&#x1f31a; shadowRoot</legend>
+        <events-form-shadow-root></events-form-shadow-root>
+    </fieldset>
+    <fieldset><legend>&#x1f31b; shadowRoot, but intercept submit
+        and re-dispatch as composed custom event</legend>
+        <events-form-shadow-root-composed></events-form-shadow-root-composed>
+    </fieldset>
+    <fieldset><legend>&#x1f31d; no shadowRoot</legend>
+        <events-form-no-shadow-root></events-form-no-shadow-root>
+    </fieldset>
+</template>
+
+<events-form-recipe></events-form-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-form-shadow-root'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'form',
+                    type: 'submit',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-form-shadow-root-composed'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'events-form-sender',
+                    type: 'my_custom_submit',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-form-no-shadow-root'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'form',
+                    type: 'submit',
+                    listener: (el, event, target) => printEventJson(el, event, target),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-form-sender'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'form',
+                    type: 'submit',
+                    // no shadow root stands between the form and its sender,
+                    // so the sender always sees the submit event:
+                    // it keeps the browser from navigating away,
+                    // then re-publishes the news as an event that can cross a shadow root
+                    listener: (el, event) => {
+                        event.preventDefault();
+                        el.dispatchEvent(
+                            new CustomEvent('my_custom_submit', {
+                                bubbles: true, composed: true,
+                                detail: {original_event: event},
+                            }));
+                    },
+                },
+            ],
+        }
+    };
+    function printEventJson(el, event, target) {
+        const sender = target.closest('events-form-sender');
+        const eventJson = getEventJson(event);
+        if (event.detail && event.detail.original_event) {
+            eventJson.detail = {original_event: getEventJson(event.detail.original_event)};
+        }
+        sender.eventJson = JSON.stringify(eventJson);
+    }
+    function getEventJson(event) {
+        const {type, bubbles, composed} = event;
+        return {type, bubbles, composed};
+    }
+</script>
+
+<script type="module">import '#customary';</script>

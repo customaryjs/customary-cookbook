@@ -328,6 +328,26 @@
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/04"
   },
   {
+    "id": "05-05",
+    "chapter_name": "Events",
+    "recipe_name": "form",
+    "page_html": "05-events/05/Customary-events-form.html",
+    "test_ts": "05-events/05/test-Customary-events-form.ts",
+    "test_js": "05-events/05/test-Customary-events-form.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/05/Customary-events-form.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/05"
+  },
+  {
+    "id": "05-06",
+    "chapter_name": "Events",
+    "recipe_name": "form, self-announcing",
+    "page_html": "05-events/06/Customary-events-form-self-announcing.html",
+    "test_ts": "05-events/06/test-Customary-events-form-self-announcing.ts",
+    "test_js": "05-events/06/test-Customary-events-form-self-announcing.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/main/src/05-events/06/Customary-events-form-self-announcing.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/main/src/05-events/06"
+  },
+  {
     "id": "05-08",
     "chapter_name": "Events",
     "recipe_name": "input type file",

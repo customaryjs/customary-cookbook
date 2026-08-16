@@ -1,0 +1,126 @@
+<title>Events ~ form, self-announcing ~ Customary Cookbook</title>
+
+<h1>Customary Events</h1>
+
+<p>~ form, self-announcing ~</p><br/>
+
+<template data-customary-name="events-announcing-silent"
+          data-customary-attributes="outcome"
+          data-customary-construct-shadowRootDont="false"
+>
+    <!-- the inline onsubmit is the only thing keeping the browser
+         from navigating away: the events hook that would have called
+         preventDefault never runs, because the event never gets there -->
+    <form onsubmit="return false">
+        <input name="what" value="fun" />
+        <button type="submit">submit</button>
+    </form>
+    <span class="outcome">{{outcome}}</span>
+</template>
+
+<template data-customary-name="events-announcing-heard"
+          data-customary-attributes="outcome"
+          data-customary-construct-shadowRootDont="false"
+>
+    <events-announcing-form></events-announcing-form>
+    <span class="outcome">{{outcome}}</span>
+</template>
+
+<template data-customary-name="events-announcing-form"
+          data-customary-construct-shadowRootDont="true"
+>
+    <form>
+        <input name="what" value="fun" />
+        <button type="submit">submit</button>
+    </form>
+</template>
+
+<template data-customary-name="events-announcing-recipe">
+    <fieldset><legend>&#x1f31a; shadowRoot</legend>
+        <events-announcing-silent></events-announcing-silent>
+    </fieldset>
+    <fieldset><legend>&#x1f31b; shadowRoot, but the form's own element
+        announces the submit as a composed custom event</legend>
+        <events-announcing-heard></events-announcing-heard>
+    </fieldset>
+</template>
+
+<events-announcing-recipe></events-announcing-recipe>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-announcing-silent'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'form',
+                    type: 'submit',
+                    // never runs: a submit event is not composed,
+                    // so it dies at the shadowRoot,
+                    // one step short of the element listening for it
+                    listener: (el, event) => printEventJson(el, event),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-announcing-heard'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'events-announcing-form',
+                    type: 'custom_submit',
+                    listener: (el, event) => printEventJson(el, event),
+                },
+            ],
+        }
+    };
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:events-announcing-form'] = {
+        hooks: {
+            events: [
+                {
+                    selector: 'form',
+                    type: 'submit',
+                    // no shadowRoot stands between the form and its own element,
+                    // so this element always sees the submit event:
+                    // it keeps the browser from navigating away,
+                    // then announces itself with an event that can cross a shadowRoot
+                    listener: (el, event) => {
+                        event.preventDefault();
+                        el.dispatchEvent(
+                            new CustomEvent('custom_submit', {
+                                bubbles: true, composed: true,
+                                detail: {
+                                    original_event: event,
+                                },
+                            }));
+                    },
+                },
+            ],
+        }
+    };
+    function printEventJson(el, event) {
+        const eventJson = getEventJson(event);
+        if (event.detail && event.detail.original_event) {
+            eventJson.detail = {original_event: getEventJson(event.detail.original_event)};
+        }
+        el.outcome = JSON.stringify(eventJson);
+    }
+    function getEventJson(event) {
+        const {type, bubbles, composed} = event;
+        return {type, bubbles, composed};
+    }
+</script>
+
+<script type="module">import '#customary';</script>

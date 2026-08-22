@@ -18,8 +18,8 @@ async function toIndexString(tests, page_html_content_loader) {
 }
 async function to_entry(test_ts, page_html_content_loader) {
     const github = 'https://github.com/customaryjs/customary-cookbook';
-    const github_blob_main = `${github}/blob/main/src`;
-    const github_tree_main = `${github}/tree/main/src`;
+    const github_blob = `${github}/blob/gh-pages`;
+    const github_tree = `${github}/tree/gh-pages`;
     const page_html = test_ts_to_page_html(test_ts);
     const dir = test_ts_to_dir(test_ts);
     const page_content = await page_html_content_loader.load_page_content(page_html);
@@ -32,8 +32,8 @@ async function to_entry(test_ts, page_html_content_loader) {
         page_html,
         test_ts,
         test_js: test_ts_to_test_js(test_ts),
-        github_page_html: `${github_blob_main}/${page_html}`,
-        github_dir: `${github_tree_main}/${dir}`,
+        github_page_html: `${github_blob}/${page_html}`,
+        github_dir: `${github_tree}/${dir}`,
     };
 }
 function test_ts_to_test_js(s) {

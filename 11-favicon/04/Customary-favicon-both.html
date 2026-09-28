@@ -1,0 +1,36 @@
+<title>Favicon ~ both ~ Customary Cookbook</title>
+
+<h1>Customary Favicon</h1>
+
+<p>~ both ~</p><br/>
+
+<favicon-both-recipe></favicon-both-recipe>
+
+<template data-customary-name="favicon-both-recipe">
+    <p>A <code>favicon.svg</code> and a <code>favicon.ico</code> both sit next to this page, so the page's own <code>import.meta</code> serves as <code>website.root.import_meta</code>. <code>favicon.detect</code> asks for both formats, and no override is needed: Customary links both, svg first, and each browser picks the one it supports.</p>
+    <p>Open this recipe in a new tab and look at its icon.</p>
+    <p>
+        <img src="./favicon.svg" width="48" alt="the favicon.svg next to this page">
+        <img src="./favicon.ico" width="48" alt="the favicon.ico next to this page">
+    </p>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:favicon-both-recipe'] = {
+        config: {
+            // favicon.detect asks for both, and this directory ships both
+            favicon: {detect: true},
+        },
+        hooks: {
+            website: {root: {import_meta: import.meta}},
+        },
+    };
+</script>
+<script type="module">import '#customary';</script>

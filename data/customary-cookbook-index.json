@@ -456,5 +456,55 @@
     "test_js": "09-css/04/test-Customary-css-lit-styles.js",
     "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/09-css/04/Customary-css-lit-styles.html",
     "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/09-css/04"
+  },
+  {
+    "id": "11-01",
+    "chapter_name": "Favicon",
+    "recipe_name": "svg",
+    "page_html": "11-favicon/01/Customary-favicon-svg.html",
+    "test_ts": "11-favicon/01/test-Customary-favicon-svg.ts",
+    "test_js": "11-favicon/01/test-Customary-favicon-svg.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/11-favicon/01/Customary-favicon-svg.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/11-favicon/01"
+  },
+  {
+    "id": "11-02",
+    "chapter_name": "Favicon",
+    "recipe_name": "ico",
+    "page_html": "11-favicon/02/Customary-favicon-ico.html",
+    "test_ts": "11-favicon/02/test-Customary-favicon-ico.ts",
+    "test_js": "11-favicon/02/test-Customary-favicon-ico.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/11-favicon/02/Customary-favicon-ico.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/11-favicon/02"
+  },
+  {
+    "id": "11-03",
+    "chapter_name": "Favicon",
+    "recipe_name": "website",
+    "page_html": "11-favicon/03/Customary-favicon-website.html",
+    "test_ts": "11-favicon/03/test-Customary-favicon-website.ts",
+    "test_js": "11-favicon/03/test-Customary-favicon-website.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/11-favicon/03/Customary-favicon-website.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/11-favicon/03"
+  },
+  {
+    "id": "11-04",
+    "chapter_name": "Favicon",
+    "recipe_name": "both",
+    "page_html": "11-favicon/04/Customary-favicon-both.html",
+    "test_ts": "11-favicon/04/test-Customary-favicon-both.ts",
+    "test_js": "11-favicon/04/test-Customary-favicon-both.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/11-favicon/04/Customary-favicon-both.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/11-favicon/04"
+  },
+  {
+    "id": "11-05",
+    "chapter_name": "Favicon",
+    "recipe_name": "child only",
+    "page_html": "11-favicon/05/Customary-favicon-child-only.html",
+    "test_ts": "11-favicon/05/test-Customary-favicon-child-only.ts",
+    "test_js": "11-favicon/05/test-Customary-favicon-child-only.js",
+    "github_page_html": "https://github.com/customaryjs/customary-cookbook/blob/gh-pages/11-favicon/05/Customary-favicon-child-only.html",
+    "github_dir": "https://github.com/customaryjs/customary-cookbook/tree/gh-pages/11-favicon/05"
   }
 ]

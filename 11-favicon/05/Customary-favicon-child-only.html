@@ -1,0 +1,36 @@
+<title>Favicon ~ child only ~ Customary Cookbook</title>
+
+<h1>Customary Favicon</h1>
+
+<p>~ child only ~</p><br/>
+
+<favicon-child-only-recipe></favicon-child-only-recipe>
+
+<template data-customary-name="favicon-child-only-recipe">
+    <p>A <code>favicon.svg</code> and a <code>favicon.ico</code> both sit next to this page, but there is no <code>favicon.detect</code> to ask for both. <code>svg.detect</code> asks for the svg on its own, and the ico is left alone: exactly one request, one link.</p>
+    <p>Open this recipe in a new tab and look at its icon.</p>
+    <p>
+        <img src="./favicon.svg" width="48" alt="the favicon.svg next to this page, linked">
+        <img src="./favicon.ico" width="48" alt="the favicon.ico next to this page, not linked">
+    </p>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:favicon-child-only-recipe'] = {
+        config: {
+            // no parent: the child's detect is the only one there is
+            favicon: {svg: {detect: true}},
+        },
+        hooks: {
+            website: {root: {import_meta: import.meta}},
+        },
+    };
+</script>
+<script type="module">import '#customary';</script>

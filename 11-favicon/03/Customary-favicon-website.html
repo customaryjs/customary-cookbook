@@ -1,0 +1,37 @@
+<title>Favicon ~ website ~ Customary Cookbook</title>
+
+<h1>Customary Favicon</h1>
+
+<p>~ website ~</p><br/>
+
+<favicon-website-recipe></favicon-website-recipe>
+
+<template data-customary-name="favicon-website-recipe">
+    <p>No favicon next to this page, so the page's own <code>import.meta</code> will not do as <code>website.root.import_meta</code>. <code>WEBSITE_ROOT_IMPORT_META</code>, exported from the cookbook's own root directory, will &mdash; and that is where Customary looks. The root ships no ico, so <code>ico.detect: false</code> overrides <code>favicon.detect</code> for it.</p>
+    <p>Open this recipe in a new tab and look at its icon.</p>
+    <p>
+        <img src="../../favicon.svg" width="48" alt="the cookbook&#39;s own favicon.svg">
+    </p>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    import {WEBSITE_ROOT_IMPORT_META} from "../../website-root.js";
+
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:favicon-website-recipe'] = {
+        config: {
+            // the website root ships no ico, so say so
+            favicon: {detect: true, ico: {detect: false}},
+        },
+        hooks: {
+            website: {root: {import_meta: WEBSITE_ROOT_IMPORT_META}},
+        },
+    };
+</script>
+<script type="module">import '#customary';</script>

@@ -36,7 +36,7 @@
             min-height: 68px;
         }
         .emoji {
-            font-size: xx-large;
+            height: 72px;
         }
         .tagline {
             font-style: italic;
@@ -47,7 +47,7 @@
     </style>
     <div class="cover-content">
         <div class="caption">Customary<br>Cookbook</div>
-        <div class="emoji">&#x1F475;&#x1F373;</div>
+        <img class="emoji" src="./favicon.svg" alt="&#x1F475;&#x1F373;">
         <div class="tagline">
             <a target="_blank" href="https://customaryjs.github.io/">Customary</a> recipes<br>to teach yourself
         </div>
@@ -520,9 +520,13 @@
      * @type {CustomaryDeclaration}
      */
     globalThis['customary:customary-cookbook-navigator'] = {
-        config: {state: ['navigation', 'chapters', 'show_help', 'show_index']},
+        config: {
+            state: ['navigation', 'chapters', 'show_help', 'show_index'],
+            favicon: {detect: true, ico: {detect: false}},
+        },
         values: {'show_help': false, 'show_index': false},
         hooks: {
+            website: {root: {import_meta: import.meta}},
             derive: {
                 'index_classmap': el => ({"open": el.show_index}),
                 'within_mobile_breakpoint': el => is_within_mobile_breakpoint(el),

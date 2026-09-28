@@ -1,0 +1,35 @@
+<title>Favicon ~ ico ~ Customary Cookbook</title>
+
+<h1>Customary Favicon</h1>
+
+<p>~ ico ~</p><br/>
+
+<favicon-ico-recipe></favicon-ico-recipe>
+
+<template data-customary-name="favicon-ico-recipe">
+    <p>A <code>favicon.ico</code> sits next to this page, so the page's own <code>import.meta</code> serves as <code>website.root.import_meta</code>. <code>favicon.detect</code> asks for both formats, and <code>svg.detect: false</code> overrides it for the svg, which this directory does not ship: exactly one request, no 404.</p>
+    <p>Open this recipe in a new tab and look at its icon.</p>
+    <p>
+        <img src="./favicon.ico" width="48" alt="the favicon.ico next to this page">
+    </p>
+</template>
+
+<script type="importmap">{"imports": {
+    "#customary": "../../_dependencies/customary/customary.mjs",
+    "#customary/lit": "../../_dependencies/customary/customary-lit-dev.mjs"
+}}</script>
+<script type="module">
+    /**
+     * @type {CustomaryDeclaration}
+     */
+    globalThis['customary:favicon-ico-recipe'] = {
+        config: {
+            // this directory ships no svg, so say so
+            favicon: {detect: true, svg: {detect: false}},
+        },
+        hooks: {
+            website: {root: {import_meta: import.meta}},
+        },
+    };
+</script>
+<script type="module">import '#customary';</script>

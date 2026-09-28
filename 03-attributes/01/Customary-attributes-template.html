@@ -4,17 +4,25 @@
 
 <p>~ declared at template ~</p><br/>
 
-<attributes-template caption="RED" color="red"></attributes-template>
-<attributes-template caption="GREEN" color="green"></attributes-template>
-<attributes-template caption="BLUE" color="blue"></attributes-template>
+<attributes-template
+        term="attribute"
+        definition="A named value declared on an HTML tag."
+></attributes-template>
+<attributes-template
+        term="template"
+        definition="Inert HTML, ready to be stamped."
+></attributes-template>
+<attributes-template
+        term="interpolation"
+        definition="Text where a value takes its place."
+></attributes-template>
 
 <template
         data-customary-name="attributes-template"
-        data-customary-attributes="caption,color"
+        data-customary-attributes="term,definition"
 >
-    <h1 style="color: {{color}}">
-        caption: {{caption}}<br>color: {{color}}
-    </h1>
+    <h1>{{term}}</h1>
+    <p>{{definition}}</p>
 </template>
 
 <script type="importmap">{"imports": {
